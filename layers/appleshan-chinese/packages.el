@@ -12,7 +12,6 @@
 (setq appleshan-chinese-packages
     '(
       cal-china-x
-      ; chinese-pyim
       pangu-spacing
       ))
 
@@ -66,58 +65,6 @@
             ))
       ;; 只显示我定制的节日
       (setq calendar-holidays holiday-holidays))))
-
-;; Pinyin Input Method
-; (defun appleshan-chinese/init-chinese-pyim ()
-;   (use-package chinese-pyim
-;     :ensure nil
-;     :init
-;     (progn
-;       (setq pyim-page-length 10
-;             pyim-use-tooltip 'pos-tip   ; 使用 pos-tip 包来绘制选词框（这种选词框比较好看）
-;             x-gtk-use-system-tooltips t ; Linux 平台下，emacs 可以使用 GTK 来绘制选词框
-;             pyim-directory (concat dotspacemacs-directory "chinese/")
-;             pyim-cache-directory (concat dotspacemacs-directory "chinese/cache/")
-;             pyim-personal-file (concat pyim-directory "pyim-personal.txt")
-;             pyim-property-file (concat pyim-directory "pyim-words-property.txt")
-;             default-input-method "chinese-pyim")
-;       ; (evilified-state-evilify pyim-dicts-manager-mode pyim-dicts-manager-mode-map)
-;       )
-;     :config
-;     (progn
-;       ;; 激活词库
-;       (setq pyim-dicts (quote
-;         ((:name "pyim-bigdict"
-;           :file "~/Dropbox/emacs/pyim-bigdict.pyim"
-;           :coding utf-8-unix
-;           :dict-type pinyin-dict)
-;          ; (:name "pyim-greatdict"
-;          ;  :file "~/Dropbox/emacs/pyim-greatdict.pyim"
-;          ;  :coding utf-8-unix
-;          ;  :dict-type pinyin-dict)
-;          )
-;         ))
-;       ; (use-package chinese-pyim-basedict
-;       ;   :ensure nil
-;       ;   :init (chinese-pyim-basedict-enable))
-
-;       ; (setq-default pyim-english-input-switch-functions
-;       ;               '(pyim-probe-dynamic-english
-;       ;                 pyim-probe-isearch-mode
-;       ;                 pyim-probe-program-mode
-;       ;                 pyim-probe-org-structure-template))
-
-;       ; (setq-default pyim-punctuation-half-width-functions
-;       ;               '(pyim-probe-punctuation-line-beginning
-;       ;                 pyim-probe-punctuation-after-punctuation))
-
-;       ;; 为 isearch 开启拼音搜索功能
-;       (setq pyim-isearch-enable-pinyin-search t)
-;       ;; 禁用 dabberv 中文补全
-;       (setq pyim-company-complete-chinese-enable nil))
-;     :bind (("C-M-j" . pyim-convert-pinyin-at-point)
-;            ("C-;" . pyim-delete-word-from-personal-buffer))
-;     ))
 
 ; (defun appleshan-chinese/post-init-fcitx ()
 ;   (fcitx-aggressive-setup))

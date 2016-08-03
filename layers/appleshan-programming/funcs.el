@@ -107,3 +107,27 @@ With a prefix argument, use comint-mode."
        (if (eq (car company-backends) ',backend)
            (setq-local company-backends (delete ',backend company-backends))
          (push ',backend company-backends)))))
+
+;;{{ Better Comments or tooling as a time sink
+;; @See http://cestlaz.github.io/posts/better-comments/
+(make-face 'font-lock-comment-important)
+(set-face-foreground 'font-lock-comment-important "#00ff00")
+
+(make-face 'font-lock-comment-todo)
+(set-face-foreground 'font-lock-comment-todo "#ff0000")
+
+(make-face 'font-lock-comment-strike)
+(set-face-attribute 'font-lock-comment-strike
+        nil :strike-through t)
+
+(defun add-custom-keyw()
+  "adds a few special keywords"
+  (font-lock-add-keywords 
+   nil
+   '(("cx \\(.+\\)" 1 'font-lock-comment-strike prepend)
+     ("ct \\(.+\\)" 1 'font-lock-comment-todo prepend)
+     ("ci \\(.+\\)" 1 'font-lock-comment-important prepend)
+     )))
+
+(add-hook 'prog-mode-hook #'add-custom-keyw)
+;;}}

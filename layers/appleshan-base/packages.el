@@ -38,7 +38,9 @@
       (setq utf-translate-cjk-mode nil)
 
       (when (or window-system (locale-is-utf8-p))
-        (set-language-environment "UTF-8")
+        ;; 影响 chinese-pyim, 造成不能输入中文的故障
+        ;; (set-language-environment "UTF-8")
+
         (set-buffer-file-coding-system 'utf-8-unix)
         (set-clipboard-coding-system 'utf-8-unix)
         (set-file-name-coding-system 'utf-8-unix)
@@ -53,12 +55,7 @@
         ;; @see ~/.emacs.d/core/core-spacemacs.el:61
         ;; (prefer-coding-system 'utf-8)
         )
-
-      (when (eq system-type 'windows-nt)
-        (set-selection-coding-system 'gbk-dos)
-        (set-next-selection-coding-system 'gbk-dos)
-        (set-clipboard-coding-system 'gbk-dos)))
-    ))
+    )))
 
 (defun appleshan-base/pre-init-desktop ()
   (spacemacs|use-package-add-hook desktop

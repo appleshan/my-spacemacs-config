@@ -27,10 +27,6 @@
   "when toggle on input method, goto evil-insert-state. "
   (interactive)
 
-  ;; load IME when needed, less memory footprint
-  ;; (unless (featurep 'chinese-pyim)
-  ;;   (require 'chinese-pyim))
-
   (cond
    ((and (boundp 'evil-mode) evil-mode)
     ;; evil-mode

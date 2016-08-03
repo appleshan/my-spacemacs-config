@@ -55,7 +55,6 @@ values."
                       auto-completion-tab-key-behavior 'complete
                       :disabled-for org markdown)
      better-defaults
-     smex
 
      ;; --- programming language layers ---
      emacs-lisp
@@ -109,12 +108,12 @@ values."
      appleshan-base
      appleshan-complete
      appleshan-dired
-     ; ; appleshan-ui
+     ; appleshan-ui
      appleshan-org
      appleshan-chinese
      appleshan-programming
-     ; ; appleshan-javascript
-     ; ; appleshan-lisp
+     ; appleshan-javascript
+     ; appleshan-lisp
      appleshan-misc
      )
    ;; List of additional packages that will be installed without being
