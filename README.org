@@ -1,0 +1,55 @@
+#+TITLE:Apple Shan 的 Emacs 配置
+#+begin_src :tangle no
+      ___           ___           ___           ___           ___
+     /\  \         /\__\         /\  \         /\  \         /\  \
+    /::\  \       /::|  |       /::\  \       /::\  \       /::\  \
+   /:/\:\  \     /:|:|  |      /:/\:\  \     /:/\:\  \     /:/\ \  \
+  /::\~\:\  \   /:/|:|__|__   /::\~\:\  \   /:/  \:\  \   _\:\~\ \  \
+ /:/\:\ \:\__\ /:/ |::::\__\ /:/\:\ \:\__\ /:/__/ \:\__\ /\ \:\ \ \__\
+ \:\~\:\ \/__/ \/__/~~/:/  / \/__\:\/:/  / \:\  \  \/__/ \:\ \:\ \/__/
+  \:\ \:\__\         /:/  /       \::/  /   \:\  \        \:\ \:\__\
+   \:\ \/__/        /:/  /        /:/  /     \:\  \        \:\/:/  /
+    \:\__\         /:/  /        /:/  /       \:\__\        \::/  /
+     \/__/         \/__/         \/__/         \/__/         \/__/
+
+#+end_src
+[[./local/img/spacemacs-demo.png]]
+Hacking 始于 2012 年。2015 年爱上 Spacemacs :smile:
+
+我的 Spacemacs 配置一共有两部分：
+一个 .emacs.d 目录，是 Spacemacs 的原始代码，未做任何修改；
+一个 .spacemacs.d 目录，存放私有 layer。
+
+* 使用方法
+#+BEGIN_SRC sh
+  # clone spacemacs repo
+  git clone https://github.com/syl20bnr/spacemacs.git ~/.emacs.d/
+  # 或者
+  git clone -b develop https://github.com/appleshan/spacemacs.git ~/.emacs.d/
+
+  # 然后
+  # clone appleshan layer
+  git clone https://github.com/appleshan/my-spacemacs-config.git ~/.spacemacs.d/
+#+END_SRC
+
+现在可以打开 Emacs 24.5+ 开始使用我的配置了。
+
+* 配置说明
+1. 我的配置主要分成九个 layer：
+- appleshan-better-defaults
+- appleshan-ui
+- appleshan-org
+- appleshan-dired
+- appleshan-misc
+- appleshan-chinese
+- appleshan-programming
+- appleshan-javascript
+- appleshan-lisp
+  这些 layer 是对 spacemacs 本身的一些扩展。
+
+2. 我的这个配置使用了 evil。
+   所以，对于 Vim 党来说会比较友好一点。
+
+3. 我的配置用了很长时间了，相信你也会喜欢的。
+
+* Happy Hacking:smile:
