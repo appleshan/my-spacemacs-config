@@ -1,4 +1,4 @@
-;;; funcs.el --- My-dired Layer functions File for Spacemacs
+;;; funcs.el --- appleshan-dired Layer functions File for Spacemacs
 ;;
 ;; Copyright (c) 2016-2020 Apple Shan
 ;;

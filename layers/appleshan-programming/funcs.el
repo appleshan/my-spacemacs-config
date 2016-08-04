@@ -1,4 +1,4 @@
-;;; funcs.el --- my-programming Layer functions File for Spacemacs
+;;; funcs.el --- appleshan-programming Layer functions File for Spacemacs
 ;;
 ;; Copyright (c) 2016-2020 Apple Shan
 ;;

@@ -1,4 +1,4 @@
-;;; config.el --- my-org Layer configuration File for Spacemacs
+;;; config.el --- appleshan-org Layer configuration File for Spacemacs
 ;;
 ;; Copyright (c) 2016-2020 Apple Shan
 ;;

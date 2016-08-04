@@ -1,4 +1,4 @@
-;;; extensions.el --- my-org Layer extensions File for Spacemacs
+;;; extensions.el --- appleshan-org Layer extensions File for Spacemacs
 ;;
 ;; Copyright (c) 2016-2020 Apple Shan
 ;;

@@ -61,11 +61,6 @@
 ;; Only mark helm buffers as useless
 (setq spacemacs-useless-buffers-regexp '("\\*helm\.\+\\*"))
 
-;;自定theme的颜色
-(set-face-attribute 'default nil :foreground "#C7EDCC")
-(set-face-attribute 'cursor nil :background "#000000")
-(set-face-attribute 'font-lock-comment-face nil :foreground "#888888" :background "#292b2e")
-
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: nil

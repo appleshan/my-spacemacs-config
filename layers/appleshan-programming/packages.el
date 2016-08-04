@@ -25,7 +25,7 @@
       projectile
       ; puml-mode
       tldr
-      yasnippet
+      ; yasnippet
       zeal-at-point
       ))
 
@@ -185,28 +185,28 @@
     (setq tldr-directory-path
       (concat user-home-directory ".config/tldr/"))))
 
-(defun appleshan-programming/post-init-yasnippet ()
-  (with-eval-after-load 'yasnippet
-    (set-face-background 'secondary-selection "gray")
-    (setq-default yas-prompt-functions '(yas-ido-prompt yas-dropdown-prompt))
-    (mapc #'(lambda (hook) (remove-hook hook 'spacemacs/load-yasnippet)) '(prog-mode-hook
-                                                                      org-mode-hook
-                                                                      markdown-mode-hook))
-    (defun appleshan/load-yasnippet ()
-      (interactive)
-      (unless yas-global-mode
-        (progn
-          (yas-global-mode 1)
-          (setq my-snippet-dir (expand-file-name "~/.spacemacs.d/local/snippets"))
-          (setq yas-snippet-dirs  my-snippet-dir)
-          (yas-load-directory my-snippet-dir)
-          (setq yas-wrap-around-region t)))
-      (yas-minor-mode 1))
+; (defun appleshan-programming/post-init-yasnippet ()
+;   (with-eval-after-load 'yasnippet
+;     (set-face-background 'secondary-selection "gray")
+;     (setq-default yas-prompt-functions '(yas-ido-prompt yas-dropdown-prompt))
+;     (mapc #'(lambda (hook) (remove-hook hook 'spacemacs/load-yasnippet)) '(prog-mode-hook
+;                                                                       org-mode-hook
+;                                                                       markdown-mode-hook))
+;     (defun appleshan/load-yasnippet ()
+;       (interactive)
+;       (unless yas-global-mode
+;         (progn
+;           (yas-global-mode 1)
+;           (setq my-snippet-dir (expand-file-name "~/.spacemacs.d/local/snippets"))
+;           (push 'my-snippet-dir yas-snippet-dirs)
+;           (yas-load-directory my-snippet-dir)
+;           (setq yas-wrap-around-region t)))
+;       (yas-minor-mode 1))
 
-    (spacemacs/add-to-hooks 'appleshan/load-yasnippet '(prog-mode-hook
-                                                        markdown-mode-hook
-                                                        org-mode-hook))
-    ))
+;     (spacemacs/add-to-hooks 'appleshan/load-yasnippet '(prog-mode-hook
+;                                                         markdown-mode-hook
+;                                                         org-mode-hook))
+;     ))
 
 ;; 使用 zeal 查看 docset
 (defun appleshan-programming/post-init-zeal-at-point ()

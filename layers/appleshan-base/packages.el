@@ -114,7 +114,7 @@
                      (expand-file-name spacemacs-cache-directory)
                      (expand-file-name my-org-gtd-directory) ; org-gtd files
                      "/.emacs.d/pyim/.*\\'"
-                     "/.spacemacs.d/chinese/.*\\'"
+                     "/.spacemacs.d/.cache/.*\\'"
                      "/opt/emacs-24.5/.*\\.el\\'"))
         (add-to-list 'recentf-exclude item))
     )))

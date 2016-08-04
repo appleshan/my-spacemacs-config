@@ -1,4 +1,4 @@
-;;; config.el --- my-programming Layer configuration File for Spacemacs
+;;; config.el --- appleshan-programming Layer configuration File for Spacemacs
 ;;
 ;; Copyright (c) 2016-2020 Apple Shan
 ;;
@@ -67,3 +67,10 @@
   (lambda ()
     (if (and (> (buffer-size) (* 5000 80)))
         (linum-mode -1))))
+
+;; Local Variables:
+;; coding: utf-8
+;; no-byte-compile: nil
+;; End:
+
+;;; config.el ends here

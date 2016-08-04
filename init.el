@@ -39,12 +39,9 @@ values."
 
      ;; --- UI ---
      ivy
-     ; (colors :variables
-     ;         colors-enable-rainbow-identifiers t
-     ;         colors-enable-nyan-cat-progress-bar nil)
-     ; (spacemacs-layouts :variables
-     ;                    layouts-enable-autosave nil
-     ;                    layouts-autosave-delay 300)
+     (colors :variables
+             colors-enable-rainbow-identifiers t
+             colors-enable-nyan-cat-progress-bar nil)
 
      ;; --- Better Editor ---
      ;; auto-complete layer 在 orgmode 中会引发很多问题，所以在 org 中禁用 company 补全
@@ -62,8 +59,11 @@ values."
      javascript
      (python :variables
              python-enable-yapf-format-on-save nil
+             py-yapf-options '("--style=google")
              ; https://emacs-china.org/t/spacemacs-emacs-25-python-layer-nose/718
-             python-test-runner '(nose pytest))
+             ; python-test-runner '(nose pytest)
+             python-test-runner nil
+             )
      shell-scripts
      yaml
 
@@ -108,12 +108,12 @@ values."
      appleshan-base
      appleshan-complete
      appleshan-dired
-     ; appleshan-ui
+     appleshan-ui
      appleshan-org
      appleshan-chinese
      appleshan-programming
      ; appleshan-javascript
-     ; appleshan-lisp
+     appleshan-lisp
      appleshan-misc
      )
    ;; List of additional packages that will be installed without being
@@ -418,6 +418,12 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
+  ;; {{ 解决 org 表格里面中英文对齐的问题
+  (when (configuration-layer/layer-usedp 'chinese)
+    (when (and (spacemacs/system-is-linux) window-system)
+      (spacemacs//set-monospaced-font "Source Code Pro" "文泉驿等宽微米黑" 14 16)))
+  ;; }}
+
   ; (setq powerline-default-separator 'box)
   ; (spaceline-compile) ;; TODO: startup slow!!!!
 
@@ -444,7 +450,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (org ido-completing-read+ chinese-pyim-basedict google-maps bbdb pinyinlib ace-jump-mode uuidgen link-hint evil-visual-mark-mode evil-unimpaired wgrep org-projectile org-download mwim livid-mode skewer-mode simple-httpd live-py-mode ivy-hydra github-search eyebrowse counsel-projectile counsel-dash wrap-region browse-kill-ring zeal-at-point yaml-mode ws-butler window-numbering which-key web-beautify use-package toc-org tldr super-save spacemacs-theme spaceline smooth-scrolling smex smeargle restart-emacs rainbow-mode rainbow-identifiers quelpa pyvenv pytest pyenv-mode py-yapf prodigy popwin pip-requirements persp-mode pcre2el paredit paradox pangu-spacing page-break-lines org-pomodoro org-plus-contrib org-password-manager org-bullets move-text mmm-mode markdown-toc magit-gitflow magit-gh-pulls macrostep json-mode js2-refactor js-doc info+ indent-guide ido-vertical-mode ido-ubiquitous ibuffer-projectile hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-escape-sequences help-fns+ helm-swoop helm-gitignore helm-flx helm-descbinds helm-dash helm-company helm-ag google-translate golden-ratio gnuplot github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist flycheck-pos-tip flycheck-package find-by-pinyin-dired fill-column-indicator fcitx expand-region exec-path-from-shell evil-visualstar evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-iedit-state evil-anzu eval-sexp-fu engine-mode emoji-cheat-sheet-plus elisp-slime-nav dired-sort dired-k dired+ diff-hl cython-mode counsel company-tern company-statistics company-quickhelp company-emoji company-anaconda clean-aindent-mode chinese-pyim calfw cal-china-x buffer-move bracketed-paste bbdb-vcard auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-pinyin ace-link))))
+    (lispy beacon color-identifiers-mode org ido-completing-read+ chinese-pyim-basedict google-maps bbdb pinyinlib ace-jump-mode uuidgen link-hint evil-visual-mark-mode evil-unimpaired wgrep org-projectile org-download mwim livid-mode skewer-mode simple-httpd live-py-mode ivy-hydra github-search eyebrowse counsel-projectile counsel-dash wrap-region browse-kill-ring zeal-at-point yaml-mode ws-butler window-numbering which-key web-beautify use-package toc-org tldr super-save spacemacs-theme spaceline smooth-scrolling smex smeargle restart-emacs rainbow-mode rainbow-identifiers quelpa pyvenv pytest pyenv-mode py-yapf prodigy popwin pip-requirements persp-mode pcre2el paredit paradox pangu-spacing page-break-lines org-pomodoro org-plus-contrib org-password-manager org-bullets move-text mmm-mode markdown-toc magit-gitflow magit-gh-pulls macrostep json-mode js2-refactor js-doc info+ indent-guide ido-vertical-mode ido-ubiquitous ibuffer-projectile hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-escape-sequences help-fns+ helm-swoop helm-gitignore helm-flx helm-descbinds helm-dash helm-company helm-ag google-translate golden-ratio gnuplot github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist flycheck-pos-tip flycheck-package find-by-pinyin-dired fill-column-indicator fcitx expand-region exec-path-from-shell evil-visualstar evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-iedit-state evil-anzu eval-sexp-fu engine-mode emoji-cheat-sheet-plus elisp-slime-nav dired-sort dired-k dired+ diff-hl cython-mode counsel company-tern company-statistics company-quickhelp company-emoji company-anaconda clean-aindent-mode chinese-pyim calfw cal-china-x buffer-move bracketed-paste bbdb-vcard auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-pinyin ace-link))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

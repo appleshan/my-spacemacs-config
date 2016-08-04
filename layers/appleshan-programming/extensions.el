@@ -1,4 +1,4 @@
-;;; extensions.el --- my-programming Layer packages File for Spacemacs
+;;; extensions.el --- appleshan-programming Layer packages File for Spacemacs
 ;;
 ;; Copyright (c) 2016-2020 Apple Shan
 ;;

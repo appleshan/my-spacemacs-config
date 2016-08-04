@@ -12,7 +12,6 @@
 (setq appleshan-ui-packages
     '(
       beacon
-      ; diminish
       ))
 
 ;; List of packages to exclude.
@@ -31,11 +30,6 @@
 
       (spacemacs/toggle-beacon-on))
     :config (spacemacs|hide-lighter beacon-mode)))
-
-; (defun appleshan-ui/post-init-diminish ()
-;   (progn
-;     (with-eval-after-load 'hungry-delete
-;       (diminish 'hungry-delete-mode))))
 
 ;; Local Variables:
 ;; coding: utf-8

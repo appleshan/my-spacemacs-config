@@ -1,4 +1,4 @@
-;;; config.el --- Chinese Layer configuration File for Spacemacs
+;;; config.el --- appleshan-chinese Layer configuration File for Spacemacs
 ;;
 ;; Copyright (c) 2012-2016 Sylvain Benner & Contributors
 ;;
@@ -14,8 +14,9 @@
 (defvar *large-buffer-threshold* 300000
   "Buffer whose size beyond it will have a different behavior for the efficiency")
 
-(defvar chinese-enable-avy-pinyin t
-  "Enable ace-pinyin in avy-goto-char")
+;; Local Variables:
+;; coding: utf-8
+;; no-byte-compile: nil
+;; End:
 
-(defvar chinese-enable-fcitx nil
-  "Enable fcitx to help writing Chinese in Evil mode.")
+;;; config.el ends here
