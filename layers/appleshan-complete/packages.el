@@ -24,9 +24,6 @@
 ;; List of packages to exclude.
 (setq appleshan-complete-excluded-packages '())
 
-;; ido
-;; using swiper so ido no longer needed
-
 ;; swiper and ivy-mode
 
 ; (defun appleshan-complete/post-init-counsel ()
