@@ -28,17 +28,6 @@
   ; Ⓞ : http://graphemica.com/%E2%93%84
   (spacemacs|diminish dired-omit-mode " Ⓞ" " O"))
 
-(with-eval-after-load 'dired-sort
-  (defun appleshan-dired/dired-sort-hook ()
-    (interactive)
-    (make-local-variable  'dired-sort-map)
-    (setq dired-sort-map (make-sparse-keymap))
-    (define-key dired-mode-map "s" dired-sort-map)
-    (define-key dired-sort-map "n" 'dired-sort-name)
-    (define-key dired-sort-map "x" 'dired-sort-extension)
-    (define-key dired-sort-map "s" 'dired-sort-size)
-    (define-key dired-sort-map "t" 'dired-sort-time)))
-
 (with-eval-after-load 'dired+
   (defun appleshan-dired/get-size ()
     (interactive)
@@ -63,6 +52,8 @@
          (fboundp 'dired-insert-set-properties)
          (dired-insert-set-properties (point-min) (point-max)))
     (set-buffer-modified-p nil))
+
+  (add-hook 'dired-after-readin-hook 'appleshan-dired/list-dir-first)
 
   (defun appleshan-dired/dired-diff ()
     "Ediff marked files in dired or selected files in separate window"
@@ -140,4 +131,20 @@
       ;; finally, switch to that window
       (other-window 1)))
 
+  (evilified-state-evilify-map dired-mode-map
+    :mode dired-mode
+    :bindings
+    "=" 'appleshan-dired/dired-diff
+    "z" 'appleshan-dired/get-size)
 )
+
+(with-eval-after-load 'dired-sort
+  (defun appleshan-dired/dired-sort-hook ()
+    (interactive)
+    (make-local-variable  'dired-sort-map)
+    (setq dired-sort-map (make-sparse-keymap))
+    (define-key dired-mode-map "s" dired-sort-map)
+    (define-key dired-sort-map "n" 'dired-sort-name)
+    (define-key dired-sort-map "x" 'dired-sort-extension)
+    (define-key dired-sort-map "s" 'dired-sort-size)
+    (define-key dired-sort-map "t" 'dired-sort-time)))

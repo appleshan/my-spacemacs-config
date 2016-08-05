@@ -56,7 +56,7 @@
 
       (setq find-ls-option '("-print0 | xargs -0 ls -ald" . ""))
 
-      (add-hook 'dired-after-readin-hook 'appleshan-dired/list-dir-first)
+      ; (add-hook 'dired-after-readin-hook 'appleshan-dired/list-dir-first)
 
       (add-hook 'dired-mode-hook 'appleshan-dired/dired-hook)
 
@@ -66,13 +66,14 @@
         "f"         (if (configuration-layer/layer-usedp 'ivy)
                       'counsel-find-file
                     'helm-find-files)
-        "="         'appleshan-dired/dired-diff
+        ; "="         'appleshan-dired/dired-diff
         "~"   '(lambda ()(interactive) (find-alternate-file "~/"))
         ;(kbd "M-o") 'dired-omit-mode
         "I" 'dired-omit-mode
         "DEL" 'appleshan-dired/up-directory ; DEL 意指退格键 (不是 删除(Delete) key)
         "-" 'appleshan-dired/up-directory
-        "z" 'appleshan-dired/get-size)
+        ; "z" 'appleshan-dired/get-size
+        )
     )))
 
 ;; TODO: slow!!!!
