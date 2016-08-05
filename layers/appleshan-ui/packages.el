@@ -12,6 +12,8 @@
 (setq appleshan-ui-packages
     '(
       beacon
+      visual-regexp
+      visual-regexp-steroids
       ))
 
 ;; List of packages to exclude.
@@ -30,6 +32,25 @@
 
       (spacemacs/toggle-beacon-on))
     :config (spacemacs|hide-lighter beacon-mode)))
+
+;; https://github.com/benma/visual-regexp.el
+;; https://github.com/benma/visual-regexp-steroids.el
+
+(defun appleshan-ui/init-visual-regexp ()
+  (use-package visual-regexp
+    :defer t))
+
+(defun appleshan-ui/init-visual-regexp-steroids ()
+  (use-package visual-regexp-steroids
+    :defer t
+    :bind (("C-M-%" . vr/replace)
+           ("M-%"   . vr/query-replace)
+           ("C-M-r"   . vr/isearch-backward)
+           ("C-M-s"   . vr/isearch-forward)
+           ("C-s" . isearch-forward)  ; ordinary forward search
+           ("C-r" . isearch-backward) ; ordinary backward search
+           ("C-c m" . vr/mc-mark)  ; for multiple-cursors
+           )))
 
 ;; Local Variables:
 ;; coding: utf-8

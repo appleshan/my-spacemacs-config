@@ -61,7 +61,6 @@
              ))
       )))
 
-;; multiple-cursors
 (defun appleshan-misc/init-multiple-cursors ()
   (use-package multiple-cursors
     :bind (("C-x m" . mc/edit-lines)

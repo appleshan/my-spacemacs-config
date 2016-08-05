@@ -36,6 +36,9 @@
 
 (setq my-org-gtd-directory (concat user-dropbox-directory "org-gtd/"))
 
+(unless (file-exists-p my-org-gtd-directory)
+  (make-directory my-org-gtd-directory))
+
 (defun appleshan-org/init-calfw ()
   (use-package calfw
     :defer t

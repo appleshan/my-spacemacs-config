@@ -17,7 +17,7 @@
 
 (setq appleshan-complete-packages
     '(
-      counsel
+      ; counsel
       company
       ))
 
@@ -29,13 +29,13 @@
 
 ;; swiper and ivy-mode
 
-(defun appleshan-complete/post-init-counsel ()
-  (use-package counsel
-  	:config
-  	(progn
-  	  (setq spacemacs--counsel-commands
-        '(("sift" . "sift --no-color -nr %s %S .")))
-      )))
+; (defun appleshan-complete/post-init-counsel ()
+;   (use-package counsel
+;   	:config
+;   	(progn
+;   	  (setq spacemacs--counsel-commands
+;         '(("sift" . "sift --no-color -nr %s %S .")))
+;       )))
 
 ;; company-mode
 (defun appleshan-complete/post-init-company ()

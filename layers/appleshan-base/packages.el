@@ -52,7 +52,7 @@
         (set-default-coding-systems 'utf-8)
         (setq locale-coding-system 'utf-8)
 
-        ;; @see ~/.emacs.d/core/core-spacemacs.el:61
+        ;; @see ~/.emacs.d/core/core-spacemacs.el:71
         ;; (prefer-coding-system 'utf-8)
         )
     )))

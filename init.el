@@ -80,6 +80,7 @@ values."
      github
      prodigy  ;; 使用 Prodigy 在 Emacs 中管理外部服务
      ; restclient
+     semantic
      (syntax-checking :variables
                       syntax-checking-enable-by-default nil)
      (version-control :variables
@@ -151,7 +152,6 @@ values."
                                     helm-projectile
                                     helm-pydoc
                                     helm-themes
-                                    highlight-indentation
                                     leuven-theme
                                     linum-relative
                                     lorem-ipsum
@@ -162,6 +162,7 @@ values."
                                     org-present
                                     org-repo-todo
                                     rainbow-delimiters
+                                    smartparens
                                     ;; smooth-scrolling
                                     ; spaceline
                                     spacemacs-theme
@@ -389,9 +390,12 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   (defvar stack-trace-on-error t)
 
+  ;; Dropbox directory
   (defconst user-dropbox-directory
     (expand-file-name (concat user-home-directory "Dropbox/"))
     "Dropbox directory.")
+  (unless (file-exists-p user-dropbox-directory)
+    (make-directory user-dropbox-directory))
 
   ;; custom logo
   (setq spacemacs-banner-official-png
