@@ -38,7 +38,7 @@
           "Size of all marked files: %s"
           (progn
             ; (re-search-backward "\\(^[ 0-9.,]+[A-Za-z]+\\).*total$")
-            (re-search-backward "\\(^[ 0-9.,]+[A-Za-z]+\\).*总用量$")
+            (re-search-backward "\\(^[ 0-9.,]+[A-Za-z]+\\).*总用量$") ; ubuntu 中文系统
             (match-string 1))))))
 
   ;; dired 文件管理器可以把目录优先排在前面。

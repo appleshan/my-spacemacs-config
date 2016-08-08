@@ -24,7 +24,7 @@
       ; (org-list :location built-in)
       org-bullets
       org-password-manager
-      org-pomodoro
+      ; org-pomodoro
       (org-src :location built-in)
       ; (ob-core :location built-in)
       (ob-ditaa :location built-in)
@@ -121,7 +121,8 @@
       (add-to-list 'auto-mode-alist '("\\.org.gpg\\'" . org-mode)))))
 
 (defun appleshan-org/post-init-org ()
-  (add-hook 'org-mode-hook (lambda () (linum-mode -1)))
+  ; (add-hook 'org-mode-hook (lambda () (linum-mode -1)))
+  (add-hook 'org-mode-hook (lambda () (spacemacs/toggle-line-numbers-off)) 'append)
 
   (with-eval-after-load 'org
     (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
@@ -764,15 +765,15 @@
     (progn
       (add-hook 'org-mode-hook 'org-password-manager-key-bindings))))
 
-(defun appleshan-org/post-init-org-pomodoro ()
-  (with-eval-after-load 'org-pomodoro
-    (add-hook 'org-pomodoro-finished-hook
-      '(lambda () (appleshan/growl-notification "Pomodoro Finished" "☕️ Have a break!" t)))
-    (add-hook 'org-pomodoro-short-break-finished-hook
-      '(lambda () (appleshan/growl-notification "Short Break" "🐝 Ready to Go?" t)))
-    (add-hook 'org-pomodoro-long-break-finished-hook
-      '(lambda () (appleshan/growl-notification "Long Break" " 💪 Ready to Go?" t)))
-    ))
+; (defun appleshan-org/post-init-org-pomodoro ()
+;   (with-eval-after-load 'org-pomodoro
+;     (add-hook 'org-pomodoro-finished-hook
+;       '(lambda () (appleshan/growl-notification "Pomodoro Finished" "☕️ Have a break!" t)))
+;     (add-hook 'org-pomodoro-short-break-finished-hook
+;       '(lambda () (appleshan/growl-notification "Short Break" "🐝 Ready to Go?" t)))
+;     (add-hook 'org-pomodoro-long-break-finished-hook
+;       '(lambda () (appleshan/growl-notification "Long Break" " 💪 Ready to Go?" t)))
+;     ))
 
 (defun appleshan-org/init-org-src ()
   (progn

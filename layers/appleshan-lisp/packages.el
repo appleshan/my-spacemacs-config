@@ -20,7 +20,7 @@
 ;; List of packages to exclude.
 (setq appleshan-lisp-excluded-packages '())
 
-(defun appleshan-programming/post-init-emacs-lisp ()
+(defun appleshan-lisp/post-init-emacs-lisp ()
   (remove-hook 'emacs-lisp-mode-hook 'auto-compile-mode))
 
 (defun appleshan-lisp/init-lispy ()

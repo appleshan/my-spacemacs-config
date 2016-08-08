@@ -20,14 +20,14 @@ values."
    ;; installation feature and you have to explicitly list a layer in the
    ;; variable `dotspacemacs-configuration-layers' to install it.
    ;; (default 'unused)
-   dotspacemacs-enable-lazy-installation 'unused
+   dotspacemacs-enable-lazy-installation nil
    ;; If non-nil then Spacemacs will ask for confirmation before installing
    ;; a layer lazily. (default t)
    dotspacemacs-ask-for-lazy-installation t
    ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path '("~/.spacemacs.d/layers/")
+   dotspacemacs-configuration-layer-path '() ; "~/.spacemacs.d/layers/"
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
@@ -37,13 +37,8 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
 
-     ;; --- UI ---
+     ;; --- Auto Complete ---
      ivy
-     (colors :variables
-             colors-enable-rainbow-identifiers t
-             colors-enable-nyan-cat-progress-bar nil)
-
-     ;; --- Better Editor ---
      ;; auto-complete layer 在 orgmode 中会引发很多问题，所以在 org 中禁用 company 补全
      (auto-completion :variables
                       auto-completion-enable-help-tooltip t
@@ -51,6 +46,13 @@ values."
                       auto-completion-return-key-behavior 'complete
                       auto-completion-tab-key-behavior 'complete
                       :disabled-for org markdown)
+
+     ;; --- UI ---
+     (colors :variables
+             colors-enable-rainbow-identifiers t
+             colors-enable-nyan-cat-progress-bar nil)
+
+     ;; --- Better Editor ---
      better-defaults
 
      ;; --- programming language layers ---
@@ -103,7 +105,8 @@ values."
               chinese-enable-fcitx t)
      ;; deft  ;; Quick Note Taking
      emoji
-     ; (spell-checking :variables spell-checking-enable-by-default nil)
+     ; (spell-checking :variables
+     ;                 spell-checking-enable-by-default nil)
 
      ;; --- private layers ---
      appleshan-base
@@ -140,6 +143,7 @@ values."
                                     evil-indent-plus
                                     evil-mc
                                     evil-tutor
+                                    evil-unimpaired
                                     fancy-battery
                                     ; find-by-pinyin-dired
                                     fish-mode
@@ -151,20 +155,26 @@ values."
                                     helm-mode-manager
                                     helm-projectile
                                     helm-pydoc
+                                    helm-spacemacs-help
                                     helm-themes
+                                    ido-vertical-mode
                                     leuven-theme
                                     linum-relative
+                                    livid-mode
                                     lorem-ipsum
                                     neotree
                                     open-junk-file
                                     orgit
                                     orglue
+                                    org-download
                                     org-present
+                                    org-projectile
                                     org-repo-todo
+                                    org-timer
                                     rainbow-delimiters
                                     smartparens
+                                    smeargle
                                     ;; smooth-scrolling
-                                    ; spaceline
                                     spacemacs-theme
                                     spinner
                                     vi-tilde-fringe
@@ -193,12 +203,12 @@ values."
    ;; This variable has no effect if Emacs is launched with the parameter
    ;; `--insecure' which forces the value of this variable to nil.
    ;; (default t)
-   dotspacemacs-elpa-https nil
+   dotspacemacs-elpa-https t
    ;; Maximum allowed time in seconds to contact an ELPA repository.
    dotspacemacs-elpa-timeout 10
    ;; If non nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. (default t)
-   dotspacemacs-check-for-update nil
+   dotspacemacs-check-for-update t
    ;; One of `vim', `emacs' or `hybrid'.
    ;; `hybrid' is like `vim' except that `insert state' is replaced by the
    ;; `hybrid state' with `emacs' key bindings. The value can also be a list
@@ -259,13 +269,13 @@ values."
    ;; works in the GUI. (default nil)
    dotspacemacs-distinguish-gui-tab nil
    ;; If non nil `Y' is remapped to `y$' in Evil states. (default nil)
-   dotspacemacs-remap-Y-to-y$ nil
+   dotspacemacs-remap-Y-to-y$ t
    ;; If non-nil, the shift mappings `<' and `>' retain visual state if used
    ;; there. (default t)
    dotspacemacs-retain-visual-state-on-shift t
    ;; If non-nil, J and K move lines up and down when in visual mode.
    ;; (default nil)
-   dotspacemacs-visual-line-move-text nil
+   dotspacemacs-visual-line-move-text t
    ;; If non nil, inverse the meaning of `g' in `:substitute' Evil ex-command.
    ;; (default nil)
    dotspacemacs-ex-substitute-global nil
@@ -342,7 +352,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers `prog-mode
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -384,11 +394,18 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   ;; activate debugging
-  (setq debug-on-error t
-        debug-on-signal nil
-        debug-on-quit nil)
+  ; (setq debug-on-error t
+  ;       debug-on-signal nil
+  ;       debug-on-quit nil)
 
-  (defvar stack-trace-on-error t)
+  ; (defvar stack-trace-on-error t)
+
+  (setq configuration-layer--elpa-archives
+        '(;("melpa-stable-cn" . "http://elpa.zilongshanren.com/melpa-stable/")
+          ("melpa-cn" . "http://elpa.zilongshanren.com/melpa/")
+          ("org-cn"   . "http://elpa.zilongshanren.com/org/") ; Org-mode's repository
+          ("gnu-cn"   . "http://elpa.zilongshanren.com/gnu/")
+          ))
 
   ;; Dropbox directory
   (defconst user-dropbox-directory
@@ -400,14 +417,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; custom logo
   (setq spacemacs-banner-official-png
     (expand-file-name (concat dotspacemacs-directory "local/005-banner.txt")))
-
-  ;; package
-  (setq configuration-layer--elpa-archives
-        '(;("melpa-stable-cn" . "http://elpa.zilongshanren.com/melpa-stable/")
-          ("melpa-cn" . "http://elpa.zilongshanren.com/melpa/")
-          ("org-cn"   . "http://elpa.zilongshanren.com/org/") ; Org-mode's repository
-          ("gnu-cn"   . "http://elpa.zilongshanren.com/gnu/")
-          ))
 
   ;; BUG : https://github.com/syl20bnr/spacemacs/issues/2705
   (setq tramp-ssh-controlmaster-options
@@ -432,6 +441,8 @@ you should place your code here."
   ; (spaceline-compile) ;; TODO: startup slow!!!!
 
   ; (global-unset-key (kbd "C-SPC") )
+  (fset 'evil-visual-update-x-selection 'ignore)
+
   (spacemacs|add-company-hook 'text-mode)
 
   ;; Don't move back the cursor one position when exiting insert mode
@@ -454,7 +465,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (move-dup visual-regexp-steroids visual-regexp stickyfunc-enhance srefactor zeal-at-point yaml-mode web-beautify tldr super-save smeargle rainbow-mode rainbow-identifiers pyvenv pytest pyenv-mode py-yapf prodigy pip-requirements paredit pangu-spacing org-projectile org-pomodoro alert log4e gntp org-password-manager org org-download mwim mmm-mode markdown-toc markdown-mode magit-gitflow magit-gh-pulls livid-mode skewer-mode simple-httpd live-py-mode lispy json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc ibuffer-projectile hy-mode htmlize highlight-escape-sequences gnuplot gitignore-mode github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh marshal logito pcache flycheck-pos-tip flycheck-package flycheck find-by-pinyin-dired fcitx evil-magit magit magit-popup git-commit with-editor engine-mode emoji-cheat-sheet-plus dired-sort dired-k dired+ diff-hl cython-mode counsel-dash helm-dash company-tern dash-functional tern company-statistics company-shell company-quickhelp company-emoji company-anaconda company color-identifiers-mode chinese-pyim chinese-pyim-basedict pos-tip calfw google-maps cal-china-x browse-kill-ring beacon seq bbdb-vcard bbdb auto-yasnippet yasnippet anaconda-mode pythonic ace-pinyin pinyinlib ace-jump-mode ws-butler window-numbering which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline smex restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-make google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word counsel-projectile column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link))))
+    (peep-dired powerline move-dup visual-regexp-steroids visual-regexp stickyfunc-enhance srefactor zeal-at-point yaml-mode web-beautify tldr super-save smeargle rainbow-mode rainbow-identifiers pyvenv pytest pyenv-mode py-yapf prodigy pip-requirements paredit pangu-spacing org-projectile org-pomodoro alert log4e gntp org-password-manager org org-download mwim mmm-mode markdown-toc markdown-mode magit-gitflow magit-gh-pulls livid-mode skewer-mode simple-httpd live-py-mode lispy json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc ibuffer-projectile hy-mode htmlize highlight-escape-sequences gnuplot gitignore-mode github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh marshal logito pcache flycheck-pos-tip flycheck-package flycheck find-by-pinyin-dired fcitx evil-magit magit magit-popup git-commit with-editor engine-mode emoji-cheat-sheet-plus dired-sort dired-k dired+ diff-hl cython-mode counsel-dash helm-dash company-tern dash-functional tern company-statistics company-shell company-quickhelp company-emoji company-anaconda company color-identifiers-mode chinese-pyim chinese-pyim-basedict pos-tip calfw google-maps cal-china-x browse-kill-ring beacon seq bbdb-vcard bbdb auto-yasnippet yasnippet anaconda-mode pythonic ace-pinyin pinyinlib ace-jump-mode ws-butler window-numbering which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline smex restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-make google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word counsel-projectile column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

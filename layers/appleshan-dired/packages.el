@@ -16,7 +16,7 @@
       dired+
       dired-k
       dired-sort
-      ; dired-toggle-sudo
+      peep-dired
       ))
 
 ;; List of packages to exclude.
@@ -49,7 +49,7 @@
       ;;    the directories on the top, separate from the files.
       ;; 另外注意：在 dired-sort 中会拼接参数，
       ;; 所以 "--group-directories-first" 必须写在 "-laGh1v" 前面.
-      (setq dired-listing-switches "--group-directories-first -laGh1v")
+      (setq dired-listing-switches "--group-directories-first -aGlh1v")
 
       (setq directory-free-space-args "-Phk")
       (setq dired-auto-revert-buffer t)
@@ -66,13 +66,10 @@
         "f"         (if (configuration-layer/layer-usedp 'ivy)
                       'counsel-find-file
                     'helm-find-files)
-        ; "="         'appleshan-dired/dired-diff
         "~"   '(lambda ()(interactive) (find-alternate-file "~/"))
-        ;(kbd "M-o") 'dired-omit-mode
         "I" 'dired-omit-mode
-        "DEL" 'appleshan-dired/up-directory ; DEL 意指退格键 (不是 删除(Delete) key)
         "-" 'appleshan-dired/up-directory
-        ; "z" 'appleshan-dired/get-size
+        "DEL" 'appleshan-dired/up-directory
         )
     )))
 
@@ -117,20 +114,14 @@
     :config
     (add-hook 'dired-mode-hook 'appleshan-dired/dired-sort-hook)))
 
-;; TODO: very slow!!!!
-; (defun appleshan-dired/init-dired-toggle-sudo ()
-;   (use-package dired-toggle-sudo
-;     :defer t
-;     :init (require 'dired-toggle-sudo)
-;     :config
-;     (progn
-;       (define-key dired-mode-map (kbd "C-c C-s") 'dired-toggle-sudo)
-;       (eval-after-load 'tramp
-;         '(progn
-;            ;; Allow to use: /sudo:user@host:/path/to/file
-;            (add-to-list 'tramp-default-proxies-alist
-;                         '(".*" "\\`.+\\'" "/ssh:%h:"))))
-;       )))
+(defun appleshan-dired/init-peep-dired ()
+  "preview files in dired"
+  (use-package peep-dired
+    :defer t
+    :commands (peep-dired-next-file
+               peep-dired-prev-file)
+    :bind (:map dired-mode-map
+                ("P" . peep-dired))))
 
 ;; Local Variables:
 ;; coding: utf-8

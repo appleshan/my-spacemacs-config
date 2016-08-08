@@ -102,20 +102,23 @@
   (use-package recentf
     :config
     (progn
+      (setq recentf-max-saved-items 60)
       (dolist (item '("/\\.git/.*\\'" ; Git contents
-                     "/tmp/"
-                     "/ssh:"
-                     "\\var\\'"
-                     ".*\\.gz\\'"
-                     "COMMIT_EDITMSG\\'"
-                     "TAGS"
-                     ".*-autoloads\\.el\\'"
-                     (expand-file-name package-user-dir) ; Package files
-                     (expand-file-name spacemacs-cache-directory)
-                     (expand-file-name my-org-gtd-directory) ; org-gtd files
-                     "/.emacs.d/pyim/.*\\'"
-                     "/.spacemacs.d/.cache/.*\\'"
-                     "/opt/emacs-24.5/.*\\.el\\'"))
+                      "COMMIT_MSG"
+                      "COMMIT_EDITMSG"
+                      "github.*txt$"
+                      ".*png$"
+                      "/tmp/"
+                      "/ssh:"
+                      "\\var\\'"
+                      ".*\\.gz\\'"
+                      "TAGS"
+                      ".*-autoloads\\.el\\'"
+                      (expand-file-name package-user-dir) ; Package files
+                      (expand-file-name spacemacs-cache-directory)
+                      (expand-file-name my-org-gtd-directory) ; org-gtd files
+                      "/.spacemacs.d/.cache/.*\\'"
+                      "/opt/emacs*/.*\\.el\\'"))
         (add-to-list 'recentf-exclude item))
     )))
 
@@ -148,8 +151,6 @@
             (tab-mark 9 [187 9] [9655 9] [92 9]) ; 9 TAB, 9655 WHITE RIGHT-POINTING TRIANGLE 「▷」
             ))
     (setq whitespace-style '(face tabs trailing tab-mark ))
-    ;; show tab;  use untabify to convert tab to whitespace
-    ; (setq spacemacs-show-trailing-whitespace nil)
 
     (setq-default tab-width 4)
 
@@ -162,7 +163,6 @@
                           :background "#e4eeff"
                           :foreground "#183bc8"
                           :weight 'normal)
-      ; (diminish 'whitespace-mode)
       )
   ))
 

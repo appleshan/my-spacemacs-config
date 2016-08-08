@@ -9,7 +9,7 @@
 ;;
 ;;; License: GPLv3
 
-(global-set-key (kbd "C-\\") 'appleshan-chinese/evil-toggle-input-method)
+(global-set-key (kbd "C-\\") 'appleshan/evil-toggle-input-method)
 
 ;; Local Variables:
 ;; coding: utf-8

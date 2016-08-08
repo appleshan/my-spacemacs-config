@@ -19,6 +19,7 @@
     '(
       ; counsel
       company
+      swiper
       ))
 
 ;; List of packages to exclude.
@@ -51,6 +52,14 @@
       (spacemacs|add-company-hook nxml-mode)
       (spacemacs|add-company-hook conf-unix-mode)
       )
+  ))
+
+(defun appleshan-complete/post-init-swiper ()
+  "Initialize my package"
+  (with-eval-after-load 'swiper
+    (setq ivy-display-style 'fancy)
+
+    (evilified-state-evilify ivy-occur-mode ivy-occur-mode-map)
   ))
 
 ;; Local Variables:

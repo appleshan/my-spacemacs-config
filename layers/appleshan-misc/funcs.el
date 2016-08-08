@@ -9,17 +9,6 @@
 ;;
 ;;; License: GPLv3
 
-;; tramp, for sudo access
-;; very slow!!!!
-;; for profiling emacs --debug-init --timed-requires --profile
-;; (require 'tramp)
-;; keep in mind known issues with zsh - see emacs wiki
-;; (setq tramp-default-method "ssh")         ; 设置传送文件默认的方法
-;; (custom-set-variables '(tramp-verbose 0)) ; 设置tramp的响应方式, 关闭后不弹出消息
-
-;; This line has very bad performance lose!!!!!!!!!!!!!!!!!!!
-;; (set-default 'imenu-auto-rescan t)
-
 ;; 关闭水平滚动条
 ; (toggle-horizontal-scroll-bar)
 
@@ -47,16 +36,6 @@
 (setq-default abbrev-mode t)
 
 (setq url-show-status nil)
-
-;;Don’t ask me when close emacs with process is running
-(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
-  "Prevent annoying \"Active processes exist\" query when you quit Emacs."
-  (flet ((process-list ())) ad-do-it))
-
-;;Don’t ask me when kill process buffer
-(setq kill-buffer-query-functions
-      (remq 'process-kill-buffer-query-function
-            kill-buffer-query-functions))
 
 ;; cleanup recent files
 (add-hook 'kill-emacs-hook
@@ -121,15 +100,13 @@
 
 (add-hook 'find-file-hook 'appleshan-misc/check-large-file)
 
-;; when save a buffer, the directory is not exsits, 
-;; it will ask you to create the directory
-(defun appleshan-misc/before-save-hook ()
-  (when buffer-file-name
-      (let ((dir (file-name-directory buffer-file-name)))
-        (when (and (not (file-exists-p dir))
-                   (y-or-n-p (format "Directory %s does not exist. Create it?" dir)))
-          (make-directory dir t)))))
-(add-hook 'before-save-hook 'appleshan-misc/before-save-hook)
+(defadvice find-file (before make-directory-maybe
+                             (filename &optional wildcards) activate)
+  "Create parent directory if not exists while visiting file."
+  (unless (file-exists-p filename)
+    (let ((dir (file-name-directory filename)))
+      (unless (file-exists-p dir)
+        (make-directory dir t)))))
 
 ;; remove all the duplicated emplies in current buffer
 (defun appleshan-misc/single-lines-only ()
@@ -139,14 +116,6 @@
   (while (re-search-forward "\\(^\\s-*$\\)\n" nil t)
     (replace-match "\n")
     (forward-char 1)))
-
-;;http://emacsredux.com/blog/2013/03/26/smarter-open-line/
-(defun appleshan-misc/smart-open-line ()
-  "Insert an empty line after the current line.
-Position the cursor at its beginning, according to the current mode."
-  (interactive)
-  (move-end-of-line nil)
-  (newline-and-indent))
 ;; }}
 
 ;; {{ scroll functions
@@ -187,21 +156,23 @@ Position the cursor at its beginning, according to the current mode."
   (indent-according-to-mode))
 ;; }}
 
+;; {{ insert date and time
 (defun appleshan-misc/now ()
-  "Insert string for the current time formatted like '2:34 PM'."
   (interactive)                 ; permit invocation in minibuffer
   (insert (format-time-string "%Y-%m-%d %H:%M:%S")))
 
 (defun appleshan-misc/today ()
-  "Insert string for today's date nicely formatted in American style,
-e.g. Sunday, September 17, 2000."
   (interactive)                 ; permit invocation in minibuffer
   (insert (format-time-string "%Y-%m-%d")))
+;; }}
 
 (defun open-readme-in-git-root-directory ()
   (interactive)
   (let (filename
-        (root-dir (locate-dominating-file (file-name-as-directory (file-name-directory buffer-file-name)) ".git"))
+        (root-dir
+          (locate-dominating-file
+            (file-name-as-directory
+              (file-name-directory buffer-file-name)) ".git"))
         )
     ;; (message "root-dir=%s" root-dir)
     (and root-dir (file-name-as-directory root-dir))
@@ -216,71 +187,13 @@ e.g. Sunday, September 17, 2000."
     ))
 (global-set-key (kbd "C-c C-f") 'open-readme-in-git-root-directory)
 
-;; TODO: 须要改成 linux 上的 growl
-;; http://blog.lojic.com/2009/08/06/send-growl-notifications-from-carbon-emacs-on-osx/
-(defun appleshan/growl-notification (title message &optional sticky)
-  "Send a Growl notification"
-  (do-applescript
-   (format "tell application \"GrowlHelperApp\" \n
-              notify with name \"Emacs Notification\" title \"%s\" description \"%s\" application name \"Emacs\" sticky \"%s\"
-              end tell
-              "
-           title
-           message
-           (if sticky "yes" "no"))))
+(defun appleshan/load-my-layout ()
+  (interactive)
+  (persp-load-state-from-file (concat persp-save-dir "appleshan-layout")))
 
-(with-eval-after-load 'swiper
-  (defun my-swiper-search (p)
-    (interactive "P")
-    (let ((current-prefix-arg nil))
-      (call-interactively
-        (if p #'spacemacs/swiper-region-or-symbol
-          #'swiper))))
-
-  (define-key global-map (kbd "C-s") 'my-swiper-search)
-  )
-
-(with-eval-after-load 'ivy
-  (defun counsel-yank-bash-history ()
-    "Yank the bash history"
-    (interactive)
-    (let (hist-cmd collection val)
-      (shell-command "history -r") ; reload history
-      (setq collection
-            (nreverse
-              (split-string
-                (with-temp-buffer
-                  (insert-file-contents (file-truename "~/.bash_history"))
-                  (buffer-string))
-                "\n"
-                t)))
-      (when (and collection (> (length collection) 0)
-                 (setq val (if (= 1 (length collection))
-                             (car collection)
-                             (ivy-read (format "Bash history:") collection))))
-        (kill-new val)
-        (message "%s => kill-ring" val))))
-
-  ; (spacemacs/declare-prefix "S" "shell")
-  (spacemacs/set-leader-keys "Sh" 'counsel-yank-bash-history)
-
-  (defun counsel-goto-recent-directory ()
-    "Open recent directory with dired"
-    (interactive)
-    (unless recentf-mode (recentf-mode 1))
-    (let ((collection
-           (delete-dups
-            (append (mapcar 'file-name-directory recentf-list)
-                    ;; fasd history
-                    (if (executable-find "fasd")
-                        (split-string (shell-command-to-string "fasd -ld") "\n" t))))))
-      (ivy-read "directories:" collection
-                :action 'dired
-                :caller 'counsel-goto-recent-directory)))
-
-  ; (spacemacs/declare-prefix "d" "dir/dash/zeal")
-  (spacemacs/set-leader-keys "fad" 'counsel-goto-recent-directory)
-  )
+(defun appleshan/save-my-layout ()
+  (interactive)
+  (persp-save-state-to-file (concat persp-save-dir "appleshan-layout")))
 
 ;; Local Variables:
 ;; coding: utf-8

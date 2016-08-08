@@ -12,6 +12,7 @@
 (setq appleshan-chinese-packages
     '(
       cal-china-x
+      fcitx
       pangu-spacing
       ))
 
@@ -66,8 +67,9 @@
       ;; 只显示我定制的节日
       (setq calendar-holidays holiday-holidays))))
 
-; (defun appleshan-chinese/post-init-fcitx ()
-;   (fcitx-aggressive-setup))
+(defun appleshan-chinese/post-init-fcitx ()
+  (with-eval-after-load 'fcitx
+    (fcitx-aggressive-setup)))
 
 ;; 覆盖 Chinese Layer 的 init 方法
 (defun appleshan-chinese/init-pangu-spacing ()
@@ -89,6 +91,17 @@
 
     (dolist (i '(prog-mode-hook text-mode-hook))
       (add-hook i 'enable-pangu-spacing-when-buffer-not-large))
+    ))
+
+(defun appleshan-chinese/post-init-pangu-spacing ()
+  (with-eval-after-load 'pangu-spacing
+    ;; add toggle options
+    (spacemacs|add-toggle toggle-pangu-spaceing
+      :status pangu-spacing-mode
+      :on (global-pangu-spacing-mode)
+      :off (global-pangu-spacing-mode -1)
+      :documentation "Toggle pangu spacing mode"
+      :evil-leader "ots")
     ))
 
 ;; Local Variables:

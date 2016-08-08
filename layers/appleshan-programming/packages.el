@@ -17,12 +17,12 @@
       flycheck
       flycheck-package
       gist
+      git-messenger
       highlight-escape-sequences
       magit
       ; origami
       paredit
       prodigy
-      projectile
       ; puml-mode
       tldr
       ; yasnippet
@@ -88,6 +88,24 @@
         "." 'spacemacs/gist-list-mode-transient-state/body))
     ))
 
+(defun appleshan-programming/post-init-git-messenger ()
+  (with-eval-after-load 'git-messenger
+    (defun appleshan/github-browse-commit ()
+      "Show the GitHub page for the current commit."
+      (interactive)
+      (use-package github-browse-file
+        :commands (github-browse-file--relative-url))
+
+      (let* ((commit git-messenger:last-commit-id)
+             (url (concat "https://github.com/"
+                          (github-browse-file--relative-url)
+                          "/commit/"
+                          commit)))
+        (github-browse--save-and-view url)
+        (git-messenger:popup-close)))
+
+    (define-key git-messenger-map (kbd "f") 'appleshan/github-browse-commit)))
+
 (defun appleshan-programming/init-highlight-escape-sequences ()
   (use-package highlight-escape-sequences
     :defer t
@@ -104,6 +122,10 @@
     (define-key magit-status-mode-map (kbd "s-4") 'magit-jump-to-stashes)
     ; (setq magit-completing-read-function 'magit-builtin-completing-read)
     (setq magit-completing-read-function 'ivy-completing-read)
+
+    ;; http://emacs.stackexchange.com/questions/6021/change-a-branchs-upstream-with-magit/6023#6023
+    (magit-define-popup-switch 'magit-push-popup ?u
+      "Set upstream" "--set-upstream")
     ))
 
 ; (defun appleshan-programming/init-origami ()
@@ -154,13 +176,6 @@
     (when (file-exists-p prodigy-service-file)
       (load-file prodigy-service-file))
   ))
-
-(defun appleshan-programming/post-init-projectile ()
-  (use-package projectile
-    :config
-    (progn
-      (setq projectile-completion-system 'ivy)
-    )))
 
 ;; TODO: slow!!!!
 ; (defun appleshan-programming/init-puml-mode ()
