@@ -73,9 +73,6 @@
 ;; 用 Emacs, 需: 忘记鼠标, 无视菜单.
 "))
 
-;; Marking the *Messages* buffer as useful
-; (push "\\*Messages\\*" spacemacs-useful-buffers-regexp)
-
 (defun appleshan-misc/emacs-debug-init ()
   (interactive)
   (call-process "/opt/emacs-24.5/bin/emacs-24.5" nil 0 nil "--debug-init")

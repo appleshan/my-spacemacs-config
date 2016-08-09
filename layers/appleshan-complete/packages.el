@@ -17,7 +17,7 @@
 
 (setq appleshan-complete-packages
     '(
-      ; counsel
+      (counsel-sift :location local)
       company
       swiper
       ))
@@ -25,15 +25,17 @@
 ;; List of packages to exclude.
 (setq appleshan-complete-excluded-packages '())
 
-;; swiper and ivy-mode
-
-; (defun appleshan-complete/post-init-counsel ()
-;   (use-package counsel
-;   	:config
-;   	(progn
-;   	  (setq spacemacs--counsel-commands
-;         '(("sift" . "sift --no-color -nr %s %S .")))
-;       )))
+(defun appleshan-complete/init-counsel-sift ()
+  (use-package counsel-sift
+    :config
+    (progn
+      (spacemacs/set-leader-keys
+        "osf" 'spacemacs/search-sift
+        "osF" 'spacemacs/search-sift-region-or-symbol
+        "osp" 'spacemacs/search-project-sift
+        "osP" 'spacemacs/search-project-sift-region-or-symbol
+        )
+      )))
 
 ;; company-mode
 (defun appleshan-complete/post-init-company ()

@@ -62,6 +62,13 @@
 ;; Only mark helm buffers as useless
 (setq spacemacs-useless-buffers-regexp '("\\*helm\.\+\\*"))
 
+(fset 'evil-visual-update-x-selection 'ignore)
+
+(spacemacs|add-company-hook 'text-mode)
+
+;; Don't move back the cursor one position when exiting insert mode
+(setq evil-move-cursor-back nil)
+
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: nil

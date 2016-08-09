@@ -43,8 +43,7 @@
         (kill-new val)
         (message "%s => kill-ring" val))))
 
-  ; (spacemacs/declare-prefix "S" "shell")
-  (spacemacs/set-leader-keys "Sh" 'counsel-yank-bash-history)
+  (spacemacs/set-leader-keys "sh" 'counsel-yank-bash-history)
 
   (defun my-find-file-in-git-repo (repo)
     (if (file-directory-p repo)

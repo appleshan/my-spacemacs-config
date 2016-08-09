@@ -60,6 +60,8 @@
                     ("cron\\(tab\\)?\\." . crontab-mode)))
   (add-to-list 'auto-mode-alist elt-cons))
 
+;; Marking the *Messages* buffer as useful
+(push "\\*Messages\\*" spacemacs-useful-buffers-regexp)
 
 ;; Local Variables:
 ;; coding: utf-8
