@@ -110,11 +110,9 @@
         "Rsync to:"
         (dired-dwim-target-directory)))))
     ;; store all selected files into "files" list
-    (let ((files (dired-get-marked-files
-                  nil current-prefix-arg))
+    (let ((files (dired-get-marked-files nil current-prefix-arg))
           ;; the rsync command
-          (tmtxt/rsync-command
-           "rsync -arvz --progress "))
+          (tmtxt/rsync-command "rsync -arvz --progress "))
       ;; add all selected file names as arguments
       ;; to the rsync command
       (dolist (file files)
@@ -135,7 +133,8 @@
     :mode dired-mode
     :bindings
     "=" 'appleshan-dired/dired-diff
-    "z" 'appleshan-dired/get-size)
+    "z" 'appleshan-dired/get-size
+    "S" 'appleshan-dired/rsync)
 )
 
 (with-eval-after-load 'dired-sort

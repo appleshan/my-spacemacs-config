@@ -142,6 +142,7 @@
       "aoS"  'org-save-all-org-buffers
 
       ;; toggle
+      "aoTb" 'org-hide-block-toggle-all
       "aoTi" 'org-toggle-inline-images
       "aoTl" 'org-toggle-link-display
 
@@ -742,6 +743,7 @@
 
 ;     ))
 
+;; 修改 org 文件中各层级的 headline 前显示的标志
 ;; 更好看的标题符号标记:
 ;; 🐉 : http://graphemica.com/1F409
 ;; 🕊 : http://graphemica.com/1F54A

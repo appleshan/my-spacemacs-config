@@ -85,7 +85,7 @@
 ;; 在补全 buffer 时忽略大小写的差别
 (setq read-buffer-completion-ignore-case t)
 
-;; warn when opening files bigger than 100MB
+;; 只有当打开的文件超过100MB时，才产生警告
 (setq large-file-warning-threshold 100000000)
 
 (defun appleshan-misc/check-large-file ()

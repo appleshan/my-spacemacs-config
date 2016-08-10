@@ -26,7 +26,7 @@
 
 (defvar org-tag-alist nil)
 
-;; spell
+;; 让 ispell 跳过某段文本不做拼写检查
 (defun appleshan-org/org-ispell ()
   "Configure `ispell-skip-region-alist' for `org-mode'."
   (make-local-variable 'ispell-skip-region-alist)

@@ -29,9 +29,9 @@
 ;   :evil-leader "oti")
 
 ;; 设置compile
-(setq compilation-always-kill t)        ;编译时,若有编译窗口,则直接关闭掉,不需要询问
+(setq compilation-always-kill t)              ;编译时,若有编译窗口,则直接关闭掉,不需要询问
 (setq compilation-auto-jump-to-first-error t) ;编译出错,则自动跳转到第一个错误提示处
-(setq compilation-scroll-output t)            ;自动滚动编译输出
+; (setq compilation-scroll-output t)            ;自动滚动编译输出
 ;; 若编译无错误,则自动关闭compilation窗口
 (defun compilation-abnormally-exit-message-p (exit-message)
   (if (string-match-p "exited abnormally" exit-message)

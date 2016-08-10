@@ -49,48 +49,47 @@ than this amount.")
 (defvar counsel-sift--search-cmd)
 
 (defun counsel-sift//make-counsel-search-function (tool)
-    (lexical-let ((base-cmd
-                   (cdr (assoc-string tool counsel-sift--search-commands))))
-      (lambda (string &optional _pred &rest _unused)
-        "Grep in the current directory for STRING."
-        (if (< (length string) 3)
-            (counsel-more-chars 3)
-          (let* ((default-directory counsel--git-grep-dir)
-                 (args (if (string-match-p " -- " string)
-                           (let ((split (split-string string " -- ")))
-                             (prog1 (pop split)
-                               (setq string (mapconcat #'identity split " -- "))))
-                         ""))
-                 (regex (counsel-unquote-regex-parens
-                         (setq ivy--old-re
-                               (ivy--regex string)))))
-            (setq counsel-sift--search-cmd (format base-cmd args regex))
-            (message "base-cmd: %s" base-cmd)
-            (message "args: %s" args)
-            (message "regex: %s" regex)
-            (spacemacs//counsel-async-command counsel-sift--search-cmd)
-            nil)))))
+  (lexical-let ((base-cmd
+                 (cdr (assoc-string tool counsel-sift--search-commands))))
+    (lambda (string &optional _pred &rest _unused)
+      "Grep in the current directory for STRING."
+      (if (< (length string) 3)
+          (counsel-more-chars 3)
+        (let* ((default-directory counsel--git-grep-dir)
+               (args (if (string-match-p " -- " string)
+                         (let ((split (split-string string " -- ")))
+                           (prog1 (pop split)
+                             (setq string (mapconcat #'identity split " -- "))))
+                       ""))
+               (regex (counsel-unquote-regex-parens
+                       (setq ivy--old-re
+                             (ivy--regex string)))))
+          (setq counsel-sift--search-cmd (format base-cmd args regex))
+          (spacemacs//counsel-async-command counsel-sift--search-cmd)
+          nil)))))
 
 (defun counsel-sift/counsel-search
-      (&optional tools use-initial-input initial-directory)
-    "Search using the first available tool in TOOLS. Default tool
+    (&optional tools use-initial-input initial-directory)
+  "Search using the first available tool in TOOLS. Default tool
 to try is grep. If INPUT is non nil, use the region or the symbol
 around point as the initial input. If DIR is non nil start in
 that directory."
-    (interactive)
-    (require 'counsel)
-    (letf* ((initial-input (if use-initial-input
-                               (if (region-active-p)
-                                   (buffer-substring-no-properties
-                                    (region-beginning) (region-end))
-                                 (thing-at-point 'symbol t))
-                             ""))
-            (tool (catch 'tool
-                    (dolist (tool tools)
-                      (when (and (assoc-string tool counsel-sift--search-commands)
-                                 (executable-find tool))
-                        (throw 'tool tool)))
-                    (throw 'tool "grep"))))
+  (interactive)
+  (require 'counsel)
+  (letf* ((initial-input (if use-initial-input
+                             (if (region-active-p)
+                                 (buffer-substring-no-properties
+                                  (region-beginning) (region-end))
+                               (thing-at-point 'symbol t))
+                           ""))
+          (tool (catch 'tool
+                  (dolist (tool tools)
+                    (when (and (assoc-string tool counsel-sift--search-commands)
+                               (executable-find tool))
+                      (throw 'tool tool)))
+                  (throw 'tool "grep"))))
+    (if (not (executable-find "sift"))
+        (message "Can't find %s command" (car (car counsel-sift--search-commands)))
       (setq counsel--git-grep-dir
             (or initial-directory
                 (read-directory-name "Start from directory: ")))
@@ -115,7 +114,7 @@ that directory."
        :keymap spacemacs--counsel-map
        :unwind (lambda ()
                  (counsel-delete-process)
-                 (swiper--cleanup)))))
+                 (swiper--cleanup))))))
 
 ;; Define search functions for each tool
 (cl-loop

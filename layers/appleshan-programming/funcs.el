@@ -62,7 +62,8 @@
   (goto-char (point-min))
   (while (search-forward "\r" nil t) (replace-match "")))
 
-;;{{ compile
+;;{{ 更好的 compile 命令
+;; see https://github.com/lujun9972/emacs-document/blob/master/emacs-common/%E6%9B%B4%E5%A5%BD%E7%9A%84compile%E5%91%BD%E4%BB%A4.org
 ;; This gives a regular `compile-command' prompt.
 (define-key prog-mode-map [C-f9] #'compile)
 ;; This just compiles immediately.
@@ -202,6 +203,16 @@ With a prefix argument, use comint-mode."
       (require 'git-timemachine))
     (git-timemachine--start #'my-git-timemachine-show-selected-revision))
 )
+
+(defun font-lock-comment-annotations ()
+  "Highlight a bunch of well known comment annotations.
+
+This functions should be added to the hooks of major modes for programming."
+  (font-lock-add-keywords
+   nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|OPTIMIZE\\|HACK\\|REFACTOR\\):"
+          1 font-lock-warning-face t))))
+
+(add-hook 'prog-mode-hook 'font-lock-comment-annotations)
 
 ;; Local Variables:
 ;; coding: utf-8
