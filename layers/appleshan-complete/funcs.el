@@ -8,6 +8,18 @@
 ;; This file is not part of GNU Emacs.
 ;;
 ;;; License: GPLv3
+(with-eval-after-load 'company
+  (defmacro appleshan/toggle-company-backends (backend)
+    "Push or delete the backend to company-backends"
+    (let ((funsymbol (intern (format "appleshan/company-toggle-%S" backend))))
+      `(defun ,funsymbol ()
+         (interactive)
+         (if (eq (car company-backends) ',backend)
+             (setq-local company-backends (delete ',backend company-backends))
+           (push ',backend company-backends)))))
+
+  (appleshan|toggle-company-backends company-tern)
+  )
 
 (with-eval-after-load 'swiper
   (defun my-swiper-search (p)

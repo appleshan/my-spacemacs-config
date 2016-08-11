@@ -97,15 +97,6 @@ With a prefix argument, use comint-mode."
    'horizontal))
 ;;}}
 
-(defmacro appleshan/toggle-company-backends (backend)
-  "Push or delete the backend to company-backends"
-  (let ((funsymbol (intern (format "appleshan/company-toggle-%S" backend))))
-    `(defun ,funsymbol ()
-       (interactive)
-       (if (eq (car company-backends) ',backend)
-           (setq-local company-backends (delete ',backend company-backends))
-         (push ',backend company-backends)))))
-
 ;;{{ Better Comments or tooling as a time sink
 ;; @See http://cestlaz.github.io/posts/better-comments/
 (make-face 'font-lock-comment-important)

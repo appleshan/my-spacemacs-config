@@ -122,8 +122,6 @@
                                       company-files
                                       company-dabbrev))
 
-    (appleshan-programming|toggle-company-backends company-tern)
-
     (add-hook 'js2-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
 
     (spacemacs/set-leader-keys-for-major-mode 'js2-mode
