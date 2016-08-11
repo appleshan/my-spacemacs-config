@@ -42,7 +42,6 @@
 (defun appleshan-org/init-calfw ()
   (use-package calfw
     :defer t
-    :ensure calendar
     :config
     (progn
       (setq cfw:org-overwrite-default-keybinding t)
@@ -498,7 +497,7 @@
               'append)
 
     ;; org-agenda 在 calfw 中展示
-    (use-package calfw-org :ensure calfw)
+    (use-package calfw-org :defer t)
   ))
 
 ;;;;;;;;;;;;;;;;;;;;
@@ -778,8 +777,9 @@
 ;     ))
 
 (defun appleshan-org/init-org-src ()
-  (progn
-    (require 'org-src)
+  (;progn
+   with-eval-after-load 'org-src
+    ; (require 'org-src)
     ;; Use puml mode when editing plantuml blocks with C-c '
     (add-to-list 'org-src-lang-modes (quote ("plantuml" . puml)))
 
@@ -849,7 +849,6 @@
 ;; @see http://ditaa.sourceforge.net/
 (defun appleshan-org/init-ob-ditaa ()
   (use-package ob-ditaa
-    :ensure nil
     :config
     (setq org-ditaa-jar-path "~/bin/develop/java/ditaa0_9.jar")))
 
@@ -857,6 +856,5 @@
 ;; @see http://plantuml.com/
 (defun appleshan-org/init-ob-plantuml ()
   (use-package ob-plantuml
-    :ensure nil
     :config
     (setq org-plantuml-jar-path "~/bin/develop/java/plantuml.jar")))

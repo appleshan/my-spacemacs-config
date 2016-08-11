@@ -31,7 +31,6 @@
 ;; Charset 设置
 (defun appleshan-base/init-mule ()
   (use-package mule
-    :ensure nil
     :config
     (progn
       ; disable CJK coding/encoding (Chinese/Japanese/Korean characters)

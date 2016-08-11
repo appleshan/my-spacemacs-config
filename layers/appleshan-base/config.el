@@ -34,7 +34,7 @@
 (setq tab-width 4)
 
 (delete-selection-mode t)            ; delete the selection with a key press
-(global-font-lock-mode t)            ;语法高亮
+; (global-font-lock-mode t)            ;语法高亮
 (transient-mark-mode 1)              ;标记高亮
 (electric-pair-mode t)
 (show-paren-mode t)                  ;显示括号匹配

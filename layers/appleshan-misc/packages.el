@@ -70,7 +70,6 @@
 
 (defun appleshan-misc/init-super-save ()
   (use-package super-save
-    :ensure t
     :init
     (super-save-mode 1)
     (spacemacs|diminish super-save-mode " Ⓢ" " S")))

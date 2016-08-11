@@ -20,11 +20,11 @@
       git-messenger
       highlight-escape-sequences
       magit
-      ; origami
       paredit
       prodigy
-      ; puml-mode
+      puml-mode
       tldr
+      vdiff
       ; yasnippet
       zeal-at-point
       ))
@@ -128,21 +128,6 @@
       "Set upstream" "--set-upstream")
     ))
 
-; (defun appleshan-programming/init-origami ()
-;   (use-package origami
-;     :defer t
-;     :init
-;     (progn
-;       (defun my-origami-hook ()
-;         (origami-mode 1))
-;       (add-to-list 'prog-mode-hook 'my-origami-hook))
-;     :config
-;     (progn
-;       (define-key origami-mode-map (kbd "<C-tab>") 'origami-toggle-node)
-;       ; (define-key term-raw-map (kbd "<C-S-tab>") 'origami-toggle-all-nodes)
-;       )
-;     ))
-
 (defun appleshan-programming/init-paredit ()
   (use-package paredit
     :commands (paredit-wrap-round
@@ -178,20 +163,20 @@
   ))
 
 ;; TODO: slow!!!!
-; (defun appleshan-programming/init-puml-mode ()
-;   (use-package puml-mode
-;     :defer t
-;     :init
-;     (progn
-;       (setq puml-plantuml-jar-path
-;         (concat user-home-directory "bin/develop/java/plantuml.jar"))
-;       (puml-mode))
-;     :config
-;     (progn
-;       ;; Enable puml-mode for PlantUML files
-;       (add-to-list 'auto-mode-alist '("\\.puml\\'" . puml-mode))
-;       (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . puml-mode))
-;     )))
+(defun appleshan-programming/init-puml-mode ()
+  (use-package puml-mode
+    :defer t
+    :init
+    (progn
+      (setq puml-plantuml-jar-path
+        (concat user-home-directory "bin/develop/java/plantuml.jar"))
+      (puml-mode))
+    :config
+    (progn
+      ;; Enable puml-mode for PlantUML files
+      (add-to-list 'auto-mode-alist '("\\.puml\\'" . puml-mode))
+      (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . puml-mode))
+    )))
 
 (defun appleshan-programming/init-tldr ()
   (use-package tldr
@@ -199,6 +184,13 @@
     :init
     (setq tldr-directory-path
       (concat user-home-directory ".config/tldr/"))))
+
+(defun appleshan-programming/init-vdiff ()
+  (use-package vdiff
+    :defer t
+    :commands (vdiff-buffers vdiff-files)
+    :config
+    (define-key vdiff-mode-map (kbd "C-c") vdiff-mode-prefix-map)))
 
 ; (defun appleshan-programming/post-init-yasnippet ()
 ;   (with-eval-after-load 'yasnippet
