@@ -220,7 +220,8 @@
   (with-eval-after-load 'zeal-at-point
     (spacemacs/declare-prefix "d" "dir/dash/zeal")
     (add-hook 'python-mode-hook
-      (lambda () (setq zeal-at-point-docset "python 2")))))
+      (lambda () (setq zeal-at-point-docset "python 2")))
+    ))
 
 ;; Local Variables:
 ;; coding: utf-8

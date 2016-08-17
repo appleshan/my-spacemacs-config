@@ -9,7 +9,7 @@
 ;;
 ;;; License: GPLv3
 (with-eval-after-load 'company
-  (defmacro appleshan/toggle-company-backends (backend)
+  (defmacro appleshan|toggle-company-backends (backend)
     "Push or delete the backend to company-backends"
     (let ((funsymbol (intern (format "appleshan/company-toggle-%S" backend))))
       `(defun ,funsymbol ()
