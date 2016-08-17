@@ -13,7 +13,8 @@
      \/__/         \/__/         \/__/         \/__/         \/__/
 
 #+end_src
-[[./local/img/spacemacs-demo.png]]
+[[./local/img/spacemacs-demo-1.png]]
+[[./local/img/spacemacs-demo-2.png]]
 Hacking 始于 2012 年。2015 年爱上 Spacemacs :smile:
 
 我的 Spacemacs 配置一共有两部分：

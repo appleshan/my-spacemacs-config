@@ -25,6 +25,9 @@
     (spacemacs|diminish dired-omit-mode " Ⓞ" " O")))
 
 (with-eval-after-load 'dired+
+  ;; 在补全 file 时忽略大小写的差别
+  (setq read-file-name-completion-ignore-case t)
+
   (defun dired/get-size ()
     (interactive)
     (let ((files (dired-get-marked-files)))

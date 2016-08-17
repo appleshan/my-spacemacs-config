@@ -12,7 +12,6 @@
 (setq appleshan-dired-packages
     '(
       (dired :location built-in)
-      dired+
       dired-k
       dired-sort
       peep-dired
@@ -72,23 +71,6 @@
         "DEL" 'vinegar/up-directory
         )
     )))
-
-;; TODO: slow!!!!
-(defun appleshan-dired/init-dired+ ()
-  (use-package dired+
-    :defer t
-    :init
-    (progn
-      ;; 顯示/隱藏檔案細節
-      (setq diredp-hide-details-initially-flag nil)
-      (setq diredp-hide-details-propagate-flag t)
-      ;; 在补全 file 时忽略大小写的差别
-      (setq read-file-name-completion-ignore-case t)
-      ;; use single buffer for all dired navigation
-      (toggle-diredp-find-file-reuse-dir 1)
-      ;; disable font themeing from dired+
-      ; (setq font-lock-maximum-decoration (quote ((dired-mode . 1) (t . t))))
-      )))
 
 (defun appleshan-dired/init-dired-k ()
   "Git status in dired."
