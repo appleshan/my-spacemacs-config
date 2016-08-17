@@ -38,14 +38,15 @@ values."
      ;; ----------------------------------------------------------------
 
      ;; --- Auto Complete ---
-     ivy
-     ;; auto-complete layer 在 orgmode 中会引发很多问题，所以在 org 中禁用 company 补全
+     ivy           ; spacemacs develop branch
+     ; spacemacs-ivy ; spacemacs master branch
      (auto-completion :variables
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-sort-by-usage t
                       auto-completion-return-key-behavior 'complete
                       auto-completion-tab-key-behavior 'complete
                       :disabled-for org markdown)
+     ;; auto-complete layer 在 orgmode 中会引发很多问题，所以在 org 中禁用 company 补全
 
      ;; --- UI ---
      (colors :variables
@@ -71,7 +72,7 @@ values."
 
      ;; --- programming tool layers ---
      (dash :variables
-           dash-helm-dash-docset-path "~/.local/share/Zeal/docsets/")
+           helm-dash-docset-newpath "~/.local/share/Zeal/docsets/")
      (git :variables
           git-magit-status-fullscreen t
           magit-push-always-verify nil
@@ -81,8 +82,9 @@ values."
           magit-revision-show-gravatars nil)
      github
      prodigy  ;; 使用 Prodigy 在 Emacs 中管理外部服务
-     ; restclient
-     semantic
+     (restclient :variables
+                 restclient-use-org nil)
+     ; semantic
      (syntax-checking :variables
                       syntax-checking-enable-by-default nil)
      (version-control :variables
@@ -97,21 +99,21 @@ values."
      ; ranger
      search-engine
      ;; BUG: ???
-     ; (vinegar :variables
-     ;          vinegar-reuse-dired-buffer t)
+     (vinegar :variables
+              vinegar-reuse-dired-buffer t)
 
      ;; --- Minor Mode ---
      (chinese :variables
               chinese-enable-fcitx t)
      ;; deft  ;; Quick Note Taking
-     emoji
+     ; emoji
      ; (spell-checking :variables
      ;                 spell-checking-enable-by-default nil)
 
      ;; --- private layers ---
      appleshan-base
      appleshan-complete
-     appleshan-dired
+     ; appleshan-dired
      appleshan-ui
      appleshan-org
      appleshan-chinese
@@ -150,6 +152,7 @@ values."
                                     flx-ido
                                     gh-md
                                     ; google-translate
+                                    helm-company
                                     helm-c-yasnippet
                                     helm-make
                                     helm-mode-manager
@@ -437,11 +440,11 @@ you should place your code here."
       (spacemacs//set-monospaced-font "Source Code Pro" "文泉驿等宽微米黑" 12 14)))
   ;; }}
 
-  ;; (setq url-proxy-services
-  ;;  '(("no_proxy" . "^\\(localhost\\|10.*\\|192.168.*\\)")
-  ;;    ("http" . "127.0.0.1:18080")
-  ;;    ("https" . "127.0.0.1:18080")
-  ;;    ("socks5" . "127.0.0.1:18080")))
+  (setq url-proxy-services
+   '(("no_proxy" . "^\\(localhost\\|10.*\\|192.168.*\\|elpa.zilongshanren.com\\)")
+     ("http" . "127.0.0.1:18080")
+     ("https" . "127.0.0.1:18080")
+     ("socks5" . "127.0.0.1:18080")))
 
   ;; restore the desktop
   (desktop-save-mode t)
@@ -454,7 +457,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (helm puml-mode vdiff counsel swiper helm-core ivy ht peep-dired powerline move-dup visual-regexp-steroids visual-regexp stickyfunc-enhance srefactor zeal-at-point yaml-mode web-beautify tldr super-save smeargle rainbow-mode rainbow-identifiers pyvenv pytest pyenv-mode py-yapf prodigy pip-requirements paredit pangu-spacing org-projectile org-pomodoro alert log4e gntp org-password-manager org org-download mwim mmm-mode markdown-toc markdown-mode magit-gitflow magit-gh-pulls livid-mode skewer-mode simple-httpd live-py-mode lispy json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc ibuffer-projectile hy-mode htmlize highlight-escape-sequences gnuplot gitignore-mode github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh marshal logito pcache flycheck-pos-tip flycheck-package flycheck find-by-pinyin-dired fcitx evil-magit magit magit-popup git-commit with-editor engine-mode emoji-cheat-sheet-plus dired-sort dired-k dired+ diff-hl cython-mode counsel-dash helm-dash company-tern dash-functional tern company-statistics company-shell company-quickhelp company-emoji company-anaconda company color-identifiers-mode chinese-pyim chinese-pyim-basedict pos-tip calfw google-maps cal-china-x browse-kill-ring beacon seq bbdb-vcard bbdb auto-yasnippet yasnippet anaconda-mode pythonic ace-pinyin pinyinlib ace-jump-mode ws-butler window-numbering which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline smex restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-make google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word counsel-projectile column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link))))
+    (popup spinner s hydra parent-mode flx iedit anzu evil goto-chg undo-tree highlight diminish projectile pkg-info epl bind-map bind-key async package-build restclient ob-http smartparens avy dash amd-mode makey helm puml-mode vdiff counsel swiper helm-core ivy ht peep-dired powerline move-dup visual-regexp-steroids visual-regexp stickyfunc-enhance srefactor zeal-at-point yaml-mode web-beautify tldr super-save smeargle rainbow-mode rainbow-identifiers pyvenv pytest pyenv-mode py-yapf prodigy pip-requirements paredit pangu-spacing org-projectile org-pomodoro alert log4e gntp org-password-manager org org-download mwim mmm-mode markdown-toc markdown-mode magit-gitflow magit-gh-pulls livid-mode skewer-mode simple-httpd live-py-mode lispy json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc ibuffer-projectile hy-mode htmlize highlight-escape-sequences gnuplot gitignore-mode github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh marshal logito pcache flycheck-pos-tip flycheck-package flycheck find-by-pinyin-dired fcitx evil-magit magit magit-popup git-commit with-editor engine-mode emoji-cheat-sheet-plus dired-sort dired-k dired+ diff-hl cython-mode counsel-dash helm-dash company-tern dash-functional tern company-statistics company-shell company-quickhelp company-emoji company-anaconda company color-identifiers-mode chinese-pyim chinese-pyim-basedict pos-tip calfw google-maps cal-china-x browse-kill-ring beacon seq bbdb-vcard bbdb auto-yasnippet yasnippet anaconda-mode pythonic ace-pinyin pinyinlib ace-jump-mode ws-butler window-numbering which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline smex restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word counsel-projectile column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

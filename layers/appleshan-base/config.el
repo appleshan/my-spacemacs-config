@@ -39,7 +39,7 @@
 (electric-pair-mode t)
 (show-paren-mode t)                  ;显示括号匹配
 (auto-compression-mode 1)            ;打开压缩文件时自动解压缩
-(mouse-avoidance-mode "banish")      ;只要一操作鼠标自动闪开
+; (mouse-avoidance-mode "banish")      ;只要一操作鼠标自动闪开
 
 (setq default-major-mode 'text-mode) ;设置默认地主模式为 TEXT 模式
 (setq x-select-enable-clipboard t)   ;支持 emacs 和外部程序的粘贴

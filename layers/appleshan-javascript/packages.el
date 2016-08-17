@@ -22,7 +22,7 @@
       js2-refactor
       tern
       ; web-mode
-      xref-js2
+      ; xref-js2
       ))
 
 ;; List of packages to exclude.
@@ -263,27 +263,27 @@
 ;             company-dabbrev)
 ;           company-backends-web-mode))
 
-(defun appleshan-javascript/init-xref-js2 ()
-  (use-package xref-js2
-    :defer t
-    :init
-    (progn
-      ;; add xref-js2 support
-      (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t))
-    :config
-    (progn
-      ;; We have JS files in Scripts directories, ignore that
-      (add-to-list 'xref-js2-ignored-dirs "Scripts")
-      ;; Also ignore some other files
-      ; (dolist (file '("require.js"
-      ;                 "highcharts.js"
-      ;                 "highcharts.src.js"
-      ;                 "bootstrap.js"
-      ;                 "Gruntfile.js"
-      ;                 "moment.js"
-      ;                 "moment-with-locales.js"))
-      ;   (add-to-list 'xref-js2-ignored-files file))
-      )))
+; (defun appleshan-javascript/init-xref-js2 ()
+;   (use-package xref-js2
+;     :defer t
+;     :init
+;     (progn
+;       ;; add xref-js2 support
+;       (add-hook 'xref-backend-functions #'xref-js2-xref-backend nil t))
+;     :config
+;     (progn
+;       ;; We have JS files in Scripts directories, ignore that
+;       (add-to-list 'xref-js2-ignored-dirs "Scripts")
+;       ;; Also ignore some other files
+;       ; (dolist (file '("require.js"
+;       ;                 "highcharts.js"
+;       ;                 "highcharts.src.js"
+;       ;                 "bootstrap.js"
+;       ;                 "Gruntfile.js"
+;       ;                 "moment.js"
+;       ;                 "moment-with-locales.js"))
+;       ;   (add-to-list 'xref-js2-ignored-files file))
+;       )))
 
 ;; Local Variables:
 ;; coding: utf-8

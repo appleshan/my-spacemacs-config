@@ -11,9 +11,9 @@
 
 (setq appleshan-dired-packages
     '(
-      diff-hl
+      ; diff-hl
       (dired :location built-in)
-      dired+
+      ; dired+
       dired-k
       dired-sort
       peep-dired
@@ -22,9 +22,9 @@
 ;; List of packages to exclude.
 (setq appleshan-dired-excluded-packages '())
 
-(defun appleshan-dired/post-init-diff-hl ()
-  (with-eval-after-load 'diff-hl
-    (add-hook 'dired-mode-hook 'diff-hl-dired-mode)))
+; (defun appleshan-dired/post-init-diff-hl ()
+;   (with-eval-after-load 'diff-hl
+;     (add-hook 'dired-mode-hook 'diff-hl-dired-mode)))
 
 (defun appleshan-dired/post-init-dired ()
   (use-package dired
@@ -63,10 +63,8 @@
       (evilified-state-evilify-map dired-mode-map
         :mode dired-mode
         :bindings
-        "f"         (if (configuration-layer/layer-usedp 'ivy)
-                      'counsel-find-file
-                    'helm-find-files)
-        "~"   '(lambda ()(interactive) (find-alternate-file "~/"))
+        "f" 'counsel-find-file
+        "~" '(lambda ()(interactive) (find-alternate-file "~/"))
         "I" 'dired-omit-mode
         "-" 'appleshan-dired/up-directory
         "DEL" 'appleshan-dired/up-directory
@@ -74,21 +72,21 @@
     )))
 
 ;; TODO: slow!!!!
-(defun appleshan-dired/init-dired+ ()
-  (use-package dired+
-    :defer t
-    :init
-    (progn
-      ;; 顯示/隱藏檔案細節
-      (setq diredp-hide-details-initially-flag nil)
-      (setq diredp-hide-details-propagate-flag t)
-      ;; 在补全 file 时忽略大小写的差别
-      (setq read-file-name-completion-ignore-case t)
-      ;; use single buffer for all dired navigation
-      (toggle-diredp-find-file-reuse-dir 1)
-      ;; disable font themeing from dired+
-      ; (setq font-lock-maximum-decoration (quote ((dired-mode . 1) (t . t))))
-      )))
+; (defun appleshan-dired/init-dired+ ()
+;   (use-package dired+
+;     :defer t
+;     :init
+;     (progn
+;       ;; 顯示/隱藏檔案細節
+;       (setq diredp-hide-details-initially-flag nil)
+;       (setq diredp-hide-details-propagate-flag t)
+;       ;; 在补全 file 时忽略大小写的差别
+;       (setq read-file-name-completion-ignore-case t)
+;       ;; use single buffer for all dired navigation
+;       (toggle-diredp-find-file-reuse-dir 1)
+;       ;; disable font themeing from dired+
+;       ; (setq font-lock-maximum-decoration (quote ((dired-mode . 1) (t . t))))
+;       )))
 
 (defun appleshan-dired/init-dired-k ()
   "Git status in dired."
