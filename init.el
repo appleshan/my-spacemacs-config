@@ -96,9 +96,10 @@ values."
               ibuffer-group-buffers-by 'projects)
      markdown
      org
-     ; ranger
      search-engine
-     ;; BUG: ???
+
+     ;; ranger 与 vinegar 不能共存
+     ; ranger
      (vinegar :variables
               vinegar-reuse-dired-buffer t)
 
@@ -113,7 +114,7 @@ values."
      ;; --- private layers ---
      appleshan-base
      appleshan-complete
-     ; appleshan-dired
+     appleshan-dired
      appleshan-ui
      appleshan-org
      appleshan-chinese
@@ -140,7 +141,7 @@ values."
                                     evil-args
                                     ;; disable it for lispy-mode
                                     ;;https://github.com/abo-abo/lispy/issues/137
-                                    evil-escape
+                                    ; evil-escape
                                     evil-exchange
                                     evil-indent-plus
                                     evil-mc

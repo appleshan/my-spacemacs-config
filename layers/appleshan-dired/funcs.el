@@ -9,11 +9,6 @@
 ;;
 ;;; License: GPLv3
 
-(defun appleshan-dired/up-directory()
-  "goto up directory and resue buffer"
-  (interactive)
-  (find-alternate-file ".."))
-
 ;; dired-x.el 允许忽略不感兴趣的文件，不让他们显示出来，并且可以使用 M-o 来方便地切换忽略与显示。
 ;; 有两个变量可以控制究竟忽略哪些文件：
 ;; 1. dired-omit-files 是一个正则表达式，凡是匹配这个正则表达式的文件就会被忽略掉，
@@ -21,15 +16,16 @@
 ;; 2. dired-omit-extensions 是一个字符串列表，凡是文件名结尾是这个列表中的某一个的时就会被忽略。
 ;;
 ;; 忽略掉以 . 开头的文件和文件夹，在 Linux 下面这通常表示隐藏文件和文件夹
-(defun appleshan-dired/dired-hook ()
-  ; omit all hidden file which starts with `.'
-  (setq dired-omit-files "^#\\|^\\..*")
-  ; initially omit unintrested files
-  ; Ⓞ : http://graphemica.com/%E2%93%84
-  (spacemacs|diminish dired-omit-mode " Ⓞ" " O"))
+(with-eval-after-load 'dired
+  (defun appleshan//dired-hook ()
+    ; omit all hidden file which starts with `.'
+    (setq dired-omit-files "^#\\|^\\..*")
+    ; initially omit unintrested files
+    ; Ⓞ : http://graphemica.com/%E2%93%84
+    (spacemacs|diminish dired-omit-mode " Ⓞ" " O")))
 
 (with-eval-after-load 'dired+
-  (defun appleshan-dired/get-size ()
+  (defun dired/get-size ()
     (interactive)
     (let ((files (dired-get-marked-files)))
       (with-temp-buffer
@@ -42,7 +38,7 @@
             (match-string 1))))))
 
   ;; dired 文件管理器可以把目录优先排在前面。
-  (defun appleshan-dired/list-dir-first ()
+  (defun dired/list-dir-first ()
     "Dired sort hook to list directories first."
     (save-excursion
       (let (buffer-read-only)
@@ -53,37 +49,9 @@
          (dired-insert-set-properties (point-min) (point-max)))
     (set-buffer-modified-p nil))
 
-  (add-hook 'dired-after-readin-hook 'appleshan-dired/list-dir-first)
+  (add-hook 'dired-after-readin-hook 'dired/list-dir-first)
 
-  (defun appleshan-dired/dired-diff ()
-    "Ediff marked files in dired or selected files in separate window"
-    (interactive)
-    (let* ((marked-files (dired-get-marked-files nil nil))
-          (other-win (get-window-with-predicate
-                      (lambda (window)
-                        (with-current-buffer (window-buffer window)
-                          (and (not (eq window (selected-window)))
-                               (eq major-mode 'dired-mode))))))
-          (other-marked-files (and other-win
-                                   (with-current-buffer (window-buffer other-win)
-                                     (dired-get-marked-files nil)))))
-      (cond ((= (length marked-files) 2)
-             (ediff-files (nth 0 marked-files)
-                          (nth 1 marked-files)))
-            ((= (length marked-files) 3)
-             (ediff-files3 (nth 0 marked-files)
-                           (nth 1 marked-files)
-                           (nth 2 marked-files)
-                           ))
-            ((and (= (length marked-files) 1)
-                  (= (length other-marked-files) 1))
-             (ediff-files (nth 0 marked-files)
-                          (nth 0 other-marked-files)))
-            ((= (length marked-files) 1)
-             (dired-diff))
-            (t (error "mark exactly 2 files, at least 1 locally")))))
-
-  (defun appleshan-dired/open-in-external-app ()
+  (defun dired/open-in-external-app ()
     "Open the current or  marked files in external app."
     (interactive)
     (let (doIt
@@ -101,7 +69,7 @@
                   (start-process "" nil "xdg-open" fPath)))
               myFileList))))
 
-  (defun appleshan-dired/rsync (dest)
+  (defun dired/rsync (dest)
     "Using rsync in dired."
     (interactive
      (list
@@ -132,18 +100,19 @@
   (evilified-state-evilify-map dired-mode-map
     :mode dired-mode
     :bindings
-    "=" 'appleshan-dired/dired-diff
-    "z" 'appleshan-dired/get-size
-    "S" 'appleshan-dired/rsync)
-)
+    "z" 'dired/get-size
+    "S" 'dired/rsync))
 
 (with-eval-after-load 'dired-sort
-  (defun appleshan-dired/dired-sort-hook ()
+  (defun appleshan//dired-sort-hook ()
     (interactive)
-    (make-local-variable  'dired-sort-map)
+    (make-local-variable 'dired-sort-map)
     (setq dired-sort-map (make-sparse-keymap))
     (define-key dired-mode-map "s" dired-sort-map)
-    (define-key dired-sort-map "n" 'dired-sort-name)
-    (define-key dired-sort-map "x" 'dired-sort-extension)
-    (define-key dired-sort-map "s" 'dired-sort-size)
-    (define-key dired-sort-map "t" 'dired-sort-time)))
+    (define-key dired-sort-map "n" 'dired-sort-name)      ; Name
+    (define-key dired-sort-map "x" 'dired-sort-extension) ; Extension
+    (define-key dired-sort-map "s" 'dired-sort-size)      ; Size
+    (define-key dired-sort-map "t" 'dired-sort-time)      ; Modified Time
+    (define-key dired-sort-map "u" 'dired-sort-utime)     ; Access Time
+    (define-key dired-sort-map "c" 'dired-sort-ctime)     ; Create Time
+    ))
