@@ -29,7 +29,7 @@
                               auto-coding-regexp-alist))))
 
 ;; 使用空格缩进
-; (setq-default indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq tab-width 4)
 

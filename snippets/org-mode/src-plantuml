@@ -1,0 +1,6 @@
+# name: plantuml src block
+# key: src-plantuml
+# --
+#+BEGIN_SRC plantuml :file ${1:/tmp/plantuml-tmp}.png  :cmdline -charset UTF-8
+$0
+#+END_SRC

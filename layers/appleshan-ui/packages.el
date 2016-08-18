@@ -19,6 +19,7 @@
 ;; List of packages to exclude.
 (setq appleshan-ui-excluded-packages '())
 
+;; 不会丢失你的光标
 (defun appleshan-ui/init-beacon ()
   (use-package beacon
     :init
@@ -29,9 +30,9 @@
         :off (beacon-mode -1)
         :documentation "Enable point highlighting after scrolling"
         :evil-leader "otb")
-
       (spacemacs/toggle-beacon-on))
-    :config (spacemacs|hide-lighter beacon-mode)))
+    :config
+    (spacemacs|hide-lighter beacon-mode)))
 
 ;; https://github.com/benma/visual-regexp.el
 ;; https://github.com/benma/visual-regexp-steroids.el
