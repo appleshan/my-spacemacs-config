@@ -37,6 +37,8 @@
 ; (global-font-lock-mode t)            ;语法高亮
 (transient-mark-mode 1)              ;标记高亮
 (electric-pair-mode t)
+;; https://www.reddit.com/r/emacs/comments/4xhxfw/how_to_tune_the_behavior_of_eletricpairmode/
+(setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
 (show-paren-mode t)                  ;显示括号匹配
 (auto-compression-mode 1)            ;打开压缩文件时自动解压缩
 ; (mouse-avoidance-mode "banish")      ;只要一操作鼠标自动闪开
@@ -68,6 +70,13 @@
 
 ;; Don't move back the cursor one position when exiting insert mode
 (setq evil-move-cursor-back nil)
+
+(setq save-abbrevs nil)
+
+;; turn on abbrev mode globally
+(setq-default abbrev-mode t)
+
+(setq url-show-status nil)
 
 ;; Local Variables:
 ;; coding: utf-8

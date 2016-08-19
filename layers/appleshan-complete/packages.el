@@ -48,8 +48,6 @@
     (setq company-dabbrev-char-regexp "[[:word:]_:@.-]+")
     (setq company-dabbrev-minimum-length 2)
 
-    (global-set-key (kbd "M-/") 'company-complete)
-
     (when (configuration-layer/package-usedp 'company)
       (spacemacs|add-company-hook shell-script-mode)
       (spacemacs|add-company-hook nxml-mode)

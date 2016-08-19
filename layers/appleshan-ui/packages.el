@@ -12,6 +12,7 @@
 (setq appleshan-ui-packages
     '(
       beacon
+      popwin
       visual-regexp
       visual-regexp-steroids
       ))
@@ -33,6 +34,11 @@
       (spacemacs/toggle-beacon-on))
     :config
     (spacemacs|hide-lighter beacon-mode)))
+
+(defun appleshan-ui/post-init-popwin ()
+  (progn
+    (push "*appleshan/run-current-file output*" popwin:special-display-config)
+    (delete "*Async Shell Command*" popwin:special-display-config)))
 
 ;; https://github.com/benma/visual-regexp.el
 ;; https://github.com/benma/visual-regexp-steroids.el

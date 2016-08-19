@@ -39,7 +39,7 @@
         (locate-dominating-file directory ".svn")
         (locate-dominating-file directory ".hg"))))
 
-(defun appleshan-programming/goto-match-paren (arg)
+(defun appleshan/goto-match-paren (arg)
   "Go to the matching  if on (){}[], similar to vi style of % "
   (interactive "p")
   ;; first, check for "outside of bracket" positions expected by forward-sexp, etc
@@ -50,13 +50,13 @@
         ((looking-back "[\[\(\{]" 1) (backward-char) (evil-jump-item))
         (t nil)))
 
-(defun appleshan-programming/hidden-dos-eol ()
+(defun appleshan/hidden-dos-eol ()
   "Do not show ^M in files containing mixed UNIX and DOS line endings."
   (interactive)
   (setq buffer-display-table (make-display-table))
   (aset buffer-display-table ?\^M []))
 
-(defun appleshan-programming/remove-dos-eol ()
+(defun appleshan/remove-dos-eol ()
   "Replace DOS eolns CR LF with Unix eolns CR"
   (interactive)
   (goto-char (point-min))
@@ -204,6 +204,43 @@ This functions should be added to the hooks of major modes for programming."
           1 font-lock-warning-face t))))
 
 (add-hook 'prog-mode-hook 'font-lock-comment-annotations)
+
+(defun appleshan/run-current-file ()
+  "Execute the current file.
+For example, if the current buffer is the file x.py, then it'll call 「python x.py」 in a shell.
+The file can be emacs lisp, php, perl, python, ruby, javascript, bash, ocaml, Visual Basic.
+File suffix is used to determine what program to run.
+
+If the file is modified, ask if you want to save first.
+
+URL `http://ergoemacs.org/emacs/elisp_run_current_file.html'
+version 2015-08-21"
+  (interactive)
+  (let* (
+         (ξsuffix-map
+          ;; (‹extension› . ‹shell program name›)
+          `(
+            ("py" . "python")
+            ("py3" . "python3")
+            ; ("js" . "node") ; node.js
+            ("sh" . "bash")
+            ))
+         (ξfname (buffer-file-name))
+         (ξfSuffix (file-name-extension ξfname))
+         (ξprog-name (cdr (assoc ξfSuffix ξsuffix-map)))
+         (ξcmd-str (concat ξprog-name " \""   ξfname "\"")))
+
+    (when (buffer-modified-p)
+      (when (y-or-n-p "Buffer modified. Do you want to save first?")
+        (save-buffer)))
+
+    (if (string-equal ξfSuffix "el") ; special case for emacs lisp
+        (load ξfname)
+      (if ξprog-name
+          (progn
+            (message "Running…")
+            (async-shell-command ξcmd-str "*appleshan/run-current-file output*"))
+        (message "No recognized program file suffix for this file.")))))
 
 ;; Local Variables:
 ;; coding: utf-8
