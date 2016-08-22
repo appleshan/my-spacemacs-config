@@ -38,10 +38,6 @@
       (add-hook 'scheme-mode-hook 'my-lispy-hook))
     :config
     (progn
-      (defun conditionally-enable-lispy ()
-        (when (eq this-command 'eval-expression)
-          (lispy-mode 1)))
-
       (add-hook 'minibuffer-setup-hook 'conditionally-enable-lispy)
 
       (define-key lispy-mode-map (kbd "s-m") 'lispy-mark-symbol)

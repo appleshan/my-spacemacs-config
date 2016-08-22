@@ -14,14 +14,11 @@
 (setq appleshan-javascript-packages
     '(
       ; amd-mode
-      css-mode
-      impatient-mode
       json-mode
       js-doc
       js2-mode
       js2-refactor
       tern
-      ; web-mode
       ; xref-js2
       ))
 
@@ -42,32 +39,11 @@
 ;       (define-key amd-mode-map (kbd "C-c C-a") #'amd-initialize-makey-group)
 ;       )))
 
-(defun appleshan-javascript/post-init-css-mode ()
-  (with-eval-after-load 'css-mode
-    (dolist (hook '(css-mode-hook sass-mode-hook less-mode-hook))
-      (add-hook hook 'rainbow-mode))))
-
-(defun appleshan-javascript/init-impatient-mode ()
-  "Initialize impatient mode"
-  (use-package impatient-mode
-    :init
-    (progn
-
-      (defun my-impatient-mode-hook ()
-        "my web mode hook for HTML REPL"
-        (interactive)
-        (impatient-mode)
-        (spacemacs|hide-lighter impatient-mode)
-        (httpd-start))
-
-      (add-hook 'web-mode-hook 'my-impatient-mode-hook)
-      (spacemacs/set-leader-keys-for-major-mode 'web-mode
-        "p" 'imp-visit-buffer)
-      )))
-
 (defun appleshan-javascript/post-init-json-mode ()
   (with-eval-after-load 'json-mode
-    (add-to-list 'auto-mode-alist '("\\.tern-project\\'" . json-mode))))
+    (add-to-list 'auto-mode-alist '("\\.tern-project\\'" . json-mode))
+    (spacemacs/set-leader-keys-for-major-mode 'json-mode
+      "ti" 'my-toggle-web-indent)))
 
 (defun appleshan-javascript/post-init-js-doc ()
   (with-eval-after-load 'js-doc
@@ -110,53 +86,23 @@
                (incf field-count)
                (incf field-count)))
             js-doc-bottom-line)))))
-
-    (add-hook 'js2-mode-hook
-            #'(lambda ()
-                (define-key js2-mode-map "\C-ci" 'my-js-doc-insert-function-doc-snippet)
-                (define-key js2-mode-map "@" 'js-doc-insert-tag)))))
+  ))
 
 (defun appleshan-javascript/post-init-js2-mode ()
   (progn
-    (setq company-backends-js2-mode '((company-dabbrev-code :with company-keywords company-etags)
-                                      company-files
-                                      company-dabbrev))
+    (setq company-backends-js2-mode
+      '((company-dabbrev-code :with company-keywords company-etags)
+        company-files
+        company-dabbrev))
 
-    (add-hook 'js2-mode-hook #'(lambda () (modify-syntax-entry ?_ "w")))
+    (appleshan|toggle-company-backends company-tern)
 
     (spacemacs/set-leader-keys-for-major-mode 'js2-mode
       "tb" 'appleshan/company-toggle-company-tern)
 
-    (spacemacs/set-leader-keys-for-major-mode 'js2-mode
-      "ga" 'projectile-find-other-file
-      "gA" 'projectile-find-other-file-other-window)
-
-    (spacemacs/set-leader-keys-for-major-mode 'web-mode
-      "ga" 'projectile-find-other-file
-      "gA" 'projectile-find-other-file-other-window)
-
-    (defun my-js2-mode-hook ()
-      (progn
-        (setq mode-name "JS2")
-        (define-key js2-mode-map   (kbd "s-.") 'company-tern)
-
-        (setq forward-sexp-function nil)
-        ;; (set (make-local-variable 'indent-line-function) 'my-js2-indent-function)
-        (set (make-local-variable 'semantic-mode) nil)
-        ))
     (add-hook 'js2-mode-hook 'my-js2-mode-hook)
 
-    ;; http://blog.binchen.org/posts/use-which-func-mode-with-js2-mode.html
-    (defun my-which-function ()
-      ;; clean the imenu cache
-      ;; @see http://stackoverflow.com/questions/13426564/how-to-force-a-rescan-in-imenu-by-a-function
-      (setq imenu--index-alist nil)
-      (which-function))
-
-    (add-hook 'js2-mode-hook 'which-function-mode)
-
     (spacemacs/declare-prefix-for-mode 'js2-mode "ms" "repl")
-
 
     (with-eval-after-load 'js2-mode
       (progn
@@ -180,36 +126,12 @@
         (setq-default js2-basic-offset 4)
         (setq-default js2-indent-switch-body t)
         ;; Let flycheck handle parse errors
-        ;; (setq-default js2-mode-show-parse-errors nil)
-        ;; (setq-default js2-mode-show-strict-warnings nil)
+        (setq-default js2-mode-show-parse-errors nil)
+        (setq-default js2-mode-show-strict-warnings nil)
         (setq-default js2-highlight-external-variables t)
         (setq-default js2-strict-trailing-comma-warning nil)
 
-        (defun my-web-mode-indent-setup ()
-          (setq web-mode-markup-indent-offset 2) ; web-mode, html tag in html file
-          (setq web-mode-css-indent-offset 2)    ; web-mode, css in html file
-          (setq web-mode-code-indent-offset 2) ; web-mode, js code in html file
-          )
-
         (add-hook 'web-mode-hook 'my-web-mode-indent-setup)
-
-        (defun my-toggle-web-indent ()
-          (interactive)
-          ;; web development
-          (if (or (eq major-mode 'js-mode) (eq major-mode 'js2-mode))
-              (progn
-                (setq js-indent-level (if (= js-indent-level 2) 4 2))
-                (setq js2-basic-offset (if (= js2-basic-offset 2) 4 2))))
-
-          (if (eq major-mode 'web-mode)
-              (progn (setq web-mode-markup-indent-offset (if (= web-mode-markup-indent-offset 2) 4 2))
-                     (setq web-mode-css-indent-offset (if (= web-mode-css-indent-offset 2) 4 2))
-                     (setq web-mode-code-indent-offset (if (= web-mode-code-indent-offset 2) 4 2))))
-          (if (eq major-mode 'css-mode)
-              (setq css-indent-offset (if (= css-indent-offset 2) 4 2)))
-
-          (setq indent-tabs-mode nil))
-
 
         (spacemacs/set-leader-keys-for-major-mode 'js2-mode
           "oi" 'my-toggle-web-indent)
@@ -220,18 +142,11 @@
         (spacemacs/set-leader-keys-for-major-mode 'css-mode
           "oi" 'my-toggle-web-indent)
 
-        (spacemacs/declare-prefix-for-mode 'js2-mode "mo" "toggle")
-        (spacemacs/declare-prefix-for-mode 'js-mode "mo" "toggle")
-        (spacemacs/declare-prefix-for-mode 'web-mode "mo" "toggle")
-        (spacemacs/declare-prefix-for-mode 'css-mode "mo" "toggle")
+        (spacemacs/declare-prefix-for-mode 'js2-mode "mt" "toggle")
+        (spacemacs/declare-prefix-for-mode 'js-mode  "mt" "toggle")
+        (spacemacs/declare-prefix-for-mode 'web-mode "mt" "toggle")
+        (spacemacs/declare-prefix-for-mode 'css-mode "mt" "toggle")
 
-        (autoload 'flycheck-get-checker-for-buffer "flycheck")
-        (defun sanityinc/disable-js2-checks-if-flycheck-active ()
-          (unless (flycheck-get-checker-for-buffer)
-            (set (make-local-variable 'js2-mode-show-parse-errors) t)
-            (set (make-local-variable 'js2-mode-show-strict-warnings) t)))
-        (add-hook 'js2-mode-hook 'sanityinc/disable-js2-checks-if-flycheck-active)
-        
         (eval-after-load 'tern-mode
           '(spacemacs|hide-lighter tern-mode))
         ))
@@ -254,14 +169,6 @@
     (define-key tern-mode-keymap (kbd "M-.") nil)
     (define-key tern-mode-keymap (kbd "M-,") nil)
     ))
-
-; (defun appleshan-programming/post-init-web-mode ()
-;     (push '((company-dabbrev-code
-;              company-keywords
-;              company-etags)
-;             company-files
-;             company-dabbrev)
-;           company-backends-web-mode))
 
 ; (defun appleshan-javascript/init-xref-js2 ()
 ;   (use-package xref-js2

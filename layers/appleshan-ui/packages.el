@@ -11,7 +11,8 @@
 
 (setq appleshan-ui-packages
     '(
-      beacon
+      ; beacon
+      hl-anything
       popwin
       visual-regexp
       visual-regexp-steroids
@@ -35,6 +36,16 @@
     :config
     (spacemacs|hide-lighter beacon-mode)))
 
+(defun appleshan-ui/post-init-hl-anything ()
+  (progn
+    (hl-highlight-mode -1)
+    (spacemacs|add-toggle toggle-hl-anything
+      :status hl-highlight-mode
+      :on (hl-highlight-mode)
+      :off (hl-highlight-mode -1)
+      :documentation "Toggle highlight anything mode."
+      :evil-leader "ths")))
+
 (defun appleshan-ui/post-init-popwin ()
   (progn
     (push "*appleshan/run-current-file output*" popwin:special-display-config)
@@ -45,10 +56,12 @@
 
 (defun appleshan-ui/init-visual-regexp ()
   (use-package visual-regexp
+    ; :commands (vr/replace vr/query-replace) ; See the bind of init-visual-regexp-steroids.
     :defer t))
 
 (defun appleshan-ui/init-visual-regexp-steroids ()
   (use-package visual-regexp-steroids
+    :commands (vr/select-replace vr/select-query-replace)
     :defer t
     :bind (("C-M-%" . vr/replace)
            ("M-%"   . vr/query-replace)

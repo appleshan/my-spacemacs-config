@@ -9,17 +9,13 @@
 ;;
 ;;; License: GPLv3
 
-(add-to-list 'auto-mode-alist
-  (cons (concat "\\." (regexp-opt '("xml" "xsd" "rng" "xslt" "xsl") t) "\\'")
-    'nxml-mode))
-(setq nxml-slash-auto-complete-flag t)
-
 ;; (spacemacs|defvar-company-backends markdown-mode)
 (spacemacs|defvar-company-backends org-mode)
 (spacemacs|defvar-company-backends nxml-mode)
 (spacemacs|defvar-company-backends sh-mode)
 (spacemacs|defvar-company-backends shell-script-mode)
 (spacemacs|defvar-company-backends conf-unix-mode)
+(spacemacs|defvar-company-backends json-mode)
 
 ; (spacemacs|add-toggle iimage
 ;   :status iimage-mode
@@ -28,7 +24,12 @@
 ;   :documentation "Enable iimage mode"
 ;   :evil-leader "oti")
 
-;; 设置compile
+(add-to-list 'auto-mode-alist
+  (cons (concat "\\." (regexp-opt '("xml" "xsd" "xslt" "xsl") t) "\\'")
+    'nxml-mode))
+(setq nxml-slash-auto-complete-flag t)
+
+;; {{ 设置 compile
 (setq compilation-always-kill t)              ;编译时,若有编译窗口,则直接关闭掉,不需要询问
 (setq compilation-auto-jump-to-first-error t) ;编译出错,则自动跳转到第一个错误提示处
 ; (setq compilation-scroll-output t)            ;自动滚动编译输出
@@ -61,6 +62,7 @@
     (setq last-fail-compilation-buffer nil)))
 
 (add-to-list 'compilation-finish-functions #'log-last-fail-compliation-buffer)
+;; }}
 
 ;; turn off `linum-mode' when there are more than 5000 lines
 (add-hook 'prog-mode-hook

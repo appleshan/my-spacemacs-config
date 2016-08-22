@@ -19,6 +19,7 @@
   appleshan-programming
   appleshan-python
   appleshan-javascript
+  appleshan-web
   appleshan-lisp
   appleshan-misc
   ))

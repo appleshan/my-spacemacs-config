@@ -28,9 +28,9 @@
                       (delete (rassoc 'utf-8-with-signature auto-coding-regexp-alist)
                               auto-coding-regexp-alist))))
 
-;; 使用空格缩进
-(setq-default indent-tabs-mode nil)
-(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil) ; 使用空格缩进
+(setq-default tab-width 4) ; 所有buffer默认使用4格缩进
+(setq default-tab-width 4)
 (setq tab-width 4)
 
 (delete-selection-mode t)            ; delete the selection with a key press

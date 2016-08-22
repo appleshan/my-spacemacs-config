@@ -27,7 +27,7 @@
 ; M-, Pop back to where M-. was last invoked
 
 (with-eval-after-load 'js2-mode
-  (define-key js2-mode-map (kbd "C-c m") #'appleshan-javascript/mdn-search))
+  (define-key js2-mode-map (kbd "C-c m") #'appleshan/mdn-search))
 
 (global-set-key (kbd "C-c C-f") 'appleshan/open-readme-in-git-root-directory)
 

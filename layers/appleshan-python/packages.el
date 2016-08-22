@@ -26,10 +26,10 @@
   (with-eval-after-load 'company
     (spacemacs|add-company-hook inferior-python-mode)
     (push 'company-capf company-backends-inferior-python-mode)
-    (add-hook 'inferior-python-mode-hook
-              (lambda ()
-                (setq-local company-minimum-prefix-length 0)
-                (setq-local company-idle-delay 0.5)))
+    ; (add-hook 'inferior-python-mode-hook
+    ;           (lambda ()
+    ;             (setq-local company-minimum-prefix-length 1)
+    ;             (setq-local company-idle-delay 0.5)))
   ))
 
 ; require
@@ -48,9 +48,6 @@
     :defer t
     :init
     (progn
-      ;; Elpy removes the modeline lighters. Let's override this
-      ; (defun elpy-modules-remove-modeline-lighter (mode-name))
-
       (setq elpy-modules '(elpy-module-sane-defaults
                            elpy-module-eldoc
                            elpy-module-pyvenv))
@@ -63,13 +60,14 @@
 
       (elpy-enable)
       (elpy-use-ipython)
-      )))
+      )
+    :config
+    (spacemacs|hide-lighter elpy-mode)))
 
 ;; use flycheck not flymake with elpy
 (defun appleshan-python/post-init-flycheck ()
   (with-eval-after-load 'flycheck
-    (add-hook 'elpy-mode-hook 'flycheck-mode)
-  ))
+    (add-hook 'elpy-mode-hook 'flycheck-mode)))
 
 ;; enable autopep8 formatting on save
 ; (require 'py-autopep8)

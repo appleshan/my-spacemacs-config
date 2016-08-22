@@ -41,6 +41,9 @@
 ;; company-mode
 (defun appleshan-complete/post-init-company ()
   (with-eval-after-load 'company
+    (setq company-minimum-prefix-length 1
+          company-idle-delay 0.5)
+
   	(setq company-selection-wrap-around t)
   	(setq company-show-numbers t)
 
@@ -50,8 +53,10 @@
 
     (when (configuration-layer/package-usedp 'company)
       (spacemacs|add-company-hook shell-script-mode)
+      (spacemacs|add-company-hook sh-mode)
       (spacemacs|add-company-hook nxml-mode)
       (spacemacs|add-company-hook conf-unix-mode)
+      (spacemacs|add-company-hook json-mode)
       )
   ))
 

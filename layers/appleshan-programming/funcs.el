@@ -145,7 +145,6 @@ With a prefix argument, use comint-mode."
       )
   ))
 
-
 (defun appleshan/tab-region (N)
   (interactive "p")
   (if (use-region-p)
@@ -241,6 +240,20 @@ version 2015-08-21"
             (message "Running…")
             (async-shell-command ξcmd-str "*appleshan/run-current-file output*"))
         (message "No recognized program file suffix for this file.")))))
+
+(defun appleshan/github-browse-commit ()
+  "Show the GitHub page for the current commit."
+  (interactive)
+  (use-package github-browse-file
+    :commands (github-browse-file--relative-url))
+
+  (let* ((commit git-messenger:last-commit-id)
+         (url (concat "https://github.com/"
+                      (github-browse-file--relative-url)
+                      "/commit/"
+                      commit)))
+    (github-browse--save-and-view url)
+    (git-messenger:popup-close)))
 
 ;; Local Variables:
 ;; coding: utf-8

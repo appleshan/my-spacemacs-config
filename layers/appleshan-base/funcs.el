@@ -30,7 +30,8 @@
 ;; Display visited file's path in the frame title
 ;; @See http://emacsredux.com/blog/2013/04/07/display-visited-files-path-in-the-frame-title/
 (setq frame-title-format
-      '((:eval (if (buffer-file-name)
+      '("" " Apple.Shan - "
+        (:eval (if (buffer-file-name)
                    (abbreviate-file-name (buffer-file-name))
                    "%b"))))
 

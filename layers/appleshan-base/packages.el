@@ -151,8 +151,6 @@
             ))
     (setq whitespace-style '(face tabs trailing tab-mark ))
 
-    (setq-default tab-width 4)
-
     (with-eval-after-load 'whitespace
       (set-face-attribute 'whitespace-tab nil
                           :background "#Adff2f"

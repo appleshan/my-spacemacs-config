@@ -8,6 +8,7 @@
 ;; This file is not part of GNU Emacs.
 ;;
 ;;; License: GPLv3
+
 (with-eval-after-load 'company
   (defmacro appleshan|toggle-company-backends (backend)
     "Push or delete the backend to company-backends"
@@ -18,7 +19,7 @@
              (setq-local company-backends (delete ',backend company-backends))
            (push ',backend company-backends)))))
 
-  (appleshan|toggle-company-backends company-tern)
+  ; (appleshan|toggle-company-backends company-tern)
   )
 
 (with-eval-after-load 'swiper
@@ -97,10 +98,9 @@
                 :action 'my-find-file-in-git-repo
                 :caller 'counsel-find-file-recent-directory)))
 
-  ; (spacemacs/declare-prefix "d" "dir/dash/zeal")
-  (spacemacs/set-leader-keys "fad" 'counsel-goto-recent-directory)
-  (spacemacs/set-leader-keys "faf" 'counsel-find-file-recent-directory)
-  )
+  (spacemacs/set-leader-keys "fdr" 'counsel-goto-recent-directory)
+  (spacemacs/set-leader-keys "fdfr" 'counsel-find-file-recent-directory)
+)
 
 ;; Local Variables:
 ;; coding: utf-8

@@ -13,11 +13,14 @@
     '(
       ; password-genarator
       bbdb-vcard
+      browse-kill-ring
+      discover-my-major
+      evil-escape
+      flyspell-correct
       multiple-cursors
       super-save
+      tiny
       ; vlf
-      browse-kill-ring
-      ; (xwidget :toggle (version<= "25" emacs-version))
       ))
 
 ;; List of packages to exclude.
@@ -62,24 +65,6 @@
              ))
       )))
 
-(defun appleshan-misc/init-multiple-cursors ()
-  (use-package multiple-cursors
-    :bind (("C-x m" . mc/edit-lines)
-           ("C-c >" . mc/mark-next-like-this)
-           ("C-c <" . mc/mark-previous-like-this)
-           ("C-c C-<" . mc/mark-all-like-this))))
-
-(defun appleshan-misc/init-super-save ()
-  (use-package super-save
-    :init
-    (super-save-mode 1)
-    (spacemacs|diminish super-save-mode " Ⓢ" " S")))
-
-; (defun appleshan-misc/init-vlf ()
-;   (use-package vlf
-;     :defer t
-;     :init (require 'vlf-setup)))
-
 (defun appleshan-misc/init-browse-kill-ring ()
   (use-package browse-kill-ring
     :defer t
@@ -119,42 +104,47 @@
             (message "kill ring is empty"))))
       )))
 
-; (defun appleshan-misc/init-xwidget ()
-;   (use-package xwidget
-;     :config
-;     (progn
-;       ;; make these keys behave like normal browser
-;       (define-key xwidget-webkit-mode-map [mouse-4] 'xwidget-webkit-scroll-down)
-;       (define-key xwidget-webkit-mode-map [mouse-5] 'xwidget-webkit-scroll-up)
-;       (define-key xwidget-webkit-mode-map (kbd "<up>") 'xwidget-webkit-scroll-down)
-;       (define-key xwidget-webkit-mode-map (kbd "<down>") 'xwidget-webkit-scroll-up)
-;       (define-key xwidget-webkit-mode-map (kbd "M-w") 'xwidget-webkit-copy-selection-as-kill)
-;       (define-key xwidget-webkit-mode-map (kbd "C-c") 'xwidget-webkit-copy-selection-as-kill)
+(defun appleshan-misc/init-discover-my-major ()
+  (use-package discover-my-major
+    :defer t
+    :init
+    (progn
+      (spacemacs/set-leader-keys (kbd "mhm") 'discover-my-major)
+      (evilified-state-evilify makey-key-mode makey-key-mode-get-key-map)
+      )))
 
-;       ;; adapt webkit according to window configuration chagne automatically
-;       ;; without this hook, every time you change your window configuration,
-;       ;; you must press 'a' to adapt webkit content to new window size
-;       (add-hook 'window-configuration-change-hook (lambda ()
-;                      (when (equal major-mode 'xwidget-webkit-mode)
-;                        (xwidget-webkit-adjust-size-dispatch))))
+(defun appleshan-misc/post-init-evil-escape ()
+  (setq evil-escape-delay 0.2))
 
-;       ;; by default, xwidget reuses previous xwidget window,
-;       ;; thus overriding your current website, unless a prefix argument
-;       ;; is supplied
-;       ;;
-;       ;; This function always opens a new website in a new window
-;       (defun xwidget-browse-url-no-reuse (url &optional sessoin)
-;         (interactive (progn
-;                        (require 'browse-url)
-;                        (browse-url-interactive-arg "xwidget-webkit URL: "
-;                                                    )))
-;         (xwidget-webkit-browse-url url t))
+(defun appleshan-misc/post-init-flyspell-correct ()
+  (progn
+    (with-eval-after-load 'flyspell
+      (define-key flyspell-mode-map (kbd "C-;") 'flyspell-correct-word-generic))
+    (setq flyspell-correct-interface 'flyspell-correct-ivy)))
 
-;       ;; make xwidget default browser
-;       (setq browse-url-browser-function (lambda (url session)
-;                           (other-window 1)
-;                           (xwidget-browse-url-no-reuse url)))
-;       )))
+(defun appleshan-misc/init-multiple-cursors ()
+  (use-package multiple-cursors
+    :bind (("C-x m" . mc/edit-lines)
+           ("C-c >" . mc/mark-next-like-this)
+           ("C-c <" . mc/mark-previous-like-this)
+           ("C-c C-<" . mc/mark-all-like-this))))
+
+(defun appleshan-misc/init-super-save ()
+  (use-package super-save
+    :init
+    (super-save-mode 1)
+    (spacemacs|diminish super-save-mode " Ⓢ" " S")))
+
+(defun appleshan-misc/init-tiny ()
+  (use-package tiny
+    :defer t
+    :init
+    (spacemacs/set-leader-keys "oe" 'tiny-expand)))
+
+; (defun appleshan-misc/init-vlf ()
+;   (use-package vlf
+;     :defer t
+;     :init (require 'vlf-setup)))
 
 ;; Local Variables:
 ;; coding: utf-8

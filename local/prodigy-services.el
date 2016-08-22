@@ -1,4 +1,5 @@
-;; services
+;; define service
+
 (if (file-executable-p "cassandra")
   (prodigy-define-service
     :name "Cassandra"

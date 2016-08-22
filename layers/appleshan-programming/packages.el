@@ -23,6 +23,7 @@
       paredit
       prodigy
       puml-mode
+      smartparens
       tldr
       vdiff
       zeal-at-point
@@ -47,7 +48,8 @@
 
 (defun appleshan-programming/post-init-flycheck ()
   (with-eval-after-load 'flycheck
-    (setq flycheck-display-errors-delay 0.2)))
+    (setq flycheck-display-errors-delay 0.9)
+    (setq flycheck-idle-change-delay 2.0)))
 
 (defun appleshan-programming/init-flycheck-package ()
   (use-package flycheck-package))
@@ -89,20 +91,6 @@
 
 (defun appleshan-programming/post-init-git-messenger ()
   (with-eval-after-load 'git-messenger
-    (defun appleshan/github-browse-commit ()
-      "Show the GitHub page for the current commit."
-      (interactive)
-      (use-package github-browse-file
-        :commands (github-browse-file--relative-url))
-
-      (let* ((commit git-messenger:last-commit-id)
-             (url (concat "https://github.com/"
-                          (github-browse-file--relative-url)
-                          "/commit/"
-                          commit)))
-        (github-browse--save-and-view url)
-        (git-messenger:popup-close)))
-
     (define-key git-messenger-map (kbd "f") 'appleshan/github-browse-commit)))
 
 (defun appleshan-programming/init-highlight-escape-sequences ()
@@ -119,8 +107,16 @@
     (define-key magit-status-mode-map (kbd "s-2") 'magit-jump-to-untracked)
     (define-key magit-status-mode-map (kbd "s-3") 'magit-jump-to-staged)
     (define-key magit-status-mode-map (kbd "s-4") 'magit-jump-to-stashes)
+
     ; (setq magit-completing-read-function 'magit-builtin-completing-read)
     (setq magit-completing-read-function 'ivy-completing-read)
+
+    (setq magit-process-popup-time 10
+          magit-push-always-verify nil
+          magit-save-repository-buffers 'dontask
+          magit-revert-buffers 'silent
+          magit-refs-show-commit-count 'all
+          magit-revision-show-gravatars nil)
 
     ;; http://emacs.stackexchange.com/questions/6021/change-a-branchs-upstream-with-magit/6023#6023
     (magit-define-popup-switch 'magit-push-popup ?u
@@ -177,6 +173,22 @@
       (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . puml-mode))
     )))
 
+(defun appleshan-programming/post-init-smartparens ()
+  (use-package smartparens
+    :defer t
+    :init
+    (progn
+      (global-set-key (kbd "C-(") 'wrap-sexp-with-new-round-parens))
+    :config
+    (progn
+      (setq sp-highlight-pair-overlay nil)
+
+      (evil-define-key 'normal sp-keymap
+        (kbd ")>") 'sp-forward-slurp-sexp
+        (kbd ")<") 'sp-forward-barf-sexp
+        (kbd "(>") 'sp-backward-barf-sexp
+        (kbd "(<") 'sp-backward-slurp-sexp))))
+
 (defun appleshan-programming/init-tldr ()
   (use-package tldr
     :defer t
@@ -194,7 +206,6 @@
 ;; 使用 zeal 查看 docset
 (defun appleshan-programming/post-init-zeal-at-point ()
   (with-eval-after-load 'zeal-at-point
-    (spacemacs/declare-prefix "d" "dir/dash/zeal")
     (add-hook 'python-mode-hook
       (lambda () (setq zeal-at-point-docset "python 2")))
     ))
