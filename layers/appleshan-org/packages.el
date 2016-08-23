@@ -120,7 +120,6 @@
       (add-to-list 'auto-mode-alist '("\\.org.gpg\\'" . org-mode)))))
 
 (defun appleshan-org/post-init-org ()
-  ; (add-hook 'org-mode-hook (lambda () (linum-mode -1)))
   (add-hook 'org-mode-hook (lambda () (spacemacs/toggle-line-numbers-off)) 'append)
 
   (with-eval-after-load 'org

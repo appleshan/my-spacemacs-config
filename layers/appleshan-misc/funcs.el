@@ -9,8 +9,13 @@
 ;;
 ;;; License: GPLv3
 
-;; 关闭水平滚动条
-; (toggle-horizontal-scroll-bar)
+;; @see https://bitbucket.org/lyro/evil/issue/511/let-certain-minor-modes-key-bindings
+(defmacro adjust-major-mode-keymap-with-evil (m &optional r)
+  `(eval-after-load (quote ,(if r r m))
+     '(progn
+        (evil-make-overriding-map ,(intern (concat m "-mode-map")) 'normal)
+        ;; force update evil keymaps after git-timemachine-mode loaded
+        (add-hook (quote ,(intern (concat m "-mode-hook"))) #'evil-normalize-keymaps))))
 
 ;; cleanup recent files
 (add-hook 'kill-emacs-hook
@@ -98,6 +103,29 @@
 
 (add-hook 'minibuffer-inactive-mode-hook
           '(lambda() (set (make-local-variable 'semantic-mode) nil)))
+
+(defun ascii-table ()
+    "Display basic ASCII table (0 thru 128)."
+    (interactive)
+   (switch-to-buffer "*ASCII*")
+    (erase-buffer)
+    (setq buffer-read-only nil)        ;; Not need to edit the content, just read mode (added)
+    (local-set-key "q" 'bury-buffer)   ;; Nice to have the option to bury the buffer (added)
+    (setq lower32 '("nul" "soh" "stx" "etx" "eot" "enq" "ack" "bel"  
+        "bs" "ht" "nl" "vt" "np" "cr" "so" "si"
+        "dle" "dc1" "dc2" "dc3" "dc4" "nak" "syn" "etb"
+        "can" "em" "sub" "esc" "fs" "gs" "rs" "us"
+        ))
+    (save-excursion (let ((i -1))
+    (insert "ASCII characters 0 thru 127.\n\n")
+    (insert " Hex  Dec  Char|  Hex  Dec  Char|  Hex  Dec  Char|  Hex  Dec  Char\n")
+    (while (< i 31)
+      (insert (format "%4x %4d %4s | %4x %4d %4s | %4x %4d %4s | %4x %4d %4s\n"
+                      (setq i (+ 1  i)) i (elt lower32 i)
+                      (setq i (+ 32 i)) i (single-key-description i)
+                      (setq i (+ 32 i)) i (single-key-description i)
+                      (setq i (+ 32 i)) i (single-key-description i)))
+      (setq i (- i 96))))))
 
 ;; Local Variables:
 ;; coding: utf-8
