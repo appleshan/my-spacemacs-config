@@ -17,14 +17,6 @@
         ;; force update evil keymaps after git-timemachine-mode loaded
         (add-hook (quote ,(intern (concat m "-mode-hook"))) #'evil-normalize-keymaps))))
 
-;; cleanup recent files
-(add-hook 'kill-emacs-hook
-  #'(lambda () (progn
-                 (and (fboundp 'recentf-cleanup)
-                      (recentf-cleanup))
-                 (and (fboundp 'projectile-cleanup-known-projects)
-                      (projectile-cleanup-known-projects)))))
-
 ;; {{ scroll functions
 (defun appleshan/hold-line-scroll-up()
   "Scroll the page with the cursor in the same line"

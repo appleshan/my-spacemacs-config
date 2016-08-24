@@ -27,35 +27,6 @@
 ;; https://www.reddit.com/r/emacs/comments/4c0mi3/the_biggest_performance_improvement_to_emacs_ive/
 (remove-hook 'find-file-hooks 'vc-find-file-hook)
 
-;; Display visited file's path in the frame title
-;; @See http://emacsredux.com/blog/2013/04/07/display-visited-files-path-in-the-frame-title/
-(setq frame-title-format
-      '("" " Apple.Shan - "
-        (:eval (if (buffer-file-name)
-                   (abbreviate-file-name (buffer-file-name))
-                   "%b"))))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 测试字体：
-;; 1lIi     <-- 数字1，小写字母l，大小写字母i
-;; 0Oo      <-- 数字0，大小写字母o
-;; '\"`     <-- 单引号，双引号，反引号
-;; 0O l1 Z2 S5 G6 B8 71 lI vy 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;; Happy hacking apple!
-;; 用 Emacs, 需忘记鼠标, 无视菜单.
-(with-current-buffer (get-buffer-create "*scratch*")
-  (emacs-lisp-mode)
-  (insert ";; Happy hacking apple!
-;; 用 Emacs, 需: 忘记鼠标, 无视菜单.
-"))
-
-;; Transparency by default
-(set-frame-parameter (selected-frame) 'alpha
-                     (cons dotspacemacs-active-transparency
-                           dotspacemacs-inactive-transparency))
-
 ;; {{ locale
 (defun sanityinc/utf8-locale-p (v)
   "Return whether locale string V relates to a UTF-8 locale."

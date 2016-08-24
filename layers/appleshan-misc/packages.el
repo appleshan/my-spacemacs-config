@@ -19,7 +19,6 @@
       evil-escape
       flyspell-correct
       multiple-cursors
-      super-save
       tiny
       ; vlf
       ))
@@ -180,7 +179,7 @@
 (defun appleshan-misc/post-init-flyspell-correct ()
   (progn
     (with-eval-after-load 'flyspell
-      (define-key flyspell-mode-map (kbd "C-;") 'flyspell-correct-word-generic))
+      (define-key flyspell-mode-map (kbd "C-;") 'flyspell-correct-previous-word-generic))
     (setq flyspell-correct-interface 'flyspell-correct-ivy)))
 
 (defun appleshan-misc/init-multiple-cursors ()
@@ -195,12 +194,6 @@
            ("s->" . mc/unmark-next-like-this)
            ("s-<" . mc/unmark-previous-like-this)
            ("C-c C-s-." . mc/mark-all-like-this))))
-
-(defun appleshan-misc/init-super-save ()
-  (use-package super-save
-    :init
-    (super-save-mode 1)
-    (spacemacs|diminish super-save-mode " Ⓢ" " S")))
 
 (defun appleshan-misc/init-tiny ()
   (use-package tiny

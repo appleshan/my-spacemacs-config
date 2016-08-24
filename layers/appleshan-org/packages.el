@@ -114,8 +114,9 @@
       ;; 不允许自动保存
       (setq epa-file-inhibit-auto-save t)
       (setq epa-file-select-keys 0)
-      ;; non-GUI password dialog
+      ;; non-GUI password dialog. Test: (getenv "GPG_AGENT_INFO")
       (setenv "GPG_AGENT_INFO" nil)
+
       ;; Use org-mode for encrypted org file
       (add-to-list 'auto-mode-alist '("\\.org.gpg\\'" . org-mode)))))
 
@@ -685,8 +686,8 @@
     ;; (但是子項目還是會被加密喔)
     (setq org-tags-exclude-from-inheritance (quote ("secret")))
 
-    ;; 用於加密的 GPG 金鑰
-    ;; 可以設定任何 ID 或是設成 nil 來使用對稱式加密 (symmetric encryption)
+    ;; GPG key to use for encryption
+    ;; Either the Key ID or set to nil to use symmetric encryption.
     (setq org-crypt-key nil)
 
     ;; 要想解密 headline,则需要在光标定位到加密内容处,然后执行`M-x org-decrypt-entry’
