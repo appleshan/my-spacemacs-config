@@ -101,7 +101,7 @@
 ;     (setq deft-extension "org")
 ;     (setq deft-directory (concat user-dropbox-directory "org-notes/"))))
 
-;; EasyPG
+;; 借助 EasyPG package 原生支持GnuPG加密. 提供基本的GnuPG功能.
 (defun appleshan-org/init-epa-file ()
   (use-package epa-file
     :defer t

@@ -43,6 +43,7 @@ values."
      (auto-completion :variables
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-sort-by-usage t
+                      auto-completion-enable-snippets-in-popup t ; Adding yas-snippets
                       auto-completion-return-key-behavior 'complete
                       auto-completion-tab-key-behavior 'complete
                       :disabled-for org markdown)
