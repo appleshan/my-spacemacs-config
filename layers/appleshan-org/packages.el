@@ -29,6 +29,7 @@
       ; (ob-core :location built-in)
       (ob-ditaa :location built-in)
       (ob-plantuml :location built-in)
+      (ob-ledger :location built-in) ; 必须 init，才能使用
       ))
 
 ;; List of packages to exclude.
@@ -668,7 +669,7 @@
 ;;;;;;;;;;;;;;;;;;;;
 
 ;; http://coldnew.github.io/blog/2013/07/13_5b094.html
-;; 使用`org-crypt’库,可以自动将带”:crypt:” tag 的 headline ,在写入时加密存储. 
+;; 使用`org-crypt’库,可以自动将带”:secret:” tag 的 headline ,在写入时加密存储. 
 ;; 该功能对于想要将密码等隐私消息存入org文件带来便利.
 
 (defun appleshan-org/init-org-crypt ()
@@ -808,42 +809,42 @@
       (local-set-key (kbd "C-c i s") 'appleshan-org/org-insert-src-block)))
     ))
 
-; ;; TODO: very slow!!!!
-; (defun appleshan-org/init-ob-core ()
-;   (;progn
-;     with-eval-after-load 'ob-core
-;     ; (require 'ob-core)
-;     ;;;;;;;;;;;;;;;;;;;;
-;     ;; org-babel配置
-;     ;;;;;;;;;;;;;;;;;;;;
+;; TODO: very slow!!!!
+(defun appleshan-org/init-ob-core ()
+  (with-eval-after-load 'ob-core
+    ; (require 'ob-core)
+    ;;;;;;;;;;;;;;;;;;;;
+    ;; org-babel配置
+    ;;;;;;;;;;;;;;;;;;;;
 
-;     ;; 设置可以load的代码块
-;     (org-babel-do-load-languages
-;       'org-babel-load-languages
-;       '((org . t)
-;         (emacs-lisp . t)
-;         (ditaa . t)
-;         (python . t)
-;         (sh . t)
-;         (sql . nil)
-;         (plantuml . t)))
+    ;; 设置可以load的代码块
+    (org-babel-do-load-languages
+      'org-babel-load-languages
+      '((ditaa . t)
+        (emacs-lisp . t)
+        (ledger . t)
+        (org . t)
+        (python . t)
+        (sh . t)
+        (sql . nil)
+        (plantuml . t)))
 
-;     (defun org/display-inline-images ()
-;       (condition-case nil
-;           (org-display-inline-images)
-;         (error nil)))
+    (defun org/display-inline-images ()
+      (condition-case nil
+          (org-display-inline-images)
+        (error nil)))
 
-;     (add-hook 'org-babel-after-execute-hook 'org/display-inline-images 'append)
+    (add-hook 'org-babel-after-execute-hook 'org/display-inline-images 'append)
 
-;     ;; Make babel results blocks lowercase
-;     (setq org-babel-results-keyword "results")
+    ;; Make babel results blocks lowercase
+    (setq org-babel-results-keyword "results")
 
-;     ;; C-c C-c执行代码块时,不需要确认
-;     ;; Do not prompt to confirm evaluation
-;     ;; This may be dangerous - make sure you understand the consequences
-;     ;; of setting this -- see the docstring for details
-;     (setq org-confirm-babel-evaluate nil)
-; ))
+    ;; C-c C-c执行代码块时,不需要确认
+    ;; Do not prompt to confirm evaluation
+    ;; This may be dangerous - make sure you understand the consequences
+    ;; of setting this -- see the docstring for details
+    (setq org-confirm-babel-evaluate nil)
+))
 
 ;; ditaa 工具能够帮我们把 ASCII 图转成漂亮的架构图片
 ;; @see http://ditaa.sourceforge.net/
@@ -858,3 +859,6 @@
   (use-package ob-plantuml
     :config
     (setq org-plantuml-jar-path "~/bin/develop/java/plantuml.jar")))
+
+(defun appleshan-org/init-ob-ledger ()
+  (use-package ob-ledger))

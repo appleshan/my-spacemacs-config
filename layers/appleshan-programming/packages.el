@@ -109,7 +109,7 @@
     (define-key magit-status-mode-map (kbd "s-4") 'magit-jump-to-stashes)
 
     ; (setq magit-completing-read-function 'magit-builtin-completing-read)
-    (setq magit-completing-read-function 'ivy-completing-read)
+    ; (setq magit-completing-read-function 'ivy-completing-read) ; emacs 25
 
     (setq magit-process-popup-time 10
           magit-push-always-verify nil
