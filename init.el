@@ -44,7 +44,6 @@ values."
                       auto-completion-enable-help-tooltip t
                       auto-completion-enable-sort-by-usage t
                       auto-completion-enable-snippets-in-popup t ; Adding yas-snippets
-                      ; auto-completion-return-key-behavior 'complete
                       auto-completion-tab-key-behavior 'complete
                       :disabled-for org markdown)
      ;; auto-complete layer 在 orgmode 中会引发很多问题，所以在 org 中禁用 company 补全

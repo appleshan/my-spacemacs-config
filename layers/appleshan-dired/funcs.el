@@ -103,15 +103,18 @@
   (evilified-state-evilify-map dired-mode-map
     :mode dired-mode
     :bindings
-    "z" 'dired/get-size
-    "S" 'dired/rsync))
+    "O" 'dired/open-in-external-app
+    "S" 'dired/rsync
+    "z" 'dired/get-size))
 
 (with-eval-after-load 'dired-sort
   (defun appleshan//dired-sort-hook ()
     (interactive)
+
     (make-local-variable 'dired-sort-map)
     (setq dired-sort-map (make-sparse-keymap))
     (define-key dired-mode-map "s" dired-sort-map)
+
     (define-key dired-sort-map "n" 'dired-sort-name)      ; Name
     (define-key dired-sort-map "x" 'dired-sort-extension) ; Extension
     (define-key dired-sort-map "s" 'dired-sort-size)      ; Size

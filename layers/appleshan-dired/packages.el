@@ -81,7 +81,7 @@
     (progn
       ;; always execute dired-k when dired buffer is opened
       (add-hook 'dired-initial-position-hook 'dired-k)
-      ; (add-hook 'dired-after-readin-hook #'dired-k-no-revert)
+      (add-hook 'dired-after-readin-hook #'dired-k-no-revert)
 
       (evilified-state-evilify-map dired-mode-map
         :mode dired-mode
