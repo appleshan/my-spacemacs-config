@@ -18,8 +18,9 @@
   appleshan-chinese
   appleshan-programming
   appleshan-python
-  appleshan-javascript
-  appleshan-web
+  appleshan-java
+  ; appleshan-javascript
+  ; appleshan-web
   appleshan-lisp
   appleshan-misc
   ))
