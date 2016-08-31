@@ -97,6 +97,16 @@ With a prefix argument, use comint-mode."
    'horizontal))
 ;;}}
 
+;; @see https://github.com/apg/mvn-el
+(ignore-errors
+  (require 'ansi-color)
+  (defun colorize-compilation-buffer ()
+    (when (eq major-mode 'compilation-mode)
+      (let ((inhibit-read-only t))
+        (if (boundp 'compilation-filter-start)
+            (ansi-color-apply-on-region compilation-filter-start (point))))))
+  (add-hook 'compilation-filter-hook 'colorize-compilation-buffer))
+
 ;;{{ Better Comments or tooling as a time sink
 ;; @See http://cestlaz.github.io/posts/better-comments/
 (make-face 'font-lock-comment-important)

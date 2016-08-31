@@ -43,6 +43,8 @@
 (spacemacs/set-leader-keys "ll" 'appleshan/load-my-layout)
 (spacemacs/set-leader-keys "ls" 'appleshan/save-my-layout)
 
+(global-set-key (kbd "C-h j") 'javadoc-lookup)
+
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: nil

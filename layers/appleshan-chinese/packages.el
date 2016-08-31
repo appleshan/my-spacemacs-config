@@ -101,7 +101,7 @@
       :on (global-pangu-spacing-mode)
       :off (global-pangu-spacing-mode -1)
       :documentation "Toggle pangu spacing mode"
-      :evil-leader "ots")
+      :evil-leader "tp")
     ))
 
 ;; Local Variables:

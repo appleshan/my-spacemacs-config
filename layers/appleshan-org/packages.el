@@ -134,20 +134,20 @@
     ;;;;;;;;;;;;;;;;;;;;
     (spacemacs/set-leader-keys
       ;; Go to next org file in org-agenda-files
-      "aoC"  'org-cycle-agenda-files
+      "oC"  'org-cycle-agenda-files
 
       ;; save
       ; "ocg" 'org-clock-goto
       ; "oci" 'org-clock-in
-      "aoS"  'org-save-all-org-buffers
+      "oS"  'org-save-all-org-buffers
 
       ;; toggle
-      "aoTb" 'org-hide-block-toggle-all
-      "aoTi" 'org-toggle-inline-images
-      "aoTl" 'org-toggle-link-display
+      "oTb" 'org-hide-block-toggle-all
+      "oTi" 'org-toggle-inline-images
+      "oTl" 'org-toggle-link-display
 
       ;; other
-      "aob" 'org-iswitchb)
+      "ob" 'org-iswitchb)
 
     ;; 防止不小心编辑了省略部分的内容
     (setq org-catch-invisible-edits 'smart)
@@ -259,7 +259,7 @@
     ;; Custom Key Bindings
     (spacemacs/set-leader-keys
       ;; refile task
-      "aor"  'org-agenda-refile)
+      "or"  'org-agenda-refile)
 
     (define-key org-agenda-mode-map (kbd "P") 'org-pomodoro)
 
@@ -740,7 +740,6 @@
 ;                                           ("B." . "-")
 ;                                           ("a." . "-")
 ;                                           ("b." . "-")))
-
 ;     ))
 
 ;; 修改 org 文件中各层级的 headline 前显示的标志

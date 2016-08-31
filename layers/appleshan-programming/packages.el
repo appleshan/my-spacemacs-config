@@ -52,7 +52,10 @@
     (setq flycheck-idle-change-delay 2.0)))
 
 (defun appleshan-programming/init-flycheck-package ()
-  (use-package flycheck-package))
+  (use-package flycheck-package
+    :init
+    (eval-after-load 'flycheck
+      '(flycheck-package-setup))))
 
 (defun appleshan-programming/post-init-gist ()
   (use-package gist

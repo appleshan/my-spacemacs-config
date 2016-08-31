@@ -14,6 +14,9 @@
 (setq appleshan-java-packages
     '(
       (ajoke :location local)
+      (flycheck-java :location local)
+      javadoc-lookup
+      mvn
       ))
 
 ;; List of packages to exclude.
@@ -21,9 +24,38 @@
 
 (defun appleshan-java/init-ajoke ()
   (use-package ajoke
-  	:load-path "/home/apple/git/java/ajoke/etc/elisp/"
+    :load-path "/home/apple/repo/git/java/ajoke/etc/elisp/"
     :defer t
-    :init (require 'ajoke)))
+    ; :init (require 'ajoke)
+    ))
+
+(defun appleshan-java/init-flycheck-java ()
+  (use-package flycheck-java
+    :defer t
+    :init
+    (progn
+      (add-hook 'java-mode-hook
+                (lambda ()
+                  (setq flycheck-java-ecj-jar-path "/home/apple/bin/develop/java/ecj-4.5.1.jar")
+                  (require 'flycheck-java)
+                  ))
+      )
+    ))
+
+(defun appleshan-java/init-javadoc-lookup ()
+  (use-package javadoc-lookup
+  	:config
+  	(progn
+  	  ; (javadoc-add-roots "/usr/share/doc/openjdk-8-jdk/api")
+  	  (javadoc-add-artifacts
+        [commons-lang commons-lang "2.6"]
+  	  	[com.alibaba dubbo "2.8.4"]
+        [com.daanhealth ncl-services-api "1.0.1-SNAPSHOT"])
+  	  )
+  	  ))
+
+(defun appleshan-java/init-mvn ()
+  (use-package mvn))
 
 ;; Local Variables:
 ;; coding: utf-8

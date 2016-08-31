@@ -8,3 +8,5 @@
 .cask
 
 /.cache/**
+
+/layers/appleshan-java/local/**
