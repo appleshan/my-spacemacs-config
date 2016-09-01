@@ -14,7 +14,7 @@
 (setq appleshan-java-packages
     '(
       (ajoke :location local)
-      (flycheck-java :location local)
+      ; (flycheck-java :location local)
       javadoc-lookup
       mvn
       ))
@@ -29,28 +29,28 @@
     ; :init (require 'ajoke)
     ))
 
-(defun appleshan-java/init-flycheck-java ()
-  (use-package flycheck-java
-    :defer t
-    :init
-    (progn
-      (add-hook 'java-mode-hook
-                (lambda ()
-                  (setq flycheck-java-ecj-jar-path "/home/apple/bin/develop/java/ecj-4.5.1.jar")
-                  (require 'flycheck-java)
-                  ))
-      )
-    ))
+; (defun appleshan-java/init-flycheck-java ()
+;   (use-package flycheck-java
+;     :defer t
+;     :init
+;     (progn
+;       (add-hook 'java-mode-hook
+;                 (lambda ()
+;                   (setq flycheck-java-ecj-jar-path "/home/apple/bin/develop/java/ecj-4.5.1.jar")
+;                   (require 'flycheck-java)
+;                   ))
+;       )
+;     ))
 
 (defun appleshan-java/init-javadoc-lookup ()
   (use-package javadoc-lookup
   	:config
   	(progn
   	  ; (javadoc-add-roots "/usr/share/doc/openjdk-8-jdk/api")
-  	  (javadoc-add-artifacts
-        [commons-lang commons-lang "2.6"]
-  	  	[com.alibaba dubbo "2.8.4"]
-        [com.daanhealth ncl-services-api "1.0.1-SNAPSHOT"])
+  	  ; (javadoc-add-artifacts
+     ;    [commons-lang commons-lang "2.6"]
+  	  ; 	[com.alibaba dubbo "2.8.4"]
+     ;    [com.daanhealth ncl-services-api "1.0.1-SNAPSHOT"])
   	  )
   	  ))
 

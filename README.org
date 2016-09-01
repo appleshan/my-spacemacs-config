@@ -55,5 +55,7 @@ Hacking 始于 2012 年。2015 年爱上 Spacemacs :smile:
    所以，对于 Vim 党来说会比较友好一点。
 
 3. 我的配置用了很长时间了，相信你也会喜欢的。
+* 安装 SourceCodePro 字体
+下载地址：https://github.com/adobe-fonts/source-code-pro/releases
 
 * Happy Hacking:smile:
