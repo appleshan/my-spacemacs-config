@@ -9,6 +9,14 @@
 ;;
 ;;; License: GPLv3
 
+;; dir
+(spacemacs/set-leader-keys "drd" 'counsel-goto-recent-directory)
+(spacemacs/set-leader-keys "drf" 'counsel-find-file-recent-directory)
+(spacemacs/set-leader-keys "dt" 'neotree-dir)
+
+;; bash
+(spacemacs/set-leader-keys "sh" 'counsel-yank-bash-history)
+
 (global-set-key (kbd "M-/") 'company-complete)
 
 (global-set-key (kbd "C-\\") 'appleshan/evil-toggle-input-method)
@@ -47,11 +55,6 @@
 
 ;; search
 (define-key global-map (kbd "C-s") 'my-swiper-search)
-
-;; dir
-(spacemacs/set-leader-keys "drd" 'counsel-goto-recent-directory)
-(spacemacs/set-leader-keys "drf" 'counsel-find-file-recent-directory)
-(spacemacs/set-leader-keys "dt" 'neotree-dir)
 
 ;; Local Variables:
 ;; coding: utf-8
