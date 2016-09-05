@@ -45,6 +45,14 @@
 
 (global-set-key (kbd "C-h j") 'javadoc-lookup)
 
+;; search
+(define-key global-map (kbd "C-s") 'my-swiper-search)
+
+;; dir
+(spacemacs/set-leader-keys "drd" 'counsel-goto-recent-directory)
+(spacemacs/set-leader-keys "drf" 'counsel-find-file-recent-directory)
+(spacemacs/set-leader-keys "dt" 'neotree-dir)
+
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: nil

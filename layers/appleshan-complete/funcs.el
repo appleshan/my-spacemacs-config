@@ -29,8 +29,6 @@
       (call-interactively
         (if p #'spacemacs/swiper-region-or-symbol
           #'swiper))))
-
-  (define-key global-map (kbd "C-s") 'my-swiper-search)
   )
 
 (with-eval-after-load 'ivy
@@ -55,8 +53,6 @@
                              (ivy-read (format "Bash history:") collection))))
         (kill-new val)
         (message "%s => kill-ring" val))))
-
-  (spacemacs/set-leader-keys "sh" 'counsel-yank-bash-history)
 
   (defun my-find-file-in-git-repo (repo)
     (if (file-directory-p repo)
@@ -97,9 +93,6 @@
       (ivy-read "directories:" collection
                 :action 'my-find-file-in-git-repo
                 :caller 'counsel-find-file-recent-directory)))
-
-  (spacemacs/set-leader-keys "fdr" 'counsel-goto-recent-directory)
-  (spacemacs/set-leader-keys "fdfr" 'counsel-find-file-recent-directory)
 )
 
 ;; Local Variables:

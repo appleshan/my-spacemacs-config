@@ -57,15 +57,14 @@
 
 (defun appleshan-java/init-javadoc-lookup ()
   (use-package javadoc-lookup
-  	:config
-  	(progn
-  	  ; (javadoc-add-roots "/usr/share/doc/openjdk-8-jdk/api")
-  	  ; (javadoc-add-artifacts
-     ;    [commons-lang commons-lang "2.6"]
-  	  ; 	[com.alibaba dubbo "2.8.4"]
-     ;    [com.daanhealth ncl-services-api "1.0.1-SNAPSHOT"])
-  	  )
-  	  ))
+    :config
+    (progn
+      ; (javadoc-add-roots "/usr/share/doc/openjdk-8-jdk/api")
+      ; (javadoc-add-artifacts
+      ;   [commons-lang commons-lang "2.6"]
+      ;   [com.alibaba dubbo "2.8.4"]
+      ;   [com.daanhealth ncl-services-api "1.0.1-SNAPSHOT"])
+      )))
 
 (defun appleshan-java/init-mvn ()
   (use-package mvn))

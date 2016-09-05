@@ -436,9 +436,6 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-  (spacemacs/declare-prefix "d" "dash/zeal")
-  (spacemacs/declare-prefix "fd" "dir")
-
   ;; {{ 解决 org 表格里面中英文对齐的问题
   ;; 字体大小：[ 12 14 ], [ 13 16 ]
   (when (configuration-layer/layer-usedp 'chinese)
