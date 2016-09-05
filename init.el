@@ -111,10 +111,7 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be install and loaded.
-   dotspacemacs-excluded-packages '(
-                                    ; magit-gh-pulls
-                                    ; magit-gitflow 
-                                    ac-ispell
+   dotspacemacs-excluded-packages '(ac-ispell
                                     ace-jump-helm-line
                                     ace-jump-mode
                                     ; ace-pinyin
@@ -163,7 +160,6 @@ values."
                                     linum-relative
                                     livid-mode
                                     lorem-ipsum
-                                    ; neotree
                                     open-junk-file
                                     orgit
                                     orglue

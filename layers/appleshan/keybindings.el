@@ -15,7 +15,7 @@
 (spacemacs/set-leader-keys "dt" 'neotree-dir)
 
 ;; bash
-(spacemacs/set-leader-keys "sh" 'counsel-yank-bash-history)
+(spacemacs/set-leader-keys "ash" 'counsel-yank-bash-history)
 
 (global-set-key (kbd "M-/") 'company-complete)
 
