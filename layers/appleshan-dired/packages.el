@@ -12,9 +12,8 @@
 (setq appleshan-dired-packages
     '(
       (dired :location built-in)
-      dired-k
-      dired-sort
-      peep-dired
+      ;; dired-k
+      ;; dired-sort
       ))
 
 ;; List of packages to exclude.
@@ -68,42 +67,36 @@
         :mode dired-mode
         :bindings
         "I"   'dired-omit-mode
-        "DEL" 'vinegar/up-directory
+        (kbd "DEL") 'vinegar/up-directory
+        "O" 'dired/open-in-external-app
+        "S" 'dired/rsync
+        "z" 'dired/get-size
         )
     )))
 
-(defun appleshan-dired/init-dired-k ()
-  "Git status in dired."
-  (use-package dired-k
-    :defer t
-    :init (require 'dired-k)
-    :config
-    (progn
-      ;; always execute dired-k when dired buffer is opened
-      (add-hook 'dired-initial-position-hook 'dired-k)
-      (add-hook 'dired-after-readin-hook #'dired-k-no-revert)
+; (defun appleshan-dired/init-dired-k ()
+;   "Git status in dired."
+;   (use-package dired-k
+;     :defer t
+;     :init (require 'dired-k)
+;     :config
+;     (progn
+;       ;; always execute dired-k when dired buffer is opened
+;       (add-hook 'dired-initial-position-hook 'dired-k)
+;       (add-hook 'dired-after-readin-hook #'dired-k-no-revert)
 
-      (evilified-state-evilify-map dired-mode-map
-        :mode dired-mode
-        :bindings
-        "K" 'dired-k)
-      )))
+;       (evilified-state-evilify-map dired-mode-map
+;         :mode dired-mode
+;         :bindings
+;         "K" 'dired-k)
+;       )))
 
-(defun appleshan-dired/init-dired-sort ()
-  (use-package dired-sort
-    :defer t
-    :init (require 'dired-sort)
-    :config
-    (add-hook 'dired-mode-hook 'appleshan//dired-sort-hook)))
-
-(defun appleshan-dired/init-peep-dired ()
-  "preview files in dired"
-  (use-package peep-dired
-    :defer t
-    :commands (peep-dired-next-file
-               peep-dired-prev-file)
-    :bind (:map dired-mode-map
-                ("P" . peep-dired))))
+; (defun appleshan-dired/init-dired-sort ()
+;   (use-package dired-sort
+;     :defer t
+;     :init (require 'dired-sort)
+;     :config
+;     (add-hook 'dired-mode-hook 'appleshan//dired-sort-hook)))
 
 ;; Local Variables:
 ;; coding: utf-8

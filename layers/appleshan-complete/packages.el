@@ -68,7 +68,7 @@
     (evilified-state-evilify ivy-occur-mode ivy-occur-mode-map)
   ))
 
-(defun appleshan-programming/post-init-yasnippet ()
+(defun appleshan-complete/post-init-yasnippet ()
   (with-eval-after-load 'yasnippet
     (set-face-background 'secondary-selection "gray")
     (setq-default yas-prompt-functions '(yas-ido-prompt yas-dropdown-prompt))

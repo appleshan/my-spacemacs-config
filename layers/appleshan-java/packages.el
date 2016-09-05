@@ -15,6 +15,7 @@
     '(
       (ajoke :location local)
       ; (flycheck-java :location local)
+      (flycheck-infer :location local)
       javadoc-lookup
       mvn
       ))
@@ -41,6 +42,18 @@
 ;                   ))
 ;       )
 ;     ))
+
+(defun appleshan-java/init-flycheck-infer ()
+  (use-package flycheck-infer
+    :defer t
+    :init
+    (progn
+      (add-hook 'java-mode-hook
+                (lambda ()
+                  (require 'flycheck-infer)
+                  ))
+      )
+    ))
 
 (defun appleshan-java/init-javadoc-lookup ()
   (use-package javadoc-lookup

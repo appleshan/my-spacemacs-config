@@ -41,7 +41,7 @@ values."
      ivy           ; spacemacs develop branch
      ; spacemacs-ivy ; spacemacs master branch
      (auto-completion :variables
-                      auto-completion-enable-help-tooltip 'manual
+                      auto-completion-enable-help-tooltip nil ; 'manual
                       auto-completion-enable-sort-by-usage t
                       auto-completion-enable-snippets-in-popup t ; Adding yas-snippets
                       auto-completion-tab-key-behavior 'complete
@@ -74,14 +74,13 @@ values."
      prodigy  ;; 使用 Prodigy 在 Emacs 中管理外部服务
      (restclient :variables
                  restclient-use-org nil)
-     ; semantic
      (syntax-checking :variables
                       syntax-checking-enable-by-default nil
                       syntax-checking-enable-tooltips nil)
      version-control
 
      ;; --- Major Mode ---
-     docker
+     ; docker ; BUG: 
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
      markdown
@@ -112,28 +111,41 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be install and loaded.
-   dotspacemacs-excluded-packages '(ac-ispell
+   dotspacemacs-excluded-packages '(
+                                    ; magit-gh-pulls
+                                    ; magit-gitflow 
+                                    ac-ispell
                                     ace-jump-helm-line
                                     ace-jump-mode
                                     ; ace-pinyin
                                     auto-complete
+                                    auto-dictionary
+                                    clean-aindent-mode
+                                    company-quickhelp
                                     coffee-mode
                                     define-word
                                     evil-args
+                                    evil-ediff
                                     ;; disable it for lispy-mode
                                     ;;https://github.com/abo-abo/lispy/issues/137
                                     ; evil-escape
                                     evil-exchange
                                     evil-indent-plus
+                                    ; evil-lisp-state
                                     evil-mc
                                     evil-tutor
                                     evil-unimpaired
+                                    ; eyebrowse
                                     fancy-battery
                                     ; find-by-pinyin-dired
                                     fish-mode
                                     flx-ido
                                     gh-md
-                                    ; google-translate
+                                    git-gutter
+                                    git-gutter+
+                                    git-gutter-fringe
+                                    git-gutter-fringe+
+                                    google-translate
                                     helm-company
                                     helm-c-yasnippet
                                     helm-make
@@ -143,6 +155,9 @@ values."
                                     helm-spacemacs-help
                                     helm-swoop
                                     helm-themes
+                                    highlight-indentation
+                                    hl-anything
+                                    hydra
                                     ido-vertical-mode
                                     leuven-theme
                                     linum-relative
@@ -158,6 +173,7 @@ values."
                                     org-repo-todo
                                     org-timer
                                     rainbow-delimiters
+                                    skewer-mode
                                     smartparens
                                     smeargle
                                     smex
@@ -408,6 +424,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; BUG : https://github.com/syl20bnr/spacemacs/issues/2705
   (setq tramp-ssh-controlmaster-options
     "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+
+  (setq yas-snippet-dirs nil)
   )
 
 (defun dotspacemacs/user-config ()
@@ -448,7 +466,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (dockerfile-mode docker tablist docker-tramp javadoc-lookup mvn ledger-mode flycheck-ledger imenu-list xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help helm-gitignore helm-flyspell packed tiny flyspell-correct-ivy flyspell-correct discover-my-major auto-dictionary f py-autopep8 elpy find-file-in-project popup spinner s hydra parent-mode flx iedit anzu evil goto-chg undo-tree highlight diminish projectile pkg-info epl bind-map bind-key async package-build restclient ob-http smartparens avy dash amd-mode makey helm puml-mode vdiff counsel swiper helm-core ivy ht peep-dired powerline visual-regexp-steroids visual-regexp stickyfunc-enhance srefactor zeal-at-point yaml-mode web-beautify tldr super-save smeargle rainbow-mode rainbow-identifiers pyvenv pytest pyenv-mode py-yapf prodigy pip-requirements paredit pangu-spacing org-projectile org-pomodoro alert log4e gntp org-password-manager org org-download mwim mmm-mode markdown-toc markdown-mode magit-gitflow magit-gh-pulls livid-mode skewer-mode simple-httpd live-py-mode lispy json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc ibuffer-projectile hy-mode htmlize highlight-escape-sequences gnuplot gitignore-mode github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh marshal logito pcache flycheck-pos-tip flycheck-package flycheck find-by-pinyin-dired fcitx evil-magit magit magit-popup git-commit with-editor engine-mode emoji-cheat-sheet-plus dired-sort dired-k dired+ diff-hl cython-mode counsel-dash helm-dash company-tern dash-functional tern company-statistics company-shell company-quickhelp company-emoji company-anaconda company color-identifiers-mode chinese-pyim chinese-pyim-basedict pos-tip calfw google-maps cal-china-x browse-kill-ring beacon seq bbdb-vcard bbdb auto-yasnippet yasnippet anaconda-mode pythonic ace-pinyin pinyinlib ace-jump-mode ws-butler window-numbering which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline smex restart-emacs request quelpa popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word counsel-projectile column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link))))
+    (git-gutter dumb-jump dockerfile-mode docker tablist docker-tramp javadoc-lookup mvn ledger-mode flycheck-ledger imenu-list xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help helm-gitignore helm-flyspell packed tiny flyspell-correct-ivy flyspell-correct discover-my-major auto-dictionary f py-autopep8 elpy find-file-in-project popup spinner s hydra parent-mode flx iedit anzu evil goto-chg undo-tree highlight diminish projectile pkg-info epl bind-map bind-key async package-build restclient ob-http smartparens avy dash amd-mode makey helm puml-mode vdiff counsel swiper helm-core ivy ht peep-dired powerline visual-regexp-steroids visual-regexp stickyfunc-enhance srefactor zeal-at-point yaml-mode web-beautify tldr super-save smeargle rainbow-mode rainbow-identifiers pyvenv pytest pyenv-mode py-yapf prodigy pip-requirements paredit pangu-spacing org-projectile org-pomodoro alert log4e gntp org-password-manager org org-download mwim mmm-mode markdown-toc markdown-mode magit-gitflow magit-gh-pulls livid-mode skewer-mode simple-httpd live-py-mode lispy json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc ibuffer-projectile hy-mode htmlize highlight-escape-sequences gnuplot gitignore-mode github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fringe-helper gist gh marshal logito pcache flycheck-pos-tip flycheck-package flycheck find-by-pinyin-dired fcitx evil-magit magit magit-popup git-commit with-editor engine-mode emoji-cheat-sheet-plus dired-sort dired-k dired+ diff-hl cython-mode counsel-dash helm-dash company-tern dash-functional tern company-statistics company-shell company-quickhelp company-emoji company-anaconda company color-identifiers-mode chinese-pyim chinese-pyim-basedict pos-tip calfw google-maps cal-china-x browse-kill-ring beacon seq bbdb-vcard bbdb auto-yasnippet yasnippet anaconda-mode pythonic ace-pinyin pinyinlib ace-jump-mode ws-butler window-numbering which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline smex restart-emacs request quelpa popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav define-word counsel-projectile column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -464,7 +482,7 @@ you should place your code here."
  '(org-level-6 ((t (:inherit outline-3 :height 1.0))))
  '(org-level-7 ((t (:inherit outline-3 :height 1.0))))
  '(org-level-8 ((t (:inherit outline-3 :height 1.0))))
- '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button))))))
+ '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button)))) t))
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: nil

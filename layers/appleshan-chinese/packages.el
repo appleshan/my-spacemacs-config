@@ -12,7 +12,7 @@
 (setq appleshan-chinese-packages
     '(
       cal-china-x
-      fcitx
+      ;; fcitx
       pangu-spacing
       ))
 

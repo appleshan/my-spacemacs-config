@@ -9,7 +9,7 @@
 ;;
 ;;; License: GPLv3
 
-(configuration-layer/declare-used-layers '(
+(configuration-layer/declare-layers '(
   appleshan-base
   appleshan-complete
   appleshan-dired
