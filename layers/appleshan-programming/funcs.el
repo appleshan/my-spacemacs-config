@@ -62,6 +62,22 @@
   (goto-char (point-min))
   (while (search-forward "\r" nil t) (replace-match "")))
 
+;; Notify that the compilation is finished
+; (defun notify-compilation-result(buffer msg)
+;   "Notify that the compilation is finished,
+; close the *compilation* buffer if the compilation is successful,
+; and set the focus back to Emacs frame"
+;   (if (string-match "^finished" msg)
+;     (progn
+;       (delete-windows-on buffer)
+;       (tooltip-show "\n Compilation Successful :-) \n "))
+;     (tooltip-show "\n Compilation Failed :-( \n "))
+;   (setq current-frame (car (car (cdr (current-frame-configuration)))))
+;   (select-frame-set-input-focus current-frame)
+;   )
+
+; (add-to-list 'compilation-finish-functions 'notify-compilation-result)
+
 ;;{{ 更好的 compile 命令
 ;; see https://github.com/lujun9972/emacs-document/blob/master/emacs-common/%E6%9B%B4%E5%A5%BD%E7%9A%84compile%E5%91%BD%E4%BB%A4.org
 ;; This gives a regular `compile-command' prompt.
