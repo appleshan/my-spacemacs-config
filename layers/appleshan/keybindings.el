@@ -54,6 +54,9 @@
 ;; search
 (define-key global-map (kbd "C-s") 'my-swiper-search)
 
+;; java
+; (define-key java-mode-map (kbd "M-i") 'java-imports-add-import-dwim)
+
 ; (global-set-key (kbd "C-h j") 'javadoc-lookup)
 ; (global-set-key [(f1)]      'javadoc-lookup)  ; F1 to lookup term on the configured Javadocs.
 ; (global-set-key [(meta f1)] 'javadoc-help)    ; meta-F1 to bring up the Javadoc-help menu to set up Javadocs.

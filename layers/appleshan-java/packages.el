@@ -13,20 +13,40 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq appleshan-java-packages
     '(
-      (javax-mode :location local)
-      (javarun :location local)
-      project-explorer
+      eclim
+      (flycheck-eclim :location local)
+      ; (javax-mode :location local)
+      ; (javarun :location local)
+      (java-file-create :location local)
+      java-imports
+      ; project-explorer
       ; (ajoke :location local)
       ; (flycheck-java :location local)
       ; (flycheck-infer :location local)
-      ; (javadochelp :location local)
-      ; javadoc-lookup
       ; log4j-mode
       mvn
       ))
 
 ;; List of packages to exclude.
 (setq appleshan-java-excluded-packages '())
+
+(defun appleshan-java/post-init-eclim ()
+  (setq ;; Specify the workspace to use by default
+        eclimd-default-workspace "~/workspace/yunkang-service-workspace/"
+        eclim-eclipse-dirs "/opt/develop/java/eclipse-jee-neon/eclipse"
+        eclim-executable "/opt/develop/java/eclipse-jee-neon/eclipse/eclim"))
+
+(defun appleshan-java/init-flycheck-eclim ()
+  (use-package flycheck-eclim
+    :defer t
+    :init
+    (progn
+      (add-hook 'java-mode-hook
+                (lambda ()
+                  (require 'flycheck-eclim)
+                  ))
+      )
+    ))
 
 (defun appleshan-java/init-javax-mode ()
   (use-package javax-mode
@@ -47,6 +67,24 @@
     :defer t
     :init (require 'javarun)
     ))
+
+(defun appleshan-java/init-java-file-create ()
+  (use-package java-file-create
+    :defer t
+    :init (require 'java-file-create)
+    ))
+
+(defun appleshan-java/init-java-imports ()
+  (use-package java-imports
+    :defer t
+    :init (require 'java-imports)
+    :config
+    (progn
+      ;; See customization below for where to put java imports
+      (setq java-imports-find-block-function 'java-imports-find-place-sorted-block)
+
+      (add-hook 'java-mode-hook 'java-imports-scan-file)
+      )))
 
 (defun appleshan-java/init-project-explorer ()
   (use-package project-explorer
@@ -85,20 +123,6 @@
                   ))
       )
     ))
-
-(defun appleshan-java/init-javadochelp ()
-  (use-package javadochelp))
-
-(defun appleshan-java/init-javadoc-lookup ()
-  (use-package javadoc-lookup
-    :config
-    (progn
-      ; (javadoc-add-roots "/usr/share/doc/openjdk-8-jdk/api")
-      ; (javadoc-add-artifacts
-      ;   [commons-lang commons-lang "2.6"]
-      ;   [com.alibaba dubbo "2.8.4"]
-      ;   [com.daanhealth ncl-services-api "1.0.1-SNAPSHOT"])
-      )))
 
 (defun appleshan-java/init-log4j-mode ()
   (use-package log4j-mode
