@@ -126,7 +126,11 @@ Position the cursor at its beginning, according to the current mode."
   (when (> (buffer-size) 500000)
     (progn
       (fundamental-mode)
-      (hl-line-mode -1))))
+      (hl-line-mode -1)))
+  (if (and (executable-find "wc")
+           (> (string-to-number (shell-command-to-string (format "wc -l %s" (buffer-file-name))))
+              5000))
+      (linum-mode -1)))
 
 (add-hook 'find-file-hook 'appleshan-base/check-large-file)
 
