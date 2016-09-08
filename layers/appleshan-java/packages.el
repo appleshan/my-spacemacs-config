@@ -14,11 +14,11 @@
 (setq appleshan-java-packages
     '(
       eclim
-      (flycheck-eclim :location local)
-      ; (javax-mode :location local)
-      ; (javarun :location local)
+      ; (flycheck-eclim :location local)
       (java-file-create :location local)
       java-imports
+      (java-sort-imports :location local)
+      ; (javarun :location local)
       ; project-explorer
       ; (ajoke :location local)
       ; (flycheck-java :location local)
@@ -30,11 +30,21 @@
 ;; List of packages to exclude.
 (setq appleshan-java-excluded-packages '())
 
+;; https://github.com/ervandew/eclim.git
+;; java -Dvim.skip=true -Declipse.home=/opt/eclipse -jar eclim_2.6.0.jar install
+
 (defun appleshan-java/post-init-eclim ()
   (setq ;; Specify the workspace to use by default
-        eclimd-default-workspace "~/workspace/yunkang-service-workspace/"
+        eclimd-default-workspace "~/workspace/yunkang-service-workspace"
         eclim-eclipse-dirs "/opt/develop/java/eclipse-jee-neon/eclipse"
-        eclim-executable "/opt/develop/java/eclipse-jee-neon/eclipse/eclim"))
+        eclim-executable "/opt/develop/java/eclipse-jee-neon/eclipse/eclim")
+  (setq eclimd-executable "/opt/develop/java/eclipse-jee-neon/eclipse/eclimd")
+  (setq eclim-autoupdate-problems nil))
+
+; (defun appleshan-java/init-eclim-java-run ()
+;   (use-package eclim-java-run
+;     :defer t
+;     :init (require 'eclim-java-run)))
 
 (defun appleshan-java/init-flycheck-eclim ()
   (use-package flycheck-eclim
@@ -43,24 +53,12 @@
     (progn
       (add-hook 'java-mode-hook
                 (lambda ()
+                  (use-package eclim)
                   (require 'flycheck-eclim)
+                  (flycheck-eclim-setup)
                   ))
       )
     ))
-
-(defun appleshan-java/init-javax-mode ()
-  (use-package javax-mode
-    :defer t
-    :init
-    (progn
-      ;; Set up ENV variables to have the same as bash
-      (when (file-exists-p "~/.bash_profile")
-        (setenv "JAVA_HOME" (shell-command-to-string "echo -n $JAVA_HOME"))
-        (setenv "PATH" (shell-command-to-string "echo -n $PATH")))
-      (setq jx/ecj-path "~/bin/develop/java/ecj-4.5.1.jar")
-
-      (require 'javax-mode)
-    )))
 
 (defun appleshan-java/init-javarun ()
   (use-package javarun
@@ -80,11 +78,14 @@
     :init (require 'java-imports)
     :config
     (progn
-      ;; See customization below for where to put java imports
-      (setq java-imports-find-block-function 'java-imports-find-place-sorted-block)
-
       (add-hook 'java-mode-hook 'java-imports-scan-file)
       )))
+
+(defun appleshan-java/init-java-sort-imports ()
+  (use-package java-sort-imports
+    :defer t
+    :init (require 'java-sort-imports)
+    ))
 
 (defun appleshan-java/init-project-explorer ()
   (use-package project-explorer
@@ -99,18 +100,18 @@
     ; :init (require 'ajoke)
     ))
 
-; (defun appleshan-java/init-flycheck-java ()
-;   (use-package flycheck-java
-;     :defer t
-;     :init
-;     (progn
-;       (add-hook 'java-mode-hook
-;                 (lambda ()
-;                   (setq flycheck-java-ecj-jar-path "/home/apple/bin/develop/java/ecj-4.5.1.jar")
-;                   (require 'flycheck-java)
-;                   ))
-;       )
-;     ))
+(defun appleshan-java/init-flycheck-java ()
+  (use-package flycheck-java
+    :defer t
+    :init
+    (progn
+      (add-hook 'java-mode-hook
+                (lambda ()
+                  (setq flycheck-java-ecj-jar-path "/home/apple/bin/develop/java/ecj-4.5.1.jar")
+                  (require 'flycheck-java)
+                  ))
+      )
+    ))
 
 (defun appleshan-java/init-flycheck-infer ()
   (use-package flycheck-infer

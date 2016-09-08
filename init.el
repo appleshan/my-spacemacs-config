@@ -68,11 +68,11 @@ values."
      ;; --- programming tool layers ---
      (dash :variables
            helm-dash-docset-newpath "~/.local/share/Zeal/docsets/")
-     gtags
+     ; gtags
      (git :variables
           git-magit-status-fullscreen t)
      github
-     imenu-list
+     imenu-list ;; To get the outline for the current file
      prodigy  ;; 使用 Prodigy 在 Emacs 中管理外部服务
      (restclient :variables
                  restclient-use-org nil)
