@@ -9,6 +9,8 @@
 ;;
 ;;; License: GPLv3
 
+(define-key global-map (kbd "<f8>") 'appleshan/show-current-buffer-major-mode)
+
 ;; dir
 (spacemacs/set-leader-keys "drd" 'counsel-goto-recent-directory)
 (spacemacs/set-leader-keys "drf" 'counsel-find-file-recent-directory)

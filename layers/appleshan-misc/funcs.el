@@ -119,6 +119,10 @@
                       (setq i (+ 32 i)) i (single-key-description i)))
       (setq i (- i 96))))))
 
+(defun appleshan/show-current-buffer-major-mode ()
+  (interactive)
+  (describe-variable 'major-mode))
+
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: nil

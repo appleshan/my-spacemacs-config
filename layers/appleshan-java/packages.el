@@ -18,7 +18,7 @@
       (java-file-create :location local)
       java-imports
       (java-sort-imports :location local)
-      ; (javarun :location local)
+      (javarun :location local)
       ; project-explorer
       ; (ajoke :location local)
       ; (flycheck-java :location local)
@@ -34,12 +34,12 @@
 ;; java -Dvim.skip=true -Declipse.home=/opt/eclipse -jar eclim_2.6.0.jar install
 
 (defun appleshan-java/post-init-eclim ()
-  (setq ;; Specify the workspace to use by default
-        eclimd-default-workspace "~/workspace/yunkang-service-workspace"
+  (setq eclim-autoupdate-problems nil
         eclim-eclipse-dirs "/opt/develop/java/eclipse-jee-neon/eclipse"
-        eclim-executable "/opt/develop/java/eclipse-jee-neon/eclipse/eclim")
-  (setq eclimd-executable "/opt/develop/java/eclipse-jee-neon/eclipse/eclimd")
-  (setq eclim-autoupdate-problems nil))
+        eclim-executable   "/opt/develop/java/eclipse-jee-neon/eclipse/eclim"
+        eclimd-executable  "/opt/develop/java/eclipse-jee-neon/eclipse/eclimd"
+        ;; Specify the workspace to use by default
+        eclimd-default-workspace "/home/apple/workspace/yunkang-service-workspace"))
 
 ; (defun appleshan-java/init-eclim-java-run ()
 ;   (use-package eclim-java-run
