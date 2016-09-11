@@ -38,9 +38,9 @@
                    "%b"))))
 
 ;; Transparency by default
-(set-frame-parameter (selected-frame) 'alpha
-                     (cons dotspacemacs-active-transparency
-                           dotspacemacs-inactive-transparency))
+; (set-frame-parameter (selected-frame) 'alpha
+;                      (cons dotspacemacs-active-transparency
+;                            dotspacemacs-inactive-transparency))
 
 (add-hook 'prog-mode-hook 'linum-mode)
 

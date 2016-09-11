@@ -457,9 +457,6 @@ you should place your code here."
 (setq custom-file (expand-file-name "local/custom.el" dotspacemacs-directory))
 (load custom-file 'no-error 'no-message)
 
-(setq theme-file (expand-file-name "local/theme.el" dotspacemacs-directory))
-(load theme-file 'no-error 'no-message)
-
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: nil
