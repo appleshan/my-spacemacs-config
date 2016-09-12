@@ -14,15 +14,12 @@
 (setq appleshan-java-packages
     '(
       eclim
+      (eclim-java-run :location local) ; in eclim
       ; (flycheck-eclim :location local)
-      (java-file-create :location local)
-      java-imports
-      (java-sort-imports :location local)
-      (javarun :location local)
-      ; project-explorer
-      ; (ajoke :location local)
       ; (flycheck-java :location local)
       ; (flycheck-infer :location local)
+      ; project-explorer
+      ; (ajoke :location local)
       ; log4j-mode
       mvn
       ))
@@ -41,10 +38,10 @@
         ;; Specify the workspace to use by default
         eclimd-default-workspace "/home/apple/workspace/yunkang-service-workspace"))
 
-; (defun appleshan-java/init-eclim-java-run ()
-;   (use-package eclim-java-run
-;     :defer t
-;     :init (require 'eclim-java-run)))
+(defun appleshan-java/init-eclim-java-run ()
+  (use-package eclim-java-run
+    :defer t
+    :init (require 'eclim-java-run)))
 
 (defun appleshan-java/init-flycheck-eclim ()
   (use-package flycheck-eclim
@@ -58,46 +55,6 @@
                   (flycheck-eclim-setup)
                   ))
       )
-    ))
-
-(defun appleshan-java/init-javarun ()
-  (use-package javarun
-    :defer t
-    :init (require 'javarun)
-    ))
-
-(defun appleshan-java/init-java-file-create ()
-  (use-package java-file-create
-    :defer t
-    :init (require 'java-file-create)
-    ))
-
-(defun appleshan-java/init-java-imports ()
-  (use-package java-imports
-    :defer t
-    :init (require 'java-imports)
-    :config
-    (progn
-      (add-hook 'java-mode-hook 'java-imports-scan-file)
-      )))
-
-(defun appleshan-java/init-java-sort-imports ()
-  (use-package java-sort-imports
-    :defer t
-    :init (require 'java-sort-imports)
-    ))
-
-(defun appleshan-java/init-project-explorer ()
-  (use-package project-explorer
-    :defer t
-    :init (require 'project-explorer)
-    ))
-
-(defun appleshan-java/init-ajoke ()
-  (use-package ajoke
-    :load-path "/home/apple/repo/git/java/ajoke/etc/elisp/"
-    :defer t
-    ; :init (require 'ajoke)
     ))
 
 (defun appleshan-java/init-flycheck-java ()
@@ -123,6 +80,19 @@
                   (require 'flycheck-infer)
                   ))
       )
+    ))
+
+(defun appleshan-java/init-project-explorer ()
+  (use-package project-explorer
+    :defer t
+    :init (require 'project-explorer)
+    ))
+
+(defun appleshan-java/init-ajoke ()
+  (use-package ajoke
+    :load-path "/home/apple/repo/git/java/ajoke/etc/elisp/"
+    :defer t
+    ; :init (require 'ajoke)
     ))
 
 (defun appleshan-java/init-log4j-mode ()

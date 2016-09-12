@@ -9,20 +9,53 @@
 ;;
 ;;; License: GPLv3
 
-; mvn compile
+;; {{ maven
+;; mvn compile
 (defun mvn-compile-full ()
   (interactive)
   (mvn "dependency:sources"))
 
-; mvn package
+;; mvn package
 (defun mvn-package ()
   (interactive)
   (mvn "package"))
 
-; mvn install
+;; mvn install
 (defun mvn-install ()
   (interactive)
   (mvn "install"))
+;; }}
+
+(defun eclim/file-locate-ivy ()
+  (interactive)
+  (eclim/with-results hits ("locate_file" ("-p" "^.*$") ("-s" "workspace"))
+    (find-file
+      (ivy-completing-read "Select file:"
+        (mapcar (lambda (hit) (assoc-default 'path hit)) hits)))))
+
+;; {{ show documentation
+(defun eclim//show-postip (doc)
+  ;; TODO(jaigupta): Check if we can make use of the links in docs.
+  (pos-tip-show (assoc-default 'text doc)))
+
+;; Show a small java doc at point without opening a new buffer.
+(defun eclim/java-show-documentation-for-current-element-postip ()
+  (interactive)
+    (let ((symbol (symbol-at-point)))
+      (if symbol
+          (let ((bounds (bounds-of-thing-at-point 'symbol))
+                (window-config (current-window-configuration)))
+            (eclim/with-results doc ("java_element_doc"
+                                     ("-p" (eclim--project-name))
+                                     "-f"
+                                     ("-l" (- (cdr bounds) (car bounds)))
+                                     ("-o" (save-excursion
+                                             (goto-char (car bounds))
+                                             (eclim--byte-offset))))
+              (eclim//show-postip doc)))
+
+        (message "No element found at point."))))
+;; }}
 
 ; java run Main()
 (defun java-run-standalone ()
