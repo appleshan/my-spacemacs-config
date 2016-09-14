@@ -243,8 +243,9 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 12
+   dotspacemacs-default-font '(;"Source Code Pro"
+                               "mononoki"
+                               :size 13
                                :weight normal
                                :width normal
                                :powerline-scale 1.2)
@@ -433,19 +434,23 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-
-  ;; {{ 解决 org 表格里面中英文对齐的问题
-  ;; 字体大小：[ 12 14 ], [ 13 16 ]
-  (when (configuration-layer/layer-usedp 'chinese)
-    (when (and (spacemacs/system-is-linux) window-system)
-      (spacemacs//set-monospaced-font "Source Code Pro" "文泉驿等宽微米黑" 12 14)))
-  ;; }}
-
   (setq url-proxy-services
    '(("no_proxy" . "^\\(localhost\\|10.*\\|192.168.*\\|elpa.zilongshanren.com\\)")
      ("http" . "127.0.0.1:18080")
      ("https" . "127.0.0.1:18080")
      ("socks5" . "127.0.0.1:18080")))
+
+  ;; {{ 解决 org 表格里面中英文对齐的问题
+  ;; 字体大小：
+  ;; Source Code Pro : [ 12 14 ], [ 13 16 ]
+  ;; mononoki        : [ 12 13 ], [ 13 14 ]
+  (when (configuration-layer/layer-usedp 'chinese)
+    (when (and (spacemacs/system-is-linux) window-system)
+      (spacemacs//set-monospaced-font
+        ; "Source Code Pro"
+        "mononoki"
+        "文泉驿等宽微米黑" 13 14)))
+  ;; }}
 
   (spacemacs|diminish which-key-mode)
   (spacemacs|diminish spacemacs-whitespace-cleanup-mode)
