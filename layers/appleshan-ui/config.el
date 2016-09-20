@@ -37,10 +37,11 @@
                    (abbreviate-file-name (buffer-file-name))
                    "%b"))))
 
-;; Transparency by default
-; (set-frame-parameter (selected-frame) 'alpha
-;                      (cons dotspacemacs-active-transparency
-;                            dotspacemacs-inactive-transparency))
+;; Experimenting with transparency
+; (let ((tp (cons dotspacemacs-active-transparency
+;                 dotspacemacs-inactive-transparency)))
+;   (push `(alpha . ,tp) default-frame-alist)
+;   (set-frame-parameter (selected-frame) 'alpha tp))
 
 (add-hook 'prog-mode-hook 'linum-mode)
 
@@ -89,6 +90,29 @@
            (unless (member major-mode linum-mode-inhibit-modes-list)
              ad-do-it))
 (ad-activate 'linum-on)
+
+;; UI设置
+;; more useful frame title, that show either a file or a
+;; buffer name (if the buffer isn't visiting a file)
+(define-fringe-bitmap 'right-curly-arrow
+  [#b00000000
+   #b00000000
+   #b00000000
+   #b00000000
+   #b01110000
+   #b00010000
+   #b00010000
+   #b00000000])
+
+(define-fringe-bitmap 'left-curly-arrow
+  [#b00000000
+   #b00001000
+   #b00001000
+   #b00001110
+   #b00000000
+   #b00000000
+   #b00000000
+   #b00000000])
 
 ;; Local Variables:
 ;; coding: utf-8

@@ -19,6 +19,7 @@
       evil-escape
       flyspell-correct
       multiple-cursors
+      neotree
       tiny
       ; vlf
       ))
@@ -194,6 +195,14 @@
            ("s->" . mc/unmark-next-like-this)
            ("s-<" . mc/unmark-previous-like-this)
            ("C-c C-s-." . mc/mark-all-like-this))))
+
+(defun appleshan-misc/post-init-neotree ()
+  (use-package neotree
+    :defer t
+    :config
+    (progn
+      (setq neo-smart-open t)
+      (setq projectile-switch-project-action 'neotree-projectile-action))))
 
 (defun appleshan-misc/init-tiny ()
   (use-package tiny

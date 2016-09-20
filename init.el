@@ -37,26 +37,42 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
 
-     ;; --- Auto Complete ---
-     ivy           ; spacemacs develop branch
-     ; spacemacs-ivy ; spacemacs master branch
-     (auto-completion :variables
-                      auto-completion-enable-help-tooltip nil ; 'manual
-                      auto-completion-enable-sort-by-usage t
-                      auto-completion-enable-snippets-in-popup t ; Adding yas-snippets
-                      auto-completion-tab-key-behavior 'complete
-                      :disabled-for org markdown)
-     ;; auto-complete layer 在 orgmode 中会引发很多问题，所以在 org 中禁用 company 补全
-
-     ;; --- UI ---
+     ;; --- General layers ---
+     better-defaults
+     (chinese :variables
+              chinese-enable-fcitx t)
      (colors :variables
              colors-colorize-identifiers t
              colors-enable-nyan-cat-progress-bar nil)
+     ;; deft  ;; Quick Note Taking
+     ; finance
+     (ibuffer :variables
+              ibuffer-group-buffers-by 'projects)
+     search-engine
+     (spell-checking :variables
+                     spell-checking-enable-by-default nil)
 
-     ;; --- Better Editor ---
-     better-defaults
+     ;; --- Vim layers ---
+     ;; ranger 与 vinegar 不能共存
+     ; ranger
+     (vinegar :variables
+              vinegar-reuse-dired-buffer t)
+     vim-empty-lines
 
-     ;; --- programming language layers ---
+     ;; --- Auto Complete layers ---
+     ivy           ; spacemacs develop branch
+     ; spacemacs-ivy ; spacemacs master branch
+     (auto-completion :variables
+                      auto-completion-enable-help-tooltip 'manual
+                      auto-completion-enable-sort-by-usage t
+                      auto-completion-enable-snippets-in-popup t ; Adding yas-snippets
+                      ; auto-completion-return-key-behavior nil
+                      auto-completion-tab-key-behavior 'complete
+                      auto-completion-private-snippets-directory "~/.spacemacs.d/snippets/"
+                      :disabled-for erc org markdown)
+     ;; auto-complete layer 在 orgmode 中会引发很多问题，所以在 org 中禁用 company 补全
+
+     ;; --- Programming and markup languages layers ---
      emacs-lisp
      ; html
      java
@@ -64,10 +80,13 @@ values."
      ; shell
      shell-scripts
      yaml
+     markdown
+     org
 
-     ;; --- programming tool layers ---
+     ;; --- Programming tool layers ---
      (dash :variables
            helm-dash-docset-newpath "~/.local/share/Zeal/docsets/")
+     ; docker ; BUG: 
      ; gtags
      (git :variables
           git-magit-status-fullscreen t)
@@ -81,28 +100,7 @@ values."
                       syntax-checking-enable-tooltips nil)
      version-control
 
-     ;; --- Major Mode ---
-     ; docker ; BUG: 
-     (ibuffer :variables
-              ibuffer-group-buffers-by 'projects)
-     markdown
-     org
-     search-engine
-
-     ;; ranger 与 vinegar 不能共存
-     ; ranger
-     (vinegar :variables
-              vinegar-reuse-dired-buffer t)
-
-     ;; --- Minor Mode ---
-     (chinese :variables
-              chinese-enable-fcitx t)
-     ;; deft  ;; Quick Note Taking
-     ; finance
-     (spell-checking :variables
-                     spell-checking-enable-by-default nil)
-
-     ;; --- private layers ---
+     ;; --- Private layers ---
      appleshan
      )
    ;; List of additional packages that will be installed without being
@@ -176,7 +174,7 @@ values."
                                     smeargle
                                     smex
                                     ;; smooth-scrolling
-                                    spacemacs-theme
+                                    ; spacemacs-theme
                                     spinner
                                     vi-tilde-fringe
                                     volatile-highlights)
@@ -399,15 +397,18 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ; (setq debug-on-error t
   ;       debug-on-signal nil
   ;       debug-on-quit nil)
-
   ; (defvar stack-trace-on-error t)
 
+  ; (setq configuration-layer--elpa-archives
+  ;       '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
+  ;         ("org-cn"   . "https://elpa.zilongshanren.com/org/")
+  ;         ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")
+  ;         ))
+
   (setq configuration-layer--elpa-archives
-        '(;("melpa-stable-cn" . "http://elpa.zilongshanren.com/melpa-stable/")
-          ("melpa-cn" . "http://elpa.zilongshanren.com/melpa/")
-          ("org-cn"   . "http://elpa.zilongshanren.com/org/") ; Org-mode's repository
-          ("gnu-cn"   . "http://elpa.zilongshanren.com/gnu/")
-          ))
+        '(("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+          ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+          ("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
 
   ;; Dropbox directory
   (defconst user-dropbox-directory
@@ -434,6 +435,8 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (setq byte-compile-warnings nil)
+
   (setq url-proxy-services
    '(("no_proxy" . "^\\(localhost\\|10.*\\|192.168.*\\|elpa.zilongshanren.com\\)")
      ("http" . "127.0.0.1:18080")

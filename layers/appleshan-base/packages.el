@@ -23,6 +23,7 @@
       (profiler :location built-in)
       (whitespace :location built-in)
       (calendar :location built-in)
+      (ibuffer :location built-in)
       ))
 
 ;; List of packages to exclude.
@@ -178,6 +179,9 @@
       ;; First day of the week
       (setq calendar-week-start-day 0) ; 0:Sunday, 1:Monday
       )))
+
+(defun appleshan-base/post-init-ibuffer ()
+  (setq ibuffer-show-empty-filter-groups nil))
 
 ;; Local Variables:
 ;; coding: utf-8

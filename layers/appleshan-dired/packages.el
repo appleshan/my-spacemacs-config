@@ -24,9 +24,6 @@
     :defer t
     :config
     (progn
-      (when (fboundp 'global-dired-hide-details-mode)
-        (global-dired-hide-details-mode -1))
-
       ;; allow dired to be able to delete or copy a whole dir.
       (setq dired-recursive-copies  'always) ; "always" means no asking
       (setq dired-recursive-deletes 'top)    ; "top" means ask once for top level directory

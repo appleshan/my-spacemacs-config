@@ -123,6 +123,12 @@
   (interactive)
   (describe-variable 'major-mode))
 
+;; 逗号后面自动加空格
+(global-set-key (kbd ",")
+                #'(lambda ()
+                    (interactive)
+                    (insert ", ")))
+
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: nil

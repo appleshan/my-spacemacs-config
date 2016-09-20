@@ -105,6 +105,7 @@
 (defun appleshan-programming/post-init-magit ()
   (with-eval-after-load 'magit
     (add-to-list 'magit-no-confirm 'stage-all-changes)
+    (define-key magit-mode-map "@" 'appleshan/magit-branch-pull-request)
     (define-key magit-log-mode-map (kbd "W") 'magit-copy-section-value)
     (define-key magit-status-mode-map (kbd "s-1") 'magit-jump-to-unstaged)
     (define-key magit-status-mode-map (kbd "s-2") 'magit-jump-to-untracked)
