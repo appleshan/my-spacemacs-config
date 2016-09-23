@@ -11,12 +11,12 @@
 
 ;; 让 emacs 自动給 script 加上可执行权限
 ;; 保存时,检查文件的第一行是否包含#!,若包含则给文件添加执行权限
-(defun appleshan-programming/maybe-make-executable ()
+(defun appleshan/maybe-make-executable ()
   "Maybe make file executable unless it is a backup file."
   (unless (backup-file-name-p buffer-file-name)
     (executable-make-buffer-file-executable-if-script-p)))
 
-(add-hook 'after-save-hook 'appleshan-programming/maybe-make-executable)
+(add-hook 'after-save-hook 'appleshan/maybe-make-executable)
 
 ;; add auto format paste code
 (dolist (command '(yank yank-pop))
@@ -32,7 +32,7 @@
            (let ((mark-even-if-inactive transient-mark-mode))
              (indent-region (region-beginning) (region-end) nil))))))
 
-(defun appleshan-programming/vcs-project-root ()
+(defun appleshan/vcs-project-root ()
   "Return the project root for current buffer."
   (let ((directory default-directory))
     (or (locate-dominating-file directory ".git")

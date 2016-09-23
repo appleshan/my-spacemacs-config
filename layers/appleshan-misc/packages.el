@@ -11,7 +11,6 @@
 
 (setq appleshan-misc-packages
     '(
-      ; password-genarator
       bbdb-vcard
       browse-kill-ring
       discover-my-major
@@ -26,9 +25,6 @@
 
 ;; List of packages to exclude.
 (setq appleshan-misc-excluded-packages '())
-
-; (defun appleshan-misc/init-password-genarator ()
-;   (use-package password-genarator))
 
 (defun appleshan-misc/init-bbdb-vcard ()
   (use-package bbdb-vcard
@@ -197,12 +193,7 @@
            ("C-c C-s-." . mc/mark-all-like-this))))
 
 (defun appleshan-misc/post-init-neotree ()
-  (use-package neotree
-    :defer t
-    :config
-    (progn
-      (setq neo-smart-open t)
-      (setq projectile-switch-project-action 'neotree-projectile-action))))
+  (setq projectile-switch-project-action 'neotree-projectile-action))
 
 (defun appleshan-misc/init-tiny ()
   (use-package tiny

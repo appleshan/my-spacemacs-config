@@ -139,8 +139,19 @@ Position the cursor at its beginning, according to the current mode."
   "Create parent directory if not exists while visiting file."
   (unless (file-exists-p filename)
     (let ((dir (file-name-directory filename)))
-      (unless (file-exists-p dir)
-        (make-directory dir t)))))
+      (when dir
+        (unless (file-exists-p dir)
+          (make-directory dir t))))))
+
+;; cleanup recent files
+(defun appleshan/cleanup-recentf-and-known-projects ()
+  (progn
+    (and (fboundp 'recentf-cleanup)
+         (recentf-cleanup))
+    (and (fboundp 'projectile-cleanup-known-projects)
+         (projectile-cleanup-known-projects))))
+
+(add-hook 'kill-emacs-hook #'appleshan/cleanup-recentf-and-known-projects)
 
 ;; remove all the duplicated emplies in current buffer
 (defun appleshan/single-lines-only ()

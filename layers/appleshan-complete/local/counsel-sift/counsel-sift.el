@@ -3,11 +3,11 @@
 ;; Copyright (C) 2016 Apple Shan
 
 ;; Author: Apple Shan <apple.shan@gmail.com>
-;; URL: https://github.com/appleshan/my-spacemacs-config
-;; Package-Version: 20160809.0001
+;; URL: https://github.com/appleshan/emacs-counsel-sift
+;; Package-Version: 20160822.0001
 ;; Created: 2016-08-09
 ;; Keywords: search, sift
-;; Version: 0.1
+;; Version: 0.2
 ;; Package-Requires: ((counsel "0.8.0"))
 
 ;; This file is NOT part of GNU Emacs.
@@ -35,6 +35,10 @@
 
 (require 'counsel)
 
+(defvar sift-home-directory
+  (expand-file-name "~/bin/sift/")
+  "Sift home directory (~/bin/sift/).")
+
 (defvar counsel-sift--search-commands
   '(("sift" . "sift --no-color --no-group -nr %s %S ."))
   "Alist of search commands and their corresponding commands
@@ -48,9 +52,15 @@ than this amount.")
 
 (defvar counsel-sift--search-cmd)
 
+(defvar spacemacs--counsel-sift-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "<f3>") 'spacemacs//counsel-save-in-buffer)
+    map))
+
 (defun counsel-sift//make-counsel-search-function (tool)
   (lexical-let ((base-cmd
-                 (cdr (assoc-string tool counsel-sift--search-commands))))
+                 (concat sift-home-directory 
+                   (cdr (assoc-string tool counsel-sift--search-commands)))))
     (lambda (string &optional _pred &rest _unused)
       "Grep in the current directory for STRING."
       (if (< (length string) 3)
@@ -69,7 +79,10 @@ than this amount.")
           nil)))))
 
 (defun counsel-sift/counsel-search
-    (&optional tools use-initial-input initial-directory)
+    (&optional
+      tool
+      use-initial-input
+      initial-directory)
   "Search using the first available tool in TOOLS. Default tool
 to try is grep. If INPUT is non nil, use the region or the symbol
 around point as the initial input. If DIR is non nil start in
@@ -81,15 +94,11 @@ that directory."
                                  (buffer-substring-no-properties
                                   (region-beginning) (region-end))
                                (thing-at-point 'symbol t))
-                           ""))
-          (tool (catch 'tool
-                  (dolist (tool tools)
-                    (when (and (assoc-string tool counsel-sift--search-commands)
-                               (executable-find tool))
-                      (throw 'tool tool)))
-                  (throw 'tool "grep"))))
-    (if (not (executable-find "sift"))
-        (message "Can't find %s command" (car (car counsel-sift--search-commands)))
+                           "")))
+
+      (if (not (file-exists-p (concat sift-home-directory "sift")))
+        (message "Can't find sift command"))
+
       (setq counsel--git-grep-dir
             (or initial-directory
                 (read-directory-name "Start from directory: ")))
@@ -111,53 +120,27 @@ that directory."
        :history 'counsel-git-grep-history
        :action #'counsel-git-grep-action
        :caller 'counsel-sift/counsel-search
-       :keymap spacemacs--counsel-map
+       :keymap spacemacs--counsel-sift-map
        :unwind (lambda ()
                  (counsel-delete-process)
-                 (swiper--cleanup))))))
+                 (swiper--cleanup)))))
 
-;; Define search functions for each tool
-(cl-loop
-   for (tools tool-name) in '(((list "sift") "sift"))
-   do
-   (eval
-    `(progn
-       (defun ,(intern (format "spacemacs/search-%s" tool-name)) ()
-         ,(format
-           "Use `counsel-sift/counsel-search' to search in the current
- directory with %s." (if (string= tool-name "auto")
-                         "a tool selected from `dotspacemacs-search-tools'."
-                       tool-name))
-         (interactive)
-         (counsel-sift/counsel-search ,tools))
-       (defun ,(intern (format "spacemacs/search-%s-region-or-symbol"
-                               tool-name)) ()
-         ,(format
-           "Use `counsel-sift/counsel-search' to search for
- the selected region or the symbol around point in the current
- directory with %s." (if (string= tool-name "auto")
-                         "a tool selected from `dotspacemacs-search-tools'."
-                       tool-name))
-         (interactive)
-         (counsel-sift/counsel-search ,tools t))
-       (defun ,(intern (format "spacemacs/search-project-%s" tool-name)) ()
-         ,(format
-           "Use `counsel-sift/counsel-search' to search in the current
- project with %s." (if (string= tool-name "auto")
-                       "a tool selected from `dotspacemacs-search-tools'."
-                     tool-name))
-         (interactive)
-         (counsel-sift/counsel-search ,tools nil (projectile-project-root)))
-       (defun ,(intern (format "spacemacs/search-project-%s-region-or-symbol"
-                               tool-name)) ()
-         ,(format
-           "Use `counsel-sift/counsel-search' to search for
- the selected region or the symbol around point in the current
- project with %s." (if (string= tool-name "auto")
-                       "a tool selected from `dotspacemacs-search-tools'."
-                     tool-name))
-         (interactive)
-         (counsel-sift/counsel-search ,tools t (projectile-project-root))))))
+
+;; Define search functions for sift tool
+
+; spacemacs/search-sift
+(defun spacemacs/search-sift ()
+  "Use `counsel-sift/counsel-search' to search in the current
+directory with sift."
+  (interactive)
+  (counsel-sift/counsel-search "sift"))
+
+; spacemacs/search-project-%s
+(defun spacemacs/search-project-sift ()
+  "Use `counsel-sift/counsel-search' to search in the current
+project with sift."
+  (interactive)
+  (counsel-sift/counsel-search "sift" nil (projectile-project-root)))
 
 (provide 'counsel-sift)
 

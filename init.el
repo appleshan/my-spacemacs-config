@@ -229,7 +229,7 @@ values."
    ;; Possible values for list-type are:
    ;; `recents' `bookmarks' `projects' `agenda' `todos'."
    dotspacemacs-startup-lists '((recents . 5)
-                                (projects . 10))
+                                (projects . 20))
    ;; Default major mode of the scratch buffer (default `text-mode')
    dotspacemacs-scratch-mode 'text-mode
    ;; List of themes, the first of the list is loaded when spacemacs starts.
@@ -241,12 +241,11 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '(;"Source Code Pro"
-                               "mononoki"
+   dotspacemacs-default-font '("Source Code Pro"
                                :size 13
                                :weight normal
                                :width normal
-                               :powerline-scale 1.2)
+                               :powerline-scale 1.0)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -399,16 +398,17 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;       debug-on-quit nil)
   ; (defvar stack-trace-on-error t)
 
+  (setq byte-compile-warnings nil)
+
   ; (setq configuration-layer--elpa-archives
-  ;       '(("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
-  ;         ("org-cn"   . "https://elpa.zilongshanren.com/org/")
-  ;         ("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")
-  ;         ))
+  ;       '(("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")
+  ;         ("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
+  ;         ("org-cn"   . "https://elpa.zilongshanren.com/org/")))
 
   (setq configuration-layer--elpa-archives
-        '(("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-          ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-          ("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
+        '(("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+          ("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+          ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 
   ;; Dropbox directory
   (defconst user-dropbox-directory
@@ -435,10 +435,9 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setq byte-compile-warnings nil)
 
   (setq url-proxy-services
-   '(("no_proxy" . "^\\(localhost\\|10.*\\|192.168.*\\|elpa.zilongshanren.com\\)")
+   '(("no_proxy" . "^\\(localhost\\|10.*\\|192.168.*\\|elpa.zilongshanren.com\\|mirrors.tuna.tsinghua.edu.cn\\)")
      ("http" . "127.0.0.1:18080")
      ("https" . "127.0.0.1:18080")
      ("socks5" . "127.0.0.1:18080")))
@@ -450,17 +449,18 @@ you should place your code here."
   (when (configuration-layer/layer-usedp 'chinese)
     (when (and (spacemacs/system-is-linux) window-system)
       (spacemacs//set-monospaced-font
-        ; "Source Code Pro"
-        "mononoki"
-        "文泉驿等宽微米黑" 13 14)))
+        "Source Code Pro"
+        ; "mononoki"
+        "文泉驿等宽微米黑" 13 16)))
   ;; }}
 
   (spacemacs|diminish which-key-mode)
   (spacemacs|diminish spacemacs-whitespace-cleanup-mode)
 
   ;; restore the desktop
-  (desktop-save-mode t)
-  (desktop-read))
+  ; (desktop-save-mode t)
+  ; (desktop-read)
+)
 
 (setq custom-file (expand-file-name "local/custom.el" dotspacemacs-directory))
 (load custom-file 'no-error 'no-message)

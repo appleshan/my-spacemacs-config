@@ -78,6 +78,10 @@
 
 (setq url-show-status nil)
 
+;; Use sh-mode when opening `.zsh' files, and when opening Prezto runcoms.
+(dolist (pattern '("torrc\\'"))
+(add-to-list 'auto-mode-alist (cons pattern 'conf-mode)))
+
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: nil

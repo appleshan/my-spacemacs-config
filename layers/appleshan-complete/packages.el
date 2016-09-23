@@ -17,7 +17,7 @@
 
 (setq appleshan-complete-packages
     '(
-      ; (counsel-sift :location local)
+      (counsel-sift :location local)
       company
       swiper
       yasnippet
@@ -26,17 +26,15 @@
 ;; List of packages to exclude.
 (setq appleshan-complete-excluded-packages '())
 
-; (defun appleshan-complete/init-counsel-sift ()
-;   (use-package counsel-sift
-;     :config
-;     (progn
-;       (spacemacs/set-leader-keys
-;         "osf" 'spacemacs/search-sift
-;         "osF" 'spacemacs/search-sift-region-or-symbol
-;         "osp" 'spacemacs/search-project-sift
-;         "osP" 'spacemacs/search-project-sift-region-or-symbol
-;         )
-;       )))
+(defun appleshan-complete/init-counsel-sift ()
+  (use-package counsel-sift
+    :config
+    (progn
+      (setq sift-home-directory (expand-file-name "/home/apple/bin/sift/"))
+      (spacemacs/set-leader-keys
+        "sgf" 'spacemacs/search-sift
+        "sgp" 'spacemacs/search-project-sift)
+      )))
 
 ;; company-mode
 (defun appleshan-complete/post-init-company ()
