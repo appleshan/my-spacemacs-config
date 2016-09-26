@@ -13,7 +13,7 @@
     '(
       cal-china-x
       ;; fcitx
-      pangu-spacing
+      ;; pangu-spacing
       ))
 
 ;; List of packages to exclude.

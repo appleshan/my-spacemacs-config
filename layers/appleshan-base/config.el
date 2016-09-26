@@ -17,11 +17,6 @@
 (setq user-full-name "Apple Shan"
       user-mail-address "apple.shan@gmail.com")
 
-;; Startup screen in spacemacs/init()
-; (setq inhibit-startup-screen t)
-; (setq initial-buffer-choice nil)
-; (setq initial-scratch-message ";; This is *scratch* buffer.\n\n")
-
 (setq auto-coding-regexp-alist
       (delete (rassoc 'utf-16be-with-signature auto-coding-regexp-alist)
               (delete (rassoc 'utf-16le-with-signature auto-coding-regexp-alist)
@@ -78,8 +73,10 @@
 
 (setq url-show-status nil)
 
-;; Use sh-mode when opening `.zsh' files, and when opening Prezto runcoms.
-(dolist (pattern '("torrc\\'"))
+;; Use sh-mode when opening `*rc' files, and when opening Prezto runcoms.
+(dolist (pattern '(
+	"torrc\\'"
+	))
 (add-to-list 'auto-mode-alist (cons pattern 'conf-mode)))
 
 ;; Local Variables:

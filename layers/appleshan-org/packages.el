@@ -22,11 +22,11 @@
       (org-crypt :location built-in)
       (org-faces :location built-in)
       ; (org-list :location built-in)
-      org-bullets
+      ;; org-bullets
       org-password-manager
       ; org-pomodoro
       (org-src :location built-in)
-      ; (ob-core :location built-in)
+      (ob-core :location built-in)
       (ob-ditaa :location built-in)
       (ob-plantuml :location built-in)
       (ob-ledger :location built-in) ; 必须 init，才能使用
@@ -718,29 +718,29 @@
                   ("PHONE" :foreground "forest green" :weight bold))))
 ))
 
-; (defun appleshan-org/init-org-list ()
-;   (progn
-;     (require 'org-list)
+(defun appleshan-org/init-org-list ()
+  (progn
+    (require 'org-list)
 
-;     ;; 允许使用字母作为list bullet
-;     (setq org-list-allow-alphabetical t)
+    ;; 允许使用字母作为list bullet
+    (setq org-list-allow-alphabetical t)
 
-;     ;; 自动切换list bullet
-;     ;; 若每个层级的list都使用同样的list bullet,则可能造成难于区分哪个list entry
-;     ;; 是属于哪个层级的. org-mode提供了当改变list层级时自动改变list bullet的机制
-;     (setq org-list-demote-modify-bullet '(("+" . "-")
-;                                           ("*" . "-")
-;                                           ("1." . "-")
-;                                           ("1)" . "-")
-;                                           ("A)" . "-")
-;                                           ("B)" . "-")
-;                                           ("a)" . "-")
-;                                           ("b)" . "-")
-;                                           ("A." . "-")
-;                                           ("B." . "-")
-;                                           ("a." . "-")
-;                                           ("b." . "-")))
-;     ))
+    ;; 自动切换list bullet
+    ;; 若每个层级的list都使用同样的list bullet,则可能造成难于区分哪个list entry
+    ;; 是属于哪个层级的. org-mode提供了当改变list层级时自动改变list bullet的机制
+    (setq org-list-demote-modify-bullet '(("+" . "-")
+                                          ("*" . "-")
+                                          ("1." . "-")
+                                          ("1)" . "-")
+                                          ("A)" . "-")
+                                          ("B)" . "-")
+                                          ("a)" . "-")
+                                          ("b)" . "-")
+                                          ("A." . "-")
+                                          ("B." . "-")
+                                          ("a." . "-")
+                                          ("b." . "-")))
+    ))
 
 ;; 修改 org 文件中各层级的 headline 前显示的标志
 ;; 更好看的标题符号标记:

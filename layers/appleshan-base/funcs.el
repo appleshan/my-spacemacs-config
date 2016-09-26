@@ -23,6 +23,7 @@
 
 ;; This line has very bad performance lose!!!!!!!!!!!!!!!!!!!
 ;; (set-default 'imenu-auto-rescan t)
+(set-default 'imenu-auto-rescan nil)
 
 ;; https://www.reddit.com/r/emacs/comments/4c0mi3/the_biggest_performance_improvement_to_emacs_ive/
 (remove-hook 'find-file-hooks 'vc-find-file-hook)

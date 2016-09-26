@@ -152,7 +152,7 @@ values."
                                     helm-spacemacs-help
                                     helm-swoop
                                     helm-themes
-                                    ; highlight-indentation
+                                    highlight-indentation
                                     hl-anything
                                     hydra
                                     ido-vertical-mode
@@ -163,6 +163,7 @@ values."
                                     open-junk-file
                                     orgit
                                     orglue
+                                    org-bullets
                                     org-download
                                     org-present
                                     org-projectile
@@ -173,7 +174,7 @@ values."
                                     smartparens
                                     smeargle
                                     smex
-                                    ;; smooth-scrolling
+                                    smooth-scrolling
                                     ; spacemacs-theme
                                     spinner
                                     vi-tilde-fringe
@@ -437,10 +438,10 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
   (setq url-proxy-services
-   '(("no_proxy" . "^\\(localhost\\|10.*\\|192.168.*\\|elpa.zilongshanren.com\\|mirrors.tuna.tsinghua.edu.cn\\)")
-     ("http" . "127.0.0.1:18080")
-     ("https" . "127.0.0.1:18080")
-     ("socks5" . "127.0.0.1:18080")))
+        '(("no_proxy" . "^\\(localhost\\|10.*\\|192.168.*\\|elpa.zilongshanren.com\\|mirrors.tuna.tsinghua.edu.cn\\)")
+          ("http" . "127.0.0.1:18080")
+          ("https" . "127.0.0.1:18080")
+          ("socks5" . "127.0.0.1:18080")))
 
   ;; {{ 解决 org 表格里面中英文对齐的问题
   ;; 字体大小：
@@ -449,21 +450,19 @@ you should place your code here."
   (when (configuration-layer/layer-usedp 'chinese)
     (when (and (spacemacs/system-is-linux) window-system)
       (spacemacs//set-monospaced-font
-        "Source Code Pro"
-        ; "mononoki"
-        "文泉驿等宽微米黑" 13 16)))
+        "Source Code Pro" "文泉驿等宽微米黑" 13 16)))
   ;; }}
 
   (spacemacs|diminish which-key-mode)
   (spacemacs|diminish spacemacs-whitespace-cleanup-mode)
 
   ;; restore the desktop
-  ; (desktop-save-mode t)
-  ; (desktop-read)
+  (desktop-save-mode t)
+  (desktop-read)
 )
 
-(setq custom-file (expand-file-name "local/custom.el" dotspacemacs-directory))
-(load custom-file 'no-error 'no-message)
+; (setq custom-file (expand-file-name "local/custom.el" dotspacemacs-directory))
+; (load custom-file 'no-error 'no-message)
 
 ;; Local Variables:
 ;; coding: utf-8
