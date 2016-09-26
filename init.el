@@ -152,7 +152,7 @@ values."
                                     helm-spacemacs-help
                                     helm-swoop
                                     helm-themes
-                                    highlight-indentation
+                                    ; highlight-indentation
                                     hl-anything
                                     hydra
                                     ido-vertical-mode
@@ -400,15 +400,15 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   (setq byte-compile-warnings nil)
 
-  ; (setq configuration-layer--elpa-archives
-  ;       '(("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")
-  ;         ("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
-  ;         ("org-cn"   . "https://elpa.zilongshanren.com/org/")))
-
   (setq configuration-layer--elpa-archives
-        '(("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-          ("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-          ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
+        '(("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")
+          ("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
+          ("org-cn"   . "https://elpa.zilongshanren.com/org/")))
+
+  ; (setq configuration-layer--elpa-archives
+  ;       '(("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+  ;         ("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+  ;         ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
 
   ;; Dropbox directory
   (defconst user-dropbox-directory
