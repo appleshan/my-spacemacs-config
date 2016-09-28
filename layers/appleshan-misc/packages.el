@@ -153,8 +153,6 @@
 
     ;; in spacemacs, we always use evilify miscro state
     (evil-add-hjkl-bindings package-menu-mode-map 'emacs)
-    ;; Don't move back the cursor one position when exiting insert mode
-    (setq evil-move-cursor-back nil)
 
     (define-key evil-emacs-state-map (kbd "C-w") 'evil-delete-backward-word)
 

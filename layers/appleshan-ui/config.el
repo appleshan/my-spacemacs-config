@@ -91,6 +91,14 @@
              ad-do-it))
 (ad-activate 'linum-on)
 
+;; Change cursor color depending on mode
+(setq evil-emacs-state-cursor '("red" box))
+(setq evil-normal-state-cursor '("green" box))
+(setq evil-visual-state-cursor '("orange" box))
+(setq evil-insert-state-cursor '("red" bar))
+(setq evil-replace-state-cursor '("red" bar))
+(setq evil-operator-state-cursor '("red" hollow))
+
 ;; UI设置
 ;; more useful frame title, that show either a file or a
 ;; buffer name (if the buffer isn't visiting a file)

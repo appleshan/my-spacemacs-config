@@ -190,9 +190,10 @@
     ;; 这段代码将所有行中匹配指定正则表达式的内容都显示为一个Unicode的圆形符号,
     ;; 该段正则的意思是“以 1 个或多个破折号开头,紧接着是一个空格”.
     ;; 用星号和破折号来作为符号列表的标记挺好的, 但是使用一个真正的圆形符号来作标示也不错:
-    (font-lock-add-keywords 'org-mode
-      '(("^\\([-]\\) "
-      (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+    (font-lock-add-keywords
+     'org-mode
+     '(("^\\([-]\\) "
+        (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
     ;;}}
 
     ;;;;;;;;;;;;;;;;;;;;

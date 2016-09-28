@@ -73,6 +73,12 @@
 
 (setq url-show-status nil)
 
+(setq font-lock-support-mode 'jit-lock-mode)
+(setq jit-lock-stealth-time 16
+      jit-lock-defer-contextually t
+      jit-lock-stealth-nice 0.5)
+(setq-default font-lock-multiline t)
+
 ;; Use sh-mode when opening `*rc' files, and when opening Prezto runcoms.
 (dolist (pattern '(
 	"torrc\\'"

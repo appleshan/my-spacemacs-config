@@ -9,7 +9,7 @@
 ;;
 ;;; License: GPLv3
 
-;; 让 emacs 自动給 script 加上可执行权限
+;;{{ 让 emacs 自动給 script 加上可执行权限
 ;; 保存时,检查文件的第一行是否包含#!,若包含则给文件添加执行权限
 (defun appleshan/maybe-make-executable ()
   "Maybe make file executable unless it is a backup file."
@@ -17,6 +17,7 @@
     (executable-make-buffer-file-executable-if-script-p)))
 
 (add-hook 'after-save-hook 'appleshan/maybe-make-executable)
+;;}}
 
 ;; add auto format paste code
 (dolist (command '(yank yank-pop))

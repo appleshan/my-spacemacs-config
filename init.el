@@ -42,15 +42,15 @@ values."
      (chinese :variables
               chinese-enable-fcitx t)
      (colors :variables
-             colors-colorize-identifiers t
+             colors-colorize-identifiers 'variables
              colors-enable-nyan-cat-progress-bar nil)
      ;; deft  ;; Quick Note Taking
      ; finance
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
      search-engine
-     (spell-checking :variables
-                     spell-checking-enable-by-default nil)
+     ;; (spell-checking :variables
+     ;;                 spell-checking-enable-by-default nil)
 
      ;; --- Vim layers ---
      ;; ranger 与 vinegar 不能共存
@@ -425,6 +425,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; BUG : https://github.com/syl20bnr/spacemacs/issues/2705
   (setq tramp-ssh-controlmaster-options
     "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+  (setq tramp-use-ssh-controlmaster-options nil)
 
   (setq yas-snippet-dirs nil)
   )

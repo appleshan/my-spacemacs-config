@@ -1,0 +1,5 @@
+# name: org image actual width
+# key: image-width
+# --
+# -*- org-image-actual-width: nil; -*-
+$0
