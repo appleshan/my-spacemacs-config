@@ -14,7 +14,7 @@
 
 #+end_src
 
-:smile: Hacking 始于 2012 年。2015 年爱上 Spacemacs :sparkling_heart:
+Hacking 始于 2012 年。2015 年爱上 Spacemacs :smile: :sparkling_heart:
 
 我的 Spacemacs 配置一共有两部分：
 一个 .emacs.d 目录，是 Spacemacs 的原始代码，未做任何修改；
