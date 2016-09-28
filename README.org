@@ -24,7 +24,7 @@ Hacking 始于 2012 年。2015 年爱上 Spacemacs :smile: :sparkling_heart:
 [[./local/img/spacemacs-demo-1.png]]
 [[./local/img/spacemacs-demo-2.png]]
 
-* 使用方法
+* :beginner: 快速下载&使用
 #+BEGIN_SRC sh
   # clone spacemacs repo
   git clone https://github.com/syl20bnr/spacemacs.git ~/.emacs.d/
