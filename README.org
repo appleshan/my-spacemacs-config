@@ -1,4 +1,4 @@
-#+TITLE:Apple Shan 的 Emacs 配置
+#+TITLE:Apple Shan 的 Emacs 配置 :sparkles:
 #+begin_src :tangle no
       ___           ___           ___           ___           ___
      /\  \         /\__\         /\  \         /\  \         /\  \
@@ -58,4 +58,4 @@ Hacking 始于 2012 年。2015 年爱上 Spacemacs :smile: :sparkling_heart:
 * 安装 SourceCodePro 字体
 下载地址：https://github.com/adobe-fonts/source-code-pro/releases
 
-* Happy Hacking:smile:
+* Happy Hacking :smile:
