@@ -462,8 +462,8 @@ you should place your code here."
   (desktop-read)
 )
 
-; (setq custom-file (expand-file-name "local/custom.el" dotspacemacs-directory))
-; (load custom-file 'no-error 'no-message)
+(setq custom-file (expand-file-name "local/custom.el" dotspacemacs-directory))
+(load custom-file 'no-error 'no-message)
 
 ;; Local Variables:
 ;; coding: utf-8

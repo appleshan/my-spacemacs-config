@@ -76,6 +76,7 @@
  '(isearch ((((class color) (min-colors 88) (background dark)) (:background "brown" :foreground "white"))))
  '(isearch-fail ((((class color) (min-colors 88) (background dark)) (:background "red4" :foreground "white"))))
  '(italic ((t (:underline nil :slant normal))))
+ '(lazy-highlight ((((class color) (min-colors 88) (background dark)) (:background "grey20"))))
  '(match ((((class color) (min-colors 88) (background dark)) (:background "Black" :foreground "Grey70" :weight extra-bold))))
  '(message-header-subject ((t (:foreground "gold" :weight bold))))
  '(message-header-to ((t (:foreground "DarkRed" :weight bold))))
