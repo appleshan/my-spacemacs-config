@@ -32,9 +32,9 @@
 
 (defun appleshan-java/post-init-eclim ()
   (setq eclim-autoupdate-problems nil
-        eclim-eclipse-dirs "/opt/develop/java/eclipse-jee-neon/eclipse"
-        eclim-executable   "/opt/develop/java/eclipse-jee-neon/eclipse/eclim"
-        eclimd-executable  "/opt/develop/java/eclipse-jee-neon/eclipse/eclimd"
+        eclim-eclipse-dirs "/opt/eclipse-jee-neon/eclipse"
+        eclim-executable   "/opt/eclipse-jee-neon/eclipse/eclim"
+        eclimd-executable  "/opt/eclipse-jee-neon/eclipse/eclimd"
         ;; Specify the workspace to use by default
         eclimd-default-workspace "/home/apple/workspace/yunkang-service-workspace"))
 
