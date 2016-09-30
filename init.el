@@ -459,7 +459,7 @@ you should place your code here."
 
   ;; restore the desktop
   (desktop-save-mode t)
-  (desktop-read)
+  ; (desktop-read)
 )
 
 (setq custom-file (expand-file-name "local/custom.el" dotspacemacs-directory))
