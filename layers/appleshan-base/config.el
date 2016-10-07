@@ -81,7 +81,8 @@
 
 ;; Use sh-mode when opening `*rc' files, and when opening Prezto runcoms.
 (dolist (pattern '(
-	"torrc\\'"
+	".xprofile"
+	"torrc"
 	))
 (add-to-list 'auto-mode-alist (cons pattern 'conf-mode)))
 

@@ -102,7 +102,7 @@
   (use-package recentf
     :config
     (progn
-      (setq recentf-max-saved-items 60)
+      (setq recentf-max-saved-items 100)
       (dolist (item '("/\\.git/.*\\'" ; Git contents
                       "COMMIT_MSG"
                       "COMMIT_EDITMSG"
@@ -118,6 +118,7 @@
                       (expand-file-name spacemacs-cache-directory)
                       (expand-file-name my-org-gtd-directory) ; org-gtd files
                       "/.spacemacs.d/.cache/.*\\'"
+                      "/.spacemacs.d/snippets/.*\\'"
                       "/opt/emacs*/.*\\.el\\'"))
         (add-to-list 'recentf-exclude item))
     )))

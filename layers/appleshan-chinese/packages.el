@@ -13,7 +13,7 @@
     '(
       cal-china-x
       ;; fcitx
-      ;; pangu-spacing
+      pangu-spacing
       ))
 
 ;; List of packages to exclude.
@@ -77,24 +77,22 @@
 如果是启动之后再关闭的话就开的太慢了。"
   (use-package pangu-spacing
     :init
-    (global-pangu-spacing-mode -1)
-    (spacemacs|hide-lighter pangu-spacing-mode)
-    ;; Always insert `real' space in org-mode.
-    (add-hook 'org-mode-hook
-              '(lambda ()
-                 (set (make-local-variable 'pangu-spacing-real-insert-separtor) t)))
+    (progn
+      (global-pangu-spacing-mode -1)
+      (spacemacs|hide-lighter pangu-spacing-mode)
+      ;; Always insert `real' space in org-mode.
+      (add-hook 'org-mode-hook
+                '(lambda ()
+                   (set (make-local-variable 'pangu-spacing-real-insert-separtor) t)))
 
-    (defun enable-pangu-spacing-when-buffer-not-large ()
-      "when buffer is not large, turn on it"
-      (when (< (buffer-size) *large-buffer-threshold*)
-        (pangu-spacing-mode 1)))
+      (defun enable-pangu-spacing-when-buffer-not-large ()
+        "when buffer is not large, turn on it"
+        (when (< (buffer-size) *large-buffer-threshold*)
+          (pangu-spacing-mode 1)))
 
-    (dolist (i '(prog-mode-hook text-mode-hook))
-      (add-hook i 'enable-pangu-spacing-when-buffer-not-large))
-    ))
-
-(defun appleshan-chinese/post-init-pangu-spacing ()
-  (with-eval-after-load 'pangu-spacing
+      (dolist (i '(prog-mode-hook text-mode-hook))
+        (add-hook i 'enable-pangu-spacing-when-buffer-not-large)))
+    :config
     ;; add toggle options
     (spacemacs|add-toggle toggle-pangu-spaceing
       :status pangu-spacing-mode

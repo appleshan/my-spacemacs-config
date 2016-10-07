@@ -458,7 +458,7 @@ you should place your code here."
   (spacemacs|diminish spacemacs-whitespace-cleanup-mode)
 
   ;; restore the desktop
-  (desktop-save-mode t)
+  ; (desktop-save-mode t)
   ; (desktop-read)
 )
 
