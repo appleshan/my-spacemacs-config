@@ -63,6 +63,10 @@
 ;; Marking the *Messages* buffer as useful
 (push "\\*Messages\\*" spacemacs-useful-buffers-regexp)
 
+;; use aspell instead of ispell
+(setq ispell-program-name "aspell"
+      ispell-extra-args '("--sug-mode=ultra"))
+
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: nil

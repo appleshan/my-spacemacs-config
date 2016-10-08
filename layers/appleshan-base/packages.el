@@ -39,6 +39,7 @@
 
       (when (or window-system (locale-is-utf8-p))
         ;; 影响 chinese-pyim, 造成不能输入中文的故障
+        ;; set environment coding system
         ;; (set-language-environment "UTF-8")
 
         (set-buffer-file-coding-system 'utf-8-unix)

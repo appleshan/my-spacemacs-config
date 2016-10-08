@@ -20,7 +20,7 @@
   appleshan-python
   appleshan-java
   ; appleshan-javascript
-  ; appleshan-web
+  appleshan-web
   appleshan-lisp
   appleshan-misc
   ))

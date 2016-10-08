@@ -13,28 +13,26 @@
     '(
       css-mode
       impatient-mode
-      ; web-mode
+      web-mode
       ))
 
 ;; List of packages to exclude.
 (setq appleshan-web-excluded-packages '())
 
 (defun appleshan-web/post-init-css-mode ()
-  (with-eval-after-load 'css-mode
-    (dolist (hook '(css-mode-hook sass-mode-hook less-mode-hook))
-      (add-hook hook 'rainbow-mode))
+  (dolist (hook '(css-mode-hook sass-mode-hook less-mode-hook))
+    (add-hook hook 'rainbow-mode))
 
-    (defun css-imenu-make-index ()
-      (save-excursion
-        (imenu--generic-function '((nil "^ *\\([^ ]+\\) *{ *$" 1)))))
+  (defun css-imenu-make-index ()
+    (save-excursion
+      (imenu--generic-function '((nil "^ *\\([^ ]+\\) *{ *$" 1)))))
 
-    (add-hook 'css-mode-hook
-              (lambda ()
-                (setq imenu-create-index-function 'css-imenu-make-index)))
-    ))
+  (add-hook 'css-mode-hook
+            (lambda ()
+              (setq imenu-create-index-function 'css-imenu-make-index)))
+  )
 
 (defun appleshan-web/init-impatient-mode ()
-  "Initialize impatient mode"
   (use-package impatient-mode
     :init
     (progn
@@ -43,11 +41,12 @@
         "p" 'imp-visit-buffer)
       )))
 
-; (defun appleshan-web/post-init-web-mode ()
-;   (setq company-backends-web-mode '((company-dabbrev-code
-;                                      company-keywords
-;                                      company-etags)
-;                                     company-files company-dabbrev)))
+(defun appleshan-web/post-init-web-mode ()
+  (add-hook 'web-mode-hook 'appleshan/web-mode-setup)
+  (setq company-backends-web-mode '((company-dabbrev-code
+                                     company-keywords
+                                     company-etags)
+                                    company-files company-dabbrev)))
 
 ;; Local Variables:
 ;; coding: utf-8

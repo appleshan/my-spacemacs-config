@@ -13,6 +13,14 @@
   (when (eq this-command 'eval-expression)
     (lispy-mode 1)))
 
+(defun appleshan/remove-elc-on-save ()
+  "If you're saving an elisp file, likely the .elc is no longer valid."
+  (make-local-variable 'after-save-hook)
+  (add-hook 'after-save-hook
+            (lambda ()
+              (if (file-exists-p (concat buffer-file-name "c"))
+                  (delete-file (concat buffer-file-name "c"))))))
+
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: nil

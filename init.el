@@ -49,8 +49,8 @@ values."
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
      search-engine
-     ;; (spell-checking :variables
-     ;;                 spell-checking-enable-by-default nil)
+     (spell-checking :variables
+                     spell-checking-enable-by-default nil)
 
      ;; --- Vim layers ---
      ;; ranger 与 vinegar 不能共存
@@ -74,9 +74,9 @@ values."
 
      ;; --- Programming and markup languages layers ---
      emacs-lisp
-     ; html
+     html
      java
-     ; javascript
+     javascript
      ; shell
      shell-scripts
      yaml
@@ -448,6 +448,7 @@ you should place your code here."
   ;; 字体大小：
   ;; Source Code Pro : [ 12 14 ], [ 13 16 ]
   ;; mononoki        : [ 12 13 ], [ 13 14 ]
+  ;; Monaco          : [ 12 13 ], [ 13 14 ]
   (when (configuration-layer/layer-usedp 'chinese)
     (when (and (spacemacs/system-is-linux) window-system)
       (spacemacs//set-monospaced-font

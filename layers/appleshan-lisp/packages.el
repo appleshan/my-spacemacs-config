@@ -21,7 +21,10 @@
 (setq appleshan-lisp-excluded-packages '())
 
 (defun appleshan-lisp/post-init-emacs-lisp ()
-  (remove-hook 'emacs-lisp-mode-hook 'auto-compile-mode))
+  (remove-hook 'emacs-lisp-mode-hook 'auto-compile-mode)
+  (add-hook 'emacs-lisp-mode-hook 'appleshan/remove-elc-on-save)
+  (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+  (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode))
 
 (defun appleshan-lisp/init-lispy ()
   "Initialize lispy"

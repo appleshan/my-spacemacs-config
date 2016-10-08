@@ -31,12 +31,15 @@
 ;; java -Dvim.skip=true -Declipse.home=/opt/eclipse -jar eclim_2.6.0.jar install
 
 (defun appleshan-java/post-init-eclim ()
-  (setq eclim-autoupdate-problems nil
+  (setq ; eclim-auto-save t
+        eclim-autoupdate-problems nil
         eclim-eclipse-dirs "/opt/eclipse-jee-neon/eclipse"
-        eclim-executable   "/opt/eclipse-jee-neon/eclipse/eclim"
-        eclimd-executable  "/opt/eclipse-jee-neon/eclipse/eclimd"
+        eclim-executable (or (executable-find "eclim") "/opt/eclipse-jee-neon/eclipse/eclim")
+        eclimd-executable (or (executable-find "eclimd") "/opt/eclipse-jee-neon/eclipse/eclimd")
+        eclimd-wait-for-process nil
         ;; Specify the workspace to use by default
-        eclimd-default-workspace "/home/apple/workspace/yunkang-service-workspace"))
+        eclimd-default-workspace "/home/apple/workspace/yunkang-service-workspace")
+  )
 
 (defun appleshan-java/init-eclim-java-run ()
   (use-package eclim-java-run

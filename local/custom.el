@@ -1,6 +1,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Emacs 主题设置 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (set-face-attribute 'default nil :height 130)
-(set-fringe-mode '(1 . 1))              ;Make fringe mini size
+;; make the fringe thinner (default is 8 in pixels)
+;; make fringe mini size
+(set-fringe-mode '(1 . 1))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -9,10 +11,10 @@
  ;; If there is more than one, they won't work right.
  '(exec-path-from-shell-arguments (quote ("-l")))
  '(hl-paren-colors (quote ("Cyan" "Gold" "Red")))
- '(initial-frame-alist (quote ((fullscreen . maximized)))) ;; start maximized
+ '(initial-frame-alist (quote ((fullscreen . maximized))))
  '(package-selected-packages
    (quote
-    (editorconfig dired+ zeal-at-point yaml-mode ws-butler window-numbering which-key wgrep visual-regexp-steroids visual-regexp vdiff uuidgen use-package toc-org tldr tiny spaceline powerline restclient restart-emacs request rainbow-mode rainbow-identifiers py-autopep8 puml-mode prodigy popwin persp-mode pcre2el paredit paradox spinner pangu-spacing org-pomodoro alert log4e gntp org-plus-contrib org-password-manager org org-bullets ob-http neotree mwim mvn multiple-cursors move-text mmm-mode markdown-toc markdown-mode magit-gitflow magit-gh-pulls macrostep lispy zoutline link-hint ivy-hydra hydra info+ indent-guide imenu-list ibuffer-projectile hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-escape-sequences help-fns+ golden-ratio gnuplot gitignore-mode github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gist gh marshal logito pcache ht flyspell-correct-ivy flyspell-correct flycheck-pos-tip flycheck-package flycheck flx find-by-pinyin-dired fill-column-indicator fcitx eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-magit magit magit-popup git-commit with-editor evil-lisp-state smartparens evil-iedit-state iedit evil-escape evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight engine-mode elpy pyvenv highlight-indentation find-file-in-project elisp-slime-nav dumb-jump f discover-my-major makey diminish diff-hl counsel-projectile projectile pkg-info epl counsel-dash helm-dash dash-functional helm helm-core counsel swiper ivy company-statistics company-shell company-emacs-eclim eclim s company column-enforce-mode color-identifiers-mode chinese-pyim chinese-pyim-basedict popup pos-tip calfw google-maps cal-china-x browse-kill-ring bind-map bind-key bbdb-vcard bbdb auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed dash async aggressive-indent adaptive-wrap ace-window ace-pinyin pinyinlib ace-jump-mode ace-link avy quelpa package-build spacemacs-theme)))
+    (impatient-mode simple-httpd web-beautify json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc company-tern tern web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode haml-mode emmet-mode company-web web-completion-data editorconfig dired+ zeal-at-point yaml-mode ws-butler window-numbering which-key wgrep visual-regexp-steroids visual-regexp vdiff uuidgen use-package toc-org tldr tiny spaceline powerline restclient restart-emacs request rainbow-mode rainbow-identifiers py-autopep8 puml-mode prodigy popwin persp-mode pcre2el paredit paradox spinner pangu-spacing org-pomodoro alert log4e gntp org-plus-contrib org-password-manager org org-bullets ob-http neotree mwim mvn multiple-cursors move-text mmm-mode markdown-toc markdown-mode magit-gitflow magit-gh-pulls macrostep lispy zoutline link-hint ivy-hydra hydra info+ indent-guide imenu-list ibuffer-projectile hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-escape-sequences help-fns+ golden-ratio gnuplot gitignore-mode github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gist gh marshal logito pcache ht flyspell-correct-ivy flyspell-correct flycheck-pos-tip flycheck-package flycheck flx find-by-pinyin-dired fill-column-indicator fcitx eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-magit magit magit-popup git-commit with-editor evil-lisp-state smartparens evil-iedit-state iedit evil-escape evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight engine-mode elpy pyvenv highlight-indentation find-file-in-project elisp-slime-nav dumb-jump f discover-my-major makey diminish diff-hl counsel-projectile projectile pkg-info epl counsel-dash helm-dash dash-functional helm helm-core counsel swiper ivy company-statistics company-shell company-emacs-eclim eclim s company column-enforce-mode color-identifiers-mode chinese-pyim chinese-pyim-basedict popup pos-tip calfw google-maps cal-china-x browse-kill-ring bind-map bind-key bbdb-vcard bbdb auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed dash async aggressive-indent adaptive-wrap ace-window ace-pinyin pinyinlib ace-jump-mode ace-link avy quelpa package-build spacemacs-theme)))
  '(smiley-style (quote medium))
  '(term-default-bg-color "#000000")
  '(term-default-fg-color "#dddd00"))
@@ -21,6 +23,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ac-emacs-eclim-candidate-face ((t (:inherit ac-candidate-face))))
+ '(ac-emacs-eclim-selection-face ((t (:inherit ac-selection-face))))
  '(ac-menu-face ((t (:background "Grey10" :foreground "Grey40"))))
  '(ac-selection-face ((t (:background "darkred" :foreground "grey"))))
  '(ac-yasnippet-candidate-face ((t (:background "#191919" :foreground "#878787"))))
@@ -90,7 +94,7 @@
  '(org-level-7 ((t (:inherit outline-7 :foreground "khaki3"))))
  '(org-level-8 ((t (:inherit outline-8 :foreground "DarkSeaGreen"))))
  '(org-link ((((class color) (background dark)) (:foreground "Cyan"))))
- '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button)))) t)
+ '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button)))))
  '(org-special-keyword ((((class color) (min-colors 16) (background dark)) (:foreground "rosybrown1"))))
  '(org-todo ((t (:foreground "Red" :weight bold))))
  '(region ((((class color) (min-colors 88) (background dark)) (:background "green4" :foreground "black"))))

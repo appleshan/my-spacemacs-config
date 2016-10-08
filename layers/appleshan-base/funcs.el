@@ -113,8 +113,10 @@ Position the cursor at its beginning, according to the current mode."
       (indent-region (region-beginning) (region-end) nil)))
 
 ;; {{ 文件相关设置
-;; 不自动添加换行符到末尾, 有些情况会出现错误，如果需要手动添加
-(setq require-final-newline nil)
+;; always add new line to the end of a file
+(setq require-final-newline t)
+;; add no new lines when "arrow-down key" at the end of a buffer
+(setq next-line-add-newlines nil)
 
 ;; 在补全 buffer 时忽略大小写的差别
 (setq read-buffer-completion-ignore-case t)
@@ -122,7 +124,7 @@ Position the cursor at its beginning, according to the current mode."
 ;; 只有当打开的文件超过100MB时，才产生警告
 (setq large-file-warning-threshold 100000000)
 
-(defun appleshan-base/check-large-file ()
+(defun appleshan/check-large-file ()
   "improve the performance of opening large file."
   (when (> (buffer-size) 500000)
     (progn
@@ -133,7 +135,7 @@ Position the cursor at its beginning, according to the current mode."
               5000))
       (linum-mode -1)))
 
-(add-hook 'find-file-hook 'appleshan-base/check-large-file)
+(add-hook 'find-file-hook 'appleshan/check-large-file)
 
 (defadvice find-file (before make-directory-maybe
                              (filename &optional wildcards) activate)
@@ -162,6 +164,9 @@ Position the cursor at its beginning, according to the current mode."
   (while (re-search-forward "\\(^\\s-*$\\)\n" nil t)
     (replace-match "\n")
     (forward-char 1)))
+
+;; remove trailing whitespaces before save
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 ;; }}
 
 (defun appleshan/evil-quick-replace (beg end )

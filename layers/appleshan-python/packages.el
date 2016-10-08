@@ -17,6 +17,7 @@
       elpy ; Emacs Lisp Python Environment
       flycheck
       py-autopep8
+      ; pyvenv
       ))
 
 ;; List of packages to exclude.
@@ -50,6 +51,7 @@
     (progn
       (setq elpy-modules '(elpy-module-sane-defaults
                            elpy-module-eldoc
+                           elpy-module-highlight-indentation
                            elpy-module-pyvenv))
 
       (when (configuration-layer/layer-usedp 'auto-completion)
@@ -59,7 +61,11 @@
       ; (setq elpy-rpc-python-command "python3")
 
       (elpy-enable)
-      (elpy-use-ipython)
+      (setq elpy-rpc-backend "jedi")
+      (when (executable-find "ipython")
+        (elpy-use-ipython))
+
+      (define-key python-mode-map (kbd "RET") 'newline-and-indent)
       )
     :config
     (spacemacs|hide-lighter elpy-mode)))
@@ -78,6 +84,13 @@
       (setq py-autopep8-options '("--max-line-length=100"))
       (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
     )))
+
+; (defun appleshan-python/init-pyvenv ()
+;   (use-package pyvenv
+;     :defer t
+;     :init
+;     (progn
+;       )))
 
 ;; Local Variables:
 ;; coding: utf-8

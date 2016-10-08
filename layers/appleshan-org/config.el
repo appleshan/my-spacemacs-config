@@ -27,7 +27,7 @@
 (defvar org-tag-alist nil)
 
 ;; 让 ispell 跳过某段文本不做拼写检查
-(defun appleshan-org/org-ispell ()
+(defun appleshan/org-ispell ()
   "Configure `ispell-skip-region-alist' for `org-mode'."
   (make-local-variable 'ispell-skip-region-alist)
   (add-to-list 'ispell-skip-region-alist '(org-property-drawer-re))
@@ -35,7 +35,7 @@
   (add-to-list 'ispell-skip-region-alist '("=" "="))
   (add-to-list 'ispell-skip-region-alist '("^#\\+BEGIN_SRC" . "^#\\+END_SRC")))
 
-(add-hook 'org-mode-hook #'appleshan-org/org-ispell)
+(add-hook 'org-mode-hook #'appleshan/org-ispell)
 
 ;; icon
 (setq my-icon-dir (concat dotspacemacs-directory "local/icons/"))

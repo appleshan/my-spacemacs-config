@@ -134,8 +134,6 @@
         (setq-default js2-highlight-external-variables t)
         (setq-default js2-strict-trailing-comma-warning nil)
 
-        (add-hook 'web-mode-hook 'my-web-mode-indent-setup)
-
         (spacemacs/set-leader-keys-for-major-mode 'js2-mode
           "oi" 'my-toggle-web-indent)
         (spacemacs/set-leader-keys-for-major-mode 'js-mode

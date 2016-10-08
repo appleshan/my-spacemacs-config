@@ -1,7 +1,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Emacs 主题设置 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; @see https://www.emacswiki.org/emacs/LazyCatTheme.el
 (set-face-attribute 'default nil :height 130)
-(set-fringe-mode '(1 . 1))              ;Make fringe mini size
+;; make the fringe thinner (default is 8 in pixels)
+;; make fringe mini size
+(set-fringe-mode '(1 . 1))
 
 ;; 用户自定义变量
 (custom-set-variables
@@ -27,6 +29,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  ;; Auto-complete
+ '(ac-emacs-eclim-candidate-face ((t (:inherit ac-candidate-face))))
+ '(ac-emacs-eclim-selection-face ((t (:inherit ac-selection-face))))
  '(ac-menu-face ((t (:background "Grey10" :foreground "Grey40")))) ;菜单颜色
  '(ac-selection-face ((t (:background "darkred" :foreground "grey")))) ;选择颜色
  '(ac-yasnippet-candidate-face ((t (:background "#191919" :foreground "#878787"))))
