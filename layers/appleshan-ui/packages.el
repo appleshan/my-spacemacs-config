@@ -11,7 +11,7 @@
 
 (setq appleshan-ui-packages
     '(
-      ;; beacon
+      beacon
       hl-anything
       popwin
       visual-regexp
