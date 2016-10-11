@@ -302,6 +302,17 @@ prefix argument checkout branch instead of showing its log."
       (magit-run-git "checkout" branch)
     (apply #'magit-log (list branch) (magit-log-arguments))))
 
+; (require 'flycheck)
+; (flycheck-define-checker xml-xmllint
+;   "A XML syntax checker and validator using the xmllint utility.
+
+; The xmllint is part of libxml2, see URL
+; `http://www.xmlsoft.org/'."
+;   :command ("xmllint" "--noout" source)
+;   :error-patterns
+;   ((error line-start (file-name) ":" line ": " (message) line-end))
+;   :modes (xml-mode nxml-mode))
+
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: nil

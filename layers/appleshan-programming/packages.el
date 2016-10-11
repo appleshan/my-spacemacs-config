@@ -25,7 +25,6 @@
       paredit
       prodigy
       puml-mode
-      smartparens
       tldr
       vdiff
       zeal-at-point
@@ -181,37 +180,18 @@
       (load-file prodigy-service-file))
   ))
 
-;; TODO: slow!!!!
-(defun appleshan-programming/init-puml-mode ()
-  (use-package puml-mode
-    :defer t
-    :init
+(defun appleshan-programming/pre-init-puml-mode ()
+  (spacemacs|use-package-add-hook puml-mode
+    :post-config
     (progn
       (setq puml-plantuml-jar-path
         (concat user-home-directory "bin/develop/java/plantuml.jar"))
-      (puml-mode))
-    :config
-    (progn
-      ;; Enable puml-mode for PlantUML files
-      (add-to-list 'auto-mode-alist '("\\.puml\\'" . puml-mode))
-      (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . puml-mode))
     )))
 
-(defun appleshan-programming/post-init-smartparens ()
-  (use-package smartparens
-    :defer t
-    :init
-    (progn
-      (global-set-key (kbd "C-(") 'wrap-sexp-with-new-round-parens))
-    :config
-    (progn
-      (setq sp-highlight-pair-overlay nil)
-
-      (evil-define-key 'normal sp-keymap
-        (kbd ")>") 'sp-forward-slurp-sexp
-        (kbd ")<") 'sp-forward-barf-sexp
-        (kbd "(>") 'sp-backward-barf-sexp
-        (kbd "(<") 'sp-backward-slurp-sexp))))
+(defun appleshan-programming/post-init-puml-mode ()
+  ;; Enable puml-mode for PlantUML files
+  (add-to-list 'auto-mode-alist '("\\.puml\\'" . puml-mode))
+  (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . puml-mode)))
 
 (defun appleshan-programming/init-tldr ()
   (use-package tldr
@@ -229,10 +209,8 @@
 
 ;; 使用 zeal 查看 docset
 (defun appleshan-programming/post-init-zeal-at-point ()
-  (with-eval-after-load 'zeal-at-point
-    (add-hook 'python-mode-hook
-      (lambda () (setq zeal-at-point-docset "python 2")))
-    ))
+  (add-hook 'python-mode-hook
+    (lambda () (setq zeal-at-point-docset "python 2"))))
 
 ;; Local Variables:
 ;; coding: utf-8

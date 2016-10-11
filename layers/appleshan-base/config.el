@@ -31,6 +31,8 @@
 (delete-selection-mode t)            ; delete the selection with a key press
 ; (global-font-lock-mode t)            ;语法高亮
 (transient-mark-mode 1)              ;标记高亮
+
+;; @See https://emacs-china.org/t/smartparens-electri-pair-yasnippet/1326
 (electric-pair-mode t)
 ;; https://www.reddit.com/r/emacs/comments/4xhxfw/how_to_tune_the_behavior_of_eletricpairmode/
 (setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)

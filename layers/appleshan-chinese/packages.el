@@ -12,7 +12,6 @@
 (setq appleshan-chinese-packages
     '(
       cal-china-x
-      ;; fcitx
       pangu-spacing
       ))
 
@@ -66,10 +65,6 @@
             ))
       ;; 只显示我定制的节日
       (setq calendar-holidays holiday-holidays))))
-
-(defun appleshan-chinese/post-init-fcitx ()
-  (with-eval-after-load 'fcitx
-    (fcitx-aggressive-setup)))
 
 ;; 覆盖 Chinese Layer 的 init 方法
 (defun appleshan-chinese/init-pangu-spacing ()
