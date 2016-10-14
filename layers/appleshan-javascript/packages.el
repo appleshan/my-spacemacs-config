@@ -40,53 +40,51 @@
 ;       )))
 
 (defun appleshan-javascript/post-init-json-mode ()
-  (with-eval-after-load 'json-mode
-    (add-to-list 'auto-mode-alist '("\\.tern-project\\'" . json-mode))
-    (spacemacs/set-leader-keys-for-major-mode 'json-mode
-      "ti" 'my-toggle-web-indent)))
+  (add-to-list 'auto-mode-alist '("\\.tern-project\\'" . json-mode))
+  (spacemacs/set-leader-keys-for-major-mode 'json-mode
+    "ti" 'my-toggle-web-indent))
 
 (defun appleshan-javascript/post-init-js-doc ()
-  (with-eval-after-load 'js-doc
-    (setq js-doc-mail-address "apple.shan@gmail.com"
-          js-doc-author (format "Apple Shan <%s>" js-doc-mail-address)
-          js-doc-url "https://github.com/appleshan/"
-          js-doc-license "MIT")
+  (setq js-doc-mail-address "apple.shan@gmail.com"
+        js-doc-author (format "Apple Shan <%s>" js-doc-mail-address)
+        js-doc-url "https://github.com/appleshan/"
+        js-doc-license "MIT")
 
-    (defun my-js-doc-insert-function-doc-snippet ()
-      "Insert JsDoc style comment of the function with yasnippet."
-      (interactive)
+  (defun my-js-doc-insert-function-doc-snippet ()
+    "Insert JsDoc style comment of the function with yasnippet."
+    (interactive)
 
-      (with-eval-after-load 'yasnippet
-        (js-doc--beginning-of-defun)
+    (with-eval-after-load 'yasnippet
+      (js-doc--beginning-of-defun)
 
-        (let ((metadata (js-doc--function-doc-metadata))
-              (field-count 1))
-          (yas-expand-snippet
-           (concat
-            js-doc-top-line
-            " * ${1:Function description.}\n"
-            (format "* @method %s\n" (nth-value 1 (split-string (which-function) "\\.")))
-            (mapconcat (lambda (param)
-                         (format
-                          " * @param {${%d:Type of %s}} %s - ${%d:Parameter description.}\n"
-                          (incf field-count)
-                          param
-                          param
-                          (incf field-count)))
-                       (cdr (assoc 'params metadata))
-                       "")
-            (when (assoc 'returns metadata)
-              (format
-               " * @returns {${%d:Return Type}} ${%d:Return description.}\n"
-               (incf field-count)
-               (incf field-count)))
-            (when (assoc 'throws metadata)
-              (format
-               " * @throws {${%d:Exception Type}} ${%d:Exception description.}\n"
-               (incf field-count)
-               (incf field-count)))
-            js-doc-bottom-line)))))
-  ))
+      (let ((metadata (js-doc--function-doc-metadata))
+            (field-count 1))
+        (yas-expand-snippet
+         (concat
+          js-doc-top-line
+          " * ${1:Function description.}\n"
+          (format "* @method %s\n" (nth-value 1 (split-string (which-function) "\\.")))
+          (mapconcat (lambda (param)
+                       (format
+                        " * @param {${%d:Type of %s}} %s - ${%d:Parameter description.}\n"
+                        (incf field-count)
+                        param
+                        param
+                        (incf field-count)))
+                     (cdr (assoc 'params metadata))
+                     "")
+          (when (assoc 'returns metadata)
+            (format
+             " * @returns {${%d:Return Type}} ${%d:Return description.}\n"
+             (incf field-count)
+             (incf field-count)))
+          (when (assoc 'throws metadata)
+            (format
+             " * @throws {${%d:Exception Type}} ${%d:Exception description.}\n"
+             (incf field-count)
+             (incf field-count)))
+          js-doc-bottom-line)))))
+  )
 
 (defun appleshan-javascript/post-init-js2-mode ()
   (progn
@@ -156,20 +154,17 @@
     ))
 
 (defun appleshan-javascript/post-init-js2-refactor ()
-  (with-eval-after-load 'js2-refactor
-    (spacemacs/set-leader-keys-for-major-mode 'js2-mode
-      "r>" 'js2r-forward-slurp
-      "r<" 'js2r-forward-barf)))
+  (spacemacs/set-leader-keys-for-major-mode 'js2-mode
+    "r>" 'js2r-forward-slurp
+    "r<" 'js2r-forward-barf))
 
 (defun appleshan-javascript/post-init-tern ()
-  (with-eval-after-load 'tern
-    ;; tern will override js2r keybindings...
-    (define-key tern-mode-keymap (kbd "C-c C-r") nil)
+  ;; tern will override js2r keybindings...
+  (define-key tern-mode-keymap (kbd "C-c C-r") nil)
 
-    ;; ... and xref.
-    (define-key tern-mode-keymap (kbd "M-.") nil)
-    (define-key tern-mode-keymap (kbd "M-,") nil)
-    ))
+  ;; ... and xref.
+  (define-key tern-mode-keymap (kbd "M-.") nil)
+  (define-key tern-mode-keymap (kbd "M-,") nil))
 
 ; (defun appleshan-javascript/init-xref-js2 ()
 ;   (use-package xref-js2

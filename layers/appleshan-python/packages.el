@@ -17,7 +17,6 @@
       elpy ; Emacs Lisp Python Environment
       flycheck
       py-autopep8
-      ; pyvenv
       ))
 
 ;; List of packages to exclude.
@@ -47,7 +46,8 @@
 (defun appleshan-python/init-elpy ()
   (use-package elpy
     :defer t
-    :init
+    :init (with-eval-after-load 'python (elpy-enable))
+    :config
     (progn
       (setq elpy-modules '(elpy-module-sane-defaults
                            elpy-module-eldoc
@@ -60,20 +60,16 @@
 
       ; (setq elpy-rpc-python-command "python3")
 
-      (elpy-enable)
       (setq elpy-rpc-backend "jedi")
       (when (executable-find "ipython")
         (elpy-use-ipython))
 
-      (define-key python-mode-map (kbd "RET") 'newline-and-indent)
-      )
-    :config
-    (spacemacs|hide-lighter elpy-mode)))
+      (spacemacs|hide-lighter elpy-mode))
+    :bind ("RET" . newline-and-indent)))
 
 ;; use flycheck not flymake with elpy
 (defun appleshan-python/post-init-flycheck ()
-  (with-eval-after-load 'flycheck
-    (add-hook 'elpy-mode-hook 'flycheck-mode)))
+  (add-hook 'elpy-mode-hook 'flycheck-mode))
 
 ;; enable autopep8 formatting on save
 (defun appleshan-python/init-py-autopep8 ()
@@ -81,16 +77,15 @@
     :defer t
     :config
     (progn
-      (setq py-autopep8-options '("--max-line-length=100"))
+      ;; Ignoring:
+      ;;  - E501: line too long
+      ;;  - W293: trailing whitespace
+      ;;  - W391: blank line at EOF
+      ;;  - W690: fix deprecated code
+      (setq py-autopep8-options '("--ignore=E501,W293,W391,W690"
+                                  "--max-line-length=100"))
       (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
     )))
-
-; (defun appleshan-python/init-pyvenv ()
-;   (use-package pyvenv
-;     :defer t
-;     :init
-;     (progn
-;       )))
 
 ;; Local Variables:
 ;; coding: utf-8

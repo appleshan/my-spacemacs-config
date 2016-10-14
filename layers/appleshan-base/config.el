@@ -85,12 +85,10 @@
 (show-paren-mode t)
 (setq show-paren-style 'expression)
 
-;; Use sh-mode when opening `*rc' files, and when opening Prezto runcoms.
-(dolist (pattern '(
-	".xprofile"
-	"torrc"
-	))
-(add-to-list 'auto-mode-alist (cons pattern 'conf-mode)))
+; (with-eval-after-load 'exec-path-from-shell
+;   ; Set the environment variable $NAME from the user's shell.
+;   (when (memq window-system '(mac ns x))
+;     (exec-path-from-shell-copy-env "PATH")))
 
 ;; Local Variables:
 ;; coding: utf-8

@@ -51,21 +51,23 @@
     ("8d" "\\([0-9]+?\\)")
     ("8str" "\\([^\"]+?\\)\"")))
 
-;; 绑定扩展名到特定的模式
-(dolist (elt-cons '(
-                    ("\\.myclirc\\'" . conf-mode)
-                    ("\\.lrc\\'" . emms-lyrics-mode)
-                    ("\\.org\\'" . org-mode)
-                    ("\\.cron\\(tab\\)?\\'" . crontab-mode)
-                    ("cron\\(tab\\)?\\." . crontab-mode)))
-  (add-to-list 'auto-mode-alist elt-cons))
-
 ;; Marking the *Messages* buffer as useful
 (push "\\*Messages\\*" spacemacs-useful-buffers-regexp)
 
 ;; use aspell instead of ispell
 (setq ispell-program-name "aspell"
       ispell-extra-args '("--sug-mode=ultra"))
+
+;; 绑定扩展名到特定的模式
+(dolist (elt-cons '(
+                    ("\\.myclirc\\'" . conf-mode)
+                    (".xprofile'" . conf-mode)
+                    ("torrc'" . conf-mode)
+                    ("\\.lrc\\'" . emms-lyrics-mode)
+                    ("\\.org\\'" . org-mode)
+                    ("\\.cron\\(tab\\)?\\'" . crontab-mode)
+                    ("cron\\(tab\\)?\\." . crontab-mode)))
+  (add-to-list 'auto-mode-alist elt-cons))
 
 ;; Local Variables:
 ;; coding: utf-8

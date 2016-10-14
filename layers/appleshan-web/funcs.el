@@ -26,7 +26,13 @@
   ;; For <script> parts
   (setq web-mode-script-padding 1)
   ;; For multi-line blocks
-  (setq web-mode-block-padding 0))
+  (setq web-mode-block-padding 0)
+
+  (setq web-mode-enable-auto-pairing t)
+  (setq web-mode-enable-auto-closing t)
+  (setq web-mode-enable-current-element-highlight t)
+  (setq web-mode-enable-current-column-highlight t)
+  )
 
 (defun appleshan/impatient-mode-hook ()
   "my web mode hook for HTML REPL"
