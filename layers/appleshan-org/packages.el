@@ -30,6 +30,7 @@
       (ob-ditaa :location built-in)
       (ob-plantuml :location built-in)
       (ob-ledger :location built-in) ; 必须 init，才能使用
+      (my-org-mode :location local)
       ))
 
 ;; List of packages to exclude.
@@ -153,8 +154,7 @@
     (setq org-catch-invisible-edits 'smart)
 
     ;; 启用org-indent-mode
-    ;; (setq org-startup-indented t)
-    ;; @see ~/.emacs.d/layers/org/packages.el:105
+    (setq org-startup-indented t)
 
     ;; 不显示headline之间的空白行
     (setq org-cycle-separator-lines 0)
@@ -421,7 +421,7 @@
     (setq org-deadline-warning-days 14)
 
     ;;{{ Keep tasks with timestamps visible on the global todo lists
-    
+
     ;; Keep tasks with dates on the global todo lists
     (setq org-agenda-todo-ignore-with-date nil)
 
@@ -631,8 +631,8 @@
       ;; If there is more than one, they won't work right.
      '(org-mode-line-clock ((t (:foreground "red" :box (:line-width -1 :style released-button)))) t))
 
-    ;; 通过设置`:clock-in t’使得在captre task时自动开始clock in. 
-    ;; 设置`:clock-resume t’则使得capture task完成后,自动恢复原task的clock in. 
+    ;; 通过设置`:clock-in t’使得在captre task时自动开始clock in.
+    ;; 设置`:clock-resume t’则使得capture task完成后,自动恢复原task的clock in.
     ;; 但这就会产生一个问题,若capture task的时间小于1分钟,则可能有大量的计时为0:00的记录存在,
     ;; 这些记录需要清理
 
@@ -670,7 +670,7 @@
 ;;;;;;;;;;;;;;;;;;;;
 
 ;; http://coldnew.github.io/blog/2013/07/13_5b094.html
-;; 使用`org-crypt’库,可以自动将带”:secret:” tag 的 headline ,在写入时加密存储. 
+;; 使用`org-crypt’库,可以自动将带”:secret:” tag 的 headline ,在写入时加密存储.
 ;; 该功能对于想要将密码等隐私消息存入org文件带来便利.
 
 (defun appleshan-org/init-org-crypt ()
@@ -862,3 +862,6 @@
 
 (defun appleshan-org/init-ob-ledger ()
   (use-package ob-ledger))
+
+(defun appleshan-org/init-my-org-mode ()
+  (use-package my-org-mode))

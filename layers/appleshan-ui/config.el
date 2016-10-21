@@ -18,24 +18,24 @@
 ;; 1lIi     <-- 数字1，小写字母l，大小写字母i
 ;; 0Oo      <-- 数字0，大小写字母o
 ;; '\"`     <-- 单引号，双引号，反引号
-;; 0O l1 Z2 S5 G6 B8 71 lI vy 
+;; 0O l1 Z2 S5 G6 B8 71 lI vy
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Happy hacking apple!
 ;; 用 Emacs, 需忘记鼠标, 无视菜单.
 (with-current-buffer (get-buffer-create "*scratch*")
   (emacs-lisp-mode)
-  (insert ";; Happy hacking apple!
+  (insert ";; Happy hacking appleshan!
 ;; 用 Emacs, 需: 忘记鼠标, 无视菜单.
 "))
 
 ;; Display visited file's path in the frame title
 ;; @See http://emacsredux.com/blog/2013/04/07/display-visited-files-path-in-the-frame-title/
 (setq frame-title-format
-      '("" " Apple.Shan - "
-        (:eval (if (buffer-file-name)
-                   (abbreviate-file-name (buffer-file-name))
-                   "%b"))))
+      `(,(user-login-name) "@" ,(system-name) " | "
+         (:eval (if (buffer-file-name)
+                    (abbreviate-file-name (buffer-file-name))
+                  "%b"))))
 
 ;; Experimenting with transparency
 ; (let ((tp (cons dotspacemacs-active-transparency
