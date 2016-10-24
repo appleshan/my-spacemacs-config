@@ -58,7 +58,8 @@
 ;; DONE (org agenda log state change tasks, )
 (set-face-attribute 'org-agenda-done nil
                     :foreground "#444444"
-                    :background "black")
+                    :background "black"
+                    :height 1.0)
 ;; Priority
 (setq org-priority-faces
       '((?A . (:foreground "white" :background "dark red"
@@ -85,7 +86,8 @@
                     :foreground "OrangeRed")
 ;; scheduled in agenda, scheduled today, & org-habit
 (set-face-attribute 'org-scheduled-today nil
-                    :foreground "light sea green")
+                    :foreground "light sea green"
+                    :height 1.0)
 (set-face-attribute 'org-scheduled nil
                     :foreground "forest green")
 (set-face-attribute 'org-scheduled-previously nil

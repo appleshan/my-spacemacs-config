@@ -185,7 +185,7 @@
     :post-config
     (progn
       (setq puml-plantuml-jar-path
-        (concat user-home-directory "bin/develop/java/plantuml.jar"))
+        (concat user-home-directory "/opt/java-lib/plantuml.jar"))
     )))
 
 (defun appleshan-programming/post-init-puml-mode ()

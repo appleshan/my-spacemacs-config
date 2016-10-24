@@ -14,7 +14,7 @@
 (setq appleshan-lisp-packages
     '(
       (emacs-lisp :location built-in)
-      lispy
+      ;lispy
       ))
 
 ;; List of packages to exclude.

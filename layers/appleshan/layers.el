@@ -22,5 +22,6 @@
   ; appleshan-javascript
   ; appleshan-web
   appleshan-lisp
+  appleshan-database
   appleshan-misc
   ))

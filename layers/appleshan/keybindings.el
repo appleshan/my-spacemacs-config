@@ -56,6 +56,9 @@
 ;; search
 (define-key global-map (kbd "C-s") 'my-swiper-search)
 
+(spacemacs/declare-prefix "aD" "database")
+(spacemacs/set-leader-keys "aDm" 'dbclient/sql-connect-server)
+
 ;; java
 ; (define-key java-mode-map (kbd "M-i") 'java-imports-add-import-dwim)
 

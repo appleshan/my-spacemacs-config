@@ -38,7 +38,7 @@
 (setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
 
 (auto-compression-mode t)            ;Transparently Open Compressed Files
-(mouse-avoidance-mode "banish")      ;只要一操作鼠标自动闪开
+;(mouse-avoidance-mode "banish")      ;只要一操作鼠标自动闪开
 
 (setq-default major-mode 'text-mode) ;设置默认的主模式为 TEXT 模式
 (setq x-select-enable-clipboard t)   ;支持 emacs 和外部程序的粘贴
@@ -89,6 +89,37 @@
 ;   ; Set the environment variable $NAME from the user's shell.
 ;   (when (memq window-system '(mac ns x))
 ;     (exec-path-from-shell-copy-env "PATH")))
+
+(let (
+      (mypaths
+       '(
+         "/opt/oracle/lib"
+         "/opt/jdk/jdk1.8.0_102/bin"
+         "/opt/jdk/apache-maven-3.3.9/bin"
+         "/opt/eclipse-jee-neon/eclipse"
+         "/home/appleshan/bin"
+         "/home/appleshan/bin/cli"
+         "/home/appleshan/.local/bin"
+         "/home/appleshan/perl5/bin"
+         "/home/appleshan/bin/sift"
+         "/usr/local/sbin"
+         "/usr/local/bin"
+         "/usr/sbin"
+         "/usr/bin"
+         "/sbin"
+         "/bin"
+         "/usr/games"
+         "/usr/local/games"
+         ) )
+      )
+
+  (setenv "PATH" (mapconcat 'identity mypaths ":") )
+
+  (setq exec-path (append mypaths (list "." exec-directory)) )
+  )
+
+(setenv "LD_LIBRARY_PATH" "/opt/oracle/lib")
+(setenv "NLS_LANG" "SIMPLIFIED CHINESE_CHINA.AL32UTF8")
 
 ;; Local Variables:
 ;; coding: utf-8
