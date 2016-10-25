@@ -9,7 +9,6 @@
 ;;; Code:
 
 
-(require 'helm)
 (require 'sql)
 
 ;;; server list

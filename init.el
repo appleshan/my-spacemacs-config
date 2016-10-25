@@ -27,7 +27,7 @@ values."
    ;; If non-nil layers with lazy install support are lazy installed.
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
-   dotspacemacs-configuration-layer-path '() ; "~/.spacemacs.d/layers/"
+   dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
@@ -52,15 +52,8 @@ values."
      (spell-checking :variables
                      spell-checking-enable-by-default nil)
 
-     ;; --- Vim layers ---
-     ;; ranger 与 vinegar 不能共存
-     ; ranger
-     (vinegar :variables
-              vinegar-reuse-dired-buffer t)
-     vim-empty-lines
-
      ;; --- Auto Complete layers ---
-     ivy           ; spacemacs develop branch : ivy or helm
+     helm           ; spacemacs develop branch : ivy or helm
      ; spacemacs-ivy ; spacemacs master branch
      (auto-completion :variables
                       auto-completion-enable-help-tooltip 'manual
@@ -103,6 +96,13 @@ values."
                       syntax-checking-enable-by-default nil
                       syntax-checking-enable-tooltips nil)
      version-control
+
+     ;; --- Vim layers ---
+     ;; ranger 与 vinegar 不能共存
+     ; ranger
+     (vinegar :variables
+              vinegar-reuse-dired-buffer t)
+     vim-empty-lines
 
      ;; --- Private layers ---
      appleshan
@@ -153,8 +153,8 @@ values."
                                     helm-mode-manager
                                     helm-projectile
                                     helm-pydoc
-                                    helm-spacemacs-help
-                                    helm-swoop
+                                    ; helm-spacemacs-help
+                                    ; helm-swoop
                                     helm-themes
                                     highlight-indentation
                                     hl-anything
@@ -289,7 +289,7 @@ values."
    dotspacemacs-retain-visual-state-on-shift t
    ;; If non-nil, J and K move lines up and down when in visual mode.
    ;; (default nil)
-   dotspacemacs-visual-line-move-text nil
+   dotspacemacs-visual-line-move-text t
    ;; If non nil, inverse the meaning of `g' in `:substitute' Evil ex-command.
    ;; (default nil)
    dotspacemacs-ex-substitute-global nil
@@ -313,7 +313,7 @@ values."
    ;; Maximum number of rollback slots to keep in the cache. (default 5)
    dotspacemacs-max-rollback-slots 0
    ;; If non nil, `helm' will try to minimize the space it uses. (default nil)
-   dotspacemacs-helm-resize nil
+   dotspacemacs-helm-resize t
    ;; if non nil, the helm header is hidden when there is only one source.
    ;; (default nil)
    dotspacemacs-helm-no-header nil
