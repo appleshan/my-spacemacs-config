@@ -13,15 +13,16 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq appleshan-java-packages
     '(
-      eclim
-      (eclim-java-run :location local) ; in eclim
+      ; eclim
+      ; (eclim-java-run :location local) ; in eclim
       ; (flycheck-eclim :location local)
       ; (flycheck-java :location local)
       ; (flycheck-infer :location local)
       ; project-explorer
       ; (ajoke :location local)
       ; log4j-mode
-      mvn
+      ; mvn
+      meghanada
       ))
 
 ;; List of packages to exclude.
@@ -116,6 +117,16 @@
 
 (defun appleshan-java/init-mvn ()
   (use-package mvn))
+
+(defun appleshan-java/init-meghanada ()
+  (use-package meghanada
+    :ensure t
+    :init
+    (progn
+      (setq meghanada-server-install-dir "/opt/java-lib/meghanada")
+      ;; Don't auto-start
+      (setq meghanada-auto-start nil)
+      )))
 
 ;; Local Variables:
 ;; coding: utf-8

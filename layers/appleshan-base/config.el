@@ -13,7 +13,7 @@
 
 ;; Variables
 
-;; Full name and email
+;; personal information about me: full name and email
 (setq user-full-name "Apple Shan"
       user-mail-address "apple.shan@gmail.com")
 
@@ -29,8 +29,14 @@
               tab-width 4) ; 所有buffer默认使用4格缩进
 
 (delete-selection-mode t)            ; delete the selection with a key press
-; (global-font-lock-mode t)            ;语法高亮
-(transient-mark-mode 1)              ;标记高亮
+; (global-font-lock-mode t)            ; Turn on syntax highlighting for all buffers
+; If you change buffer, or focus, disable the current buffer's mark:
+(transient-mark-mode 1)
+
+;; Don't indicate empty lines or the end of a buffer with visual marks
+;; (the lines are cleaned up automatically anyway)
+(setq-default indicate-empty-lines nil)
+(setq-default indicate-buffer-boundaries nil)
 
 ;; @See https://emacs-china.org/t/smartparens-electri-pair-yasnippet/1326
 (electric-pair-mode t)
@@ -48,7 +54,7 @@
 (setq undo-outer-limit 5000000)      ;撤销限制
 (setq mark-ring-max 1024)            ;设置的 mark ring 容量
 (setq global-mark-ring-max 1024)     ;设置最大的全局标记容量
-(setq message-log-max t)             ;设置 message 记录全部消息, 而不用截去
+(setq message-log-max t)             ;设置 *Messages* 记录全部消息, 而不用截去
 (setq read-quoted-char-radix 16)     ;设置 引用字符 的基数
 (setq void-text-area-pointer nil)    ;禁止显示鼠标指针
 (setq show-paren-style 'parentheses) ;括号匹配显示但不是烦人的跳到另一个括号。
@@ -75,15 +81,65 @@
 
 (setq url-show-status nil)
 
+;; Allow font-lock-mode to do background parsing
 (setq font-lock-support-mode 'jit-lock-mode)
-(setq jit-lock-stealth-time 16
+(setq jit-lock-defer-time nil
+      jit-lock-stealth-nice 0.1
+      jit-lock-stealth-time 0.2
       jit-lock-defer-contextually t
-      jit-lock-stealth-nice 0.5)
+      jit-lock-stealth-verbose nil)
 (setq-default font-lock-multiline t)
+
+;; Wait a bit longer than the default (0.5 seconds) before assuming Emacs is idle
+(setq idle-update-delay 2)
+
+(setq line-number-display-limit-width 10000)
+
+;; Make gnutls a bit safer, the default is an absurdly low 256
+(setq gnutls-min-prime-bits 4096)
 
 ;; show parenthesis match
 (show-paren-mode t)
 (setq show-paren-style 'expression)
+
+;; Set up the fill-column to 80 characters and set tab width to 2
+(setq-default fill-column 80)
+(setq-default default-tab-width 2)
+(setq-default indent-tabs-mode nil)
+
+;; Fix some weird color escape sequences
+(setq system-uses-terminfo nil)
+
+;; Resolve symlinks:
+(setq-default find-file-visit-truename t)
+
+;; Require a newline at the end of files:
+(setq require-final-newline t)
+;; add no new lines when "arrow-down key" at the end of a buffer
+(setq next-line-add-newlines nil)
+
+;; 在补全 buffer 时忽略大小写的差别
+(setq read-buffer-completion-ignore-case t)
+
+;; Don't warn me about large files unless they're at least 25mb:
+(setq large-file-warning-threshold (* 25 1024 1024))
+
+;; Switch to unified diffs by default:
+;; (setq diff-switches "-u")
+
+;; Turn on auto-fill mode in text buffers:
+;(add-hook 'text-mode-hook 'turn-on-auto-fill)
+;(use-package diminish
+;  :init (diminish 'auto-fill-function ""))
+
+;; Set the internal calculator not to go to scientific form quite so quickly:
+(setq calc-display-sci-low -5)
+
+(when (boundp 'global-prettify-symbols-mode)
+  (add-hook 'emacs-lisp-mode-hook
+            (lambda ()
+              (push '("lambda" . ?λ) prettify-symbols-alist)))
+  (global-prettify-symbols-mode +1))
 
 ; (with-eval-after-load 'exec-path-from-shell
 ;   ; Set the environment variable $NAME from the user's shell.

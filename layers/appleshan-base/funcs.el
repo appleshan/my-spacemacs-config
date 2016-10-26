@@ -82,15 +82,21 @@ Position the cursor at its beginning, according to the current mode."
   (newline-and-indent))
 
 ;; Don't delete *scratch* buffer
-(defun appleshan/unkillable-scratch-buffer ()
-  (if (string= (buffer-name (current-buffer)) "*scratch*")
-      (progn
-        (delete-region (point-min) (point-max))
-        (insert initial-scratch-message)
-        nil)
-    t))
+(defadvice kill-buffer (around kill-buffer-around-advice activate)
+  (let ((buffer-to-kill (ad-get-arg 0)))
+    (if (equal buffer-to-kill "*scratch*")
+        (bury-buffer)
+      ad-do-it)))
 
-(add-hook 'kill-buffer-query-functions 'appleshan/unkillable-scratch-buffer)
+;; (defun appleshan/unkillable-scratch-buffer ()
+;;   (if (string= (buffer-name (current-buffer)) "*scratch*")
+;;       (progn
+;;         (delete-region (point-min) (point-max))
+;;         (insert initial-scratch-message)
+;;         nil)
+;;     t))
+
+;; (add-hook 'kill-buffer-query-functions 'appleshan/unkillable-scratch-buffer)
 
 ;;Don’t ask me when close emacs with process is running
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
@@ -113,17 +119,6 @@ Position the cursor at its beginning, according to the current mode."
       (indent-region (region-beginning) (region-end) nil)))
 
 ;; {{ 文件相关设置
-;; always add new line to the end of a file
-(setq require-final-newline t)
-;; add no new lines when "arrow-down key" at the end of a buffer
-(setq next-line-add-newlines nil)
-
-;; 在补全 buffer 时忽略大小写的差别
-(setq read-buffer-completion-ignore-case t)
-
-;; 只有当打开的文件超过100MB时，才产生警告
-(setq large-file-warning-threshold 100000000)
-
 (defun appleshan/check-large-file ()
   "improve the performance of opening large file."
   (when (> (buffer-size) 500000)

@@ -95,10 +95,8 @@
     ;; finally, switch to that window
     (other-window 1)))
 
-; (with-eval-after-load 'dired+
-;   ;; 在补全 file 时忽略大小写的差别
-;   (setq read-file-name-completion-ignore-case t)
-; )
+;; Ignore case when using completion for file names:
+(setq read-file-name-completion-ignore-case t)
 
 ; (with-eval-after-load 'dired-sort
 ;   (defun appleshan//dired-sort-hook ()

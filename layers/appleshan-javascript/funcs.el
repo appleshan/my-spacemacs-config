@@ -61,8 +61,7 @@
              (setq web-mode-code-indent-offset (if (= web-mode-code-indent-offset 2) 4 2))))
   (if (eq major-mode 'css-mode)
       (setq css-indent-offset (if (= css-indent-offset 2) 4 2)))
-
-  (setq indent-tabs-mode nil))
+  )
 
 ;; Local Variables:
 ;; coding: utf-8

@@ -31,6 +31,7 @@
       (ob-plantuml :location built-in)
       (ob-ledger :location built-in) ; 必须 init，才能使用
       (my-org-mode :location local)
+      secretaria
       ))
 
 ;; List of packages to exclude.
@@ -865,3 +866,22 @@
 
 (defun appleshan-org/init-my-org-mode ()
   (use-package my-org-mode))
+
+(defun appleshan-org/init-secretaria ()
+  (use-package secretaria
+    :ensure nil
+    :preface
+    (use-package alert)
+    (use-package f)
+    (use-package s)
+    :config
+    ;; use this for getting a reminder every 30 minutes of those tasks scheduled
+    ;; for today and which have no time of day defined.
+    (add-hook 'after-init-hook #'secretaria-today-unknown-time-appt-always-remind-me)))
+
+;; Local Variables:
+;; coding: utf-8
+;; no-byte-compile: nil
+;; End:
+
+;;; packages.el ends here

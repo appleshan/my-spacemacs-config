@@ -439,7 +439,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;; custom logo
   (setq spacemacs-banner-official-png
-    (expand-file-name (concat dotspacemacs-directory "local/005-banner.txt")))
+    (expand-file-name (concat dotspacemacs-directory "local/001-banner-kban.txt")))
 
   ;; BUG : https://github.com/syl20bnr/spacemacs/issues/2705
   (setq tramp-ssh-controlmaster-options
@@ -447,6 +447,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq tramp-use-ssh-controlmaster-options nil)
 
   (setq yas-snippet-dirs nil)
+
+  (defun package--save-selected-packages (&rest opt) nil)
   )
 
 (defun dotspacemacs/user-config ()

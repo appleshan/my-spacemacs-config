@@ -11,6 +11,11 @@
 
 (define-key global-map (kbd "<f8>") 'appleshan/show-current-buffer-major-mode)
 
+;; Search (and search/replace) using regex by default, since that's usually what I want to do:
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
+(global-set-key (kbd "M-%") 'query-replace-regexp)
+
 ;; dir
 (spacemacs/set-leader-keys "drd" 'counsel-goto-recent-directory)
 (spacemacs/set-leader-keys "drf" 'counsel-find-file-recent-directory)

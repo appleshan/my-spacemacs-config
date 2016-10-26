@@ -34,26 +34,28 @@
   (use-package mule
     :config
     (progn
-      ; disable CJK coding/encoding (Chinese/Japanese/Korean characters)
+      ;; disable CJK coding/encoding (Chinese/Japanese/Korean characters)
       (setq utf-translate-cjk-mode nil)
 
+      ;; Always, always, prefer UTF-8, anything else is insanity
       (when (or window-system (locale-is-utf8-p))
         ;; 影响 chinese-pyim, 造成不能输入中文的故障
         ;; set environment coding system
         ;; (set-language-environment "UTF-8")
 
-        (set-buffer-file-coding-system 'utf-8-unix)
-        (set-clipboard-coding-system 'utf-8-unix)
-        (set-file-name-coding-system 'utf-8-unix)
-        (set-keyboard-coding-system 'utf-8-unix)
-        (set-next-selection-coding-system 'utf-8-unix)
-        (set-selection-coding-system 'utf-8-unix)
-        (set-terminal-coding-system 'utf-8-unix)
-
+        (set-charset-priority 'unicode)
         (set-default-coding-systems 'utf-8)
+        (set-buffer-file-coding-system 'utf-8-unix)
+        (set-file-name-coding-system 'utf-8-unix)
+        (set-selection-coding-system 'utf-8-unix)
+        (set-next-selection-coding-system 'utf-8-unix)
+        (set-clipboard-coding-system 'utf-8-unix)
+        (set-keyboard-coding-system 'utf-8-unix)
+        (set-terminal-coding-system 'utf-8-unix)
+        (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
         (setq locale-coding-system 'utf-8)
 
-        ;; @see ~/.emacs.d/core/core-spacemacs.el:71
+        ;; @see ~/.emacs.d/core/core-spacemacs.el:72
         ;; (prefer-coding-system 'utf-8)
         )
     )))
