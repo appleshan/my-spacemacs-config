@@ -88,16 +88,6 @@ Position the cursor at its beginning, according to the current mode."
         (bury-buffer)
       ad-do-it)))
 
-;; (defun appleshan/unkillable-scratch-buffer ()
-;;   (if (string= (buffer-name (current-buffer)) "*scratch*")
-;;       (progn
-;;         (delete-region (point-min) (point-max))
-;;         (insert initial-scratch-message)
-;;         nil)
-;;     t))
-
-;; (add-hook 'kill-buffer-query-functions 'appleshan/unkillable-scratch-buffer)
-
 ;;Don’t ask me when close emacs with process is running
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
   "Prevent annoying \"Active processes exist\" query when you quit Emacs."
@@ -173,6 +163,28 @@ Position the cursor at its beginning, according to the current mode."
       (minibuffer-with-setup-hook
           (lambda () (backward-char 2))
         (evil-ex command-string)))))
+
+(defun untabify-buffer ()
+  (interactive)
+  (untabify (point-min) (point-max)))
+
+(defun indent-buffer ()
+  (interactive)
+  (indent-region (point-min) (point-max)))
+
+(defvar bad-cleanup-modes '(python-mode yaml-mode)
+  "List of modes where `cleanup-buffer' should not be used")
+
+(defun cleanup-buffer ()
+  "Perform a bunch of operations on the whitespace content of a
+buffer. If the buffer is one of the `bad-cleanup-modes' then no
+re-indenting and un-tabification is done."
+  (interactive)
+  (unless (member major-mode bad-cleanup-modes)
+    (progn
+      (indent-buffer)
+      (untabify-buffer)))
+  (delete-trailing-whitespace))
 
 ;; Local Variables:
 ;; coding: utf-8

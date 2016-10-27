@@ -64,6 +64,16 @@
 (spacemacs/declare-prefix "aD" "database")
 (spacemacs/set-leader-keys "aDm" 'dbclient/sql-connect-server)
 
+;; Enable navigation by visual lines
+;; Make evil-mode up/down operate in screen lines instead of logical lines
+(define-key evil-motion-state-map "j" 'evil-next-visual-line)
+(define-key evil-motion-state-map "k" 'evil-previous-visual-line)
+;; Also in visual mode
+(define-key evil-visual-state-map "j" 'evil-next-visual-line)
+(define-key evil-visual-state-map "k" 'evil-previous-visual-line)
+
+(global-set-key (kbd "C-c n") #'cleanup-buffer)
+
 ;; java
 ; (define-key java-mode-map (kbd "M-i") 'java-imports-add-import-dwim)
 

@@ -20,7 +20,7 @@
       multiple-cursors
       neotree
       tiny
-      ; vlf
+      vlf
       ))
 
 ;; List of packages to exclude.
@@ -199,10 +199,9 @@
     :init
     (spacemacs/set-leader-keys "oe" 'tiny-expand)))
 
-; (defun appleshan-misc/init-vlf ()
-;   (use-package vlf
-;     :defer t
-;     :init (require 'vlf-setup)))
+(defun appleshan-misc/init-vlf ()
+  (use-package vlf
+    :init (require 'vlf-setup)))
 
 ;; Local Variables:
 ;; coding: utf-8

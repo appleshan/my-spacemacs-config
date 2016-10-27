@@ -9,6 +9,13 @@
 ;;
 ;;; License: GPLv3
 
+;; Scrolling
+(setq scroll-up-aggressively 0.01
+      scroll-down-aggressively 0.01
+      auto-window-vscroll nil
+      hscroll-margin 5
+      hscroll-step 5)
+
 ;; (spacemacs|defvar-company-backends markdown-mode)
 (spacemacs|defvar-company-backends org-mode)
 (spacemacs|defvar-company-backends nxml-mode)

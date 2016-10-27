@@ -50,7 +50,7 @@ values."
               ibuffer-group-buffers-by 'projects)
      search-engine
      (spell-checking :variables
-                     spell-checking-enable-by-default nil)
+                     spell-checking-enable-by-default t)
 
      ;; --- Auto Complete layers ---
      helm           ; spacemacs develop branch : ivy or helm
@@ -58,13 +58,14 @@ values."
      (auto-completion :variables
                       auto-completion-enable-help-tooltip 'manual
                       auto-completion-enable-sort-by-usage t
-                      auto-completion-enable-snippets-in-popup t ; Adding yas-snippets
+                      auto-completion-enable-snippets-in-popup t
                       ; auto-completion-return-key-behavior nil
                       auto-completion-tab-key-behavior 'complete
                       auto-completion-private-snippets-directory "~/.spacemacs.d/snippets/"
                       :disabled-for erc ; org markdown
                       )
-     ;; auto-complete layer 在 orgmode 中会引发很多问题，所以在 org 中禁用 company 补全
+     ;; auto-complete layer 在 orgmode 中会引发很多问题，
+     ;; 所以最好在 org 中禁用 company 补全
 
      ;; --- Programming and markup languages layers ---
      scheme
@@ -128,7 +129,7 @@ values."
                                     evil-args
                                     evil-ediff
                                     ;; disable it for lispy-mode
-                                    ;;https://github.com/abo-abo/lispy/issues/137
+                                    ;; https://github.com/abo-abo/lispy/issues/137
                                     ; evil-escape
                                     evil-exchange
                                     evil-indent-plus
@@ -281,7 +282,7 @@ values."
    ;; and TAB or <C-m> and RET.
    ;; In the terminal, these pairs are generally indistinguishable, so this only
    ;; works in the GUI. (default nil)
-   dotspacemacs-distinguish-gui-tab nil
+   dotspacemacs-distinguish-gui-tab t
    ;; If non nil `Y' is remapped to `y$' in Evil states. (default nil)
    dotspacemacs-remap-Y-to-y$ nil
    ;; If non-nil, the shift mappings `<' and `>' retain visual state if used
@@ -413,22 +414,30 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   ;; activate debugging
-  ; (setq debug-on-error t
-  ;       debug-on-signal nil
-  ;       debug-on-quit nil)
+  (setq debug-on-error t
+        debug-on-quit nil
+        ;; debug-on-signal nil
+   )
   ; (defvar stack-trace-on-error t)
 
   (setq byte-compile-warnings nil)
 
   (setq configuration-layer--elpa-archives
-        '(("gnu-cn"   . "https://elpa.zilongshanren.com/gnu/")
-          ("melpa-cn" . "https://elpa.zilongshanren.com/melpa/")
-          ("org-cn"   . "https://elpa.zilongshanren.com/org/")))
+        '(("gnu-cn"          . "https://elpa.zilongshanren.com/gnu/")
+          ("melpa-cn"        . "https://elpa.zilongshanren.com/melpa/")
+        ; ("melpa-stable-cn" . "https://elpa.zilongshanren.com/melpa-stable/")
+          ("org-cn"          . "https://elpa.zilongshanren.com/org/")))
 
   ; (setq configuration-layer--elpa-archives
   ;       '(("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
   ;         ("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
   ;         ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
+
+  ;; Pin some of the packages that go wonky if I use the bleeding edge.
+  (when (boundp 'package-pinned-packages)
+    (setq package-pinned-packages
+          '((org-plus-contrib                  . "org")
+            )))
 
   ;; Dropbox directory
   (defconst user-dropbox-directory
@@ -439,7 +448,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;; custom logo
   (setq spacemacs-banner-official-png
-    (expand-file-name (concat dotspacemacs-directory "local/001-banner-kban.txt")))
+    (expand-file-name
+      (concat dotspacemacs-directory "local/banner/001-banner-kban.txt")))
 
   ;; BUG : https://github.com/syl20bnr/spacemacs/issues/2705
   (setq tramp-ssh-controlmaster-options
@@ -475,6 +485,9 @@ you should place your code here."
       (spacemacs//set-monospaced-font
         "Source Code Pro" "文泉驿等宽微米黑" 13 16)))
   ;; }}
+
+  ;; Set to t to debug package loading or nil to disable
+  (setq use-package-verbose nil)
 
   (spacemacs|diminish which-key-mode)
   (spacemacs|diminish spacemacs-whitespace-cleanup-mode)

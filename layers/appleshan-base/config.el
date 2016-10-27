@@ -67,6 +67,10 @@
 ;; Only mark helm buffers as useless
 (setq spacemacs-useless-buffers-regexp '("\\*helm\.\+\\*"))
 
+;; Marking the *Messages* buffer as useful
+(push "\\*Messages\\*" spacemacs-useful-buffers-regexp)
+
+;; Prevent the visual selection overriding my system clipboard
 (fset 'evil-visual-update-x-selection 'ignore)
 
 (spacemacs|add-company-hook 'text-mode)
@@ -118,8 +122,9 @@
 ;; add no new lines when "arrow-down key" at the end of a buffer
 (setq next-line-add-newlines nil)
 
-;; 在补全 buffer 时忽略大小写的差别
-(setq read-buffer-completion-ignore-case t)
+;; Ignore case when performing completion
+(setq completion-ignore-case t
+      read-buffer-completion-ignore-case t)
 
 ;; Don't warn me about large files unless they're at least 25mb:
 (setq large-file-warning-threshold (* 25 1024 1024))
@@ -134,6 +139,16 @@
 
 ;; Set the internal calculator not to go to scientific form quite so quickly:
 (setq calc-display-sci-low -5)
+
+;; Don't bother saving things to the kill-ring twice, remove duplicates
+(setq kill-do-not-save-duplicates t)
+
+;; Preserve the window location when opening things
+(setq switch-to-buffer-preserve-window-point t)
+
+;; Use a sane re-builder syntax so I don't have to have crazy escapes,
+;; see: https://masteringemacs.org/article/re-builder-interactive-regexp-builder
+(setq reb-re-syntax 'string)
 
 (when (boundp 'global-prettify-symbols-mode)
   (add-hook 'emacs-lisp-mode-hook

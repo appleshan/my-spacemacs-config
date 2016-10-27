@@ -21,8 +21,10 @@
       gist
       git-messenger
       highlight-escape-sequences
+      highlight-thing
       magit
       paredit
+      paren-face
       prodigy
       puml-mode
       tldr
@@ -121,6 +123,15 @@
     :init
     (hes-mode)))
 
+(defun appleshan-programming/init-highlight-thing ()
+  (use-package highlight-thing
+    :defer t
+    :init (add-hook 'prog-mode-hook 'highlight-thing-mode)
+    :config
+    (progn
+      (setq highlight-thing-delay-seconds 1.5)
+      (setq highlight-thing-case-sensitive-p t))))
+
 (defun appleshan-programming/post-init-magit ()
   (with-eval-after-load 'magit
     (add-to-list 'magit-no-confirm 'stage-all-changes)
@@ -161,6 +172,11 @@
       (bind-key* "s-[" #'paredit-wrap-square)
       (bind-key* "s-{" #'paredit-wrap-curly)
       )))
+
+(defun appleshan-programming/init-paren-face ()
+  (use-package paren-face
+    :ensure t
+    :init (global-paren-face-mode)))
 
 (defun appleshan-programming/post-init-prodigy ()
   (with-eval-after-load 'prodigy

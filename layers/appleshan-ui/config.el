@@ -139,6 +139,9 @@
 ;; Hide the mouse while typing:
 (setq make-pointer-invisible t)
 
+;; Don't use dialog boxes, just ask inside Emacs
+(setq use-dialog-box nil)
+
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: nil

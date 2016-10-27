@@ -105,7 +105,8 @@
   (use-package recentf
     :config
     (progn
-      (setq recentf-max-saved-items 100)
+      (setq recentf-auto-cleanup 600)
+      (setq recentf-max-saved-items 300)
       (dolist (item '("/\\.git/.*\\'" ; Git contents
                       "COMMIT_MSG"
                       "COMMIT_EDITMSG"
@@ -117,11 +118,13 @@
                       ".*\\.gz\\'"
                       "TAGS"
                       ".*-autoloads\\.el\\'"
-                      (expand-file-name package-user-dir) ; Package files
-                      (expand-file-name spacemacs-cache-directory)
+                      "/elpa/"
+                      "/ssh:"
+                      "/sudo:"
+                      "/scp:"
                       (expand-file-name my-org-gtd-directory) ; org-gtd files
-                      "/.spacemacs.d/.cache/.*\\'"
-                      "/.spacemacs.d/snippets/.*\\'"
+                      "/.spacemacs.d/.cache/"
+                      "/.spacemacs.d/snippets/"
                       "/opt/emacs*/.*\\.el\\'"))
         (add-to-list 'recentf-exclude item))
     )))

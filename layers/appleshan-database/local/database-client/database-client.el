@@ -51,16 +51,11 @@
                                                   (symbol-name (nth 0 item))
                                                   (nth 0 item)))
                                               sql-connection-alist)))
-  ;; password
   (require 'my-password "./database-password.el.gpg")
   ;; get the sql connection info and product from the sql-connection-alist
   (let* ((connection-info (assoc connection sql-connection-alist))
          (connection-product (nth 1 (nth 1 (assoc 'sql-product connection-info))))
          (sql-password (nth 1 (assoc connection my-sql-password))))
-    (message "connection = %s" connection)
-    ;; (message "connection-info = %s" connection-info)
-    ;; (message "connection-product = %s" connection-product)
-    ;; (message "sql-password = %s" sql-password)
     ;; delete the connection info from the sql-connection-alist
     (setq sql-connection-alist (assq-delete-all connection sql-connection-alist))
     ;; delete the old password from the connection-info

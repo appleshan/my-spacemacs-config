@@ -51,12 +51,24 @@
     ("8d" "\\([0-9]+?\\)")
     ("8str" "\\([^\"]+?\\)\"")))
 
-;; Marking the *Messages* buffer as useful
-(push "\\*Messages\\*" spacemacs-useful-buffers-regexp)
+;; {{{ Spell check and flyspell settings
+;; Standard location of personal dictionary
+(setq ispell-personal-dictionary "~/.flydict")
 
-;; use aspell instead of ispell
-(setq ispell-program-name "aspell"
-      ispell-extra-args '("--sug-mode=ultra"))
+;; Mostly taken from
+;; http://blog.binchen.org/posts/what-s-the-best-spell-check-set-up-in-emacs.html
+(when (executable-find "aspell")
+  (setq ispell-program-name (executable-find "aspell"))
+  (setq ispell-extra-args
+        (list "--sug-mode=fast" ;; ultra|fast|normal|bad-spellers
+              "--lang=en_US"
+              "--ignore=4")))
+
+(add-to-list 'ispell-skip-region-alist '("[^\000-\377]+"))
+(add-to-list 'ispell-skip-region-alist '(":\\(PROPERTIES\\|LOGBOOK\\):" . ":END:"))
+(add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_SRC" . "#\\+END_SRC"))
+(add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_EXAMPLE" . "#\\+END_EXAMPLE"))
+;; }}}
 
 ;; 绑定扩展名到特定的模式
 (dolist (elt-cons '(
