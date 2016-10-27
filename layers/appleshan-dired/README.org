@@ -1,0 +1,1 @@
+Dired - directory browsing and file management

@@ -54,29 +54,25 @@
       (add-hook 'prog-mode-hook 'conditional-enable-editorconfig))))
 
 (defun appleshan-programming/post-init-engine-mode ()
-  (with-eval-after-load 'engine-mode
-    (add-to-list 'search-engine-alist
-      ;; elisp code search
-      (Elisp
-           :name "Elisp code search"
-           :url "http://www.google.com.au/search?q=%s+filetype:el")
-      ;; javascript search on mozilla.org
-      (Elisp
-           :name "Javascript search on mozilla.org"
-           :url "http://www.google.com.au/search?q=%s+site:developer.mozilla.org")
-      )
+  (add-to-list 'search-engine-alist
+    ;; elisp code search
+    '(Elisp
+         :name "Elisp code search"
+         :url "http://www.google.com.au/search?q=%s+filetype:el")
+    ;; javascript search on mozilla.org
+    '(Elisp
+         :name "Javascript search on mozilla.org"
+         :url "http://www.google.com.au/search?q=%s+site:developer.mozilla.org")
     ))
 
 (defun appleshan-programming/post-init-flycheck ()
-  (with-eval-after-load 'flycheck
-    (setq flycheck-display-errors-delay 0.9)
-    (setq flycheck-idle-change-delay 2.0)))
+  (setq flycheck-display-errors-delay 0.9)
+  (setq flycheck-idle-change-delay 2.0))
 
 (defun appleshan-programming/init-flycheck-package ()
   (use-package flycheck-package
     :init
-    (eval-after-load 'flycheck
-      '(flycheck-package-setup))))
+    (eval-after-load 'flycheck '(flycheck-package-setup))))
 
 (defun appleshan-programming/post-init-gist ()
   (use-package gist
@@ -126,7 +122,10 @@
 (defun appleshan-programming/init-highlight-thing ()
   (use-package highlight-thing
     :defer t
-    :init (add-hook 'prog-mode-hook 'highlight-thing-mode)
+    :init
+    (progn
+      (add-hook 'prog-mode-hook 'highlight-thing-mode)
+      (spacemacs|hide-lighter highlight-thing-mode))
     :config
     (progn
       (setq highlight-thing-delay-seconds 1.5)
@@ -155,7 +154,7 @@
     ;; http://emacs.stackexchange.com/questions/6021/change-a-branchs-upstream-with-magit/6023#6023
     (magit-define-popup-switch 'magit-push-popup ?u
       "Set upstream" "--set-upstream")
-    ))
+  ))
 
 (defun appleshan-programming/init-paredit ()
   (use-package paredit

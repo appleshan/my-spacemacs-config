@@ -18,7 +18,10 @@
 (setq appleshan-complete-packages
     '(
       company
-      swiper
+      helm-flx
+      helm-fuzzier
+      projectile
+      ;; swiper
       yasnippet
       ))
 
@@ -42,8 +45,38 @@
     (spacemacs|add-company-hook sh-mode)
     (spacemacs|add-company-hook nxml-mode)
     (spacemacs|add-company-hook conf-unix-mode)
-    (spacemacs|add-company-hook json-mode))
-  )
+    (spacemacs|add-company-hook json-mode)))
+
+(defun appleshan-complete/post-init-helm-flx ()
+  ;; garbage collection
+  (defun eos/minibuffer-setup-hook ()
+    (setq gc-cons-threshold most-positive-fixnum))
+
+  (defun eos/minibuffer-exit-hook ()
+    ;; 20mb
+    (setq gc-cons-threshold (* 20 1024 1024)))
+
+  (add-hook 'minibuffer-setup-hook #'eos/minibuffer-setup-hook)
+  (add-hook 'minibuffer-exit-hook #'eos/minibuffer-exit-hook))
+
+(defun appleshan-complete/init-helm-fuzzier ()
+  (use-package helm-fuzzier
+    :ensure t
+    :disabled t
+    :init
+    (helm-fuzzier-mode)))
+
+(defun appleshan-complete/post-init-projectile ()
+  (with-eval-after-load 'projectile
+    ;; global ignores
+    (add-to-list 'projectile-globally-ignored-files ".tern-port")
+    (add-to-list 'projectile-globally-ignored-files "GTAGS")
+    (add-to-list 'projectile-globally-ignored-files "GPATH")
+    (add-to-list 'projectile-globally-ignored-files "GRTAGS")
+    (add-to-list 'projectile-globally-ignored-files "GSYMS")
+    (add-to-list 'projectile-globally-ignored-files ".DS_Store")
+    ;; always ignore .class files
+    (add-to-list 'projectile-globally-ignored-file-suffixes ".class")))
 
 (defun appleshan-complete/post-init-swiper ()
   (setq ivy-display-style 'fancy)

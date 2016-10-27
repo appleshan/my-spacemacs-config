@@ -1,4 +1,4 @@
-;;; packages.el --- appleshan-ui Layer packages File for Spacemacs
+;;; packages.el --- appleshan-appearance Layer packages File for Spacemacs
 ;;
 ;; Copyright (c) 2016-2020 Apple Shan
 ;;
@@ -9,7 +9,7 @@
 ;;
 ;;; License: GPLv3
 
-(setq appleshan-ui-packages
+(setq appleshan-appearance-packages
     '(
       beacon
       hl-anything
@@ -20,10 +20,10 @@
       ))
 
 ;; List of packages to exclude.
-(setq appleshan-ui-excluded-packages '())
+(setq appleshan-appearance-excluded-packages '())
 
 ;; 不会丢失你的光标
-(defun appleshan-ui/init-beacon ()
+(defun appleshan-appearance/init-beacon ()
   (use-package beacon
     :init
     (progn
@@ -37,7 +37,7 @@
     :config
     (spacemacs|hide-lighter beacon-mode)))
 
-(defun appleshan-ui/post-init-hl-anything ()
+(defun appleshan-appearance/post-init-hl-anything ()
   (progn
     (hl-highlight-mode -1)
     (spacemacs|add-toggle toggle-hl-anything
@@ -47,7 +47,7 @@
       :documentation "Toggle highlight anything mode."
       :evil-leader "ths")))
 
-(defun appleshan-ui/post-init-popwin ()
+(defun appleshan-appearance/post-init-popwin ()
   (progn
     ;; man
     (push '(Man-mode :stick t :height 20) popwin:special-display-config)
@@ -74,12 +74,12 @@
 ;; https://github.com/benma/visual-regexp.el
 ;; https://github.com/benma/visual-regexp-steroids.el
 
-(defun appleshan-ui/init-visual-regexp ()
+(defun appleshan-appearance/init-visual-regexp ()
   (use-package visual-regexp
     ; :commands (vr/replace vr/query-replace) ; See the bind of init-visual-regexp-steroids.
     :defer t))
 
-(defun appleshan-ui/init-visual-regexp-steroids ()
+(defun appleshan-appearance/init-visual-regexp-steroids ()
   (use-package visual-regexp-steroids
     :commands (vr/select-replace vr/select-query-replace)
     :defer t
@@ -92,7 +92,7 @@
            ("C-c m" . vr/mc-mark)  ; for multiple-cursors
            )))
 
-(defun appleshan-ui/init-tabbar ()
+(defun appleshan-appearance/init-tabbar ()
   (use-package tabbar
     :init (tabbar-mode 1)
     :config

@@ -1,0 +1,1 @@
+Core Emacs - base Emacs settings and configurations

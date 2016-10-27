@@ -1,4 +1,4 @@
-;;; packages.el --- appleshan-base layer packages file for Spacemacs
+;;; packages.el --- appleshan-core layer packages file for Spacemacs
 
 ;; Copyright (c) 2016-2020 Apple Shan
 
@@ -15,7 +15,7 @@
 
 ;;; Code:
 
-(setq appleshan-base-packages
+(setq appleshan-core-packages
     '(
       (mule :location built-in)
       (desktop :location built-in)
@@ -24,13 +24,14 @@
       (whitespace :location built-in)
       (calendar :location built-in)
       (ibuffer :location built-in)
+      exec-path-from-shell
       ))
 
 ;; List of packages to exclude.
-(setq appleshan-base-excluded-packages '())
+(setq appleshan-core-excluded-packages '())
 
 ;; Charset 设置
-(defun appleshan-base/init-mule ()
+(defun appleshan-core/init-mule ()
   (use-package mule
     :config
     (progn
@@ -60,7 +61,7 @@
         )
     )))
 
-(defun appleshan-base/pre-init-desktop ()
+(defun appleshan-core/pre-init-desktop ()
   (spacemacs|use-package-add-hook desktop
     :post-config
     (progn
@@ -100,7 +101,7 @@
                       "\\)$"))
       )))
 
-(defun appleshan-base/post-init-recentf ()
+(defun appleshan-core/post-init-recentf ()
   "Save recently visited files"
   (use-package recentf
     :config
@@ -129,7 +130,7 @@
         (add-to-list 'recentf-exclude item))
     )))
 
-(defun appleshan-base/init-profiler ()
+(defun appleshan-core/init-profiler ()
   (use-package profiler
     :init
     (evilified-state-evilify profiler-report-mode profiler-report-mode-map)
@@ -145,7 +146,7 @@
                (5 right)))))
       )))
 
-(defun appleshan-base/post-init-whitespace ()
+(defun appleshan-core/post-init-whitespace ()
   (progn
     ;; ;; http://emacsredux.com/blog/2013/05/31/highlight-lines-that-exceed-a-certain-length-limit/
     (setq whitespace-line-column fill-column) ;; limit line length
@@ -171,7 +172,7 @@
       )
   ))
 
-(defun appleshan-base/init-calendar ()
+(defun appleshan-core/init-calendar ()
   (use-package calendar
     :defer t
     :config
@@ -187,8 +188,22 @@
       (setq calendar-week-start-day 0) ; 0:Sunday, 1:Monday
       )))
 
-(defun appleshan-base/post-init-ibuffer ()
+(defun appleshan-core/post-init-ibuffer ()
   (setq ibuffer-show-empty-filter-groups nil))
+
+(defun appleshan-core/pre-init-exec-path-from-shell ()
+  (spacemacs|use-package-add-hook exec-path-from-shell
+    :post-config
+    (progn
+      (setq exec-path-from-shell-variables '("JAVA_HOME"
+                                             "ORACLE_HOME"
+                                             "LD_LIBRARY_PATH"
+                                             "NLS_LANG"
+                                             "PATH"
+                                             ;; "WORKON_HOME"
+                                             ;; "GPG_AGENT_INFO"
+                                             ;; "MEGHANADA_GRADLE_VERSION"
+                                             "MANPATH")))))
 
 ;; Local Variables:
 ;; coding: utf-8

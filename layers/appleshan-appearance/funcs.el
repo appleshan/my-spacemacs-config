@@ -1,4 +1,4 @@
-;;; funcs.el --- appleshan-ui Layer functions File for Spacemacs
+;;; funcs.el --- appleshan-appearance Layer functions File for Spacemacs
 
 ;; Copyright (c) 2016-2020 Apple Shan
 

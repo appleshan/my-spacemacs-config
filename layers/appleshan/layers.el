@@ -10,10 +10,12 @@
 ;;; License: GPLv3
 
 (configuration-layer/declare-layers '(
-  appleshan-base
+  appleshan-core
+  appleshan-appearance
+  appleshan-navigation
+  appleshan-notify
   appleshan-complete
   appleshan-dired
-  appleshan-ui
   appleshan-org
   appleshan-chinese
   appleshan-programming

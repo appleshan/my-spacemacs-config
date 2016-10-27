@@ -1,4 +1,4 @@
-;;; config.el --- appleshan-base layer configuration file for Spacemacs
+;;; config.el --- appleshan-core layer configuration file for Spacemacs
 ;;
 ;; Copyright (c) 2016-2020 Apple Shan
 ;;
@@ -156,41 +156,37 @@
               (push '("lambda" . ?λ) prettify-symbols-alist)))
   (global-prettify-symbols-mode +1))
 
-; (with-eval-after-load 'exec-path-from-shell
-;   ; Set the environment variable $NAME from the user's shell.
-;   (when (memq window-system '(mac ns x))
-;     (exec-path-from-shell-copy-env "PATH")))
+;; Setup up Shell and Eshell Environment
+;; (let (
+;;       (mypaths
+;;        '(
+;;          "/opt/oracle/lib"
+;;          "/opt/jdk/jdk1.8.0_102/bin"
+;;          "/opt/jdk/apache-maven-3.3.9/bin"
+;;          "/opt/eclipse-jee-neon/eclipse"
+;;          "/home/appleshan/bin"
+;;          "/home/appleshan/bin/cli"
+;;          "/home/appleshan/.local/bin"
+;;          "/home/appleshan/perl5/bin"
+;;          "/home/appleshan/bin/sift"
+;;          "/usr/local/sbin"
+;;          "/usr/local/bin"
+;;          "/usr/sbin"
+;;          "/usr/bin"
+;;          "/sbin"
+;;          "/bin"
+;;          "/usr/games"
+;;          "/usr/local/games"
+;;          ) )
+;;       )
 
-(let (
-      (mypaths
-       '(
-         "/opt/oracle/lib"
-         "/opt/jdk/jdk1.8.0_102/bin"
-         "/opt/jdk/apache-maven-3.3.9/bin"
-         "/opt/eclipse-jee-neon/eclipse"
-         "/home/appleshan/bin"
-         "/home/appleshan/bin/cli"
-         "/home/appleshan/.local/bin"
-         "/home/appleshan/perl5/bin"
-         "/home/appleshan/bin/sift"
-         "/usr/local/sbin"
-         "/usr/local/bin"
-         "/usr/sbin"
-         "/usr/bin"
-         "/sbin"
-         "/bin"
-         "/usr/games"
-         "/usr/local/games"
-         ) )
-      )
+;;   (setenv "PATH" (mapconcat 'identity mypaths ":") )
 
-  (setenv "PATH" (mapconcat 'identity mypaths ":") )
+;;   (setq exec-path (append mypaths (list "." exec-directory)) )
+;;   )
 
-  (setq exec-path (append mypaths (list "." exec-directory)) )
-  )
-
-(setenv "LD_LIBRARY_PATH" "/opt/oracle/lib")
-(setenv "NLS_LANG" "SIMPLIFIED CHINESE_CHINA.AL32UTF8")
+;; (setenv "LD_LIBRARY_PATH" "/opt/oracle/lib")
+;; (setenv "NLS_LANG" "SIMPLIFIED CHINESE_CHINA.AL32UTF8")
 
 ;; Local Variables:
 ;; coding: utf-8

@@ -1,4 +1,4 @@
-;;; funcs.el --- appleshan-base Layer functions File for Spacemacs
+;;; funcs.el --- appleshan-core Layer functions File for Spacemacs
 
 ;; Copyright (c) 2016-2020 Apple Shan
 
@@ -185,6 +185,25 @@ re-indenting and un-tabification is done."
       (indent-buffer)
       (untabify-buffer)))
   (delete-trailing-whitespace))
+
+;; {{{ persistent scratch
+(defun save-persistent-scratch ()
+  "Write the contents of *scratch* to the file name
+`persistent-scratch-file-name'."
+  (with-current-buffer (get-buffer-create "*scratch*")
+    (write-region (point-min) (point-max) "~/.emacs.d/.cache/persistent-scratch")))
+
+(defun load-persistent-scratch ()
+  "Load the contents of `persistent-scratch-file-name' into the
+  scratch buffer, clearing its contents first."
+  (if (file-exists-p "~/.emacs-persistent-scratch")
+      (with-current-buffer (get-buffer "*scratch*")
+        (delete-region (point-min) (point-max))
+        (insert-file-contents "~/.emacs.d/.cache/persistent-scratch"))))
+
+(add-hook 'after-init-hook 'load-persistent-scratch)
+(add-hook 'kill-emacs-hook 'save-persistent-scratch)
+;; }}}
 
 ;; Local Variables:
 ;; coding: utf-8
