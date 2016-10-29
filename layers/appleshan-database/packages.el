@@ -26,6 +26,7 @@
 (defun appleshan-database/init-database-client ()
   (use-package database-client))
 
+
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: nil

@@ -9,7 +9,7 @@
 ;;; Code:
 
 
-(require 'sql)
+;; (require 'sql)
 
 ;;; server list
 (setq sql-connection-alist
