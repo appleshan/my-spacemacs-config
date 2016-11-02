@@ -84,6 +84,8 @@
   (evilified-state-evilify ivy-occur-mode ivy-occur-mode-map))
 
 (defun appleshan-complete/post-init-yasnippet ()
+  (setq yas-snippet-dirs (delq 'yas-installed-snippets-dir yas-snippet-dirs))
+
   ;; Remove Yasnippet's default tab key binding
   (define-key yas-minor-mode-map (kbd "<tab>") nil)
   (define-key yas-minor-mode-map (kbd "TAB") nil)

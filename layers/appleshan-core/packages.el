@@ -24,7 +24,6 @@
       (whitespace :location built-in)
       (calendar :location built-in)
       (ibuffer :location built-in)
-      exec-path-from-shell
       ))
 
 ;; List of packages to exclude.
@@ -190,20 +189,6 @@
 
 (defun appleshan-core/post-init-ibuffer ()
   (setq ibuffer-show-empty-filter-groups nil))
-
-(defun appleshan-core/pre-init-exec-path-from-shell ()
-  (spacemacs|use-package-add-hook exec-path-from-shell
-    :post-config
-    (progn
-      (setq exec-path-from-shell-variables '("JAVA_HOME"
-                                             "ORACLE_HOME"
-                                             "LD_LIBRARY_PATH"
-                                             "NLS_LANG"
-                                             "PATH"
-                                             ;; "WORKON_HOME"
-                                             ;; "GPG_AGENT_INFO"
-                                             ;; "MEGHANADA_GRADLE_VERSION"
-                                             "MANPATH")))))
 
 ;; Local Variables:
 ;; coding: utf-8

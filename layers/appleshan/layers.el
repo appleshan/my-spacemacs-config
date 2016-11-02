@@ -11,6 +11,7 @@
 
 (configuration-layer/declare-layers '(
   appleshan-core
+  appleshan-shell
   appleshan-appearance
   appleshan-navigation
   appleshan-notify
@@ -25,5 +26,6 @@
   ; appleshan-web
   appleshan-lisp
   appleshan-database
+  appleshan-remote
   appleshan-misc
   ))
