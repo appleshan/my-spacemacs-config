@@ -62,7 +62,7 @@ values."
                       ; auto-completion-return-key-behavior nil
                       auto-completion-tab-key-behavior 'complete
                       auto-completion-private-snippets-directory "~/.spacemacs.d/snippets/"
-                      :disabled-for erc ; org markdown
+                      :disabled-for erc org markdown
                       )
      ;; auto-complete layer 在 orgmode 中会引发很多问题，
      ;; 所以最好在 org 中禁用 company 补全
@@ -94,8 +94,8 @@ values."
      (restclient :variables
                  restclient-use-org nil)
      (syntax-checking :variables
-                      syntax-checking-enable-by-default nil
-                      syntax-checking-enable-tooltips nil)
+                      syntax-checking-enable-by-default t
+                      syntax-checking-enable-tooltips t)
      version-control
 
      ;; --- Vim layers ---

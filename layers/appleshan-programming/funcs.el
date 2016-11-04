@@ -138,7 +138,7 @@ With a prefix argument, use comint-mode."
 
 (defun add-custom-keyw()
   "adds a few special keywords"
-  (font-lock-add-keywords 
+  (font-lock-add-keywords
    nil
    '(("cx \\(.+\\)" 1 'font-lock-comment-strike prepend)
      ("ct \\(.+\\)" 1 'font-lock-comment-todo prepend)
@@ -221,16 +221,32 @@ With a prefix argument, use comint-mode."
     (git-timemachine--start #'my-git-timemachine-show-selected-revision))
 )
 
+;; In programming modes, make sure things like FIXME and TODO are highlighted so they stand out:
+;; TODO: asg
+;; HACK: adsf
+;; REFACTOR: asd
+;; FIXME: adf
+;; OPTIMIZE: asdf
 (defun font-lock-comment-annotations ()
   "Highlight a bunch of well known comment annotations.
 
 This functions should be added to the hooks of major modes for programming."
   (font-lock-add-keywords
-   nil '(("\\<\\(FIX\\(ME\\)?\\|TODO\\|OPTIMIZE\\|HACK\\|REFACTOR\\):"
-          1 font-lock-warning-face t))))
+   nil '(("\\<\\(TODO\\|REFACTOR\\): " 1 font-lock-warning-face t)
+         ("\\<\\(HACK\\): " 1 '(:foreground "purple") t)
+         ("\\<\\(FIXME\\|OPTIMIZE\\): " 1 '(:foreground "red") t)
+         )))
 
 (add-hook 'prog-mode-hook 'font-lock-comment-annotations)
 
+;; (font-lock-add-keywords
+;;  nil '(("\\<\\(TODO\\|REFACTOR\\):" 1 font-lock-warning-face t)
+;;        ("\\<\\(HACK\\):" 1 '(:foreground "blue") t)
+;;        ("\\<\\(FIXME\\|OPTIMIZE\\):" 1 '(:foreground "red") t)
+;;        )
+;;  )
+
+;; Execute the current file.
 (defun appleshan/run-current-file ()
   "Execute the current file.
 For example, if the current buffer is the file x.py, then it'll call 「python x.py」 in a shell.

@@ -33,7 +33,7 @@
 
 (with-eval-after-load 'ivy
   ;; http://blog.binchen.org/posts/use-ivy-mode-to-search-bash-history.html
-  ;; ;FIXME: make it work with zsh
+  ;; FIXME: make it work with zsh
   (defun counsel-yank-bash-history ()
     "Yank the bash history"
     (interactive)

@@ -27,7 +27,7 @@
   (use-package exec-path-from-shell
     :ensure t
     :defer t
-    :init
+    :config
     (progn
       (dolist (var '(;; my path
                      "JAVA_HOME"

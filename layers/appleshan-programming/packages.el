@@ -27,6 +27,7 @@
       paren-face
       prodigy
       puml-mode
+      smart-tab
       tldr
       vdiff
       zeal-at-point
@@ -65,7 +66,17 @@
          :url "http://www.google.com.au/search?q=%s+site:developer.mozilla.org")
     ))
 
+;; (defun appleshan-programming/pre-init-flycheck ()
+;;   (spacemacs|use-package-add-hook flycheck
+;;     :post-init
+;;     (progn
+;;       ;; (setq flycheck-indication-mode 'right-fringe)
+;;       ;; (setq flycheck-check-syntax-automatically '(save mode-enabled))
+;;       )))
+
 (defun appleshan-programming/post-init-flycheck ()
+  (setq-default flycheck-disabled-checkers
+                '(emacs-lisp-checkdoc json-jsonlint json-python-json))
   (setq flycheck-display-errors-delay 0.9)
   (setq flycheck-idle-change-delay 2.0))
 
@@ -133,6 +144,10 @@
 
 (defun appleshan-programming/post-init-magit ()
   (with-eval-after-load 'magit
+    (if (file-exists-p  "/usr/bin/emacsclient")
+        (setq magit-emacsclient-executable "/usr/bin/emacsclient")
+      (setq magit-emacsclient-executable (executable-find "emacsclient")))
+
     (add-to-list 'magit-no-confirm 'stage-all-changes)
     (define-key magit-mode-map "@" 'appleshan/magit-branch-pull-request)
     (define-key magit-log-mode-map (kbd "W") 'magit-copy-section-value)
@@ -207,6 +222,18 @@
   ;; Enable puml-mode for PlantUML files
   (add-to-list 'auto-mode-alist '("\\.puml\\'" . puml-mode))
   (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . puml-mode)))
+
+(defun appleshan-programming/init-smart-tab ()
+  (use-package smart-tab
+    :ensure t
+    :defer t
+    :diminish ""
+    :init (global-smart-tab-mode 1)
+    :config
+    (setq smart-tab-using-hippie-expand t)
+    (add-to-list 'smart-tab-disabled-major-modes 'mu4e-compose-mode)
+    (add-to-list 'smart-tab-disabled-major-modes 'erc-mode)
+    (add-to-list 'smart-tab-disabled-major-modes 'shell-mode)))
 
 (defun appleshan-programming/init-tldr ()
   (use-package tldr

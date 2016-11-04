@@ -2,7 +2,7 @@
 (set-face-attribute 'default nil :height 130)
 ;; make the fringe thinner (default is 8 in pixels)
 ;; make fringe mini size
-(set-fringe-mode '(1 . 1))
+(set-fringe-mode '(8 . 0))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
