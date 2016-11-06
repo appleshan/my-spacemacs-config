@@ -9,6 +9,25 @@
 ;;
 ;;; License: GPLv3
 
+; (define-key spacemacs-default-map (kbd key) def)
+; (global-unset-key (kbd "skb"))
+
+(spacemacs/declare-prefix "o" "org") ;; modify by appleshan
+(spacemacs/set-leader-keys ;; modify by appleshan
+  ;; org-agenda
+  "o#" 'org-agenda-list-stuck-projects
+  "o/" 'org-occur-in-agenda-files
+  "oa" 'org-agenda-list
+  "oe" 'org-store-agenda-views
+  "om" 'org-tags-view
+  "oo" 'org-agenda
+  "os" 'org-search-view
+  "ot" 'org-todo-list
+  ;; other
+  "oO" 'org-clock-out
+  "oc" 'org-capture
+  "ol" 'org-store-link)
+
 (define-key global-map (kbd "<f8>") 'appleshan/show-current-buffer-major-mode)
 
 ;; Search (and search/replace) using regex by default, since that's usually what I want to do:

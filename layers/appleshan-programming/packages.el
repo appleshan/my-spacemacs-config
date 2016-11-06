@@ -26,7 +26,7 @@
       paredit
       paren-face
       prodigy
-      puml-mode
+      plantuml-mode
       smart-tab
       tldr
       vdiff
@@ -210,18 +210,17 @@
       (load-file prodigy-service-file))
   ))
 
-(defun appleshan-programming/pre-init-puml-mode ()
-  (spacemacs|use-package-add-hook puml-mode
+(defun appleshan-programming/pre-init-plantuml-mode ()
+  (spacemacs|use-package-add-hook plantuml-mode
     :post-config
     (progn
-      (setq puml-plantuml-jar-path
-        (concat user-home-directory "/opt/java-lib/plantuml.jar"))
+      (setq plantuml-jar-path "/opt/java-lib/plantuml.jar")
     )))
 
-(defun appleshan-programming/post-init-puml-mode ()
+(defun appleshan-programming/post-init-plantuml-mode ()
   ;; Enable puml-mode for PlantUML files
-  (add-to-list 'auto-mode-alist '("\\.puml\\'" . puml-mode))
-  (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . puml-mode)))
+  (add-to-list 'auto-mode-alist '("\\.puml\\'" . plantuml-mode))
+  (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode)))
 
 (defun appleshan-programming/init-smart-tab ()
   (use-package smart-tab
