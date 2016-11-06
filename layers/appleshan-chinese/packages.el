@@ -67,7 +67,7 @@
       ;; 只显示我定制的节日
       (setq calendar-holidays holiday-holidays))))
 
-(defun chinese/init-chinese-pyim ()
+(defun appleshan-chinese/init-chinese-pyim ()
   (use-package chinese-pyim
     :if (eq 'pinyin chinese-default-input-method)
     :init
