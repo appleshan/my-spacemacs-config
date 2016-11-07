@@ -9,8 +9,8 @@
 ;;
 ;;; License: GPLv3
 
-; (define-key spacemacs-default-map (kbd key) def)
-; (global-unset-key (kbd "skb"))
+;; 逗号后面自动加空格
+(global-set-key (kbd ",") #'(lambda () (interactive) (insert ", ")))
 
 (spacemacs/declare-prefix "o" "org") ;; modify by appleshan
 (spacemacs/set-leader-keys ;; modify by appleshan
@@ -36,12 +36,7 @@
 (global-set-key (kbd "M-%") 'query-replace-regexp)
 
 ;; dir
-(spacemacs/set-leader-keys "drd" 'counsel-goto-recent-directory)
-(spacemacs/set-leader-keys "drf" 'counsel-find-file-recent-directory)
 (spacemacs/set-leader-keys "dt" 'neotree-dir)
-
-;; bash
-(spacemacs/set-leader-keys "ash" 'counsel-yank-bash-history)
 
 ; (global-set-key (kbd "M-/") 'company-complete)
 
@@ -67,8 +62,6 @@
 
 (global-set-key (kbd "<f5>") 'appleshan/run-current-file)
 
-(spacemacs/set-leader-keys "gT" 'my-git-timemachine)
-
 (spacemacs/set-leader-keys "bl" 'popwin:display-last-buffer)
 
 ;; layout
@@ -76,9 +69,6 @@
 (spacemacs/declare-prefix "l" "layout")
 (spacemacs/set-leader-keys "ll" 'appleshan/load-my-layout)
 (spacemacs/set-leader-keys "ls" 'appleshan/save-my-layout)
-
-;; search
-(define-key global-map (kbd "C-s") 'my-swiper-search)
 
 (spacemacs/declare-prefix "aD" "database")
 (spacemacs/set-leader-keys "aDm" 'dbclient/sql-connect-server)
@@ -100,6 +90,9 @@
 ; (global-set-key [(f1)]      'javadoc-lookup)  ; F1 to lookup term on the configured Javadocs.
 ; (global-set-key [(meta f1)] 'javadoc-help)    ; meta-F1 to bring up the Javadoc-help menu to set up Javadocs.
 
+;; ecb
+(global-set-key (kbd "<f9>") 'toggle-code-browser)
+(global-set-key (kbd "<f10>") 'ecb-toggle-compile-window)
 
 ;; Local Variables:
 ;; coding: utf-8

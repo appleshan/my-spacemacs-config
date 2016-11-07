@@ -43,6 +43,10 @@
 ;; https://www.reddit.com/r/emacs/comments/4xhxfw/how_to_tune_the_behavior_of_eletricpairmode/
 (setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
 
+;; show parenthesis match
+(show-paren-mode t)
+(setq show-paren-style 'expression)
+
 (auto-compression-mode t)            ;Transparently Open Compressed Files
 ;(mouse-avoidance-mode "banish")      ;只要一操作鼠标自动闪开
 
@@ -86,13 +90,13 @@
 (setq url-show-status nil)
 
 ;; Allow font-lock-mode to do background parsing
-(setq font-lock-support-mode 'jit-lock-mode)
-(setq jit-lock-defer-time nil
-      jit-lock-stealth-nice 0.1
-      jit-lock-stealth-time 0.2
-      jit-lock-defer-contextually t
-      jit-lock-stealth-verbose nil)
-(setq-default font-lock-multiline t)
+;(setq font-lock-support-mode 'jit-lock-mode)
+;(setq jit-lock-defer-time nil
+;      jit-lock-stealth-nice 0.1
+;      jit-lock-stealth-time 0.2
+;      jit-lock-defer-contextually t
+;      jit-lock-stealth-verbose nil)
+;(setq-default font-lock-multiline t)
 
 ;; Wait a bit longer than the default (0.5 seconds) before assuming Emacs is idle
 (setq idle-update-delay 2)
@@ -101,10 +105,6 @@
 
 ;; Make gnutls a bit safer, the default is an absurdly low 256
 (setq gnutls-min-prime-bits 4096)
-
-;; show parenthesis match
-(show-paren-mode t)
-(setq show-paren-style 'expression)
 
 ;; Set up the fill-column to 80 characters and set tab width to 2
 (setq-default fill-column 80)

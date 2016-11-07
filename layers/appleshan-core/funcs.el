@@ -196,7 +196,7 @@ re-indenting and un-tabification is done."
 (defun load-persistent-scratch ()
   "Load the contents of `persistent-scratch-file-name' into the
   scratch buffer, clearing its contents first."
-  (if (file-exists-p "~/.emacs-persistent-scratch")
+  (if (file-exists-p "~/.emacs.d/.cache/persistent-scratch")
       (with-current-buffer (get-buffer "*scratch*")
         (delete-region (point-min) (point-max))
         (insert-file-contents "~/.emacs.d/.cache/persistent-scratch"))))

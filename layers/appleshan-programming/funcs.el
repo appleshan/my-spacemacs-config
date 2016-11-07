@@ -136,7 +136,7 @@ With a prefix argument, use comint-mode."
 (set-face-attribute 'font-lock-comment-strike
         nil :strike-through t)
 
-(defun add-custom-keyw()
+(defun add-custom-keywords()
   "adds a few special keywords"
   (font-lock-add-keywords
    nil
@@ -145,7 +145,7 @@ With a prefix argument, use comint-mode."
      ("ci \\(.+\\)" 1 'font-lock-comment-important prepend)
      )))
 
-(add-hook 'prog-mode-hook #'add-custom-keyw)
+(add-hook 'prog-mode-hook #'add-custom-keywords)
 ;;}}
 
 ;;{{ my fix for tab indent
@@ -192,35 +192,6 @@ With a prefix argument, use comint-mode."
 (add-hook 'prog-mode-hook 'appleshan/hack-tab-key)
 ;;}}
 
-(with-eval-after-load 'ivy
-  (defun my-unwind-git-timemachine ()
-    (if (not (eq last-command-event 13))
-      (git-timemachine-quit)))
-
-  ;; http://blog.binchen.org/posts/new-git-timemachine-ui-based-on-ivy-mode.html
-  (defun my-git-timemachine-show-selected-revision ()
-    "Show last (current) revision of file."
-    (interactive)
-    (let (collection)
-      (setq collection
-            (mapcar (lambda (rev)
-                      ;; re-shape list for the ivy-read
-                      (cons (concat (substring (nth 0 rev) 0 7) "|" (nth 5 rev) "|" (nth 6 rev)) rev))
-                    (git-timemachine--revisions)))
-      (ivy-read "commits:"
-                collection
-                :unwind #'my-unwind-git-timemachine
-                :action (lambda (rev)
-                          (git-timemachine-show-revision (cdr rev))))))
-
-  (defun my-git-timemachine ()
-    "Open git snapshot with the selected version.  Based on ivy-mode."
-    (interactive)
-    (unless (featurep 'git-timemachine)
-      (require 'git-timemachine))
-    (git-timemachine--start #'my-git-timemachine-show-selected-revision))
-)
-
 ;; In programming modes, make sure things like FIXME and TODO are highlighted so they stand out:
 ;; TODO: asg
 ;; HACK: adsf
@@ -238,13 +209,6 @@ This functions should be added to the hooks of major modes for programming."
          )))
 
 (add-hook 'prog-mode-hook 'font-lock-comment-annotations)
-
-;; (font-lock-add-keywords
-;;  nil '(("\\<\\(TODO\\|REFACTOR\\):" 1 font-lock-warning-face t)
-;;        ("\\<\\(HACK\\):" 1 '(:foreground "blue") t)
-;;        ("\\<\\(FIXME\\|OPTIMIZE\\):" 1 '(:foreground "red") t)
-;;        )
-;;  )
 
 ;; Execute the current file.
 (defun appleshan/run-current-file ()
@@ -328,6 +292,91 @@ prefix argument checkout branch instead of showing its log."
 ;   :error-patterns
 ;   ((error line-start (file-name) ":" line ": " (message) line-end))
 ;   :modes (xml-mode nxml-mode))
+
+;;; ecb
+;; @see https://github.com/cosmonaut-ok/smile-ide/blob/master/src/smile-codebrowser.el
+(with-eval-after-load 'ecb
+  (defadvice ecb-activate (after ecb-activate-after activate)
+    "Redraw layout after activation of ecb."
+    (ecb-redraw-layout))
+
+  (defun toggle-code-browser ()
+    (interactive)
+    (ecb-toggle-ecb-windows)
+    (call-interactively 'ecb-activate))
+
+  ;;;; defining standard layouts
+  (ecb-layout-define "smile-3-1" left-right
+         "This function creates the following layout:
+   --------------------------------------------------------------
+   |              |                               |             |
+   |  Methods     |                               | Directories |
+   |              |                               |             |
+   |              |                               |             |
+   |              |                               |             |
+   |              |                               |             |
+   |              |                               |             |
+   |--------------|             Edit              |             |
+   |              |                               |             |
+   |  Sources     |                               |             |
+   |              |                               |             |
+   |--------------|                               |             |
+   |              |                               |             |
+   |  History     |                               |             |
+   |              |                               |             |
+   --------------------------------------------------------------
+   |                                                            |
+   |                    Compilation                             |
+   |                                                            |
+   --------------------------------------------------------------
+If you have not set a compilation-window in `ecb-compile-window-height' then
+the layout contains no persistent compilation window and the other windows get a
+little more place."
+         (ecb-set-methods-buffer)
+         (ecb-split-ver 0.4)
+         (ecb-set-sources-buffer)
+         (ecb-split-ver 0.5)
+         (ecb-set-history-buffer)
+         (select-window (next-window (next-window)))
+         (ecb-set-directories-buffer)
+         (select-window (previous-window (selected-window) 0)))
+
+  (ecb-layout-define "smile-2-2" left-right
+         "This function creates the following layout:
+   --------------------------------------------------------------
+   |              |                               |             |
+   |  Methods     |                               | Directories |
+   |              |                               |             |
+   |              |                               |             |
+   |              |                               |             |
+   |              |                               |             |
+   |              |                               |             |
+   |--------------|             Edit              |-------------|
+   |              |                               |             |
+   |  History     |                               |  Sources    |
+   |              |                               |             |
+   |              |                               |             |
+   |              |                               |             |
+   |              |                               |             |
+   |              |                               |             |
+   --------------------------------------------------------------
+   |                                                            |
+   |                    Compilation                             |
+   |                                                            |
+   --------------------------------------------------------------
+If you have not set a compilation-window in `ecb-compile-window-height' then
+the layout contains no persistent compilation window and the other windows get a
+little more place."
+         (ecb-set-methods-buffer)
+         (ecb-split-ver 0.5)
+         (ecb-set-history-buffer)
+         (select-window (next-window (next-window)))
+         (ecb-set-directories-buffer)
+         (ecb-split-ver 0.66)
+         (ecb-set-sources-buffer)
+         (select-window (previous-window (previous-window (selected-window) 0) 0)))
+
+)
 
 ;; Local Variables:
 ;; coding: utf-8

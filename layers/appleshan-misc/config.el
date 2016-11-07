@@ -53,7 +53,7 @@
 
 ;; {{{ Spell check and flyspell settings
 ;; Standard location of personal dictionary
-(setq ispell-personal-dictionary "~/.flydict")
+(setq ispell-personal-dictionary "~/.emacs.d/.cache/.flydict")
 
 ;; Mostly taken from
 ;; http://blog.binchen.org/posts/what-s-the-best-spell-check-set-up-in-emacs.html

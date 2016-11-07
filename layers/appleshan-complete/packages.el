@@ -21,7 +21,6 @@
       helm-flx
       helm-fuzzier
       projectile
-      ;; swiper
       yasnippet
       ))
 
@@ -77,11 +76,6 @@
     (add-to-list 'projectile-globally-ignored-files ".DS_Store")
     ;; always ignore .class files
     (add-to-list 'projectile-globally-ignored-file-suffixes ".class")))
-
-(defun appleshan-complete/post-init-swiper ()
-  (setq ivy-display-style 'fancy)
-
-  (evilified-state-evilify ivy-occur-mode ivy-occur-mode-map))
 
 (defun appleshan-complete/post-init-yasnippet ()
   (setq yas-snippet-dirs (delq 'yas-installed-snippets-dir yas-snippet-dirs))

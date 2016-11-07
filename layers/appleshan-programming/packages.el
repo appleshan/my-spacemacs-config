@@ -13,9 +13,9 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq appleshan-programming-packages
     '(
-      dumb-jump
       editorconfig
       engine-mode
+      ecb
       flycheck
       flycheck-package
       gist
@@ -35,14 +35,6 @@
 
 ;; List of packages to exclude.
 (setq appleshan-programming-excluded-packages '())
-
-(defun appleshan-programming/post-init-dumb-jump ()
-  (setq dumb-jump-selector 'ivy)
-  (defun my-dumb-jump ()
-    (interactive)
-    (evil-set-jump)
-    (dumb-jump-go))
-  (global-set-key (kbd "C-s-g") 'my-dumb-jump))
 
 (defun appleshan-programming/init-editorconfig ()
   (use-package editorconfig
@@ -65,6 +57,10 @@
          :name "Javascript search on mozilla.org"
          :url "http://www.google.com.au/search?q=%s+site:developer.mozilla.org")
     ))
+
+(defun appleshan-programming/init-ecb ()
+  (use-package ecb
+    :init (require 'ecb)))
 
 ;; (defun appleshan-programming/pre-init-flycheck ()
 ;;   (spacemacs|use-package-add-hook flycheck
