@@ -90,10 +90,6 @@
 ; (global-set-key [(f1)]      'javadoc-lookup)  ; F1 to lookup term on the configured Javadocs.
 ; (global-set-key [(meta f1)] 'javadoc-help)    ; meta-F1 to bring up the Javadoc-help menu to set up Javadocs.
 
-;; ecb
-(global-set-key (kbd "<f9>") 'toggle-code-browser)
-(global-set-key (kbd "<f10>") 'ecb-toggle-compile-window)
-
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: nil

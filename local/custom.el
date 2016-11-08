@@ -9,17 +9,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(ecb-options-version "2.50")
- '(ecb-tip-of-the-day nil)
- '(ecb-layout-name "smile-2-2")
- '(ecb-windows-width 0.2)
- '(ecb-compile-window-height 0.15)
- '(ecb-compile-window-width 'edit-window)
- '(ecb-compile-window-temporally-enlarge 'after-selection) ;; after-display after-selection both nil
- '(ecb-enlarged-compilation-window-max-height 0.6) ;; best, half, number
- ;'(ecb-create-layout-file (locate-user-config-file "ecb-user-layouts.el"))
- ;'(ecb-tip-of-the-day-file (locate-user-config-file "ecb-tip-of-day.el"))
- '(ecb-source-path (quote (("~" "Home"))))
  '(exec-path-from-shell-arguments (quote ("-l")))
  '(hl-paren-colors (quote ("Cyan" "Gold" "Red")))
  '(initial-frame-alist (quote ((fullscreen . maximized))))

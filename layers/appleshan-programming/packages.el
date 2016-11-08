@@ -15,7 +15,6 @@
     '(
       editorconfig
       engine-mode
-      ecb
       flycheck
       flycheck-package
       gist
@@ -57,10 +56,6 @@
          :name "Javascript search on mozilla.org"
          :url "http://www.google.com.au/search?q=%s+site:developer.mozilla.org")
     ))
-
-(defun appleshan-programming/init-ecb ()
-  (use-package ecb
-    :init (require 'ecb)))
 
 ;; (defun appleshan-programming/pre-init-flycheck ()
 ;;   (spacemacs|use-package-add-hook flycheck
