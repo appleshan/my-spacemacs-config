@@ -23,11 +23,9 @@
 ;; List of packages to exclude.
 (setq appleshan-shell-excluded-packages '())
 
-(defun appleshan-shell/init-exec-path-from-shell ()
-  (use-package exec-path-from-shell
-    :ensure t
-    :defer t
-    :config
+(defun appleshan-shell/pre-init-exec-path-from-shell ()
+  (spacemacs|use-package-add-hook exec-path-from-shell
+    :post-config
     (progn
       (dolist (var '(;; my path
                      "JAVA_HOME"
@@ -40,11 +38,10 @@
                      "SSH_AGENT_PID"
                      "GPG_AGENT_INFO"
                      "LANG"
+                     "LC_ALL"
                      "LC_CTYPE"))
         (add-to-list 'exec-path-from-shell-variables var))
-      (when (memq window-system '(mac ns x))
-        (exec-path-from-shell-initialize))
-      )))
+    )))
 
 ;; Local Variables:
 ;; coding: utf-8

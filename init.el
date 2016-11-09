@@ -39,8 +39,6 @@ values."
 
      ;; --- General layers ---
      better-defaults
-     (chinese :variables
-              chinese-enable-fcitx t)
      (colors :variables
              colors-colorize-identifiers 'variables
              colors-enable-nyan-cat-progress-bar nil)
@@ -74,7 +72,6 @@ values."
      ; java
      javascript
      plantuml ; uml
-     ; shell
      shell-scripts
      yaml
      ; markdown

@@ -18,7 +18,7 @@
   appleshan-complete
   appleshan-dired
   appleshan-org
-  appleshan-chinese
+  (appleshan-chinese :variables chinese-enable-fcitx t)
   appleshan-programming
   appleshan-python
   appleshan-java

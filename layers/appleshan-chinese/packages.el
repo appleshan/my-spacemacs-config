@@ -12,7 +12,10 @@
 (setq appleshan-chinese-packages
     '(
       cal-china-x
-      chinese-pyim
+      (chinese-pyim :toggle (eq chinese-default-input-method 'pinyin))
+      (fcitx :toggle chinese-enable-fcitx)
+      find-by-pinyin-dired
+      ace-pinyin
       pangu-spacing
       ))
 
@@ -104,6 +107,25 @@
       (setq pyim-company-complete-chinese-enable nil)
       )))
 
+(defun appleshan-chinese/init-fcitx ()
+  (use-package fcitx
+    :init
+    (fcitx-evil-turn-on)))
+
+(defun appleshan-chinese/init-find-by-pinyin-dired ()
+  (use-package find-by-pinyin-dired
+    :defer t))
+
+(defun appleshan-chinese/init-ace-pinyin ()
+  (use-package ace-pinyin
+    :defer t
+    :init
+    (progn
+      (if chinese-enable-avy-pinyin
+          (setq ace-pinyin-use-avy t))
+      (ace-pinyin-global-mode t)
+      (spacemacs|hide-lighter ace-pinyin-mode))))
+
 ;; 覆盖 Chinese Layer 的 init 方法
 (defun appleshan-chinese/init-pangu-spacing ()
   "覆盖 Chinese-layer 中的设置。默认关闭 pangu-spacing，只有在 buffer 比较小的时候才启动，
@@ -123,7 +145,7 @@
         (when (< (buffer-size) *large-buffer-threshold*)
           (pangu-spacing-mode 1)))
 
-      (dolist (i '(prog-mode-hook text-mode-hook))
+      (dolist (i '(org-mode-hook prog-mode-hook text-mode-hook))
         (add-hook i 'enable-pangu-spacing-when-buffer-not-large)))
     :config
     ;; add toggle options
