@@ -24,12 +24,12 @@
 (spacemacs|defvar-company-backends conf-unix-mode)
 (spacemacs|defvar-company-backends json-mode)
 
-; (spacemacs|add-toggle iimage
-;   :status iimage-mode
-;   :on (iimage-mode)
-;   :off (iimage-mode -1)
-;   :documentation "Enable iimage mode"
-;   :evil-leader "oti")
+(spacemacs|add-toggle iimage
+  :status iimage-mode
+  :on (iimage-mode)
+  :off (iimage-mode -1)
+  :documentation "Enable iimage mode"
+  :evil-leader "oTI")
 
 (add-to-list 'auto-mode-alist
   (cons (concat "\\." (regexp-opt '("xml" "xsd" "xslt" "xsl") t) "\\'")
