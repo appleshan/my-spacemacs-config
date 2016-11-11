@@ -26,6 +26,16 @@
 
 (defvar org-tag-alist nil)
 
+;; Make org-mode friendly for Chinese chars.
+(setq org-emphasis-regexp-components
+      '(
+        " 	('\"{"
+        "- 	.,:!?;'\")}\\["
+        "：，。、  \t('\"{" ;pre
+        "- ：，。、 \t.,:!?;'\")}\\" ;post
+        1 ; newline
+        ))
+
 ;; 让 ispell 跳过某段文本不做拼写检查
 (defun appleshan/org-ispell ()
   "Configure `ispell-skip-region-alist' for `org-mode'."

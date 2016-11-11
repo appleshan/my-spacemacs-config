@@ -43,7 +43,7 @@ values."
              colors-colorize-identifiers 'variables
              colors-enable-nyan-cat-progress-bar nil)
      ;; deft  ;; Quick Note Taking
-     ; finance
+     ;; finance
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
      search-engine
@@ -52,7 +52,7 @@ values."
 
      ;; --- Auto Complete layers ---
      helm           ; spacemacs develop branch : ivy or helm
-     ; spacemacs-ivy ; spacemacs master branch
+     ;; spacemacs-ivy ; spacemacs master branch
      (auto-completion :variables
                       auto-completion-enable-help-tooltip 'manual
                       auto-completion-enable-sort-by-usage t
@@ -69,19 +69,19 @@ values."
      scheme
      emacs-lisp
      html
-     ; java
-     javascript
+     ;; java
+     ;; javascript
      plantuml ; uml
      shell-scripts
      yaml
-     ; markdown
+     ;; markdown
      org
 
      ;; --- Programming tool layers ---
      (dash :variables
            helm-dash-docset-newpath "~/.local/share/Zeal/docsets/")
      docker
-     ; gtags
+     ;; gtags
      (git :variables
           git-magit-status-fullscreen t)
      github
@@ -97,7 +97,7 @@ values."
 
      ;; --- Vim layers ---
      ;; ranger 与 vinegar 不能共存
-     ; ranger
+     ;; ranger
      (vinegar :variables
               vinegar-reuse-dired-buffer t)
      vim-empty-lines
@@ -140,8 +140,6 @@ values."
                                     fish-mode
                                     flx-ido
                                     gh-md
-                                    git-gutter
-                                    git-gutter+
                                     git-gutter-fringe
                                     git-gutter-fringe+
                                     google-translate
@@ -151,8 +149,6 @@ values."
                                     helm-mode-manager
                                     helm-projectile
                                     helm-pydoc
-                                    ; helm-spacemacs-help
-                                    ; helm-swoop
                                     helm-themes
                                     highlight-indentation
                                     hl-anything
@@ -177,7 +173,6 @@ values."
                                     smeargle
                                     smex
                                     smooth-scrolling
-                                    ; spacemacs-theme
                                     spinner
                                     vi-tilde-fringe
                                     volatile-highlights)
@@ -261,6 +256,11 @@ values."
                                :powerline-scale 1.1)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
+   ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
+   ;; (default "SPC")
+   dotspacemacs-emacs-command-key "SPC"
+   ;; The key used for Vim Ex commands (default ":")
+   dotspacemacs-ex-command-key ":"
    ;; The leader key accessible in `emacs state' and `insert state'
    ;; (default "M-m")
    dotspacemacs-emacs-leader-key "M-m"
@@ -268,11 +268,8 @@ values."
    ;; pressing `<leader> m`. Set it to `nil` to disable it. (default ",")
    dotspacemacs-major-mode-leader-key ","
    ;; Major mode leader key accessible in `emacs state' and `insert state'.
-   ;; (default "C-M-m)
+   ;; (default "C-M-m")
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
-   ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
-   ;; (default "SPC")
-   dotspacemacs-emacs-command-key "SPC"
    ;; These variables control whether separate commands are bound in the GUI to
    ;; the key pairs C-i, TAB and C-m, RET.
    ;; Setting it to a non-nil value, allows for separate commands under <C-i>
@@ -423,7 +420,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
         '(("gnu-cn"          . "https://elpa.zilongshanren.com/gnu/")
           ("melpa-cn"        . "https://elpa.zilongshanren.com/melpa/")
         ; ("melpa-stable-cn" . "https://elpa.zilongshanren.com/melpa-stable/")
-          ("elpy"            . "https://jorgenschaefer.github.io/packages/")
+        ; ("elpy"            . "https://jorgenschaefer.github.io/packages/")
           ("org-cn"          . "https://elpa.zilongshanren.com/org/")))
 
   ; (setq configuration-layer--elpa-archives

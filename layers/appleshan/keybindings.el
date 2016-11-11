@@ -9,6 +9,10 @@
 ;;
 ;;; License: GPLv3
 
+;; @see https://emacs-china.org/t/better-default-c-e/1573/6
+(define-key evil-insert-state-map (kbd "C-e") 'mwim-end-of-code-or-line)
+(define-key evil-motion-state-map (kbd "C-e") 'mwim-end-of-code-or-line)
+
 ;; 逗号后面自动加空格
 (global-set-key (kbd ",") #'(lambda () (interactive) (insert ", ")))
 

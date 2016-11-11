@@ -11,25 +11,6 @@
 
 ;; (require 'sql)
 
-;;; server list
-(setq sql-connection-alist
-      '((mysql.nfdev.local (sql-product 'mysql)
-                           (sql-port 3306)
-                           (sql-server "192.168.14.41")
-                           (sql-user "nfdev")
-                           (sql-database "nfdev"))
-        (mysql.nftest.local (sql-product 'mysql)
-                            (sql-port 3306)
-                            (sql-server "192.168.14.60")
-                            (sql-user "nftest")
-                            (sql-database "nftest"))
-        (oracle.lisdev.local (sql-product 'oracle)
-                             (sql-port 1521)
-                             (sql-server "192.168.14.42")
-                             (sql-user "yklisdev")
-                             (sql-database "daandev"))
-                            ))
-
 ;;; hooks
 (add-hook 'sql-interactive-mode-hook
           (lambda ()
