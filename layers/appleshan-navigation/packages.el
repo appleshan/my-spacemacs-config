@@ -95,8 +95,8 @@
   (setq evil-escape-delay 0.2))
 
 (defun appleshan-navigation/post-init-neotree ()
+  (setq neo-show-hidden-files nil)
   (setq projectile-switch-project-action 'neotree-projectile-action))
-
 
 ;; Local Variables:
 ;; coding: utf-8

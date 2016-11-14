@@ -140,8 +140,6 @@ values."
                                     fish-mode
                                     flx-ido
                                     gh-md
-                                    git-gutter-fringe
-                                    git-gutter-fringe+
                                     google-translate
                                     helm-company
                                     helm-c-yasnippet
@@ -151,9 +149,10 @@ values."
                                     helm-pydoc
                                     helm-themes
                                     highlight-indentation
-                                    hl-anything
+                                    ;; hl-anything
                                     hydra
                                     ido-vertical-mode
+                                    ivy
                                     leuven-theme
                                     linum-relative
                                     livid-mode

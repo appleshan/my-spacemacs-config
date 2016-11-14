@@ -1,8 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Emacs 主题设置 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (set-face-attribute 'default nil :height 130)
 ;; make the fringe thinner (default is 8 in pixels)
-;; make fringe mini size
-(set-fringe-mode '(0 . 0))
+(set-fringe-mode '(8 . 8))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
