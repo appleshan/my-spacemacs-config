@@ -13,6 +13,7 @@
 
 ;;; Code:
 
+;; @see https://github.com/evacchi/tabbar-layer/blob/master/packages.el
 (defun tabbar-theme-setup ()
   (set-face-attribute
     'tabbar-default nil
@@ -45,12 +46,28 @@
 
   ;; Change padding of the tabs
   ;; we also need to set separator to avoid overlapping tabs by highlighted tabs
-  ;; Apariencia
   (setq tabbar-separator '(0.5))
   ;; the color of the tabbar background
   (setq tabbar-background-color "#001214")
 )
 
+;; adding spaces
+;; we also need to set separator to avoid overlapping tabs by highlighted tabs
+(defun tabbar-buffer-tab-label (tab)
+  "Return a label for TAB.
+That is, a string used to represent it on the tab bar."
+  (let ((label  (if tabbar--buffer-show-groups
+                    (format "[%s]  " (tabbar-tab-tabset tab))
+                  (format "%s  " (tabbar-tab-value tab)))))
+    ;; Unless the tab bar auto scrolls to keep the selected tab
+    ;; visible, shorten the tab label to keep as many tabs as possible
+    ;; in the visible area of the tab bar.
+    (if tabbar-auto-scroll-flag
+        label
+      (tabbar-shorten
+       label (max 1 (/ (window-width)
+                       (length (tabbar-view
+                                (tabbar-current-tabset)))))))))
 
 (defun switch-tabbar (num)
   (let* ((tabs (tabbar-tabs
@@ -72,24 +89,6 @@
 (global-set-key (kbd "C-8") (lambda () (interactive) (switch-tabbar 8)))
 (global-set-key (kbd "C-9") (lambda () (interactive) (switch-tabbar 9)))
 (global-set-key (kbd "C-0") (lambda () (interactive) (switch-tabbar -1)))
-
-
-;; adding spaces
-(defun tabbar-buffer-tab-label (tab)
-  "Return a label for TAB.
-That is, a string used to represent it on the tab bar."
-  (let ((label  (if tabbar--buffer-show-groups
-                    (format "[%s]  " (tabbar-tab-tabset tab))
-                  (format "%s  " (tabbar-tab-value tab)))))
-    ;; Unless the tab bar auto scrolls to keep the selected tab
-    ;; visible, shorten the tab label to keep as many tabs as possible
-    ;; in the visible area of the tab bar.
-    (if tabbar-auto-scroll-flag
-        label
-      (tabbar-shorten
-       label (max 1 (/ (window-width)
-                       (length (tabbar-view
-                                (tabbar-current-tabset)))))))))
 
 ;; Local Variables:
 ;; coding: utf-8

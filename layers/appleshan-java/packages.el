@@ -13,33 +13,35 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq appleshan-java-packages
     '(
-      ; eclim
-      ; (eclim-java-run :location local) ; in eclim
+      eclim
+      (eclim-java-run :location local) ; in eclim
       ; (flycheck-eclim :location local)
       ; (flycheck-java :location local)
-      ; (flycheck-infer :location local)
+      (flycheck-java-maven :location local)
       ; project-explorer
       ; (ajoke :location local)
       ; log4j-mode
-      ; mvn
-      meghanada
+      (maven-pom-mode :location local)
+      mvn
+      ;; meghanada
       ))
 
 ;; List of packages to exclude.
 (setq appleshan-java-excluded-packages '())
 
 ;; https://github.com/ervandew/eclim.git
-;; java -Dvim.skip=true -Declipse.home=/opt/eclipse -jar eclim_2.6.0.jar install
+;; eclim install:
+;; java -Dvim.skip=true -Declipse.home=/opt/java-ide/eclipse-jee-neon/eclipse -jar eclim_2.6.0.jar install
 
 (defun appleshan-java/post-init-eclim ()
   (setq ; eclim-auto-save t
         eclim-autoupdate-problems nil
-        eclim-eclipse-dirs "/opt/eclipse-jee-neon/eclipse"
-        eclim-executable (or (executable-find "eclim") "/opt/eclipse-jee-neon/eclipse/eclim")
-        eclimd-executable (or (executable-find "eclimd") "/opt/eclipse-jee-neon/eclipse/eclimd")
+        eclim-eclipse-dirs "/opt/java-ide/eclipse-jee-neon/eclipse"
+        eclim-executable (or (executable-find "eclim") "/opt/java-ide/eclipse-jee-neon/eclipse/eclim")
+        eclimd-executable (or (executable-find "eclimd") "/opt/java-ide/eclipse-jee-neon/eclipse/eclimd")
         eclimd-wait-for-process nil
         ;; Specify the workspace to use by default
-        eclimd-default-workspace "/home/apple/workspace/yunkang-service-workspace")
+        eclimd-default-workspace "/data/workspace/yunkang-service-workspace")
   )
 
 (defun appleshan-java/init-eclim-java-run ()
@@ -74,16 +76,12 @@
       )
     ))
 
-(defun appleshan-java/init-flycheck-infer ()
-  (use-package flycheck-infer
+(defun appleshan-java/init-flycheck-java-maven ()
+  (use-package flycheck-java-maven
     :defer t
     :init
     (progn
-      (add-hook 'java-mode-hook
-                (lambda ()
-                  (require 'flycheck-infer)
-                  ))
-      )
+      (add-hook 'java-mode-hook (lambda () (require 'flycheck-java-maven) )))
     ))
 
 (defun appleshan-java/init-project-explorer ()
@@ -115,8 +113,13 @@
                   (end-of-buffer)))
       )))
 
+(defun appleshan-java/init-maven-pom-mode ()
+  (use-package maven-pom-mode
+    :defer t))
+
 (defun appleshan-java/init-mvn ()
-  (use-package mvn))
+  (use-package mvn
+    :defer t))
 
 (defun appleshan-java/init-meghanada ()
   (use-package meghanada

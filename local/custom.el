@@ -11,6 +11,7 @@
  '(exec-path-from-shell-arguments (quote ("-l")))
  '(hl-paren-colors (quote ("Cyan" "Gold" "Red")))
  '(initial-frame-alist (quote ((fullscreen . maximized))))
+ '(paradox-github-token t)
  '(smiley-style (quote medium))
  '(term-default-bg-color "#000000")
  '(term-default-fg-color "#dddd00"))

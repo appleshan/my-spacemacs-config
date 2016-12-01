@@ -69,7 +69,7 @@ values."
      scheme
      emacs-lisp
      html
-     ;; java
+     java
      ;; javascript
      plantuml ; uml
      shell-scripts
@@ -485,6 +485,8 @@ you should place your code here."
 
   (spacemacs|diminish which-key-mode)
   (spacemacs|diminish spacemacs-whitespace-cleanup-mode)
+
+  (spacemacs/toggle-transparency)
 
   ;; restore the desktop
   ; (desktop-save-mode t)

@@ -168,13 +168,6 @@
   (mvn "install"))
 ;; }}
 
-(defun eclim/file-locate-ivy ()
-  (interactive)
-  (eclim/with-results hits ("locate_file" ("-p" "^.*$") ("-s" "workspace"))
-    (find-file
-      (ivy-completing-read "Select file:"
-        (mapcar (lambda (hit) (assoc-default 'path hit)) hits)))))
-
 ;; {{ show documentation
 (defun eclim//show-postip (doc)
   ;; TODO(jaigupta): Check if we can make use of the links in docs.
@@ -198,27 +191,6 @@
 
         (message "No element found at point."))))
 ;; }}
-
-; java run Main()
-(defun java-run-standalone ()
-  "Running small standalone programs."
-  (interactive)
-  (save-some-buffers 1)
-  (compile (concat "javac_java.sh " (buffer-file-name (current-buffer)))))
-
-(defun get-trace (segfault)
-  "Following exceptions and spontaneous backtraces paths in Emacs"
-  (interactive)
-  (compile (concat "show-trace-in-emacs.pl" (if segfault " --segfault"))))
-
-(defmacro ilambda (&rest body) `(lambda () (interactive) ,@body))
-
-(add-hook 'java-mode-hook
-  '(lambda ()
-     (local-set-key [(control return)] (ilambda (javacomp-standalone)))
-     (local-set-key "\M-=" (ilambda (get-trace nil)))
-     (local-set-key "\M--" (ilambda (get-trace t)))
-         ))
 
 (setq completion-ignored-extensions (cons ".class" completion-ignored-extensions))
 
