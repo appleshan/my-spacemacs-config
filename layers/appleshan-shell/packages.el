@@ -17,7 +17,7 @@
 
 (setq appleshan-shell-packages
       '(
-        exec-path-from-shell
+        ;; exec-path-from-shell
         ))
 
 ;; List of packages to exclude.

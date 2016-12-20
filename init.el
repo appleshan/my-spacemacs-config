@@ -135,6 +135,7 @@ values."
                                     evil-tutor
                                     evil-unimpaired
                                     ; eyebrowse
+                                    ;; exec-path-from-shell ; emacs26
                                     fancy-battery
                                     ; find-by-pinyin-dired
                                     fish-mode
@@ -415,17 +416,32 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   (setq byte-compile-warnings nil)
 
+  ;; @see http://elpa.emacs-china.org/
+  ;; ELPA	                  镜像地址
+  ;; GNU ELPA	              http://elpa.zilongshanren.com/gnu/
+  ;; MELPA                  http://elpa.zilongshanren.com/melpa/
+  ;; MELPA Stable	          http://elpa.zilongshanren.com/melpa-stable/
+  ;; Marmalade	            http://elpa.zilongshanren.com/marmalade/
+  ;; Org	                  http://elpa.zilongshanren.com/org/
+  ;; Sunrise Commander ELPA	http://elpa.zilongshanren.com/sunrise-commander/
+  ;; user42 ELPA	          http://elpa.zilongshanren.com/user42/
   (setq configuration-layer--elpa-archives
-        '(("gnu-cn"          . "https://elpa.zilongshanren.com/gnu/")
+        '(
+          ;; elpa.zilongshanren.com
+          ("gnu-cn"          . "https://elpa.zilongshanren.com/gnu/")
           ("melpa-cn"        . "https://elpa.zilongshanren.com/melpa/")
         ; ("melpa-stable-cn" . "https://elpa.zilongshanren.com/melpa-stable/")
+        ; ("Marmalade-cn"    . "https://elpa.zilongshanren.com/marmalade/")
         ; ("elpy"            . "https://jorgenschaefer.github.io/packages/")
-          ("org-cn"          . "https://elpa.zilongshanren.com/org/")))
+        ; ("user42-cn"       . "https://elpa.zilongshanren.com/user42/")
+          ("org-cn"          . "https://elpa.zilongshanren.com/org/")
 
-  ; (setq configuration-layer--elpa-archives
-  ;       '(("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-  ;         ("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-  ;         ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")))
+          ;; source elpa
+        ; ("gnu" . "https://elpa.gnu.org/packages/")
+        ; ("marmalade" . "https://marmalade-repo.org/packages/")
+        ; ("melpa" . "https://melpa.org/packages/")
+        ; ("org" . "http://orgmode.org/elpa/")
+          ))
 
   ;; Pin some of the packages that go wonky if I use the bleeding edge.
   (when (boundp 'package-pinned-packages)
@@ -441,6 +457,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
     (make-directory user-dropbox-directory))
 
   ;; custom logo
+  ;; error in emacs 26
   (setq spacemacs-banner-official-png
     (expand-file-name
       (concat dotspacemacs-directory "local/banner/001-banner-kban.txt")))

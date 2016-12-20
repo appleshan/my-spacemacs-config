@@ -31,7 +31,7 @@
       (ob-plantuml :location built-in)
       (ob-ledger :location built-in) ; 必须 init，才能使用
       (my-org-mode :location local)
-      secretaria
+      ;; secretaria
       ))
 
 ;; List of packages to exclude.
