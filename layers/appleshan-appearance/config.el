@@ -38,10 +38,10 @@
                   "%b"))))
 
 ;; Experimenting with transparency
-;; (let ((tp (cons dotspacemacs-active-transparency
-;;                 dotspacemacs-inactive-transparency)))
-;;   (push `(alpha . ,tp) default-frame-alist)
-;;   (set-frame-parameter (selected-frame) 'alpha tp))
+(let ((tp (cons dotspacemacs-active-transparency
+                dotspacemacs-inactive-transparency)))
+  (push `(alpha . ,tp) default-frame-alist)
+  (set-frame-parameter (selected-frame) 'alpha tp))
 
 (add-hook 'prog-mode-hook 'linum-mode)
 

@@ -51,15 +51,6 @@
 
       (add-hook 'dired-mode-hook 'appleshan//dired-hook)
 
-      ; hack for spacemacs
-      (if (configuration-layer/layer-usedp 'ivy)
-          (progn
-            (evil-define-key 'normal dired-mode-map "J" 'counsel-find-file)
-            (define-key dired-mode-map "j" 'counsel-find-file))
-        (progn
-          (evil-define-key 'normal dired-mode-map "J" 'spacemacs/helm-find-files)
-          (define-key dired-mode-map "j" 'spacemacs/helm-find-files)))
-
       (evilified-state-evilify-map dired-mode-map
         :mode dired-mode
         :bindings

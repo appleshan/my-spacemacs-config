@@ -42,11 +42,11 @@
   (set-face-attribute
     'tabbar-separator nil
     :background "gray20"
-    :height 0.6)
+    :height 0.5)
 
   ;; Change padding of the tabs
   ;; we also need to set separator to avoid overlapping tabs by highlighted tabs
-  (setq tabbar-separator '(0.5))
+  (setq tabbar-separator '(0.4))
   ;; the color of the tabbar background
   (setq tabbar-background-color "#001214")
 )

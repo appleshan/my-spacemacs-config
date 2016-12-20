@@ -51,8 +51,7 @@ values."
                      spell-checking-enable-by-default t)
 
      ;; --- Auto Complete layers ---
-     helm           ; spacemacs develop branch : ivy or helm
-     ;; spacemacs-ivy ; spacemacs master branch
+     helm
      (auto-completion :variables
                       auto-completion-enable-help-tooltip 'manual
                       auto-completion-enable-sort-by-usage t
@@ -422,9 +421,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; MELPA                  http://elpa.zilongshanren.com/melpa/
   ;; MELPA Stable	          http://elpa.zilongshanren.com/melpa-stable/
   ;; Marmalade	            http://elpa.zilongshanren.com/marmalade/
-  ;; Org	                  http://elpa.zilongshanren.com/org/
+  ;; Org                    http://elpa.zilongshanren.com/org/
   ;; Sunrise Commander ELPA	http://elpa.zilongshanren.com/sunrise-commander/
-  ;; user42 ELPA	          http://elpa.zilongshanren.com/user42/
+  ;; user42 ELPA            http://elpa.zilongshanren.com/user42/
   (setq configuration-layer--elpa-archives
         '(
           ;; elpa.zilongshanren.com

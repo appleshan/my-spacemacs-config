@@ -786,12 +786,11 @@
     (add-to-list 'org-src-lang-modes (quote ("plantuml" . puml)))
 
     ;; http://wenshanren.org/?p=327
-    ;; change it to ivy
     (defun appleshan-org/org-insert-src-block (src-code-type)
       "Insert a `SRC-CODE-TYPE' type source code block in org-mode."
       (interactive
         (let ((src-code-types
-               '("emacs-lisp" "python" "sh" "java" "js" "css" "calc" "plantuml"
+               '("emacs-lisp" "python" "bash" "java" "js" "css" "calc" "plantuml"
                  "sql" "ditaa" "lisp" "org" "scheme" "sqlite")))
              (list (ido-completing-read "Source code type: " src-code-types))))
       (progn
