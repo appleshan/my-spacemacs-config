@@ -13,8 +13,8 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq appleshan-java-packages
     '(
-      eclim
-      (eclim-java-run :location local) ; in eclim
+;      eclim
+;      (eclim-java-run :location local) ; in eclim
       ; (flycheck-eclim :location local)
       ; (flycheck-java :location local)
       (flycheck-java-maven :location local)

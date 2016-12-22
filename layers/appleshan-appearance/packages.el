@@ -96,7 +96,7 @@
   (use-package tabbar
     :init (tabbar-mode 1)
     :config
-    ;; (tabbar-theme-setup)
+    (tabbar-theme-setup)
     ))
 
 ;; Local Variables:

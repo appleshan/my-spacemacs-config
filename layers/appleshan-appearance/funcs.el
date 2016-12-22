@@ -24,29 +24,29 @@
     'tabbar-unselected nil
     :background "gray30"
     :foreground "white"
-    :box '(:line-width 5 :color "gray30" :style nil))
+    :box '(:line-width 3 :color "gray30" :style nil))
   (set-face-attribute
     'tabbar-selected nil
     :background "gray75"
-    :foreground "black"
-    :box '(:line-width 5 :color "gray75" :style nil))
+    :foreground "purple"
+    :box '(:line-width 3 :color "gray75" :style nil))
   (set-face-attribute
     'tabbar-highlight nil
     :background "white"
-    :foreground "black"
+    :foreground "purple"
     :underline nil
-    :box '(:line-width 5 :color "white" :style nil))
+    :box '(:line-width 3 :color "white" :style nil))
   (set-face-attribute
     'tabbar-button nil
     :box '(:line-width 1 :color "gray20" :style nil))
   (set-face-attribute
     'tabbar-separator nil
     :background "gray20"
-    :height 0.5)
+    :height 0.6)
 
   ;; Change padding of the tabs
   ;; we also need to set separator to avoid overlapping tabs by highlighted tabs
-  (setq tabbar-separator '(0.4))
+  (setq tabbar-separator '(0.6))
   ;; the color of the tabbar background
   (setq tabbar-background-color "#001214")
 )

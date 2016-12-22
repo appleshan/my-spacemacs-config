@@ -51,15 +51,15 @@
 
       (add-hook 'dired-mode-hook 'appleshan//dired-hook)
 
-      (evilified-state-evilify-map dired-mode-map
-        :mode dired-mode
-        :bindings
-        "I"   'dired-omit-mode
-        (kbd "DEL") 'vinegar/up-directory
-        "O" 'dired/open-in-external-app
-        "S" 'dired/rsync
-        "z" 'dired/get-size
-        )
+;      (evilified-state-evilify-map dired-mode-map
+;        :mode dired-mode
+;        :bindings
+;        "I"   'dired-omit-mode
+;        (kbd "DEL") 'vinegar/up-directory
+;        "O" 'dired/open-in-external-app
+;        "S" 'dired/rsync
+;        "z" 'dired/get-size
+;        )
     )))
 
 ; (defun appleshan-dired/init-dired-k ()

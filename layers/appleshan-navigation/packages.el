@@ -38,9 +38,6 @@
     (setcdr evil-insert-state-map nil)
     (define-key evil-insert-state-map [escape] 'evil-normal-state)
 
-    (adjust-major-mode-keymap-with-evil "git-timemachine")
-    (adjust-major-mode-keymap-with-evil "tabulated-list")
-
     ;; change evil initial mode state
     (loop for (mode . state) in
           '((shell-mode . normal))

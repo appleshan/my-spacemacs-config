@@ -21,16 +21,15 @@
       (org-clock :location built-in)
       (org-crypt :location built-in)
       (org-faces :location built-in)
-      ; (org-list :location built-in)
+      (org-list :location built-in)
       ;; org-bullets
       org-password-manager
-      ; org-pomodoro
       (org-src :location built-in)
       (ob-core :location built-in)
-      (ob-ditaa :location built-in)
-      (ob-plantuml :location built-in)
-      (ob-ledger :location built-in) ; 必须 init，才能使用
-      (my-org-mode :location local)
+      ; (ob-ditaa :location built-in)
+      ; (ob-plantuml :location built-in)
+      ; (ob-ledger :location built-in) ; 必须 init，才能使用
+      ; (my-org-mode :location local)
       ;; secretaria
       ))
 
@@ -262,8 +261,6 @@
     (spacemacs/set-leader-keys
       ;; refile task
       "or"  'org-agenda-refile)
-
-    (define-key org-agenda-mode-map (kbd "P") 'org-pomodoro)
 
     (setq org-agenda-inhibit-startup t)   ;; ~50x speedup
     (setq org-agenda-use-tag-inheritance nil) ;; 3-4x speedup
@@ -508,8 +505,7 @@
 ;;;;;;;;;;;;;;;;;;;;
 
 (defun appleshan-org/init-org-archive ()
-  (;progn
-    with-eval-after-load 'org-archive
+  (with-eval-after-load 'org-archive
     ; (require 'org-archive)
 
     ;; 归档时保持TODO state不变
@@ -518,7 +514,7 @@
     ;; 通过设置`org-archive-mark-done’可以指定归档的位置
     (setq org-archive-location "%s_archive::* Archived Tasks")
     ;; 带有`Archive’ tag的entry,默认情况下不会被展开,但可以使用`C-TAB’强制展开
-))
+  ))
 
 ;;;;;;;;;;;;;;;;;;;;
 ;; 配置 org-capture
@@ -767,16 +763,6 @@
     :config
     (progn
       (add-hook 'org-mode-hook 'org-password-manager-key-bindings))))
-
-; (defun appleshan-org/post-init-org-pomodoro ()
-;   (with-eval-after-load 'org-pomodoro
-;     (add-hook 'org-pomodoro-finished-hook
-;       '(lambda () (appleshan/growl-notification "Pomodoro Finished" "☕️ Have a break!" t)))
-;     (add-hook 'org-pomodoro-short-break-finished-hook
-;       '(lambda () (appleshan/growl-notification "Short Break" "🐝 Ready to Go?" t)))
-;     (add-hook 'org-pomodoro-long-break-finished-hook
-;       '(lambda () (appleshan/growl-notification "Long Break" " 💪 Ready to Go?" t)))
-;     ))
 
 (defun appleshan-org/init-org-src ()
   (;progn
