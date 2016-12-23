@@ -49,6 +49,7 @@ values."
      search-engine
      (spell-checking :variables
                      spell-checking-enable-by-default t)
+     themes-megapack ; http://themegallery.robdor.com/
 
      ;; --- Auto Complete layers ---
      helm
@@ -242,8 +243,15 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light)
+   dotspacemacs-themes '(
+                         django
+                         alect-black
+                         alect-black-alt
+                         deeper-blue
+                         misterioso
+                         spacemacs-dark
+                         zonokai-blue
+                         )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -501,8 +509,6 @@ you should place your code here."
 
   (spacemacs|diminish which-key-mode)
   (spacemacs|diminish spacemacs-whitespace-cleanup-mode)
-
-  (spacemacs/toggle-transparency)
 
   ;; restore the desktop
   ; (desktop-save-mode t)
