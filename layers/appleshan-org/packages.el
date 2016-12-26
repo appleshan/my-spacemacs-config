@@ -23,13 +23,12 @@
       (org-faces :location built-in)
       (org-list :location built-in)
       ;; org-bullets
-      org-password-manager
+      ; org-password-manager
       (org-src :location built-in)
       (ob-core :location built-in)
       ; (ob-ditaa :location built-in)
       ; (ob-plantuml :location built-in)
       ; (ob-ledger :location built-in) ; 必须 init，才能使用
-      ; (my-org-mode :location local)
       ;; secretaria
       ))
 
@@ -183,17 +182,6 @@
     (setq org-hide-emphasis-markers t)
     ;; 记住,这些斜杠字符(用于标示粗体的星号等其他字符也是一样)依然存在的,只是没有显示出来而已.
     ;; 想要修改这些标记也很简单,只要在之上按退格键就行.
-    ;;}}
-
-    ;;{{ 更好看的符号列表标记
-    ;; @see https://github.com/lujun9972/emacs-document/blob/master/org-mode/%E5%B0%86org%E7%9C%8B%E6%88%90%E6%96%87%E5%AD%97%E5%A4%84%E7%90%86%E5%99%A8.org
-    ;; 这段代码将所有行中匹配指定正则表达式的内容都显示为一个Unicode的圆形符号,
-    ;; 该段正则的意思是“以 1 个或多个破折号开头,紧接着是一个空格”.
-    ;; 用星号和破折号来作为符号列表的标记挺好的, 但是使用一个真正的圆形符号来作标示也不错:
-    (font-lock-add-keywords
-     'org-mode
-     '(("^\\([-]\\) "
-        (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
     ;;}}
 
     ;;;;;;;;;;;;;;;;;;;;
@@ -701,8 +689,7 @@
 ;;;;;;;;;;;;;;;;;;;;
 
 (defun appleshan-org/init-org-faces ()
-  (;progn
-    with-eval-after-load 'org-faces
+  (with-eval-after-load 'org-faces
     ; (require 'org-faces)
     (setq org-todo-keyword-faces
           (quote (("TODO" :foreground "red" :weight bold)
@@ -714,6 +701,35 @@
                   ("DEFERRED" :foreground "forest green" :weight bold)
                   ("MEETING" :foreground "forest green" :weight bold)
                   ("PHONE" :foreground "forest green" :weight bold))))
+
+;; Priority
+(setq org-priority-faces
+      '((?A . (:foreground "white" :background "dark red"
+                           :box '(:color "red" :line-width 3 :style released-button)))
+        (?B . (:foreground "white" :background "dark slate blue"
+                           :box '(:color "white" :line-width 3 :style released-button)))
+        (?C . (:foreground "white" :background "dim gray"
+                           :box '(:color "dim gray" :line-width 3 :style released-button)))
+        ))
+;; (set-face-attribute 'org-priority nil
+;;                     :box '(:color "red" :line-width 3 :style released-button)
+;;                     :bold nil)
+
+;; inline code face => src_ruby{require 'something'}
+;;
+;; (REGEXP . FACE)
+;;     Highlight REGEXP with FACE
+;; (REGEXP N FACE)
+;;     Highlight group N in REGEXP with FACE
+;; (REGEXP (N1 FACE1) (N2 FACE2) (N3 FACE3) …)
+;;     Highlight group Ni in REGEXP with FACEi
+;;
+;; src_lang{code...}[:header arguments] / NOTE: override by `org-verbatim'.
+;; result in following =[result]=
+(setq org-babel-exp-inline-code-template "src_%lang[%switches%flags]{%body}"
+      org-babel-inline-result-wrap "=> (~%s~)" ; or "=%s=", "~%s~"
+      )
+
 ))
 
 (defun appleshan-org/init-org-list ()

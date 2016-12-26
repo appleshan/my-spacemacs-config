@@ -145,7 +145,197 @@
  ;; Minibuffer
  '(minibuffer-prompt ((((background dark)) (:foreground "green")))) ;提示
  ;; Org-mode
- '(org-date ((((class color) (background dark)) (:foreground "ivory4" :underline t)))) ;日期
+
+;;; Date
+;; Date: Saturday   27 July 2013
+'(org-date ((t (:foreground "gray"
+                :background "#000f0a"
+                :box '(:color "black" :line-width 1 :style nil)
+                :underline nil))))
+'(org-agenda-date ((t (
+                    :foreground "white" :background "#004A5D"
+                    :box '(:color "dark cyan" :line-width 3 :style nil)
+                    :weight bold))))
+'(org-agenda-date-today ((t (
+                    :foreground "white" :background "#004A5D"
+                    :box '(:color "cyan" :line-width 5 :style nil)
+                    :weight bold))))
+'(org-agenda-date-weekend ((t (
+                    :foreground "deep pink"
+                    :background "#222222"
+                    :box '(:color "dark cyan" :line-width 3 :style nil)
+                    :weight bold))))
+'(org-agenda-current-time ((t (
+                    :foreground "cyan" :background "#004A5D"
+                    :box '(:color "cyan" :line-width 1 :style nil)
+                    :bold nil))))
+
+;; Daily entry (holidays)
+'(org-agenda-diary ((t (:foreground "light blue" :slant italic))))
+
+;; clocking
+'(org-clock-overlay ((t (:inverse-video nil
+                    :foreground "white" :background "#004A5D"
+                    :box '(:color "cyan" :line-width 1 :style nil)
+                    :bold t))))
+'(org-agenda-clocking ((t (:foreground "white" :background "#004A5D"
+                    :box '(:color "cyan" :line-width 1 :style nil)))))
+
+;; Day-agenda (W30) -> Week number
+'(org-agenda-structure ((t (:foreground "blue" :weight extra-bold))))
+'(org-agenda-filter-tags ((t (:foreground "green yellow"))))
+'(org-agenda-dimmed-todo-face ((t (:foreground "#444444"
+                    :background "#222222"
+                    :strike-through t))))
+
+;; DONE (org agenda log state change tasks, )
+'(org-agenda-done ((t (:foreground "#444444"
+                    :background "black"
+                    :height 1.0))))
+
+;;; Agenda Time Grid
+;; time grid: 18:00 ...... ----------------
+'(org-time-grid ((t (:foreground "cyan"))))
+;; alread past deadline in agenda
+'(org-warning ((t (:foreground "red"
+                    :weight normal))))
+;; comming deadline in agenda
+'(org-upcoming-deadline ((t (:foreground "OrangeRed"))))
+;; scheduled in agenda, scheduled today, & org-habit
+'(org-scheduled-today ((t (:foreground "light sea green" :height 1.0))))
+'(org-scheduled ((t (:foreground "forest green"))))
+'(org-scheduled-previously ((t (:foreground "olive drab"))))
+
+;; Emphasize
+;;; org-verbatim: =code=
+'(org-verbatim ((t (:background "#004A5D" :foreground "white"
+                    :box '(:color "cyan" :line-width 1)
+                    :underline nil))))
+
+;; table
+'(org-table ((t (:foreground "dodger blue" :background "#001e15"))))
+
+;;; headline faces
+;;; the ahead stars face when org indentation. (org-hide)
+'(org-hide ((t (:foreground "#002B36" :background "#002B36"))))
+'(org-document-title ((t (:inherit nil
+                    :weight bold
+                    :height 1.5))))
+'(org-level-1 ((t (:inherit nil
+                    :family "DejaVu Sans Mono"
+                    :weight bold :height 1.3
+                    :foreground "Steelblue4"
+                    :background "#001e15"
+                    ;; :box '(:color "black" :line-width -1 :style nil)
+                    :overline "dark slate gray"))))
+'(org-level-2 ((t (:inherit 'org-level-1
+                    :foreground "yellow4"))))
+'(org-level-3 ((t (:inherit 'org-level-2
+                    :foreground "#009E00"))))
+'(org-level-4 ((t (:inherit 'org-level-3
+                    :foreground "cyan"))))
+'(org-level-5 ((t (:inherit 'org-level-4
+                    :foreground "#008080"))))
+'(org-level-6 ((t (:inherit 'org-level-5
+                    :foreground "#166DEF"))))
+'(org-level-7 ((t (:inherit 'org-level-6
+                    :foreground "deep sky blue"))))
+'(org-level-8 ((t (:inherit 'org-level-7
+                    :foreground "chocolate"))))
+'(org-headline-done ((t (:foreground "#444444"))))
+
+;; ellipsis
+;; (setq org-ellipsis "...⤵")
+'(org-ellipsis ((t (:foreground "red"
+                    :weight bold
+                    :underline nil))))
+
+;;; tags
+'(org-tag ((t (:foreground "cyan"
+                    :underline nil :weight normal :slant normal
+                    :box '(:color "dark green" :line-width 2)
+                    ;; :height 0.8
+))))
+
+;; meta lines
+'(org-meta-line ((t (:foreground "yellow"
+                    :background "#000f0a"))))
+
+;;; checkbox faces
+;; - [ ], - [X]
+'(org-checkbox ((t (:bold normal
+                    :box '(:line-width 1 :color "black" :style nil)
+                    :foreground "dark gray"))))
+
+;; * headline [7%] -> checkbox statistics face.
+'(org-checkbox-statistics-todo ((t (:box '(:color "black" :line-width -1)
+                    :foreground "green yellow"
+                    :background "#000f0a"))))
+'(org-checkbox-statistics-done ((t (:background "#444444" :foreground "black"
+                    :box '(:color "black" :line-width -1)
+                    :strike-through t))))
+
+;;; list definition terms
+'(org-list-dt ((t (:foreground "#444444"))))
+
+;;; link face
+'(org-link ((t (:foreground "cyan"
+                    :background "#000f0a"
+                    :underline "dark cyan"
+                    ;; :box '(:color "black")))))
+
+;; <<target link>>
+'(org-target ((t (:foreground "orange" :background "black"
+                    :underline "red"
+                    :weight bold))))
+
+;; org structure faces
+'(org-agenda-structure ((t (:foreground "gray" :weight bold))))
+
+;; set Org clock face.
+;; That is, make the org-mode-line-clock no longer inherit attributes from the
+;; mode-line face. It seems like it gets the attributes from mode-line or
+;; mode-line-inactive as appropriate, when displayed in the mode line.
+'(org-mode-line-clock ((t (:foreground "cyan"
+                    :inherit nil))))
+
+;; special keywords
+'(org-special-keyword ((t (:foreground "forest green"
+                    :background "#001912"))))
+
+;; property
+'(org-property-value ((t (:foreground "gray"))))
+
+;;; Babel, Source Code, Block
+
+;;; black style code block colorscheme
+;;; babel faces (source code block) => #+BEGIN_SRC ... #+END_SRC
+'(org-block-begin-line ((t (:foreground "dark cyan"
+                    :background "#001912"
+                    :weight normal :slant normal
+                    :box '(:color "black" :line-width 1)))))
+'(org-block-end-line ((t (:foreground "dark cyan"
+                    :background "#001912"
+                    :weight normal :slant normal
+                    :box '(:color "black" :line-width 1)))))
+
+'(secondary-selection ((t (:background "#000a07"))))
+
+
+;; code face => ~code~,  #+RESULTS: : result.
+'(org-code ((t (:background "#222222" :foreground "orange"
+                    ;; :box '(:color "cyan" :line-width 1 :style nil)
+                    ;; :underline '(:color "cyan") :box nil
+                    :family "Source Code Pro"
+                    :bold nil :box nil))))
+
+;;; Formula face
+'(org-formula ((t (:background "green yellow"
+                    :foreground "black"
+                    :inverse-video nil
+                    :box '(:color "green yellow" :line-width 1 :style nil)))))
+
+; '(org-date ((((class color) (background dark)) (:foreground "ivory4" :underline t)))) ;日期
  '(org-ellipsis ((((class color) (background dark)) (:background "black" :foreground "Cyan" :strike-through nil)))) ;省略号
  '(org-hide ((((background dark)) (:foreground "black")))) ;隐藏星号
  '(org-level-3 ((t (:inherit outline-3 :foreground "DeepSkyBlue"))))
