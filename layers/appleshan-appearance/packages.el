@@ -12,6 +12,7 @@
 (setq appleshan-appearance-packages
     '(
       ;; beacon
+      ; django-theme
       hl-anything
       popwin
       visual-regexp

@@ -49,7 +49,7 @@ values."
      search-engine
      (spell-checking :variables
                      spell-checking-enable-by-default t)
-     themes-megapack ; http://themegallery.robdor.com/
+     ;; themes-megapack ; http://themegallery.robdor.com/
 
      ;; --- Auto Complete layers ---
      helm
@@ -243,15 +243,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(
-                         django
-                         alect-black
-                         alect-black-alt
-                         deeper-blue
-                         misterioso
-                         spacemacs-dark
-                         zonokai-blue
-                         )
+   dotspacemacs-themes '(django
+                         spacemacs-dark)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -425,29 +418,31 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;; @see http://elpa.emacs-china.org/
   ;; ELPA	                  镜像地址
-  ;; GNU ELPA	              http://elpa.zilongshanren.com/gnu/
-  ;; MELPA                  http://elpa.zilongshanren.com/melpa/
-  ;; MELPA Stable	          http://elpa.zilongshanren.com/melpa-stable/
-  ;; Marmalade	            http://elpa.zilongshanren.com/marmalade/
-  ;; Org                    http://elpa.zilongshanren.com/org/
-  ;; Sunrise Commander ELPA	http://elpa.zilongshanren.com/sunrise-commander/
-  ;; user42 ELPA            http://elpa.zilongshanren.com/user42/
+  ;; GNU ELPA	              http://elpa.emacs-china.com/gnu/
+  ;; MELPA                  http://elpa.emacs-china.com/melpa/
+  ;; MELPA Stable	          http://elpa.emacs-china.com/melpa-stable/
+  ;; Marmalade	            http://elpa.emacs-china.com/marmalade/
+  ;; Org                    http://elpa.emacs-china.com/org/
+  ;; Sunrise Commander ELPA	http://elpa.emacs-china.com/sunrise-commander/
+  ;; user42 ELPA            http://elpa.emacs-china.com/user42/
   (setq configuration-layer--elpa-archives
         '(
-          ;; elpa.zilongshanren.com
-          ("gnu-cn"          . "https://elpa.zilongshanren.com/gnu/")
-          ("melpa-cn"        . "https://elpa.zilongshanren.com/melpa/")
-        ; ("melpa-stable-cn" . "https://elpa.zilongshanren.com/melpa-stable/")
-        ; ("Marmalade-cn"    . "https://elpa.zilongshanren.com/marmalade/")
-        ; ("elpy"            . "https://jorgenschaefer.github.io/packages/")
-        ; ("user42-cn"       . "https://elpa.zilongshanren.com/user42/")
-          ("org-cn"          . "https://elpa.zilongshanren.com/org/")
+          ;; Emacs-cn 开源软件镜像站
+        ; ("melpa-cn"  . "http://elpa.emacs-china.org/melpa/")
+        ; ("org-cn"    . "http://elpa.emacs-china.org/org/")
+        ; ("gnu-cn"    . "http://elpa.emacs-china.org/gnu/")
+        ; ("elpy"      . "https://jorgenschaefer.github.io/packages/")
+        ; ("user42-cn" . "https://elpa.emacs-china.com/user42/")
+
+          ;; 清华大学开源软件镜像站
+          ("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+          ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+          ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
 
           ;; source elpa
-        ; ("gnu" . "https://elpa.gnu.org/packages/")
-        ; ("marmalade" . "https://marmalade-repo.org/packages/")
+        ; ("gnu"   . "https://elpa.gnu.org/packages/")
         ; ("melpa" . "https://melpa.org/packages/")
-        ; ("org" . "http://orgmode.org/elpa/")
+        ; ("org"   . "http://orgmode.org/elpa/")
           ))
 
   ;; Pin some of the packages that go wonky if I use the bleeding edge.
@@ -488,7 +483,7 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
   (setq url-proxy-services
-        '(("no_proxy" . "^\\(localhost\\|10.*\\|192.168.*\\|elpa.zilongshanren.com\\|mirrors.tuna.tsinghua.edu.cn\\)")
+        '(("no_proxy" . "^\\(localhost\\|10.*\\|192.168.*\\|elpa.emacs-china.com\\|mirrors.tuna.tsinghua.edu.cn\\)")
           ("http" . "127.0.0.1:18080")
           ("https" . "127.0.0.1:18080")
           ("socks5" . "127.0.0.1:18080")))
