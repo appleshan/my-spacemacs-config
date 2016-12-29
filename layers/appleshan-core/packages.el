@@ -123,8 +123,8 @@
                       "/sudo:"
                       "/scp:"
                       (expand-file-name my-org-gtd-directory) ; org-gtd files
-                      "/.spacemacs.d/.cache/"
-                      "/.spacemacs.d/snippets/"
+                      "/spacemacs-master.d/.cache/"
+                      "/spacemacs-master.d/snippets/"
                       "/opt/emacs*/.*\\.el\\'"))
         (add-to-list 'recentf-exclude item))
     )))

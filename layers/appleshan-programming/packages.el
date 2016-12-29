@@ -57,13 +57,13 @@
          :url "http://www.google.com.au/search?q=%s+site:developer.mozilla.org")
     ))
 
-;; (defun appleshan-programming/pre-init-flycheck ()
-;;   (spacemacs|use-package-add-hook flycheck
-;;     :post-init
-;;     (progn
-;;       ;; (setq flycheck-indication-mode 'right-fringe)
-;;       ;; (setq flycheck-check-syntax-automatically '(save mode-enabled))
-;;       )))
+(defun appleshan-programming/pre-init-flycheck ()
+  (spacemacs|use-package-add-hook flycheck
+    :post-init
+    (progn
+      ;; (setq flycheck-indication-mode 'right-fringe)
+      (setq flycheck-check-syntax-automatically '(save mode-enabled))
+      )))
 
 (defun appleshan-programming/post-init-flycheck ()
   (setq-default flycheck-disabled-checkers
@@ -201,9 +201,8 @@
 (defun appleshan-programming/pre-init-plantuml-mode ()
   (spacemacs|use-package-add-hook plantuml-mode
     :post-config
-    (progn
-      (setq plantuml-jar-path "/opt/java-lib/plantuml.jar")
-    )))
+    (setq plantuml-jar-path "/opt/java-lib/plantuml.jar")
+    ))
 
 (defun appleshan-programming/post-init-plantuml-mode ()
   ;; Enable puml-mode for PlantUML files

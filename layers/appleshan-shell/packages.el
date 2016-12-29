@@ -17,7 +17,7 @@
 
 (setq appleshan-shell-packages
       '(
-        ;; exec-path-from-shell
+        exec-path-from-shell
         ))
 
 ;; List of packages to exclude.
@@ -25,7 +25,7 @@
 
 (defun appleshan-shell/pre-init-exec-path-from-shell ()
   (spacemacs|use-package-add-hook exec-path-from-shell
-    :post-config
+    :post-init
     (progn
       (dolist (var '(;; my path
                      "JAVA_HOME"
