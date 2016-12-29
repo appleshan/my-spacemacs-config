@@ -20,6 +20,7 @@
       gist
       git-messenger
       highlight-escape-sequences
+      highlight-indent-guides
       highlight-thing
       magit
       paredit
@@ -121,13 +122,25 @@
     :init
     (hes-mode)))
 
+(defun appleshan-programming/init-highlight-indent-guides ()
+  (use-package highlight-indent-guides
+    :defer t
+    :init
+    (progn
+      (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+      (spacemacs|diminish highlight-indent-guides-mode))
+    :config
+    (progn
+      (setq highlight-indent-guides-method 'character))
+    ))
+
 (defun appleshan-programming/init-highlight-thing ()
   (use-package highlight-thing
     :defer t
     :init
     (progn
       (add-hook 'prog-mode-hook 'highlight-thing-mode)
-      (spacemacs|hide-lighter highlight-thing-mode))
+      (spacemacs|diminish highlight-thing-mode))
     :config
     (progn
       (setq highlight-thing-delay-seconds 1.5)

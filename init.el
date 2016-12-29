@@ -253,7 +253,7 @@ values."
                                :size 13
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.2)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -448,7 +448,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; Pin some of the packages that go wonky if I use the bleeding edge.
   (when (boundp 'package-pinned-packages)
     (setq package-pinned-packages
-          '((org-plus-contrib                  . "org")
+          '((org-plus-contrib . "org")
             )))
 
   ;; Dropbox directory
