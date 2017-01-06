@@ -13,7 +13,7 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq appleshan-python-packages
     '(
-      company
+      ;; company
       elpy ; Emacs Lisp Python Environment
       flycheck
       py-autopep8
@@ -24,8 +24,8 @@
 
 (defun appleshan-python/post-init-company ()
   (with-eval-after-load 'company
-    (spacemacs|add-company-hook inferior-python-mode)
-    (push 'company-capf company-backends-inferior-python-mode)
+    ;(spacemacs|add-company-hook inferior-python-mode)
+    ;(push 'company-capf company-backends-inferior-python-mode)
     ; (add-hook 'inferior-python-mode-hook
     ;           (lambda ()
     ;             (setq-local company-minimum-prefix-length 1)

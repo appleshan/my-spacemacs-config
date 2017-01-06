@@ -16,14 +16,6 @@
       hscroll-margin 5
       hscroll-step 5)
 
-;; (spacemacs|defvar-company-backends markdown-mode)
-(spacemacs|defvar-company-backends org-mode)
-(spacemacs|defvar-company-backends nxml-mode)
-(spacemacs|defvar-company-backends sh-mode)
-(spacemacs|defvar-company-backends shell-script-mode)
-(spacemacs|defvar-company-backends conf-unix-mode)
-(spacemacs|defvar-company-backends json-mode)
-
 (spacemacs|add-toggle iimage
   :status iimage-mode
   :on (iimage-mode)

@@ -78,9 +78,10 @@
       (setq pyim-page-length 10
             pyim-use-tooltip 'pos-tip   ; 使用 pos-tip 包来绘制选词框（这种选词框比较好看）
             x-gtk-use-system-tooltips t ; Linux 平台下，emacs 可以使用 GTK 来绘制选词框
-            pyim-cache-directory (concat dotspacemacs-directory ".cache/")
-            pyim-personal-file (concat pyim-cache-directory "pyim-personal.txt")
-            pyim-property-file (concat pyim-cache-directory "pyim-words-property.txt")
+            pyim-directory (concat dotspacemacs-directory ".cache/pyim/")
+            pyim-dcache-directory (concat dotspacemacs-directory ".cache/pyim/dcache")
+            pyim-personal-file (concat pyim-directory "pyim-personal.txt")
+            pyim-property-file (concat pyim-directory "pyim-words-property.txt")
             default-input-method "chinese-pyim")
 
       (evilified-state-evilify pyim-dicts-manager-mode pyim-dicts-manager-mode-map))

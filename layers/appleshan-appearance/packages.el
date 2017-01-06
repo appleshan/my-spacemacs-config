@@ -17,7 +17,7 @@
       popwin
       visual-regexp
       visual-regexp-steroids
-      tabbar
+      ;; tabbar
       ))
 
 ;; List of packages to exclude.

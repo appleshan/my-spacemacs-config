@@ -11,16 +11,16 @@
 
 (configuration-layer/declare-layers '(
   appleshan-core
-  appleshan-shell
+  appleshan-complete
   appleshan-appearance
   appleshan-navigation
   appleshan-notify
-  appleshan-complete
+  appleshan-shell
   appleshan-dired
   appleshan-org
   (appleshan-chinese :variables chinese-enable-fcitx t)
   appleshan-programming
-  appleshan-python
+  ; appleshan-python
   appleshan-java
   ; appleshan-javascript
   ; appleshan-web

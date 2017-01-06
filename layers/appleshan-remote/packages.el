@@ -31,7 +31,7 @@
     (defun tramp-set-auto-save ()
       (auto-save-mode -1))
     (with-eval-after-load 'tramp-cache
-      (setq tramp-persistency-file-name "~/.emacs.d/etc/tramp"))
+      (setq tramp-persistency-file-name "~/.emacs.d/.cache/etc/tramp"))
     (setq tramp-default-method "ssh"
           tramp-default-user-alist '(("\\`su\\(do\\)?\\'" nil "root"))
           tramp-adb-program "adb"

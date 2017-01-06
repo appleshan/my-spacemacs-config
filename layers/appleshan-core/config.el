@@ -77,8 +77,6 @@
 ;; Prevent the visual selection overriding my system clipboard
 (fset 'evil-visual-update-x-selection 'ignore)
 
-(spacemacs|add-company-hook 'text-mode)
-
 ;; Don't move back the cursor one position when exiting insert mode
 (setq evil-move-cursor-back nil)
 
