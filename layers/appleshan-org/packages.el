@@ -35,7 +35,7 @@
 ;; List of packages to exclude.
 (setq appleshan-org-excluded-packages '())
 
-(setq my-org-gtd-directory (concat user-dropbox-directory "org-gtd/"))
+(setq my-org-gtd-directory (concat user-dropbox-directory "org-mode/org-gtd/"))
 
 (unless (file-exists-p my-org-gtd-directory)
   (make-directory my-org-gtd-directory))
