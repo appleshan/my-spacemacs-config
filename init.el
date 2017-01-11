@@ -431,20 +431,20 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq configuration-layer--elpa-archives
         '(
           ;; Emacs-cn 开源软件镜像站
-        ; ("melpa-cn"  . "http://elpa.emacs-china.org/melpa/")
-        ; ("org-cn"    . "http://elpa.emacs-china.org/org/")
-        ; ("gnu-cn"    . "http://elpa.emacs-china.org/gnu/")
+        ; ("melpa-cn"  . "https://elpa.emacs-china.org/melpa/")
+        ; ("gnu-cn"    . "https://elpa.emacs-china.org/gnu/")
+        ; ("org-cn"    . "https://elpa.emacs-china.org/org/")
         ; ("elpy"      . "https://jorgenschaefer.github.io/packages/")
-        ; ("user42-cn" . "https://elpa.emacs-china.com/user42/")
+        ; ("user42-cn" . "https://elpa.emacs-china.org/user42/")
 
           ;; 清华大学开源软件镜像站
-          ("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-          ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
-          ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+          ("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+          ("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+          ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
 
           ;; source elpa
-        ; ("gnu"   . "https://elpa.gnu.org/packages/")
         ; ("melpa" . "https://melpa.org/packages/")
+        ; ("gnu"   . "https://elpa.gnu.org/packages/")
         ; ("org"   . "http://orgmode.org/elpa/")
           ))
 
