@@ -88,13 +88,13 @@
 (setq url-show-status nil)
 
 ;; Allow font-lock-mode to do background parsing
-;(setq font-lock-support-mode 'jit-lock-mode)
-;(setq jit-lock-defer-time nil
-;      jit-lock-stealth-nice 0.1
-;      jit-lock-stealth-time 0.2
-;      jit-lock-defer-contextually t
-;      jit-lock-stealth-verbose nil)
-;(setq-default font-lock-multiline t)
+(setq font-lock-support-mode 'jit-lock-mode)
+(setq jit-lock-defer-time nil
+      jit-lock-defer-contextually t
+      jit-lock-stealth-nice 0.5
+      jit-lock-stealth-time 16
+      jit-lock-stealth-verbose nil)
+(setq-default font-lock-multiline t)
 
 ;; Wait a bit longer than the default (0.5 seconds) before assuming Emacs is idle
 (setq idle-update-delay 2)
@@ -130,11 +130,6 @@
 ;; Switch to unified diffs by default:
 ;; (setq diff-switches "-u")
 
-;; Turn on auto-fill mode in text buffers:
-;(add-hook 'text-mode-hook 'turn-on-auto-fill)
-;(use-package diminish
-;  :init (diminish 'auto-fill-function ""))
-
 ;; Set the internal calculator not to go to scientific form quite so quickly:
 (setq calc-display-sci-low -5)
 
@@ -147,6 +142,13 @@
 ;; Use a sane re-builder syntax so I don't have to have crazy escapes,
 ;; see: https://masteringemacs.org/article/re-builder-interactive-regexp-builder
 (setq reb-re-syntax 'string)
+
+(add-to-list 'auto-mode-alist '(".*rc" . conf-mode))
+
+;; Turn on auto-fill mode in text buffers:
+(add-hook 'text-mode-hook 'turn-on-auto-fill)
+;(use-package diminish
+;  :init (diminish 'auto-fill-function ""))
 
 (when (boundp 'global-prettify-symbols-mode)
   (add-hook 'emacs-lisp-mode-hook

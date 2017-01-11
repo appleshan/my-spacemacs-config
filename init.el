@@ -43,12 +43,12 @@ values."
              colors-colorize-identifiers 'variables
              colors-enable-nyan-cat-progress-bar nil)
      ;; deft  ;; Quick Note Taking
-     ;; finance
+     finance
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
      search-engine
-     (spell-checking :variables
-                     spell-checking-enable-by-default t)
+     ;; (spell-checking :variables
+     ;;                 spell-checking-enable-by-default t)
      ;; themes-megapack ; http://themegallery.robdor.com/
 
      ;; --- Auto Complete layers ---
@@ -68,7 +68,7 @@ values."
      ;; --- Programming and markup languages layers ---
      scheme
      emacs-lisp
-     html
+     ;; html
      java
      ;; javascript
      plantuml ; uml
@@ -87,14 +87,15 @@ values."
           git-magit-status-fullscreen t)
      github
      imenu-list ;; To get the outline for the current file
-     ipython-notebook
+     ;; ipython-notebook
      prodigy  ;; 使用 Prodigy 在 Emacs 中管理外部服务
      (restclient :variables
                  restclient-use-org nil)
      (syntax-checking :variables
                       syntax-checking-enable-by-default t
                       syntax-checking-enable-tooltips t)
-     version-control
+     (version-control :variables
+                      version-control-diff-side 'left)
 
      ;; --- Vim layers ---
      ;; ranger 与 vinegar 不能共存
@@ -485,7 +486,7 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
   (setq url-proxy-services
-        '(("no_proxy" . "^\\(localhost\\|10.*\\|192.168.*\\|elpa.emacs-china.com\\|mirrors.tuna.tsinghua.edu.cn\\)")
+        '(("no_proxy" . "^\\(localhost\\|10.*\\|192.168.*\\|elpa.emacs-china.org\\|mirrors.tuna.tsinghua.edu.cn\\)")
           ("http" . "127.0.0.1:18080")
           ("https" . "127.0.0.1:18080")
           ("socks5" . "127.0.0.1:18080")))

@@ -26,6 +26,6 @@
   ; appleshan-web
   appleshan-lisp
   ; appleshan-database
-  appleshan-remote
+  ; appleshan-remote
   appleshan-misc
   ))
