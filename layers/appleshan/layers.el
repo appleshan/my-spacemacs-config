@@ -20,8 +20,8 @@
   appleshan-org
   (appleshan-chinese :variables chinese-enable-fcitx t)
   appleshan-programming
-  ; appleshan-python
-  appleshan-java
+  appleshan-python
+  ; appleshan-java
   ; appleshan-javascript
   ; appleshan-web
   appleshan-lisp
