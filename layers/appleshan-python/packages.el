@@ -60,7 +60,7 @@
       (setq elpy-rpc-python-command "python3")
 
       (setq elpy-rpc-backend "jedi")
-      (when (executable-find "ipython")
+      (when (executable-find "ipython3")
         (elpy-use-ipython))
 
       (spacemacs|hide-lighter elpy-mode))
