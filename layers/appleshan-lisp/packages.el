@@ -14,7 +14,7 @@
 (setq appleshan-lisp-packages
     '(
       (emacs-lisp :location built-in)
-      ;lispy
+      lispy
       ))
 
 ;; List of packages to exclude.
@@ -27,7 +27,6 @@
   (add-hook 'lisp-interaction-mode-hook 'turn-on-eldoc-mode))
 
 (defun appleshan-lisp/init-lispy ()
-  "Initialize lispy"
   (use-package lispy
     :defer t
     :diminish (lispy-mode)

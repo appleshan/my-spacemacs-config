@@ -38,15 +38,16 @@ values."
      ;; ----------------------------------------------------------------
 
      ;; --- General layers ---
-     better-defaults
+     (better-defaults :variables
+                      better-defaults-move-to-end-of-code-first t)
      (colors :variables
              colors-colorize-identifiers 'variables
              colors-enable-nyan-cat-progress-bar nil)
      ;; deft  ;; Quick Note Taking
-     finance
+     ;; finance
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
-     search-engine
+     ;; search-engine
      ;; (spell-checking :variables
      ;;                 spell-checking-enable-by-default t)
      ;; themes-megapack ; http://themegallery.robdor.com/
@@ -60,13 +61,11 @@ values."
                       ; auto-completion-return-key-behavior nil
                       auto-completion-tab-key-behavior 'complete
                       auto-completion-private-snippets-directory "~/.spacemacs.d/snippets/"
-                      :disabled-for erc org markdown
-                      )
-     ;; auto-complete layer 在 orgmode 中会引发很多问题，
-     ;; 所以最好在 org 中禁用 company 补全
+                      :disabled-for erc org markdown)
+     ;; auto-complete layer 在 org-mode 中会引发很多问题，所以最好在 org-mode 中禁用补全
 
      ;; --- Programming and markup languages layers ---
-     scheme
+     ;; scheme
      emacs-lisp
      ;; html
      ;; java
@@ -79,29 +78,22 @@ values."
      org
 
      ;; --- Programming tool layers ---
-     (dash :variables
-           helm-dash-docset-newpath "~/.local/share/Zeal/docsets/")
+     (dash :variables helm-dash-docset-newpath "~/.local/share/Zeal/docsets/")
      docker
      ;; gtags
-     (git :variables
-          git-magit-status-fullscreen t)
+     (git :variables git-magit-status-fullscreen t)
      github
      imenu-list ;; To get the outline for the current file
      ;; ipython-notebook
      prodigy  ;; 使用 Prodigy 在 Emacs 中管理外部服务
-     (restclient :variables
-                 restclient-use-org nil)
+     (restclient :variables restclient-use-org nil)
      (syntax-checking :variables
                       syntax-checking-enable-by-default t
                       syntax-checking-enable-tooltips t)
-     (version-control :variables
-                      version-control-diff-side 'left)
+     (version-control :variables version-control-diff-side 'left)
 
      ;; --- Vim layers ---
-     ;; ranger 与 vinegar 不能共存
-     ;; ranger
-     (vinegar :variables
-              vinegar-reuse-dired-buffer t)
+     ; (vinegar :variables vinegar-reuse-dired-buffer t)
      vim-empty-lines
 
      ;; --- Private layers ---
@@ -245,10 +237,9 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(django
-                         spacemacs-dark
+   dotspacemacs-themes '(spacemacs-dark
                          spacemacs-light
-                         )
+                         django)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -432,16 +423,16 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq configuration-layer--elpa-archives
         '(
           ;; Emacs-cn 开源软件镜像站
-        ; ("melpa-cn"  . "https://elpa.emacs-china.org/melpa/")
-        ; ("gnu-cn"    . "https://elpa.emacs-china.org/gnu/")
-        ; ("org-cn"    . "https://elpa.emacs-china.org/org/")
+          ("org-cn"    . "https://elpa.emacs-china.org/org/")
         ; ("elpy"      . "https://jorgenschaefer.github.io/packages/")
+          ("melpa-cn"  . "https://elpa.emacs-china.org/melpa/")
+          ("gnu-cn"    . "https://elpa.emacs-china.org/gnu/")
         ; ("user42-cn" . "https://elpa.emacs-china.org/user42/")
 
           ;; 清华大学开源软件镜像站
-          ("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-          ("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-          ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+        ; ("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+        ; ("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+        ; ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
 
           ;; source elpa
         ; ("melpa" . "https://melpa.org/packages/")

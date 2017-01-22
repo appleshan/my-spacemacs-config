@@ -21,10 +21,10 @@
   (appleshan-chinese :variables chinese-enable-fcitx t)
   appleshan-programming
   appleshan-python
-  ; appleshan-java
+  appleshan-java
   ; appleshan-javascript
   ; appleshan-web
-  appleshan-lisp
+  ; appleshan-lisp
   ; appleshan-database
   ; appleshan-remote
   appleshan-misc

@@ -11,8 +11,6 @@
 
 ;;; Code:
 
-;; Variables
-
 ;; personal information about me: full name and email
 (setq user-full-name "Apple Shan"
       user-mail-address "apple.shan@gmail.com")
@@ -38,7 +36,7 @@
 (setq-default indicate-empty-lines nil)
 (setq-default indicate-buffer-boundaries nil)
 
-;; @See https://emacs-china.org/t/smartparens-electri-pair-yasnippet/1326
+;; @See https://emacs-china.org/t/smartparens/2055/3
 (electric-pair-mode t)
 ;; https://www.reddit.com/r/emacs/comments/4xhxfw/how_to_tune_the_behavior_of_eletricpairmode/
 (setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
@@ -143,7 +141,8 @@
 ;; see: https://masteringemacs.org/article/re-builder-interactive-regexp-builder
 (setq reb-re-syntax 'string)
 
-(add-to-list 'auto-mode-alist '(".*rc" . conf-mode))
+;; 文件名以“rc”结尾的文件是 unix conf 文件
+(add-to-list 'auto-mode-alist '(".*rc\\'" . conf-mode))
 
 ;; Turn on auto-fill mode in text buffers:
 (add-hook 'text-mode-hook 'turn-on-auto-fill)

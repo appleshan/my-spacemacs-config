@@ -144,12 +144,16 @@
   (when (boundp' hs-minor-mode)
     (hs-hide-initial-comment-block)))
 
-(add-hook 'java-mode-hook #'eos/setup-java)
+; (add-hook 'java-mode-hook #'eos/setup-java)
 
 ;; Make emacs' compile recognize broken gradle output
 (require 'compile)
 (add-to-list 'compilation-error-regexp-alist
              '("^:[^/.\n]+\\(/.+\\):\\([[:digit:]]+\\):" 1 2))
+
+;;; For maven 2/3 output
+(add-to-list 'compilation-error-regexp-alist
+             '("^.*?\\(/.*\\):\\[\\([0-9]*\\),\\([0-9]*\\)\\]" 1 2 3))
 
 ;; {{ maven
 ;; mvn compile

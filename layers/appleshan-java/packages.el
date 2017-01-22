@@ -13,17 +13,18 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq appleshan-java-packages
     '(
-;      eclim
-;      (eclim-java-run :location local) ; in eclim
+      ; eclim
+      ; (eclim-java-run :location local) ; in eclim
       ; (flycheck-eclim :location local)
       ; (flycheck-java :location local)
-      (flycheck-java-maven :location local)
+      ; (flycheck-java-maven :location local)
       ; project-explorer
       ; (ajoke :location local)
       ; log4j-mode
       (maven-pom-mode :location local)
       mvn
-      ;; meghanada
+      meghanada
+      (flycheck-meghanada :location local)
       ))
 
 ;; List of packages to exclude.
@@ -41,7 +42,7 @@
         eclimd-executable (or (executable-find "eclimd") "/opt/java-ide/eclipse-jee-neon/eclipse/eclimd")
         eclimd-wait-for-process nil
         ;; Specify the workspace to use by default
-        eclimd-default-workspace "/data/workspace/yunkang-service-workspace")
+        eclimd-default-workspace "~/developer/projects/java/")
   )
 
 (defun appleshan-java/init-eclim-java-run ()
@@ -123,13 +124,23 @@
 
 (defun appleshan-java/init-meghanada ()
   (use-package meghanada
-    :ensure t
+    :defer t
     :init
     (progn
       (setq meghanada-server-install-dir "/opt/java-lib/meghanada")
       ;; Don't auto-start
       (setq meghanada-auto-start nil)
+      ;; meghanada-mode on
+      (add-hook 'java-mode-hook 'meghanada-mode)
       )))
+
+(defun appleshan-java/init-flycheck-meghanada ()
+  (use-package flycheck-meghanada
+    :defer t
+    :config
+    (progn
+      (add-hook 'java-mode-hook (lambda () (meghanada-flycheck-enable) )))
+    ))
 
 ;; Local Variables:
 ;; coding: utf-8
