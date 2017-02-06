@@ -11,8 +11,8 @@
 
 (setq appleshan-chinese-packages
     '(
-      cal-china-x
-      (chinese-pyim :toggle (eq chinese-default-input-method 'pinyin))
+      ;; cal-china-x
+      ;; (chinese-pyim :toggle (eq chinese-default-input-method 'pinyin))
       (fcitx :toggle chinese-enable-fcitx)
       find-by-pinyin-dired
       ace-pinyin

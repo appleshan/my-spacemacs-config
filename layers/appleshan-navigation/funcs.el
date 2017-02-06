@@ -1,4 +1,3 @@
-
 ;;; funcs.el --- appleshan-navigation Layer functions File for Spacemacs
 
 ;; Copyright (c) 2016-2020 Apple Shan

@@ -74,8 +74,8 @@
 (spacemacs/set-leader-keys "ll" 'appleshan/load-my-layout)
 (spacemacs/set-leader-keys "ls" 'appleshan/save-my-layout)
 
-(spacemacs/declare-prefix "aD" "database")
-(spacemacs/set-leader-keys "aDm" 'dbclient/sql-connect-server)
+; (spacemacs/declare-prefix "aD" "database")
+; (spacemacs/set-leader-keys "aDm" 'dbclient/sql-connect-server)
 
 ;; Enable navigation by visual lines
 ;; Make evil-mode up/down operate in screen lines instead of logical lines

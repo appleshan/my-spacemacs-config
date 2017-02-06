@@ -91,6 +91,7 @@
 (defun appleshan-navigation/post-init-evil-escape ()
   (setq evil-escape-delay 0.2))
 
+;; Note : helm-fuzzier 会引起 neotree 重复显示文件和目录
 (defun appleshan-navigation/post-init-neotree ()
   (setq neo-show-hidden-files nil)
   (setq projectile-switch-project-action 'neotree-projectile-action))

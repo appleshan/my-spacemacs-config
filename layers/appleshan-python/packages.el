@@ -13,27 +13,12 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq appleshan-python-packages
     '(
-      company
       elpy ; Emacs Lisp Python Environment
-      flycheck
-      pip-requirements
       py-autopep8
       ))
 
 ;; List of packages to exclude.
 (setq appleshan-python-excluded-packages '())
-
-(defun appleshan-python/post-init-company ()
-  (spacemacs|add-company-backends
-    :backends (company-files company-capf)
-    :modes inferior-python-mode
-    :variables
-    company-minimum-prefix-length 0
-    company-idle-delay 0.5)
-  (when (configuration-layer/package-usedp 'pip-requirements)
-    (spacemacs|add-company-backends
-      :backends company-capf
-      :modes pip-requirements-mode)))
 
 ;; require :
 ; pip install rope        # a python refactoring library
@@ -59,6 +44,7 @@
 
       (setq elpy-rpc-python-command "python3")
 
+      ;; Configuring the backend
       (setq elpy-rpc-backend "jedi")
       (when (executable-find "ipython3")
         (elpy-use-ipython))
@@ -66,29 +52,18 @@
       (spacemacs|hide-lighter elpy-mode))
     :bind ("RET" . newline-and-indent)))
 
-;; use flycheck not flymake with elpy
-(defun appleshan-python/post-init-flycheck ()
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
-
-(defun appleshan-python/init-pip-requirements ()
-  (use-package pip-requirements
-    :defer t))
-
 ;; enable autopep8 formatting on save
-;; 当你保存文件时[C-x C-s]，autopep8插件就会自动格式化代码，并纠正所有不符合
-;; PEP8标准的错误（排除你不希望检查的错误）。
+;; ignoring:
+;; - E501 - Try to make lines fit within --max-line-length characters.
+;; - W293 - Remove trailing whitespace on blank line.
+;; - W391 - Remove trailing blank lines.
+;; - W690 - Fix various deprecated code (via lib2to3).
 (defun appleshan-python/init-py-autopep8 ()
   (use-package py-autopep8
     :defer t
     :config
     (progn
-      ;; Ignoring:
-      ;;  - E501: line too long
-      ;;  - W293: trailing whitespace
-      ;;  - W391: blank line at EOF
-      ;;  - W690: fix deprecated code
-      (setq py-autopep8-options '("--ignore=E501,W293,W391,W690"
-                                  "--max-line-length=79"))
+      (setq py-autopep8-options '("--ignore=E501,W293,W391,W690"))
       (add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
     )))
 

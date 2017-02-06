@@ -14,6 +14,7 @@
       bbdb-vcard
       browse-kill-ring
       ;; discover-my-major
+      dockerfile-mode
       flyspell-correct
       multiple-cursors
       persistent-scratch
@@ -107,6 +108,10 @@
       (spacemacs/set-leader-keys (kbd "mhm") 'discover-my-major)
       (evilified-state-evilify makey-key-mode makey-key-mode-get-key-map)
       )))
+
+(defun appleshan-misc/post-init-dockerfile-mode ()
+  (with-eval-after-load 'dockerfile-mode
+    (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))))
 
 (defun appleshan-misc/post-init-flyspell-correct ()
   (with-eval-after-load 'flyspell

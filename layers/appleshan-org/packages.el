@@ -813,7 +813,7 @@
 
 ;; TODO: very slow!!!!
 (defun appleshan-org/init-ob-core ()
-  (with-eval-after-load 'ob-core
+  (with-eval-after-load 'org
     ; (require 'ob-core)
     ;;;;;;;;;;;;;;;;;;;;
     ;; org-babel配置

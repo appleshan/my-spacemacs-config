@@ -19,7 +19,6 @@
     '(
       company
       helm-flx
-      helm-fuzzier
       projectile
       yasnippet
       ))
@@ -61,12 +60,6 @@
 
   (add-hook 'minibuffer-setup-hook #'eos/minibuffer-setup-hook)
   (add-hook 'minibuffer-exit-hook #'eos/minibuffer-exit-hook))
-
-(defun appleshan-complete/init-helm-fuzzier ()
-  (use-package helm-fuzzier
-    :ensure t
-    :init
-    (helm-fuzzier-mode)))
 
 (defun appleshan-complete/post-init-projectile ()
   (with-eval-after-load 'projectile

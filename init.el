@@ -71,7 +71,7 @@ values."
      ;; java
      ;; javascript
      plantuml ; uml
-     ;; python
+     python
      shell-scripts
      yaml
      ;; markdown
@@ -86,6 +86,7 @@ values."
      imenu-list ;; To get the outline for the current file
      ;; ipython-notebook
      prodigy  ;; 使用 Prodigy 在 Emacs 中管理外部服务
+     ;; pandoc
      (restclient :variables restclient-use-org nil)
      (syntax-checking :variables
                       syntax-checking-enable-by-default t
@@ -93,6 +94,9 @@ values."
      (version-control :variables version-control-diff-side 'left)
 
      ;; --- Vim layers ---
+     evil-commentary ;; comment
+     ;; enable 2-char find.
+     (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
      ; (vinegar :variables vinegar-reuse-dired-buffer t)
      vim-empty-lines
 
@@ -111,9 +115,11 @@ values."
                                     ace-jump-helm-line
                                     ace-jump-mode
                                     ; ace-pinyin
+                                    anaconda-mode
                                     auto-complete
                                     auto-dictionary
                                     clean-aindent-mode
+                                    company-anaconda
                                     company-quickhelp
                                     coffee-mode
                                     define-word
@@ -124,7 +130,6 @@ values."
                                     ; evil-escape
                                     evil-exchange
                                     evil-indent-plus
-                                    ; evil-lisp-state
                                     evil-mc
                                     evil-tutor
                                     evil-unimpaired
@@ -194,9 +199,9 @@ values."
    ;; This variable has no effect if Emacs is launched with the parameter
    ;; `--insecure' which forces the value of this variable to nil.
    ;; (default t)
-   dotspacemacs-elpa-https t
+   dotspacemacs-elpa-https nil
    ;; Maximum allowed time in seconds to contact an ELPA repository.
-   dotspacemacs-elpa-timeout 5
+   dotspacemacs-elpa-timeout 60
    ;; If non nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
@@ -228,8 +233,8 @@ values."
    ;; `recents' `bookmarks' `projects' `agenda' `todos'."
    ;; List sizes may be nil, in which case
    ;; `spacemacs-buffer-startup-lists-length' takes effect.
-   dotspacemacs-startup-lists '((recents . 5)
-                                (projects . 10))
+   dotspacemacs-startup-lists '((recents . 10)
+                                (projects . 20))
    ;; True if the home buffer should respond to resize events.
    dotspacemacs-startup-buffer-responsive t
    ;; Default major mode of the scratch buffer (default `text-mode')
@@ -412,10 +417,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq byte-compile-warnings nil)
 
   ;; @see http://elpa.emacs-china.org/
-  ;; ELPA	                  镜像地址
-  ;; GNU ELPA	              http://elpa.emacs-china.com/gnu/
+  ;; ELPA                   镜像地址
+  ;; GNU ELPA               http://elpa.emacs-china.com/gnu/
   ;; MELPA                  http://elpa.emacs-china.com/melpa/
-  ;; MELPA Stable	          http://elpa.emacs-china.com/melpa-stable/
+  ;; MELPA Stable           http://elpa.emacs-china.com/melpa-stable/
   ;; Marmalade	            http://elpa.emacs-china.com/marmalade/
   ;; Org                    http://elpa.emacs-china.com/org/
   ;; Sunrise Commander ELPA	http://elpa.emacs-china.com/sunrise-commander/
@@ -423,10 +428,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq configuration-layer--elpa-archives
         '(
           ;; Emacs-cn 开源软件镜像站
-          ("org-cn"    . "https://elpa.emacs-china.org/org/")
-        ; ("elpy"      . "https://jorgenschaefer.github.io/packages/")
           ("melpa-cn"  . "https://elpa.emacs-china.org/melpa/")
           ("gnu-cn"    . "https://elpa.emacs-china.org/gnu/")
+          ("org-cn"    . "https://elpa.emacs-china.org/org/")
+        ; ("elpy"      . "https://jorgenschaefer.github.io/packages/")
         ; ("user42-cn" . "https://elpa.emacs-china.org/user42/")
 
           ;; 清华大学开源软件镜像站
@@ -435,9 +440,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
         ; ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
 
           ;; source elpa
-        ; ("melpa" . "https://melpa.org/packages/")
-        ; ("gnu"   . "https://elpa.gnu.org/packages/")
-        ; ("org"   . "http://orgmode.org/elpa/")
+        ; ("melpa" . "melpa.org/packages/")
+        ; ("gnu"   . "elpa.gnu.org/packages/")
+        ; ("org"   . "orgmode.org/elpa/")
           ))
 
   ;; Pin some of the packages that go wonky if I use the bleeding edge.
