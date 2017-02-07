@@ -20,11 +20,12 @@
   ;; HTML content indentation
   (setq web-mode-indent-style 2)
 
+  ;; @see https://emacs-china.org/t/web-mode/2130
   ;; padding
   ;; For <style> parts
-  (setq web-mode-style-padding 1)
+  (setq web-mode-style-padding 0)
   ;; For <script> parts
-  (setq web-mode-script-padding 1)
+  (setq web-mode-script-padding 0)
   ;; For multi-line blocks
   (setq web-mode-block-padding 0)
 
