@@ -40,7 +40,8 @@
     (setq company-dabbrev-minimum-length 2)
 
     (spacemacs|add-company-backends :modes
-      text-mode
+      ; !!! NOTE: 不能为 text-mode 开启 company ，当在 magit 中填写 commit message 的时候，会造成 emacs 崩溃. !!!
+      ; text-mode
       shell-script-mode
       sh-mode
       nxml-mode
@@ -75,6 +76,8 @@
 
 (defun appleshan-complete/post-init-yasnippet ()
   (setq yas-snippet-dirs (delq 'yas-installed-snippets-dir yas-snippet-dirs))
+  ;; ~/.emacs.d/elpa/yasnippet-xxxxx/snippets
+  (push yas-installed-snippets-dir yas-snippet-dirs)
 
   ;; Remove Yasnippet's default tab key binding
   (define-key yas-minor-mode-map (kbd "<tab>") nil)

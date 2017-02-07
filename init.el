@@ -60,7 +60,6 @@ values."
                       auto-completion-enable-snippets-in-popup t
                       ; auto-completion-return-key-behavior nil
                       auto-completion-tab-key-behavior 'complete
-                      auto-completion-private-snippets-directory "~/.spacemacs.d/snippets/"
                       :disabled-for erc org markdown)
      ;; auto-complete layer 在 org-mode 中会引发很多问题，所以最好在 org-mode 中禁用补全
 
@@ -113,8 +112,10 @@ values."
    ;; A list of packages that will not be installed and loaded.
    dotspacemacs-excluded-packages '(ac-ispell
                                     ace-jump-helm-line
+                                    ;; Ace-jump-mode Is Dead, Long Live Avy :
+                                    ;; http://emacsredux.com/blog/2015/07/19/ace-jump-mode-is-dead-long-live-avy/
                                     ace-jump-mode
-                                    ; ace-pinyin
+                                    ace-pinyin
                                     anaconda-mode
                                     auto-complete
                                     auto-dictionary
@@ -136,7 +137,7 @@ values."
                                     ; eyebrowse
                                     ;; exec-path-from-shell ; emacs26
                                     fancy-battery
-                                    ; find-by-pinyin-dired
+                                    find-by-pinyin-dired
                                     fish-mode
                                     flx-ido
                                     gh-md
@@ -152,7 +153,6 @@ values."
                                     highlight-indentation
                                     ;; hl-anything
                                     hydra
-                                    ivy
                                     leuven-theme
                                     linum-relative
                                     livid-mode
