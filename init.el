@@ -57,10 +57,11 @@ values."
      (auto-completion :variables
                       auto-completion-enable-help-tooltip 'manual
                       auto-completion-enable-sort-by-usage t
+                      ;; Adding yas-snippets to autocompletion
                       auto-completion-enable-snippets-in-popup t
                       ; auto-completion-return-key-behavior nil
                       auto-completion-tab-key-behavior 'complete
-                      :disabled-for erc org markdown)
+                      :disabled-for erc markdown) ; erc org markdown
      ;; auto-complete layer 在 org-mode 中会引发很多问题，所以最好在 org-mode 中禁用补全
 
      ;; --- Programming and markup languages layers ---
