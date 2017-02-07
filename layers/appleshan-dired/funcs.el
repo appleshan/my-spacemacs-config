@@ -37,6 +37,7 @@
   ; Ⓞ : http://graphemica.com/%E2%93%84
   (spacemacs|diminish dired-omit-mode " Ⓞ" " O"))
 
+;; @see http://oremacs.com/2015/01/12/dired-file-size/
 (defun dired/get-size ()
   (interactive)
   (let ((files (dired-get-marked-files)))
@@ -46,7 +47,7 @@
         "Size of all marked files: %s"
         (progn
           ; (re-search-backward "\\(^[ 0-9.,]+[A-Za-z]+\\).*total$")
-          (re-search-backward "\\(^[ 0-9.,]+[A-Za-z]+\\).*总用量$") ; ubuntu 中文系统
+          (re-search-backward "\\(^[ 0-9.,]+[A-Za-z]+\\).*总用量$") ; ubuntu linux 中文系统
           (match-string 1))))))
 
 (defun dired/open-in-external-app ()
@@ -67,6 +68,7 @@
                 (start-process "" nil "xdg-open" fPath)))
             myFileList))))
 
+;; @see http://oremacs.com/2016/02/24/dired-rsync/
 (defun dired/rsync (dest)
   "Using rsync in dired."
   (interactive
@@ -113,3 +115,12 @@
 ;     (define-key dired-sort-map "u" 'dired-sort-utime)     ; Access Time
 ;     (define-key dired-sort-map "c" 'dired-sort-ctime)     ; Create Time
 ;     ))
+
+;; Ignore running processes when closing Emacs
+;; add `flet'
+(require 'cl)
+
+(defadvice save-buffers-kill-emacs
+    (around no-query-kill-emacs activate)
+  "Prevent \"Active processes exist\" query on exit."
+  (flet ((process-list ())) ad-do-it))
