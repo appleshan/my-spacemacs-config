@@ -186,6 +186,73 @@ re-indenting and un-tabification is done."
       (untabify-buffer)))
   (delete-trailing-whitespace))
 
+;;{{ @see http://oremacs.com/2014/12/23/upcase-word-you-silly/
+(defadvice upcase-word (before upcase-word-advice activate)
+  (unless (looking-back "\\b")
+    (backward-word)))
+
+(defadvice downcase-word (before downcase-word-advice activate)
+  (unless (looking-back "\\b")
+    (backward-word)))
+
+(defadvice capitalize-word (before capitalize-word-advice activate)
+  (unless (looking-back "\\b")
+    (backward-word)))
+;;}}
+
+;;{{ @see http://oremacs.com/2014/12/25/ode-to-toggle/
+;; capitalize-word-toggle
+(defun char-upcasep (letter)
+  (eq letter (upcase letter)))
+
+(defun capitalize-word-toggle ()
+  (interactive)
+  (let ((start
+         (car
+          (save-excursion
+            (backward-word)
+            (bounds-of-thing-at-point 'symbol)))))
+    (if start
+        (save-excursion
+          (goto-char start)
+          (funcall
+           (if (char-upcasep (char-after))
+               'downcase-region
+             'upcase-region)
+           start (1+ start)))
+      (capitalize-word -1))))
+(global-set-key (kbd "C->") 'capitalize-word-toggle)
+
+;; upcase-word-toggle
+(defun upcase-word-toggle ()
+  (interactive)
+  (let ((bounds (bounds-of-thing-at-point 'symbol))
+        beg end
+        (regionp
+         (if (eq this-command last-command)
+             (get this-command 'regionp)
+           (put this-command 'regionp nil))))
+    (cond
+      ((or (region-active-p) regionp)
+       (setq beg (region-beginning)
+             end (region-end))
+       (put this-command 'regionp t))
+      (bounds
+       (setq beg (car bounds)
+             end (cdr bounds)))
+      (t
+       (setq beg (point)
+             end (1+ beg))))
+    (save-excursion
+      (goto-char (1- beg))
+      (and (re-search-forward "[A-Za-z]" end t)
+           (funcall (if (char-upcasep (char-before))
+                        'downcase-region
+                      'upcase-region)
+                    beg end)))))
+(global-set-key (kbd "C-<") 'upcase-word-toggle)
+;;}}
+
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: nil
