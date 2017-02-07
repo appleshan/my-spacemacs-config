@@ -24,7 +24,7 @@
   appleshan-java
   ; appleshan-javascript
   ; appleshan-web
-  ; appleshan-lisp
+  appleshan-lisp
   ; appleshan-database
   ; appleshan-remote
   appleshan-misc
