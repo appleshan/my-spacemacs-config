@@ -103,7 +103,7 @@
     (erase-buffer)
     (setq buffer-read-only nil)        ;; Not need to edit the content, just read mode (added)
     (local-set-key "q" 'bury-buffer)   ;; Nice to have the option to bury the buffer (added)
-    (setq lower32 '("nul" "soh" "stx" "etx" "eot" "enq" "ack" "bel"  
+    (setq lower32 '("nul" "soh" "stx" "etx" "eot" "enq" "ack" "bel"
         "bs" "ht" "nl" "vt" "np" "cr" "so" "si"
         "dle" "dc1" "dc2" "dc3" "dc4" "nak" "syn" "etb"
         "can" "em" "sub" "esc" "fs" "gs" "rs" "us"
@@ -122,6 +122,16 @@
 (defun appleshan/show-current-buffer-major-mode ()
   (interactive)
   (describe-variable 'major-mode))
+
+;; @see http://oremacs.com/2015/01/05/youtube-dl/
+(defun appleshan/youtube-dl ()
+  (interactive)
+  (let* ((str (current-kill 0))
+         (default-directory "~/download/media")
+         (proc (get-buffer-process (ansi-term "/bin/bash"))))
+    (term-send-string
+     proc
+     (concat "cd ~/download/media && youtube-dl " str "\n"))))
 
 ;; Local Variables:
 ;; coding: utf-8
