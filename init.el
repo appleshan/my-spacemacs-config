@@ -494,10 +494,12 @@ you should place your code here."
   ;; Source Code Pro : [ 12 14 ], [ 13 16 ]
   ;; mononoki        : [ 12 13 ], [ 13 14 ]
   ;; Monaco          : [ 12 13 ], [ 13 14 ]
+  ;; Hack            : [ 12 14 ], [ 13 16 ]
   (when (configuration-layer/layer-usedp 'appleshan-chinese)
     (when (and (spacemacs/system-is-linux) window-system)
       (spacemacs//set-monospaced-font
-        "Source Code Pro" "文泉驿等宽微米黑" 13 16)))
+        ;; Source Code Pro / Hack | 文泉驿等宽正黑 / 文泉驿等宽微米黑
+        "Hack" "文泉驿等宽正黑" 12 14)))
   ;; }}
 
   ;; Set to t to debug package loading or nil to disable
