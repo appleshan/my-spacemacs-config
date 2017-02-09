@@ -428,14 +428,14 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; user42 ELPA            http://elpa.emacs-china.com/user42/
   (setq configuration-layer--elpa-archives
         '(
-          ;; Emacs-cn 开源软件镜像站
+          ;; Emacs-China 开源软件镜像站
           ("melpa-cn"  . "https://elpa.emacs-china.org/melpa/")
           ("gnu-cn"    . "https://elpa.emacs-china.org/gnu/")
           ("org-cn"    . "https://elpa.emacs-china.org/org/")
         ; ("elpy"      . "https://jorgenschaefer.github.io/packages/")
         ; ("user42-cn" . "https://elpa.emacs-china.org/user42/")
 
-          ;; 清华大学开源软件镜像站
+          ;; 清华大学 TUNA 协会开源软件镜像站
         ; ("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
         ; ("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
         ; ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
@@ -511,7 +511,7 @@ you should place your code here."
   ;; restore the desktop
   ; (desktop-save-mode t)
   ; (desktop-read)
-)
+  )
 
 (setq custom-file (expand-file-name "local/custom.el" dotspacemacs-directory))
 (load custom-file 'no-error 'no-message)

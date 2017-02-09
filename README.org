@@ -20,6 +20,9 @@ Hacking 始于 2012 年。2015 年爱上 Spacemacs :smile: :sparkling_heart:
 一个 .emacs.d 目录，是 Spacemacs 的原始代码，未做任何修改；
 一个 .spacemacs.d 目录，存放私有 layer。
 
+* Emacs version
+24.5+ (24.5, 25.1)
+
 * Screenshot
 [[./local/img/spacemacs-demo-1.png]]
 [[./local/img/spacemacs-demo-2.png]]
