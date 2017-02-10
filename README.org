@@ -67,12 +67,9 @@ Hacking 始于 2012 年。2015 年爱上 Spacemacs :smile: :sparkling_heart:
 3. 我的配置用了很长时间了，相信你也会喜欢的。
 
 * 安装字体
-
-** Source Code Pro
-下载地址：https://github.com/adobe-fonts/source-code-pro/releases
-
-** Monaco
-
-** 文泉驿
+https://github.com/ProgrammingFonts/programming-fonts-collection
+- Source Code Pro
+- Monaco
+- 文泉驿
 
 * Happy Hacking :smile:
