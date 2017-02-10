@@ -1,18 +1,5 @@
 #+TITLE:Apple Shan 的 Emacs 配置 :sparkles:
-#+begin_src :tangle no
-      ___           ___           ___           ___           ___
-     /\  \         /\__\         /\  \         /\  \         /\  \
-    /::\  \       /::|  |       /::\  \       /::\  \       /::\  \
-   /:/\:\  \     /:|:|  |      /:/\:\  \     /:/\:\  \     /:/\ \  \
-  /::\~\:\  \   /:/|:|__|__   /::\~\:\  \   /:/  \:\  \   _\:\~\ \  \
- /:/\:\ \:\__\ /:/ |::::\__\ /:/\:\ \:\__\ /:/__/ \:\__\ /\ \:\ \ \__\
- \:\~\:\ \/__/ \/__/~~/:/  / \/__\:\/:/  / \:\  \  \/__/ \:\ \:\ \/__/
-  \:\ \:\__\         /:/  /       \::/  /   \:\  \        \:\ \:\__\
-   \:\ \/__/        /:/  /        /:/  /     \:\  \        \:\/:/  /
-    \:\__\         /:/  /        /:/  /       \:\__\        \::/  /
-     \/__/         \/__/         \/__/         \/__/         \/__/
-
-#+end_src
+[[./local/banner/001-banner-kban.txt]]
 
 Hacking 始于 2012 年。2015 年爱上 Spacemacs :smile: :sparkling_heart:
 
@@ -43,22 +30,22 @@ Hacking 始于 2012 年。2015 年爱上 Spacemacs :smile: :sparkling_heart:
 
 * :books: 配置说明
 1. 我的配置主要分成 16 个 layer：
-  appleshan-core
-  appleshan-complete
-  appleshan-appearance
-  appleshan-navigation
-  appleshan-notify
-  appleshan-shell
-  appleshan-dired
-  appleshan-org
-  (appleshan-chinese :variables chinese-enable-fcitx t)
-  appleshan-programming
-  appleshan-python
-  appleshan-java
-  appleshan-javascript
-  appleshan-web
-  appleshan-lisp
-  appleshan-misc
+- appleshan-core
+- appleshan-complete
+- appleshan-appearance
+- appleshan-navigation
+- appleshan-notify
+- appleshan-shell
+- appleshan-dired
+- appleshan-org
+- appleshan-chinese
+- appleshan-programming
+- appleshan-python
+- appleshan-java
+- appleshan-javascript
+- appleshan-web
+- appleshan-lisp
+- appleshan-misc
   这些 layer 是对 spacemacs 本身的一些扩展。
 
 2. 我的这个配置使用了 evil。
