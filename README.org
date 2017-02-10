@@ -42,23 +42,37 @@ Hacking 始于 2012 年。2015 年爱上 Spacemacs :smile: :sparkling_heart:
 现在可以打开 Emacs 24.5+ 开始使用我的配置了。
 
 * :books: 配置说明
-1. 我的配置主要分成九个 layer：
-- appleshan-better-defaults
-- appleshan-ui
-- appleshan-org
-- appleshan-dired
-- appleshan-misc
-- appleshan-chinese
-- appleshan-programming
-- appleshan-javascript
-- appleshan-lisp
+1. 我的配置主要分成 16 个 layer：
+  appleshan-core
+  appleshan-complete
+  appleshan-appearance
+  appleshan-navigation
+  appleshan-notify
+  appleshan-shell
+  appleshan-dired
+  appleshan-org
+  (appleshan-chinese :variables chinese-enable-fcitx t)
+  appleshan-programming
+  appleshan-python
+  appleshan-java
+  appleshan-javascript
+  appleshan-web
+  appleshan-lisp
+  appleshan-misc
   这些 layer 是对 spacemacs 本身的一些扩展。
 
 2. 我的这个配置使用了 evil。
    所以，对于 Vim 党来说会比较友好一点。
 
 3. 我的配置用了很长时间了，相信你也会喜欢的。
-* 安装 SourceCodePro 字体
+
+* 安装字体
+
+** Source Code Pro
 下载地址：https://github.com/adobe-fonts/source-code-pro/releases
+
+** Monaco
+
+** 文泉驿
 
 * Happy Hacking :smile:

@@ -250,8 +250,8 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+   dotspacemacs-default-font '("Monaco"
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -489,18 +489,18 @@ you should place your code here."
           ("https" . "127.0.0.1:18080")
           ("socks5" . "127.0.0.1:18080")))
 
-  ;; {{ 解决 org 表格里面中英文对齐的问题
+  ;;{{ 解决 org 表格里面中英文对齐的问题
   ;; 字体大小：
   ;; Source Code Pro : [ 12 14 ], [ 13 16 ]
   ;; mononoki        : [ 12 13 ], [ 13 14 ]
   ;; Monaco          : [ 12 13 ], [ 13 14 ]
-  ;; Hack            : [ 12 14 ], [ 13 16 ]
+  ;; 可选字体：
+  ;; Source Code Pro / Monaco | 文泉驿等宽正黑 / 文泉驿等宽微米黑 / HYKaiTiJ
   (when (configuration-layer/layer-usedp 'appleshan-chinese)
     (when (and (spacemacs/system-is-linux) window-system)
       (spacemacs//set-monospaced-font
-        ;; Source Code Pro / Hack | 文泉驿等宽正黑 / 文泉驿等宽微米黑
-        "Hack" "文泉驿等宽正黑" 12 14)))
-  ;; }}
+       "Monaco" "文泉驿等宽正黑" 14 16)))
+  ;;}}
 
   ;; Set to t to debug package loading or nil to disable
   (setq use-package-verbose nil)
