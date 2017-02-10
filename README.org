@@ -1,4 +1,3 @@
-#+TITLE:Apple Shan 的 Emacs 配置 :sparkles:
 #+begin_src :tangle no
 
 '||''''|  '||    ||'     |       ..|'''.|  .|'''.|
@@ -9,6 +8,7 @@
 
 #+end_src
 
+#+TITLE:Apple Shan 的 Emacs 配置 :sparkles:
 Hacking 始于 2012 年。2015 年爱上 Spacemacs :smile: :sparkling_heart:
 
 我的 Spacemacs 配置一共有两部分：
