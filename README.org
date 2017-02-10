@@ -1,5 +1,6 @@
 #+TITLE:Apple Shan 的 Emacs 配置 :sparkles:
-[[./local/banner/001-banner-kban.txt]]
+
+#+INCLUDE: "./local/banner/001-banner-kban.txt" :only-contents t
 
 Hacking 始于 2012 年。2015 年爱上 Spacemacs :smile: :sparkling_heart:
 
