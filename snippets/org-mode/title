@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+#name : Title Block
+# key: tit
+# --
+#+TITLE: ${1:title}

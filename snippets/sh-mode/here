@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+#name : Here Document
+# key: here
+# --
+<<${1:TOKEN}
+$0
+${1:TOKEN}

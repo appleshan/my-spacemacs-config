@@ -77,7 +77,8 @@
 (defun appleshan-complete/post-init-yasnippet ()
   (setq yas-snippet-dirs (delq 'yas-installed-snippets-dir yas-snippet-dirs))
   ;; ~/.emacs.d/elpa/yasnippet-xxxxx/snippets
-  (push yas-installed-snippets-dir yas-snippet-dirs)
+  ;; 不再加载这个目录，拷贝需要的到 ~/.spacemacs.d/snippets
+  ;; (push yas-installed-snippets-dir yas-snippet-dirs)
 
   ;; Remove Yasnippet's default tab key binding
   (define-key yas-minor-mode-map (kbd "<tab>") nil)

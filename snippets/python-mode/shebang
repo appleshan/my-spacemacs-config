@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: shebang-line
+# key: shebang
+# --
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+$0

@@ -250,7 +250,7 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Monaco"
+   dotspacemacs-default-font '("Source Code Pro"
                                :size 14
                                :weight normal
                                :width normal
@@ -493,13 +493,12 @@ you should place your code here."
   ;; 字体大小：
   ;; Source Code Pro : [ 12 14 ], [ 13 16 ]
   ;; mononoki        : [ 12 13 ], [ 13 14 ]
-  ;; Monaco          : [ 12 13 ], [ 13 14 ]
   ;; 可选字体：
-  ;; Source Code Pro / Monaco | 文泉驿等宽正黑 / 文泉驿等宽微米黑 / HYKaiTiJ
+  ;; Source Code Pro / mononoki | 文泉驿等宽正黑 / 文泉驿等宽微米黑 / HYKaiTiJ
   (when (configuration-layer/layer-usedp 'appleshan-chinese)
     (when (and (spacemacs/system-is-linux) window-system)
       (spacemacs//set-monospaced-font
-       "Monaco" "文泉驿等宽正黑" 14 16)))
+       "Source Code Pro" "文泉驿等宽正黑" 14 16)))
   ;;}}
 
   ;; Set to t to debug package loading or nil to disable

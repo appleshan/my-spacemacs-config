@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: Declare and instantiate
+# key: new
+# --
+${1:Type} ${2:obj} = new $1(${3:args});
+$0

@@ -160,16 +160,12 @@
 
     ;; Add new easy templates
     (setq org-structure-template-alist
-        (append '(("sb" "#+BEGIN_SRC bash\n?\n#+END_SRC")
-                  ("se" "#+BEGIN_SRC emacs-lisp\n?\n#+END_SRC")
-                  ("ex" "#+BEGIN_EXAMPLE\n?\n#+END_EXAMPLE")
-                  ("sp" "#+BEGIN_SRC python\n?\n#+END_SRC")
-                  ("su" "#+BEGIN_SRC plantuml\n?\n#+END_SRC")
-                  ("rv" "#+BEGIN_SRC R :results value\n?\n#+END_SRC")
-                  ("ro" "#+BEGIN_SRC R :results output verbatim\n?\n#+END_SRC")
-                  ("rg" "#+BEGIN_SRC R :results graphics :file ?\n\n#+END_SRC")
-                  ("rs" "#+BEGIN_SRC R :results output silent\n?\n#+END_SRC")
-                  ("rd" "#+BEGIN_SRC R :colnames no :results value drawer\n`%c%` <- function(a,b){c(a,b)}\n?\n#+END_SRC"))
+          (append '(("ex" "#+BEGIN_EXAMPLE\n?\n#+END_EXAMPLE")
+                    ("sb" "#+BEGIN_SRC bash\n?\n#+END_SRC")
+                    ("se" "#+BEGIN_SRC emacs-lisp\n?\n#+END_SRC")
+                    ("sp" "#+BEGIN_SRC python\n?\n#+END_SRC")
+                    ("su" "#+BEGIN_SRC plantuml\n?\n#+END_SRC")
+                    )
                 org-structure-template-alist))
 
     ;;;;;;;;;;;;;;;;;;;;
