@@ -149,7 +149,7 @@
                     :underline nil))))
 
 ;; table
-'(org-table ((t (:foreground "dodger blue" :background "#001e15"))))
+;; '(org-table ((t (:foreground "dodger blue" :background "#001e15"))))
 
 ;;; headline faces
 ;;; the ahead stars face when org indentation. (org-hide)
