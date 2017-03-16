@@ -71,7 +71,7 @@
 ;; }}}
 
 ;; 绑定扩展名到特定的模式
-(dolist (elt-cons '(
+(dolist (elt-cons '((".*rc\\'" . conf-mode)
                     ("\\.myclirc\\'" . conf-mode)
                     (".xprofile'" . conf-mode)
                     ("torrc'" . conf-mode)

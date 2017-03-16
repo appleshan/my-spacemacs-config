@@ -29,17 +29,18 @@
     (progn
       (dolist (var '(;; my path
                      "JAVA_HOME"
-                     "ORACLE_HOME"
-                     "LD_LIBRARY_PATH"
-                     "NLS_LANG"
+                     ;"ORACLE_HOME"
+                     ;"LD_LIBRARY_PATH"
+                     ;"NLS_LANG"
                      ;; system path
                      "PATH"
-                     "SSH_AUTH_SOCK"
-                     "SSH_AGENT_PID"
+                     ;"SSH_AUTH_SOCK"
+                     ;"SSH_AGENT_PID"
                      "GPG_AGENT_INFO"
-                     "LANG"
-                     "LC_ALL"
-                     "LC_CTYPE"))
+                     ;"LANG"
+                     ;"LC_ALL"
+                     ;"LC_CTYPE"
+                     ))
         (add-to-list 'exec-path-from-shell-variables var))
     )))
 

@@ -15,13 +15,13 @@
   appleshan-appearance
   appleshan-navigation
   appleshan-notify
-  appleshan-shell
+  ; appleshan-shell
   appleshan-dired
   appleshan-org
   (appleshan-chinese :variables chinese-enable-fcitx t)
   appleshan-programming
   appleshan-python
-  appleshan-java
+  ; appleshan-java
   ; appleshan-javascript
   ; appleshan-web
   appleshan-lisp
