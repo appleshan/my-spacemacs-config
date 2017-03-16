@@ -141,9 +141,6 @@
 ;; see: https://masteringemacs.org/article/re-builder-interactive-regexp-builder
 (setq reb-re-syntax 'string)
 
-;; 文件名以“rc”结尾的文件是 unix conf 文件
-(add-to-list 'auto-mode-alist '(".*rc\\'" . conf-mode))
-
 ;; Turn on auto-fill mode in text buffers:
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
 ;(use-package diminish
@@ -155,37 +152,51 @@
               (push '("lambda" . ?λ) prettify-symbols-alist)))
   (global-prettify-symbols-mode +1))
 
-;; Setup up Shell and Eshell Environment
-;; (let (
-;;       (mypaths
-;;        '(
-;;          "/opt/oracle/lib"
-;;          "/opt/jdk/jdk1.8.0_102/bin"
-;;          "/opt/jdk/apache-maven-3.3.9/bin"
-;;          "/opt/eclipse-jee-neon/eclipse"
-;;          "/home/appleshan/bin"
-;;          "/home/appleshan/bin/cli"
-;;          "/home/appleshan/.local/bin"
-;;          "/home/appleshan/perl5/bin"
-;;          "/home/appleshan/bin/sift"
-;;          "/usr/local/sbin"
-;;          "/usr/local/bin"
-;;          "/usr/sbin"
-;;          "/usr/bin"
-;;          "/sbin"
-;;          "/bin"
-;;          "/usr/games"
-;;          "/usr/local/games"
-;;          ) )
-;;       )
+;; 搜索时任意字符都可以用空格代替
+(setq search-whitespace-regexp ".*?")
 
-;;   (setenv "PATH" (mapconcat 'identity mypaths ":") )
+;; Setup up Shell Environment
 
-;;   (setq exec-path (append mypaths (list "." exec-directory)) )
-;;   )
+;; for Windows 10
+(when (spacemacs/system-is-mswindows)
+  (let ((mypaths
+          '(
+            "D:/bin"
+            "D:/portable-soft/PortableGit/bin"
+            "D:/portable-soft/PortableGit/mingw64/libexec/git-core"
+           )))
+    (setq exec-path (append mypaths (list "." exec-directory)) )
+    (setenv "PATH" (mapconcat 'identity mypaths ":") )
+    (setenv "HOME" "D:/home/appleshan" )
+    ))
 
-;; (setenv "LD_LIBRARY_PATH" "/opt/oracle/lib")
-;; (setenv "NLS_LANG" "SIMPLIFIED CHINESE_CHINA.AL32UTF8")
+;; for linux
+(when (spacemacs/system-is-linux)
+  (let ((mypaths
+          '(
+            "/opt/oracle/lib"
+            "/opt/jdk/jdk1.8.0_102/bin"
+            "/opt/jdk/apache-maven-3.3.9/bin"
+            "/opt/eclipse-jee-neon/eclipse"
+            "/home/appleshan/bin"
+            "/home/appleshan/bin/cli"
+            "/home/appleshan/.local/bin"
+            "/home/appleshan/perl5/bin"
+            "/home/appleshan/bin/sift"
+            "/usr/local/sbin"
+            "/usr/local/bin"
+            "/usr/sbin"
+            "/usr/bin"
+            "/sbin"
+            "/bin"
+            "/usr/games"
+            "/usr/local/games"
+           )))
+    (setenv "PATH" (mapconcat 'identity mypaths ":") )
+    (setq exec-path (append mypaths (list "." exec-directory))))
+
+  (setenv "LD_LIBRARY_PATH" "/opt/oracle/lib")
+  (setenv "NLS_LANG" "SIMPLIFIED CHINESE_CHINA.AL32UTF8"))
 
 ;; Local Variables:
 ;; coding: utf-8
