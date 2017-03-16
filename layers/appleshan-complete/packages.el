@@ -18,6 +18,7 @@
 (setq appleshan-complete-packages
     '(
       company
+      helm-ag
       helm-flx
       projectile
       yasnippet
@@ -39,16 +40,23 @@
     (setq company-dabbrev-char-regexp "[[:word:]_:@.-]+")
     (setq company-dabbrev-minimum-length 2)
 
-    (spacemacs|add-company-backends :modes
-      ; !!! NOTE: 不能为 text-mode 开启 company ，当在 magit 中填写 commit message 的时候，会造成 emacs 崩溃. !!!
-      ; text-mode
-      shell-script-mode
-      sh-mode
-      nxml-mode
-      conf-unix-mode
-      json-mode
-      graphviz-dot-mode)
+;    (spacemacs|add-company-backends :modes
+;      ; !!! NOTE: 不能为 text-mode 开启 company ，当在 magit 中填写 commit message 的时候，会造成 emacs 崩溃. !!!
+;      ; text-mode
+;      shell-script-mode
+;      sh-mode
+;      nxml-mode
+;      conf-unix-mode
+;      json-mode
+;      graphviz-dot-mode)
   ))
+
+(defun appleshan-complete/post-init-helm-ag ()
+  (setq helm-ag-base-command "sift --no-color -n")
+  ; (setq helm-ag-command-option "--all-text")
+  (setq helm-ag-insert-at-point 'symbol)
+  (setq helm-ag-ignore-buffer-patterns '("\\.txt\\'" "\\.mkd\\'"))
+  )
 
 (defun appleshan-complete/post-init-helm-flx ()
   ;; garbage collection
