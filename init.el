@@ -79,7 +79,7 @@ values."
 
      ;; --- Programming tool layers ---
      (dash :variables helm-dash-docset-newpath "~/.local/share/Zeal/docsets/")
-     docker
+     (docker :packages (dockerfile-mode))
      ;; gtags
      (git :variables git-magit-status-fullscreen t)
      github
@@ -136,7 +136,6 @@ values."
                                     evil-tutor
                                     evil-unimpaired
                                     ; eyebrowse
-                                    ;; exec-path-from-shell ; emacs26
                                     fancy-battery
                                     find-by-pinyin-dired
                                     fish-mode
@@ -506,6 +505,9 @@ you should place your code here."
 
   (spacemacs|diminish which-key-mode)
   (spacemacs|diminish spacemacs-whitespace-cleanup-mode)
+
+  ;; neotree open default path
+  (neotree-dir (getenv "HOME"))
 
   ;; restore the desktop
   ; (desktop-save-mode t)
