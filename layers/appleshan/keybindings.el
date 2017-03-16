@@ -32,7 +32,7 @@
   "oc" 'org-capture
   "ol" 'org-store-link)
 
-(define-key global-map (kbd "<f8>") 'appleshan/show-current-buffer-major-mode)
+(global-set-key [f8] 'neotree-project-dir)
 
 ;; Search (and search/replace) using regex by default, since that's usually what I want to do:
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
