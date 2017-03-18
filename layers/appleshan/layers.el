@@ -12,13 +12,21 @@
 (configuration-layer/declare-layers '(
   appleshan-core
   appleshan-complete
-  appleshan-appearance
+  (appleshan-appearance
+    :packages all-the-icons 
+    ; beacon
+    hl-anything popwin visual-regexp visual-regexp-steroids
+    ; tabbar
+    )
   appleshan-navigation
   appleshan-notify
   ; appleshan-shell
   appleshan-dired
-  appleshan-org
-  (appleshan-chinese :variables chinese-enable-fcitx nil)
+  (appleshan-org
+    :variables org-gtd-dir (concat user-projects-directory "org-gtd/"))
+  (appleshan-chinese
+    :packages cal-china-x find-by-pinyin-dired ace-pinyin pangu-spacing
+    :variables chinese-enable-fcitx nil)
   appleshan-programming
   appleshan-python
   ; appleshan-java

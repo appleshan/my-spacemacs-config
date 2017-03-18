@@ -11,7 +11,7 @@
 
 (setq appleshan-org-packages
     '(
-      calfw
+      ;; calfw
       ;; deft
       (epa-file :location built-in)
       (org :location built-in)
@@ -26,19 +26,15 @@
       ; org-password-manager
       (org-src :location built-in)
       (ob-core :location built-in)
-      ; (ob-ditaa :location built-in)
-      ; (ob-plantuml :location built-in)
+      (ob-ditaa :location built-in)
+      (ob-plantuml :location built-in)
       ; (ob-ledger :location built-in) ; 必须 init，才能使用
       ;; secretaria
+      ;; unicode-fonts
       ))
 
 ;; List of packages to exclude.
 (setq appleshan-org-excluded-packages '())
-
-(setq my-org-gtd-directory (concat user-dropbox-directory "org-mode/org-gtd/"))
-
-(unless (file-exists-p my-org-gtd-directory)
-  (make-directory my-org-gtd-directory))
 
 (defun appleshan-org/init-calfw ()
   (use-package calfw
@@ -122,10 +118,12 @@
       (add-to-list 'auto-mode-alist '("\\.org.gpg\\'" . org-mode)))))
 
 (defun appleshan-org/post-init-org ()
-  (add-hook 'org-mode-hook (lambda () (spacemacs/toggle-line-numbers-off)) 'append)
+  (add-hook 'org-mode-hook
+    (lambda () (spacemacs/toggle-line-numbers-off)) 'append)
 
   (with-eval-after-load 'org
-    (add-to-list 'auto-mode-alist '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
+    (add-to-list 'auto-mode-alist
+      '("\\.\\(org\\|org_archive\\|txt\\)$" . org-mode))
 
     (spacemacs|disable-company org-mode)
 
@@ -225,7 +223,8 @@
     ;; other
 
     ;; 完成重复任务时重设所有子任务
-    (setq org-default-properties (cons "RESET_SUBTASKS" org-default-properties))
+    (setq org-default-properties
+      (cons "RESET_SUBTASKS" org-default-properties))
 
     ;; 在导出时,不导出时间戳
     (setq org-export-with-timestamps nil)
@@ -273,19 +272,28 @@
     ;; The tags are used as follows:
     ;;
     ;; TODO
-    ;; The item is ready to be done at the earliest opportunity or at the date (and maybe time) indicated in the SCHEDULED tag. Some tasks are given a DEADLINE date which is useful for scheduling the tasks during my daily planning.
+    ;; The item is ready to be done at the earliest opportunity or at the date 
+    ;; (and maybe time) indicated in the SCHEDULED tag. Some tasks are given 
+    ;; a DEADLINE date which is useful for scheduling the tasks during my daily 
+    ;; planning.
     ;; STARTED
-    ;; I should use this tag when I start on a task, but if I clock in to a TODO item, I don't really need this task.
+    ;; I should use this tag when I start on a task, but if I clock in to 
+    ;; a TODO item, I don't really need this task.
     ;; WAITING
-    ;; I did some work on this task but I am waiting for a response. If I use this task I schedule the task into the future as a reminder to follow up with some notes in the body of the task.
+    ;; I did some work on this task but I am waiting for a response. If I use 
+    ;; this task I schedule the task into the future as a reminder to follow up 
+    ;; with some notes in the body of the task.
     ;; APPT
-    ;; Used to tag an activity that can only be done at the specified time and date, instead of tasks that can be completed at any time.
+    ;; Used to tag an activity that can only be done at the specified time 
+    ;; and date, instead of tasks that can be completed at any time.
     ;; DONE
     ;; The task is completed.
     ;; CANCELLED
-    ;; I decided not to do this task but have left the task on file with this status.
+    ;; I decided not to do this task but have left the task on file with this 
+    ;; status.
     ;; DEFERRED
-    ;; Used to identify a task that will not be activated just yet. The reason will be included in the task notes.
+    ;; Used to identify a task that will not be activated just yet. The reason 
+    ;; will be included in the task notes.
     ;;
     ;; 括号中指定“！”（记录时间戳）或“@”（作一个记录），用于跟踪TODO状态变化
     (setq org-todo-keywords
@@ -435,11 +443,13 @@
     (setq org-use-fast-todo-selection t)
 
     ;; 当时用 S-left 和 S-rigth 更改 TODO 状态时，仅仅只是更改状态，
-    ;; 而不要像正常的更改状态流程那样登记状态更改的时间戳,抓获切换状态时的上下文日志
+    ;; 而不要像正常的更改状态流程那样登记状态更改的时间戳,抓获切换状态时的上下
+    ;; 文日志
     (setq org-treat-S-cursor-todo-selection-as-state-change nil)
 
     ;; 在子 task 都变为完成状态的前,不能切换父级 task 变为完成状态
-    ;; 任何未完成的子任务会阻止父任务变为完成状态,若像临时屏蔽该功能,可以为该任务添加`:NOBLOCKING: t'属性
+    ;; 任何未完成的子任务会阻止父任务变为完成状态,若像临时屏蔽该功能,可以为该
+    ;; 任务添加`:NOBLOCKING: t'属性
     ;; 若父任务中设置了属性`:ORDERED: t',则表示其子任务必须依照顺序从上到下完成
     (setq org-enforce-todo-dependencies t)
     ;;}}
@@ -469,9 +479,12 @@
     ;; `org-stuck-projects’是一个由4个元素组成的list:
     ;
     ; 元素一为一个字符串,用来根据tags/todo/projecty来标示哪些task是project
-    ; 元素二为一个TODO关键字组成的list, 若project的子树中有处于该状态的sub-task,则不认为是stuck project
-    ; 元素三为一个由TAG组成的list, 若project的子树中有标注该tag的sub-task,则不认为是stuck project
-    ; 元素四为一个表示正则表达式的字符串,任何匹配该正则的project,都不被认为是stuck project
+    ; 元素二为一个TODO关键字组成的list, 若project的子树中有处于该状态的sub-task,
+    ; 则不认为是stuck project
+    ; 元素三为一个由TAG组成的list, 若project的子树中有标注该tag的sub-task,则不认为
+    ; 是stuck project
+    ; 元素四为一个表示正则表达式的字符串,任何匹配该正则的project,都不被认为是
+    ; stuck project
     ;
     ;;
 
@@ -527,13 +540,13 @@
     ;;add multi-file journal
 
     (setq org-capture-templates
-      '(("t" "Todo" entry (file+headline (concat my-org-gtd-directory "inbox.org") "Tasks")
+      '(("t" "Todo" entry (file+headline (concat org-gtd-dir "inbox.org") "Tasks")
              "** TODO %? %^G\n  Created: %U \n  %i")
-        ("T" "Scheduled Todo" entry (file+headline (concat my-org-gtd-directory "inbox.org") "Tasks")
+        ("T" "Scheduled Todo" entry (file+headline (concat org-gtd-dir "inbox.org") "Tasks")
              "** TODO %? %^G\n SCHEDULED: %^{ Sheduled: }T Created: %U \n  %i")
-        ("m" "Meeting" entry (file+headline (concat my-org-gtd-directory "inbox.org") "Tasks")
+        ("m" "Meeting" entry (file+headline (concat org-gtd-dir "inbox.org") "Tasks")
              "* MEETING with %? :Meeting:\n%U" :clock-in t :clock-resume t)
-        ("p" "Phone call" entry (file+headline (concat my-org-gtd-directory "inbox.org") "Tasks")
+        ("p" "Phone call" entry (file+headline (concat org-gtd-dir "inbox.org") "Tasks")
              "* PHONE %? :Phone:\n%U" :clock-in t :clock-resume t)
         ))
 
@@ -543,8 +556,9 @@
           "%38ITEM(Details) %TAGS(Context) %7TODO(To Do) %5Effort(Time){:} %6CLOCKSUM{Total}")
     ;; global Effort estimate values
     ;; global STYLE property values for completion
-    (setq org-global-properties (quote (("Effort_ALL" . "0:15 0:30 0:45 1:00 2:00 3:00 4:00 5:00 6:00 8:00")
-                                        ("STYLE_ALL" . "habit"))))
+    (setq org-global-properties (quote (
+      ("Effort_ALL" . "0:15 0:30 0:45 1:00 2:00 3:00 4:00 5:00 6:00 8:00")
+      ("STYLE_ALL" . "habit"))))
 
     ;; Tags with fast selection keys
     (setq org-tag-alist (quote ((:startgroup)
@@ -578,11 +592,13 @@
     (setq org-drawers (quote ("PROPERTIES" "LOGBOOK")))
     ;; Save clock data and state changes and notes in the LOGBOOK drawer
     (setq org-clock-into-drawer t)
-    ;; Sometimes I change tasks I'm clocking quickly - this removes clocked tasks with 0:00 duration
+    ;; Sometimes I change tasks I'm clocking quickly - this removes clocked tasks 
+    ;; with 0:00 duration
     (setq org-clock-out-remove-zero-time-clocks t)
     ;; Clock out when moving task to a done state
     (setq org-clock-out-when-done t)
-    ;; Save the running clock and all clock history when exiting Emacs, load it on startup
+    ;; Save the running clock and all clock history when exiting Emacs, load it 
+    ;; on startup
     (setq org-clock-persist t)
     ;; Do not prompt to resume an active clock
     (setq org-clock-persist-query-resume nil)
@@ -614,7 +630,8 @@
 
     ;; 通过设置`:clock-in t’使得在captre task时自动开始clock in.
     ;; 设置`:clock-resume t’则使得capture task完成后,自动恢复原task的clock in.
-    ;; 但这就会产生一个问题,若capture task的时间小于1分钟,则可能有大量的计时为0:00的记录存在,
+    ;; 但这就会产生一个问题,若capture task的时间小于1分钟,则可能有大量的计时为
+    ;;  0:00 的记录存在,
     ;; 这些记录需要清理
 
     ;; Remove empty LOGBOOK drawers on clock out
@@ -633,8 +650,8 @@
     ;; 评估任务的工作量
     ;;;;;;;;;;;;;;;;;;;;
 
-    ;; 通过为 task 增加 `Effort’ 属性，可以为任务设置一个评估的工作量，若 clock tracking
-    ;; 的时间超过了这个评估的工作量,则会提出警告:
+    ;; 通过为 task 增加 `Effort’ 属性，可以为任务设置一个评估的工作量，若
+    ;; clock tracking 的时间超过了这个评估的工作量,则会提出警告:
     ;;
     ; * NEXT Document my use of org-mode
     ;   :PROPERTIES:
@@ -675,8 +692,9 @@
 
     ;; 要想解密 headline,则需要在光标定位到加密内容处,然后执行`M-x org-decrypt-entry’
     ;; 默认情况下, Emacs 会定时自动保持在编辑的文件,
-    ;; 若此时在编辑的文件为密码文件且内容已经被解密,则可能存在将解密后的文本保存到磁盘上,
-    ;; 从而造成敏感信息泄露的情况,因此一般我们在编辑 crypt 文件时,取消自动保存功能
+    ;; 若此时在编辑的文件为密码文件且内容已经被解密,则可能存在将解密后的文本保存
+    ;; 到磁盘上, 从而造成敏感信息泄露的情况,因此一般我们在编辑 crypt 文件时,取消
+    ;; 自动保存功能
     (setq org-crypt-disable-auto-save t)
 ))
 
@@ -766,8 +784,9 @@
 ;; 🐟 : http://graphemica.com/1F41F
 (defun appleshan-org/post-init-org-bullets ()
   (with-eval-after-load 'org-bullets
-    ;; (setq org-bullets-bullet-list '("🐉" "🕊" "🐘" "🐍" "🐳" "🐙" "🐬" "🐠" "🐡" "🐟"))
-    (setq org-bullets-bullet-list '("❀" "❁" "❃" "❊" "❋" "✱" "✼" "✾" "✿"))))
+    (setq org-bullets-bullet-list '("🐉" "🐘" "🐳" "🐬" "🐙" "🐠" "🐡" "🐟" "🕊" "🐍"))
+    ;(setq org-bullets-bullet-list '("❀" "❁" "❃" "❊" "❋" "✱" "✼" "✾" "✿"))
+    ))
 
 (defun appleshan-org/init-org-password-manager ()
   (use-package org-password-manager
@@ -876,7 +895,16 @@
     :config
     ;; use this for getting a reminder every 30 minutes of those tasks scheduled
     ;; for today and which have no time of day defined.
-    (add-hook 'after-init-hook #'secretaria-today-unknown-time-appt-always-remind-me)))
+    (add-hook 'after-init-hook
+      #'secretaria-today-unknown-time-appt-always-remind-me)))
+
+(defun appleshan-org/init-unicode-fonts ()
+  (use-package unicode-fonts
+    :init
+    (progn
+      (require 'unicode-fonts)
+      (unicode-fonts-setup))
+    ))
 
 ;; Local Variables:
 ;; coding: utf-8

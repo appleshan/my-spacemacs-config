@@ -12,12 +12,12 @@
 (setq appleshan-appearance-packages
     '(
       all-the-icons
-      ;; beacon
+      beacon
       hl-anything
       popwin
       visual-regexp
       visual-regexp-steroids
-      ;; tabbar
+      tabbar
       ))
 
 ;; List of packages to exclude.
