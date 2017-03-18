@@ -100,21 +100,21 @@
 ;; Ignore case when using completion for file names:
 (setq read-file-name-completion-ignore-case t)
 
-; (with-eval-after-load 'dired-sort
-;   (defun appleshan//dired-sort-hook ()
-;     (interactive)
+(with-eval-after-load 'dired-sort
+  (defun appleshan//dired-sort-hook ()
+    (interactive)
 
-;     (make-local-variable 'dired-sort-map)
-;     (setq dired-sort-map (make-sparse-keymap))
-;     (define-key dired-mode-map "s" dired-sort-map)
+    (make-local-variable 'dired-sort-map)
+    (setq dired-sort-map (make-sparse-keymap))
+    (define-key dired-mode-map "s" dired-sort-map)
 
-;     (define-key dired-sort-map "n" 'dired-sort-name)      ; Name
-;     (define-key dired-sort-map "x" 'dired-sort-extension) ; Extension
-;     (define-key dired-sort-map "s" 'dired-sort-size)      ; Size
-;     (define-key dired-sort-map "t" 'dired-sort-time)      ; Modified Time
-;     (define-key dired-sort-map "u" 'dired-sort-utime)     ; Access Time
-;     (define-key dired-sort-map "c" 'dired-sort-ctime)     ; Create Time
-;     ))
+    (define-key dired-sort-map "n" 'dired-sort-name)      ; Name
+    (define-key dired-sort-map "x" 'dired-sort-extension) ; Extension
+    (define-key dired-sort-map "s" 'dired-sort-size)      ; Size
+    (define-key dired-sort-map "t" 'dired-sort-time)      ; Modified Time
+    (define-key dired-sort-map "u" 'dired-sort-utime)     ; Access Time
+    (define-key dired-sort-map "c" 'dired-sort-ctime)     ; Create Time
+    ))
 
 ;; Ignore running processes when closing Emacs
 ;; add `flet'

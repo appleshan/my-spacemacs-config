@@ -13,7 +13,7 @@
     '(
       (dired :location built-in)
       (dired-x :location built-in)
-      ;; dired-k
+      dired-k
       ;; dired-sort
       ))
 
@@ -74,29 +74,29 @@
           ("\\.cue?\\'" "audacious")))
   )
 
-; (defun appleshan-dired/init-dired-k ()
-;   "Git status in dired."
-;   (use-package dired-k
-;     :defer t
-;     :init (require 'dired-k)
-;     :config
-;     (progn
-;       ;; always execute dired-k when dired buffer is opened
-;       (add-hook 'dired-initial-position-hook 'dired-k)
-;       (add-hook 'dired-after-readin-hook #'dired-k-no-revert)
+(defun appleshan-dired/init-dired-k ()
+  "Git status in dired."
+  (use-package dired-k
+    :defer t
+    :init (require 'dired-k)
+    :config
+    (progn
+      ;; always execute dired-k when dired buffer is opened
+      (add-hook 'dired-initial-position-hook 'dired-k)
+      (add-hook 'dired-after-readin-hook #'dired-k-no-revert)
 
-;       (evilified-state-evilify-map dired-mode-map
-;         :mode dired-mode
-;         :bindings
-;         "K" 'dired-k)
-;       )))
+      (evilified-state-evilify-map dired-mode-map
+        :mode dired-mode
+        :bindings
+        "K" 'dired-k)
+      )))
 
-; (defun appleshan-dired/init-dired-sort ()
-;   (use-package dired-sort
-;     :defer t
-;     :init (require 'dired-sort)
-;     :config
-;     (add-hook 'dired-mode-hook 'appleshan//dired-sort-hook)))
+(defun appleshan-dired/init-dired-sort ()
+  (use-package dired-sort
+    :defer t
+    :init (require 'dired-sort)
+    :config
+    (add-hook 'dired-mode-hook 'appleshan//dired-sort-hook)))
 
 ;; Local Variables:
 ;; coding: utf-8
