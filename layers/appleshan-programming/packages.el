@@ -216,7 +216,7 @@
 (defun appleshan-programming/pre-init-plantuml-mode ()
   (spacemacs|use-package-add-hook plantuml-mode
     :post-config
-    (setq plantuml-jar-path "/opt/java-lib/plantuml.jar")
+    (setq plantuml-jar-path (concat (getenv "JAR_PATH") "/plantuml.jar"))
     ))
 
 (defun appleshan-programming/post-init-plantuml-mode ()

@@ -869,21 +869,20 @@
   (use-package ob-ditaa
     :config
     ;; (setq org-ditaa-jar-path "/opt/java-lib/ditaa0_9.jar")
-    (setq org-ditaa-jar-path (directory-files "/opt/java-lib" t "ditaa[[:ascii:]]+\\.jar$"))
-))
+    (setq org-ditaa-jar-path
+      (directory-files (concat (getenv "JAR_PATH") "/ditaa0_9") t "ditaa[[:ascii:]]+\\.jar$"))
+    ))
 
 ;; plantuml 工具能够帮我们把 UML 描述代码 转成漂亮的 UML 图片
 ;; @see http://plantuml.com/
 (defun appleshan-org/init-ob-plantuml ()
   (use-package ob-plantuml
     :config
-    (setq org-plantuml-jar-path "/opt/java-lib/plantuml.jar")))
+    (setq org-plantuml-jar-path (concat (getenv "JAR_PATH") "/plantuml.jar"))
+    ))
 
 (defun appleshan-org/init-ob-ledger ()
   (use-package ob-ledger))
-
-(defun appleshan-org/init-my-org-mode ()
-  (use-package my-org-mode))
 
 (defun appleshan-org/init-secretaria ()
   (use-package secretaria
