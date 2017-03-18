@@ -10,7 +10,7 @@
 ;;; License: GPLv3
 
 ;; Variables
-(defvar my-org-gtd-directory nil)
+(defvar org-gtd-dir nil)
 
 (defvar org-agenda-files nil)
 (defvar org-agenda-span nil)
