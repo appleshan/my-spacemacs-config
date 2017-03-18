@@ -167,7 +167,7 @@
            )))
     (setq exec-path (append mypaths (list "." exec-directory)) )
     (setenv "PATH" (mapconcat 'identity mypaths ":") )
-    (setenv "HOME" "D:/home/appleshan" )
+    (setenv "HOME" "D:/" )
     ))
 
 ;; for linux
