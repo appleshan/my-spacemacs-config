@@ -96,7 +96,7 @@
 ;     (spacemacs/set-leader-keys-for-major-mode 'deft-mode "q" 'quit-window)
 ;     (setq deft-recursive t)
 ;     (setq deft-extension "org")
-;     (setq deft-directory (concat user-dropbox-directory "org-notes/"))))
+;     (setq deft-directory (concat user-projects-directory "org-notes/"))))
 
 ;; 借助 EasyPG package 原生支持GnuPG加密. 提供基本的GnuPG功能.
 (defun appleshan-org/init-epa-file ()

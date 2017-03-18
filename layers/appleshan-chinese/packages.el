@@ -90,11 +90,11 @@
       ;; 激活词库
       (setq pyim-dicts (quote
         ((:name "pyim-bigdict"
-          :file "~/Dropbox/pyim/pyim-bigdict.pyim"
+          :file (concat user-dropbox-directory "/pyim/pyim-bigdict.pyim")
           :coding utf-8-unix
           :dict-type pinyin-dict)
          ; (:name "pyim-greatdict"
-         ;  :file "~/Dropbox/pyim/pyim-greatdict.pyim"
+         ;  :file (concat user-dropbox-directory "/pyim/pyim-greatdict.pyim")
          ;  :coding utf-8-unix
          ;  :dict-type pinyin-dict)
          )))
