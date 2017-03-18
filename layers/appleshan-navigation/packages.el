@@ -94,6 +94,7 @@
 ;; Note : helm-fuzzier 会引起 neotree 重复显示文件和目录
 (defun appleshan-navigation/post-init-neotree ()
   (setq neo-show-hidden-files nil)
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)) ;; all-the-icons
   (setq projectile-switch-project-action 'neotree-projectile-action))
 
 ;; Local Variables:

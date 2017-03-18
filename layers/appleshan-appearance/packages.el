@@ -11,8 +11,8 @@
 
 (setq appleshan-appearance-packages
     '(
+      all-the-icons
       ;; beacon
-      ; django-theme
       hl-anything
       popwin
       visual-regexp
@@ -22,6 +22,9 @@
 
 ;; List of packages to exclude.
 (setq appleshan-appearance-excluded-packages '())
+
+(defun appleshan-appearance/init-all-the-icons ()
+  (use-package all-the-icons))
 
 ;; 不会丢失你的光标
 (defun appleshan-appearance/init-beacon ()
