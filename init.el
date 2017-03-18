@@ -458,6 +458,13 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (unless (file-exists-p user-dropbox-directory)
     (make-directory user-dropbox-directory))
 
+  ;; projects directory
+  (defconst user-projects-directory
+    (expand-file-name (concat user-home-directory "projects/"))
+    "projects directory.")
+  (unless (file-exists-p user-projects-directory)
+    (make-directory user-projects-directory))
+
   ;; custom logo
   ;; error in emacs 26
   (setq spacemacs-banner-official-png
