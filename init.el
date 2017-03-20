@@ -496,15 +496,17 @@ you should place your code here."
           ("socks5" . "127.0.0.1:18080")))
 
   ;;{{ 解决 org 表格里面中英文对齐的问题
-  ;; 字体大小：
-  ;; Source Code Pro : [ 12 14 ], [ 13 16 ]
-  ;; mononoki        : [ 12 13 ], [ 13 14 ]
-  ;; 可选字体：
-  ;; Source Code Pro / mononoki | 文泉驿等宽正黑 / 文泉驿等宽微米黑 / HYKaiTiJ
+  ;; 可选字体组合及字体大小：
+  ;; Source Code Pro | WenQuanYi Micro Hei  : [ 12 14 ], [ 14 16 ]
+  ;; Source Code Pro | Microsoft YaHei Mono : [ 12 14 ], [ 14 16 ]
   (when (configuration-layer/layer-usedp 'appleshan-chinese)
     (when (and (spacemacs/system-is-linux) window-system)
       (spacemacs//set-monospaced-font
-       "Source Code Pro" "文泉驿等宽正黑" 14 16)))
+       "Source Code Pro" "WenQuanYi Micro Hei" 14 16))
+    (when (spacemacs/system-is-mswindows)
+      (spacemacs//set-monospaced-font
+       "Source Code Pro" "Microsoft YaHei Mono" 14 16))
+    )
   ;;}}
 
   ;; Set to t to debug package loading or nil to disable
