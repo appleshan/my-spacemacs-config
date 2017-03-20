@@ -11,7 +11,7 @@
 
 (setq appleshan-org-packages
     '(
-      ;; calfw
+      calfw
       ;; deft
       (epa-file :location built-in)
       (org :location built-in)
