@@ -27,6 +27,7 @@
   (emacs-lisp-mode)
   (insert ";; Happy hacking appleshan!
 ;; 用 Emacs, 需: 忘记鼠标, 无视菜单.
+
 "))
 
 ;; Display visited file's path in the frame title

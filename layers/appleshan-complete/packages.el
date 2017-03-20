@@ -55,8 +55,7 @@
   (setq helm-ag-base-command "sift --no-color -n")
   ; (setq helm-ag-command-option "--all-text")
   (setq helm-ag-insert-at-point 'symbol)
-  (setq helm-ag-ignore-buffer-patterns '("\\.txt\\'" "\\.mkd\\'"))
-  )
+  (setq helm-ag-ignore-buffer-patterns '("\\.txt\\'" "\\.mkd\\'")))
 
 (defun appleshan-complete/post-init-helm-flx ()
   ;; garbage collection
