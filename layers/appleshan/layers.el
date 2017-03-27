@@ -20,7 +20,7 @@
     )
   appleshan-navigation
   appleshan-notify
-  ; appleshan-shell
+  appleshan-shell
   appleshan-dired
   (appleshan-org
     :variables org-gtd-dir (concat user-projects-directory "org-gtd/"))

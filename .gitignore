@@ -10,3 +10,4 @@
 /.cache/**
 
 /layers/appleshan-java/local/**
+/layers/appleshan-shell/local/**

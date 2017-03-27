@@ -97,7 +97,7 @@ values."
      evil-commentary ;; comment
      ;; enable 2-char find.
      (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
-     ; (vinegar :variables vinegar-reuse-dired-buffer t)
+     (vinegar :variables vinegar-reuse-dired-buffer t)
      vim-empty-lines
 
      ;; --- Private layers ---
@@ -428,16 +428,16 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq configuration-layer--elpa-archives
         '(
           ;; Emacs-China 开源软件镜像站
-          ("melpa-cn"  . "https://elpa.emacs-china.org/melpa/")
-          ("gnu-cn"    . "https://elpa.emacs-china.org/gnu/")
-          ("org-cn"    . "https://elpa.emacs-china.org/org/")
+        ; ("melpa-cn"  . "https://elpa.emacs-china.org/melpa/")
+        ; ("gnu-cn"    . "https://elpa.emacs-china.org/gnu/")
+        ; ("org-cn"    . "https://elpa.emacs-china.org/org/")
         ; ("elpy"      . "https://jorgenschaefer.github.io/packages/")
         ; ("user42-cn" . "https://elpa.emacs-china.org/user42/")
 
           ;; 清华大学 TUNA 协会开源软件镜像站
-        ; ("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-        ; ("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-        ; ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+          ("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+          ("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+          ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
 
           ;; source elpa
         ; ("melpa" . "melpa.org/packages/")
@@ -446,10 +446,10 @@ before packages are loaded. If you are unsure, you should try in setting them in
           ))
 
   ;; Pin some of the packages that go wonky if I use the bleeding edge.
-  (when (boundp 'package-pinned-packages)
-    (setq package-pinned-packages
-          '((org-plus-contrib . "org")
-            )))
+  ; (when (boundp 'package-pinned-packages)
+  ;   (setq package-pinned-packages
+  ;         '((org-plus-contrib . "org")
+  ;           )))
 
   ;; Dropbox directory
   (defconst user-dropbox-directory
@@ -516,7 +516,7 @@ you should place your code here."
   (spacemacs|diminish spacemacs-whitespace-cleanup-mode)
 
   ;; neotree open default path
-  (neotree-dir (getenv "HOME"))
+  ;(neotree-dir (getenv "HOME"))
 
   ;; restore the desktop
   ; (desktop-save-mode t)
