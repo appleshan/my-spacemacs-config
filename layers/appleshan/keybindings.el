@@ -87,6 +87,10 @@
 
 (global-set-key (kbd "C-c n") #'cleanup-buffer)
 
+;; terminal-here
+(global-set-key (kbd "C-<f5>") #'terminal-here-launch)
+(global-set-key (kbd "C-<f6>") #'terminal-here-project-launch)
+
 ;; java
 ; (define-key java-mode-map (kbd "M-i") 'java-imports-add-import-dwim)
 

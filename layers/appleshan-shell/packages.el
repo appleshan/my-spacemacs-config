@@ -17,10 +17,14 @@
 
 (setq appleshan-shell-packages
       '(
+        (terminal-here :location local)
         ))
 
 ;; List of packages to exclude.
 (setq appleshan-shell-excluded-packages '())
+
+(defun appleshan-shell/init-terminal-here ()
+  (use-package terminal-here))
 
 ;; Local Variables:
 ;; coding: utf-8
