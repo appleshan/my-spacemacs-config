@@ -59,7 +59,24 @@ Hacking 始于 2012 年。2015 年爱上 Spacemacs :smile: :sparkling_heart:
 
 3. 我的配置用了很长时间了，相信你也会喜欢的。
 
-* 依赖的外部程序
+* 依赖的外部程序及配置
+
+** 设置 HOME 环境变量
+- Linux
+  无需设置。例如：/home/appleshan
+- Windows 10
+  HOME=D:/
+
+** 使用软链接（符号链接）管理配置
+- Linux
+
+- Windows 10
+#+BEGIN_SRC bat
+mklink /D d:\.emacs.d d:\projects\spacemacs-develop.d
+mklink /D d:\.spacemacs.d d:\projects\my-spacemacs-config.d
+#+END_SRC
+
+注意：mklink 支持 Windows 7 及以上版本
 
 ** 安装字体
 https://github.com/ProgrammingFonts/programming-fonts-collection
