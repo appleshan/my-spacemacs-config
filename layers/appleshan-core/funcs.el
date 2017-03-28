@@ -46,11 +46,8 @@
 ;  (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
 
 (defun appleshan/set-language-coding-systems ()
-  ;; @see ~/.emacs.d/core/core-spacemacs.el:72
-  ;; (prefer-coding-system 'utf-8)
-
   ;; Always, always, prefer UTF-8, anything else is insanity
-  ; (when (or (spacemacs/system-is-linux) (locale-is-utf8-p))
+  (when (or (spacemacs/system-is-linux) (locale-is-utf8-p))
     ;; disable CJK coding/encoding (Chinese/Japanese/Korean characters)
     (setq utf-translate-cjk-mode nil)
 
@@ -72,7 +69,28 @@
 
     (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
     (setq locale-coding-system 'utf-8)
-    ; )
+    )
+
+  ;; @see https://liu233w.github.io/blog/2016/09/29/org-python-windows/
+  (when (spacemacs/system-is-mswindows)
+    (set-language-environment "chinese-gbk")
+    (set-terminal-coding-system 'gbk)
+    ;;
+    (modify-coding-system-alist 'process "*" 'gbk)
+    (defun liu233w/windows-shell-mode-coding ()
+      (set-buffer-file-coding-system 'gbk)
+      (set-buffer-process-coding-system 'gbk 'gbk))
+    (add-hook 'shell-mode-hook #'liu233w/windows-shell-mode-coding)
+    (add-hook 'inferior-python-mode-hook #'liu233w/windows-shell-mode-coding)
+    ;;
+    (defun liu233w//python-encode-in-org-babel-execute (func body params)
+      "org-babel 执行代码时不会自动编码文件，这里通过动态作用域覆盖默认选项来编码文件。"
+      ;; 此问题的详细信息请参考：https://github.com/Liu233w/.spacemacs.d/issues/6
+      (let ((coding-system-for-write 'utf-8))
+        (funcall func body params)))
+    (advice-add #'org-babel-execute:python :around
+                #'liu233w//python-encode-in-org-babel-execute)
+    )
   )
 ;; }}
 
