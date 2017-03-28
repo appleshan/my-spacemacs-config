@@ -19,9 +19,15 @@
   (let ((mypaths
           '(
             "D:/bin"
+            "D:/lang/python/Python361"
+            "D:/lang/python/Python361/Scripts"
+            ; "D:/lang/python/Python2713"
+            ; "D:/lang/python/Python2713/Scripts"
+            "D:/portable-soft/cmder"
             "D:/portable-soft/PortableGit/bin"
             "D:/portable-soft/PortableGit/mingw64/libexec/git-core"
-            "c:/Program Files (x86)/GnuPG/bin/"
+            "C:/Program Files (x86)/GnuPG/bin/"
+            "C:/Windows/System32"
            )))
     (setq exec-path (append mypaths (list "." exec-directory)) )
     (setenv "PATH" (mapconcat 'identity mypaths ";") )
@@ -33,10 +39,6 @@
 (when (spacemacs/system-is-linux)
   (let ((mypaths
           '(
-            "/opt/oracle/lib"
-            "/opt/jdk/jdk1.8.0_102/bin"
-            "/opt/jdk/apache-maven-3.3.9/bin"
-            "/opt/eclipse-jee-neon/eclipse"
             "/home/appleshan/bin"
             "/home/appleshan/bin/cli"
             "/home/appleshan/.local/bin"
@@ -50,6 +52,10 @@
             "/bin"
             "/usr/games"
             "/usr/local/games"
+            "/opt/oracle/lib"
+            "/opt/jdk/jdk1.8.0_102/bin"
+            "/opt/jdk/apache-maven-3.3.9/bin"
+            "/opt/eclipse-jee-neon/eclipse"
            )))
     (setq exec-path (append mypaths (list "." exec-directory)))
 
