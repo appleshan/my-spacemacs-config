@@ -59,13 +59,17 @@ Hacking 始于 2012 年。2015 年爱上 Spacemacs :smile: :sparkling_heart:
 
 3. 我的配置用了很长时间了，相信你也会喜欢的。
 
-* 安装字体
-https://github.com/ProgrammingFonts/programming-fonts-collection
-- Source Code Pro
-- Monaco
-- 文泉驿
+* 依赖的外部程序
 
-* Git
+** 安装字体
+https://github.com/ProgrammingFonts/programming-fonts-collection
+- Linux
+  - Source Code Pro
+  - 文泉驿
+- Windows 10
+  - 微软雅黑
+
+** Git
 @see http://blog.miniasp.com/post/2014/05/22/Credential-Store-for-Git-HTTP-HTTPS.aspx
 
 #+BEGIN_SRC bash
@@ -79,5 +83,52 @@ git config --global core.editor emacs
 # 设置永久存储用户名和密码
 git config --global credential.helper store
 #+END_SRC
+
+** python
+
+*** elpy require
+#+BEGIN_SRC bash
+pip install rope        # a python refactoring library
+pip install jedi        # Python自动补全库
+pip install flake8      # flake8 用来检查语法错误
+pip install importmagic # importmagic 用来自动引入需要的包
+pip install autopep8    # autopep8 用来检查PEP8规范
+pip install yapf        # yapf 用来格式化代码
+#+END_SRC
+
+** Setup up Shell Environment
+~\.spacemacs.d\layers\appleshan-shell\config.el
+- Linux
+#+BEGIN_EXAMPLE
+/home/appleshan/bin
+/home/appleshan/bin/cli
+/home/appleshan/.local/bin
+/home/appleshan/perl5/bin
+/home/appleshan/bin/sift
+/usr/local/sbin
+/usr/local/bin
+/usr/sbin
+/usr/bin
+/sbin
+/bin
+/opt/oracle/lib
+/opt/jdk/jdk1.8.0_102/bin
+/opt/jdk/apache-maven-3.3.9/bin
+/opt/eclipse-jee-neon/eclipse
+#+END_EXAMPLE
+
+- Windows 10
+#+BEGIN_EXAMPLE
+D:/bin
+D:/lang/python/Python361
+D:/lang/python/Python361/Scripts
+D:/lang/python/Python2713
+D:/lang/python/Python2713/Scripts
+D:/portable-soft/cmder
+D:/portable-soft/PortableGit/bin
+D:/portable-soft/PortableGit/mingw64/libexec/git-core
+C:/Program Files (x86)/GnuPG/bin/
+C:/Windows/System32
+#+END_EXAMPLE
 
 * Happy Hacking :smile:
