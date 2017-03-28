@@ -65,4 +65,19 @@ https://github.com/ProgrammingFonts/programming-fonts-collection
 - Monaco
 - 文泉驿
 
+* Git
+@see http://blog.miniasp.com/post/2014/05/22/Credential-Store-for-Git-HTTP-HTTPS.aspx
+
+#+BEGIN_SRC bash
+# 设置 github 的用户名
+git config --global user.name "appleshan"
+git config --global user.email apple.shan@gmail.com
+
+# 设置编辑器
+git config --global core.editor emacs
+
+# 设置永久存储用户名和密码
+git config --global credential.helper store
+#+END_SRC
+
 * Happy Hacking :smile:
