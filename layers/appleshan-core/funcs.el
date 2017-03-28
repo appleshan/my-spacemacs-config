@@ -28,7 +28,7 @@
 ;; https://www.reddit.com/r/emacs/comments/4c0mi3/the_biggest_performance_improvement_to_emacs_ive/
 (remove-hook 'find-file-hooks 'vc-find-file-hook)
 
-;; {{ locale
+;; {{ Charset 设置
 (defun sanityinc/utf8-locale-p (v)
   "Return whether locale string V relates to a UTF-8 locale."
   (and v (string-match "UTF-8" v)))
@@ -42,8 +42,38 @@
       (sanityinc/utf8-locale-p (getenv "LC_CTYPE"))
       (sanityinc/utf8-locale-p (getenv "LANG"))))
 
-(when (display-graphic-p)
-  (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
+;(when (display-graphic-p)
+;  (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
+
+(defun appleshan/set-language-coding-systems ()
+  ;; @see ~/.emacs.d/core/core-spacemacs.el:72
+  ;; (prefer-coding-system 'utf-8)
+
+  ;; Always, always, prefer UTF-8, anything else is insanity
+  ; (when (or (spacemacs/system-is-linux) (locale-is-utf8-p))
+    ;; disable CJK coding/encoding (Chinese/Japanese/Korean characters)
+    (setq utf-translate-cjk-mode nil)
+
+    ;; 影响 chinese-pyim, 造成不能输入中文的故障
+    ;; set environment coding system
+    (set-language-environment "UTF-8")
+
+    (set-charset-priority 'unicode)
+
+    ;; @see https://github.com/hick/emacs-chinese
+    (set-default-coding-systems 'utf-8)
+    (set-buffer-file-coding-system 'utf-8-unix)
+    (set-clipboard-coding-system 'utf-8-unix)
+    (set-file-name-coding-system 'utf-8-unix)
+    (set-keyboard-coding-system 'utf-8-unix)
+    (set-selection-coding-system 'utf-8-unix)
+    (set-next-selection-coding-system 'utf-8-unix)
+    (set-terminal-coding-system 'utf-8-unix)
+
+    (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
+    (setq locale-coding-system 'utf-8)
+    ; )
+  )
 ;; }}
 
 ;;{{
