@@ -19,10 +19,10 @@
   (let ((mypaths
           '(
             "D:/bin"
-            "D:/lang/python/Python361"
-            "D:/lang/python/Python361/Scripts"
-            ; "D:/lang/python/Python2713"
-            ; "D:/lang/python/Python2713/Scripts"
+            "C:/lang/python/Python361"
+            "C:/lang/python/Python361/Scripts"
+            ; "C:/lang/python/Python2713"
+            ; "C:/lang/python/Python2713/Scripts"
             "D:/portable-soft/cmder"
             "D:/portable-soft/PortableGit/bin"
             "D:/portable-soft/PortableGit/mingw64/libexec/git-core"
@@ -31,7 +31,7 @@
            )))
     (setq exec-path (append mypaths (list "." exec-directory)) )
     (setenv "PATH" (mapconcat 'identity mypaths ";") )
-    (setenv "HOME" "D:/" )
+    (setenv "HOME" "D:/home/appleshan/" )
     (setenv "JAR_PATH" "D:/bin/java-lib" )
     ))
 

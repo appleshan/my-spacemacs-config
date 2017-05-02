@@ -25,10 +25,7 @@
 ;; 用 Emacs, 需忘记鼠标, 无视菜单.
 (with-current-buffer (get-buffer-create "*scratch*")
   (emacs-lisp-mode)
-  (insert ";; Happy hacking appleshan!
-;; 用 Emacs, 需: 忘记鼠标, 无视菜单.
-
-"))
+  (insert ";; Happy hacking appleshan!\n;; 用 Emacs, 需: 忘记鼠标, 无视菜单.\n\n"))
 
 ;; Display visited file's path in the frame title
 ;; @See http://emacsredux.com/blog/2013/04/07/display-visited-files-path-in-the-frame-title/
@@ -142,6 +139,14 @@
 
 ;; Don't use dialog boxes, just ask inside Emacs
 (setq use-dialog-box nil)
+
+;;set unicode font for mode-line
+; (set-fontset-font t '(#x2776 . #x2793) "Lucida Sans Unicode") ;;win numbers
+; (set-fontset-font t '(#x24b6 . #x24fe) "Lucida Sans Unicode") ;;circled letters
+; (set-fontset-font t '(#x2295 . #x22a1) "Lucida Sans Unicode") ;;additional characters
+
+(spacemacs|diminish which-key-mode)
+(spacemacs|diminish spacemacs-whitespace-cleanup-mode)
 
 ;; Local Variables:
 ;; coding: utf-8

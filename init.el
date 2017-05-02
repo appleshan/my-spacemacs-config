@@ -414,6 +414,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
    )
   ; (defvar stack-trace-on-error t)
 
+  ;; Set to t to debug package loading or nil to disable
+  (setq use-package-verbose nil)
+
   (setq byte-compile-warnings nil)
 
   ;; @see http://elpa.emacs-china.org/
@@ -509,18 +512,12 @@ you should place your code here."
     )
   ;;}}
 
-  ;; Set to t to debug package loading or nil to disable
-  (setq use-package-verbose nil)
-
-  (spacemacs|diminish which-key-mode)
-  (spacemacs|diminish spacemacs-whitespace-cleanup-mode)
-
   ;; neotree open default path
   ;(neotree-dir (getenv "HOME"))
 
   ;; restore the desktop
-  ; (desktop-save-mode t)
-  ; (desktop-read)
+  (desktop-save-mode t)
+  (desktop-read)
   )
 
 (setq custom-file (expand-file-name "local/custom.el" dotspacemacs-directory))

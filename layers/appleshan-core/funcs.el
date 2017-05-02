@@ -42,9 +42,10 @@
       (sanityinc/utf8-locale-p (getenv "LC_CTYPE"))
       (sanityinc/utf8-locale-p (getenv "LANG"))))
 
-;(when (display-graphic-p)
-;  (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
+; (when (display-graphic-p)
+;   (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
 
+;; @see https://github.com/hick/emacs-chinese
 (defun appleshan/set-language-coding-systems ()
   ;; Always, always, prefer UTF-8, anything else is insanity
   (when (or (spacemacs/system-is-linux) (locale-is-utf8-p))
@@ -52,45 +53,90 @@
     (setq utf-translate-cjk-mode nil)
 
     ;; 影响 chinese-pyim, 造成不能输入中文的故障
-    ;; set environment coding system
+    ;; 设置为中文简体语言环境
     (set-language-environment "UTF-8")
+    (setq locale-coding-system 'utf-8)
 
     (set-charset-priority 'unicode)
 
-    ;; @see https://github.com/hick/emacs-chinese
-    (set-default-coding-systems 'utf-8)
-    (set-buffer-file-coding-system 'utf-8-unix)
-    (set-clipboard-coding-system 'utf-8-unix)
-    (set-file-name-coding-system 'utf-8-unix)
+    ;; 设置键盘输入时的字符编码
     (set-keyboard-coding-system 'utf-8-unix)
     (set-selection-coding-system 'utf-8-unix)
     (set-next-selection-coding-system 'utf-8-unix)
-    (set-terminal-coding-system 'utf-8-unix)
 
+    ;; 文件默认保存为 utf-8
+    (set-buffer-file-coding-system 'utf-8-unix)
+    (set-default buffer-file-coding-system 'utf8-unix)
+    (set-default-coding-systems 'utf-8-unix)
+
+    ;; 解决粘贴中文出现乱码的问题
+    (set-clipboard-coding-system 'utf-8-unix)
+
+    ;; 终端中文乱码
+    (set-terminal-coding-system 'utf-8-unix)
     (setq default-process-coding-system '(utf-8-unix . utf-8-unix))
+    ;(set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix)
+    (modify-coding-system-alist 'process "*" 'utf-8-unix)
+
+    ;; 解决文件目录的中文名乱码
+    (setq-default pathname-coding-system 'utf-8-unix)
+    (set-file-name-coding-system 'utf-8-unix)
+    )
+
+  (when (spacemacs/system-is-mswindows)
+    ;; disable CJK coding/encoding (Chinese/Japanese/Korean characters)
+    (setq utf-translate-cjk-mode nil)
+
+    ;; 设置为中文简体语言环境
+    (set-language-environment "UTF-8")
     (setq locale-coding-system 'utf-8)
+
+    (set-charset-priority 'unicode)
+
+    ;; 设置键盘输入时的字符编码
+    (set-keyboard-coding-system 'utf-8-unix)
+    (set-selection-coding-system 'utf-8-unix)
+    (set-next-selection-coding-system 'utf-8-unix)
+
+    ;; 文件默认保存为 utf-8
+    (set-buffer-file-coding-system 'utf-8)
+    (set-default buffer-file-coding-system 'utf8)
+    (set-default-coding-systems 'utf-8)
+
+    ;; 解决粘贴中文出现乱码的问题
+    (set-clipboard-coding-system 'utf-8-unix)
+
+    ;; 终端中文乱码
+    (set-terminal-coding-system 'utf-8)
+    (setq default-process-coding-system '(utf-8 . utf-8))
+    ;(set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix)
+    (modify-coding-system-alist 'process "*" 'utf-8)
+
+    ;; 解决文件目录的中文名乱码
+    (setq-default pathname-coding-system 'utf-8)
+    (set-file-name-coding-system 'utf-8)
     )
 
   ;; @see https://liu233w.github.io/blog/2016/09/29/org-python-windows/
-  (when (spacemacs/system-is-mswindows)
-    (set-language-environment "chinese-gbk")
-    (set-terminal-coding-system 'gbk)
-    ;;
-    (modify-coding-system-alist 'process "*" 'gbk)
-    (defun liu233w/windows-shell-mode-coding ()
-      (set-buffer-file-coding-system 'gbk)
-      (set-buffer-process-coding-system 'gbk 'gbk))
-    (add-hook 'shell-mode-hook #'liu233w/windows-shell-mode-coding)
-    (add-hook 'inferior-python-mode-hook #'liu233w/windows-shell-mode-coding)
-    ;;
-    (defun liu233w//python-encode-in-org-babel-execute (func body params)
-      "org-babel 执行代码时不会自动编码文件，这里通过动态作用域覆盖默认选项来编码文件。"
-      ;; 此问题的详细信息请参考：https://github.com/Liu233w/.spacemacs.d/issues/6
-      (let ((coding-system-for-write 'utf-8))
-        (funcall func body params)))
-    (advice-add #'org-babel-execute:python :around
-                #'liu233w//python-encode-in-org-babel-execute)
-    )
+  ; (when (spacemacs/system-is-mswindows)
+  ;   (set-language-environment "chinese-gbk")
+  ;   (set-terminal-coding-system 'gbk)
+  ;   ;;
+  ;   (modify-coding-system-alist 'process "*" 'gbk)
+  ;   (defun liu233w/windows-shell-mode-coding ()
+  ;     (set-buffer-file-coding-system 'gbk)
+  ;     (set-buffer-process-coding-system 'gbk 'gbk))
+  ;   (add-hook 'shell-mode-hook #'liu233w/windows-shell-mode-coding)
+  ;   (add-hook 'inferior-python-mode-hook #'liu233w/windows-shell-mode-coding)
+  ;   ;;
+  ;   (defun liu233w//python-encode-in-org-babel-execute (func body params)
+  ;     "org-babel 执行代码时不会自动编码文件，这里通过动态作用域覆盖默认选项来编码文件。"
+  ;     ;; 此问题的详细信息请参考：https://github.com/Liu233w/.spacemacs.d/issues/6
+  ;     (let ((coding-system-for-write 'utf-8))
+  ;       (funcall func body params)))
+  ;   (advice-add #'org-babel-execute:python :around
+  ;               #'liu233w//python-encode-in-org-babel-execute)
+  ;   )
   )
 ;; }}
 

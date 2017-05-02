@@ -21,6 +21,7 @@
         evil
         evil-escape
         neotree
+        perspeen
         ))
 
 ;; List of packages to exclude.
@@ -96,6 +97,14 @@
   (setq neo-show-hidden-files nil)
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)) ;; all-the-icons
   (setq projectile-switch-project-action 'neotree-projectile-action))
+
+(defun appleshan-navigation/init-perspeen ()
+  (use-package perspeen
+    :ensure t
+    :init
+    (setq perspeen-use-tab t)
+    :config
+    (perspeen-mode)))
 
 ;; Local Variables:
 ;; coding: utf-8
