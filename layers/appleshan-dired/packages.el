@@ -13,7 +13,7 @@
     '(
       (dired :location built-in)
       (dired-x :location built-in)
-      dired-k
+      (dired-k :location local)
       ;; dired-sort
       ))
 

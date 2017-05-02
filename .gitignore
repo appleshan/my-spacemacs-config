@@ -9,5 +9,6 @@
 
 /.cache/**
 
+/layers/appleshan-dired/local/**
 /layers/appleshan-java/local/**
 /layers/appleshan-shell/local/**
