@@ -14,18 +14,18 @@ Hacking 始于 2012 年。2015 年爱上 Spacemacs :smile: :sparkling_heart:
 一个 .spacemacs.d 目录，存放私有 layer。
 
 * Emacs version
-24.5+ (24.5, 25.1)
+Tested on versions:
+- GNU Emacs 25.1 (x86_64-pc-linux-gnu, GTK+ Version 3.4.2) of 2017-02-22
+- [[https://github.com/zklhp/emacs-w64/releases][64-bit GNU Emacs for MS Windows with optimization]] (x86_64-pc-windows-10) of 2017-05-02
 
 * Screenshot
 [[./local/img/spacemacs-demo-1.png]]
 [[./local/img/spacemacs-demo-2.png]]
 
-* :beginner: 快速下载&使用
+* :beginner: Installing
 #+BEGIN_SRC sh
   # clone spacemacs repo
-  git clone https://github.com/syl20bnr/spacemacs.git ~/.emacs.d/
-  # 或者
-  git clone -b develop https://github.com/appleshan/spacemacs.git ~/.emacs.d/
+  git clone -b develop https://github.com/syl20bnr/spacemacs.git ~/.emacs.d/
 
   # 然后
   # clone appleshan layer
@@ -59,13 +59,13 @@ Hacking 始于 2012 年。2015 年爱上 Spacemacs :smile: :sparkling_heart:
 
 3. 我的配置用了很长时间了，相信你也会喜欢的。
 
-* 依赖的外部程序及配置
+* Dependencies
 
 ** 设置 HOME 环境变量
 - Linux
   无需设置。例如：/home/appleshan
 - Windows 10
-  HOME=D:/
+  HOME=D:/home/appleshan
 
 ** 使用软链接（符号链接）管理配置
 - Linux
@@ -78,13 +78,18 @@ mklink /D d:\.spacemacs.d d:\projects\my-spacemacs-config.d
 
 注意：mklink 支持 Windows 7 及以上版本
 
-** 安装字体
+** 字体
 https://github.com/ProgrammingFonts/programming-fonts-collection
 - Linux
   - Source Code Pro
   - 文泉驿
 - Windows 10
   - 微软雅黑
+** diff
+- Windows 10
+http://gnuwin32.sourceforge.net/packages/diffutils.htm
+下载：Binaries 与 Dependencies，然后把 Dependencies 中解压出来的 libintl-2 和
+libiconv-2 copy 到 Binaries 的 bin 目录，最后，把 bin 目录加入环境变量 PATH .
 
 ** Git
 @see http://blog.miniasp.com/post/2014/05/22/Credential-Store-for-Git-HTTP-HTTPS.aspx
@@ -99,6 +104,9 @@ git config --global core.editor emacs
 
 # 设置永久存储用户名和密码
 git config --global credential.helper store
+
+# 关闭 git 自动改换行符的功能
+git config --global core.autocrlf false
 #+END_SRC
 
 ** python
@@ -106,10 +114,10 @@ git config --global credential.helper store
 *** elpy require
 #+BEGIN_SRC bash
 pip install rope        # a python refactoring library
-pip install jedi        # Python自动补全库
+pip install jedi        # Python 自动补全库
 pip install flake8      # flake8 用来检查语法错误
 pip install importmagic # importmagic 用来自动引入需要的包
-pip install autopep8    # autopep8 用来检查PEP8规范
+pip install autopep8    # autopep8 用来检查 PEP8 规范
 pip install yapf        # yapf 用来格式化代码
 #+END_SRC
 
