@@ -64,7 +64,7 @@ values."
                       auto-completion-private-snippets-directory nil
                       ; auto-completion-return-key-behavior nil
                       auto-completion-tab-key-behavior 'complete
-                      :disabled-for erc markdown) ; erc org markdown
+                      :disabled-for erc org markdown) ; erc org markdown
      ;; auto-complete layer 在 org-mode 中会引发很多问题，所以最好在 org-mode 中禁用补全
 
      ;; --- Programming and markup languages layers ---

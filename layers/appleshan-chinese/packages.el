@@ -17,6 +17,7 @@
       find-by-pinyin-dired
       ace-pinyin
       pangu-spacing
+      (unicad :location local)
       ))
 
 ;; List of packages to exclude.
@@ -157,6 +158,11 @@
       :documentation "Toggle pangu spacing mode"
       :evil-leader "tp")
     ))
+
+(defun appleshan-chinese/init-unicad ()
+  (use-package unicad
+    :init
+    (require 'unicad)))
 
 ;; Local Variables:
 ;; coding: utf-8

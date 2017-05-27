@@ -18,7 +18,7 @@
 (setq appleshan-notify-packages
       '(
         alert
-        sauron
+        ; sauron
         ))
 
 ;; List of packages to exclude.

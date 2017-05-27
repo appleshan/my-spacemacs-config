@@ -9,10 +9,6 @@
 ;;
 ;;; License: GPLv3
 
-;; Universal Charset Auto Detector.
-;; @see https://code.google.com/p/unicad/wiki/FAQ_Chinese
-; (require 'unicad)
-
 ;; {{ make IME compatible with evil-mode
 (defun appleshan/evil-toggle-input-method ()
   "when toggle on input method, goto evil-insert-state. "

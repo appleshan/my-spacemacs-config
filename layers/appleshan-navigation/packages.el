@@ -21,7 +21,7 @@
         evil
         evil-escape
         neotree
-        perspeen
+        ;; perspeen
         ))
 
 ;; List of packages to exclude.

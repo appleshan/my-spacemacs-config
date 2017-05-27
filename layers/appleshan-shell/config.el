@@ -24,9 +24,10 @@
             ; "C:/lang/python/Python2713"
             ; "C:/lang/python/Python2713/Scripts"
             "D:/portable-soft/cmder"
-            "D:/portable-soft/PortableGit/bin"
-            "D:/portable-soft/PortableGit/mingw64/libexec/git-core"
-            "C:/Program Files (x86)/GnuPG/bin/"
+            "D:/portable-soft/develop/PortableGit/bin"                      ;; git
+            "D:/portable-soft/develop/PortableGit/mingw64/libexec/git-core" ;; git
+            "D:/portable-soft/develop/diffutils-2.8.7-1/bin"                ;; diff
+            "C:/Program Files (x86)/GnuPG/bin/"                             ;; gpg
             "C:/Windows/System32"
            )))
     (setq exec-path (append mypaths (list "." exec-directory)) )
