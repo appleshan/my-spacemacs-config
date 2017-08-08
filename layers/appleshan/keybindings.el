@@ -32,14 +32,13 @@
   "oc" 'org-capture
   "ol" 'org-store-link)
 
-(global-set-key [f8] 'neotree-project-dir)
-
 ;; Search (and search/replace) using regex by default, since that's usually what I want to do:
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "M-%") 'query-replace-regexp)
 
-;; dir
+
+(global-set-key [f8] 'neotree-project-dir)
 (spacemacs/set-leader-keys "dt" 'neotree-dir)
 
 ; (global-set-key (kbd "M-/") 'company-complete)

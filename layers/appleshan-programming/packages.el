@@ -13,7 +13,7 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq appleshan-programming-packages
     '(
-      editorconfig
+      ;; editorconfig
       engine-mode
       flycheck
       flycheck-package
