@@ -24,7 +24,7 @@ Tested on versions:
 
 * :beginner: Installing
 #+BEGIN_SRC sh
-#!/bin/bash
+#!/usr/bin/bash
 
 # sudo pacman -S emacs
 
