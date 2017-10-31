@@ -434,7 +434,7 @@ values."
    ;; `trailing' to delete only the whitespace at end of lines, `changed' to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-whitespace-cleanup 'changed
    ;; Either nil or a number of seconds. If non-nil zone out after the specified
    ;; number of seconds. (default nil)
    dotspacemacs-zone-out-when-idle nil
@@ -561,8 +561,6 @@ you should place your code here."
   (desktop-save-mode t)
   (desktop-read)
   )
-dotspacemacs-whitespace-cleanup 'changed
-dotspacemacs-whitespace-cleanup 'changed
 
 (setq custom-file (expand-file-name "local/custom.el" dotspacemacs-directory))
 (load custom-file 'no-error 'no-message)
