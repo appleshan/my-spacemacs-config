@@ -12,11 +12,11 @@
 (setq appleshan-chinese-packages
     '(
       cal-china-x
-      (chinese-pyim :toggle (eq chinese-default-input-method 'pinyin))
       (fcitx :toggle chinese-enable-fcitx)
       find-by-pinyin-dired
       ace-pinyin
       pangu-spacing
+      (pyim :toggle (eq chinese-default-input-method 'pinyin))
       (unicad :location local)
       ))
 
@@ -71,44 +71,6 @@
       ;; 只显示我定制的节日
       (setq calendar-holidays holiday-holidays))))
 
-(defun appleshan-chinese/init-chinese-pyim ()
-  (use-package chinese-pyim
-    :if (eq 'pinyin chinese-default-input-method)
-    :init
-    (progn
-      (setq pyim-page-length 10
-            pyim-use-tooltip 'pos-tip   ; 使用 pos-tip 包来绘制选词框（这种选词框比较好看）
-            x-gtk-use-system-tooltips t ; Linux 平台下，emacs 可以使用 GTK 来绘制选词框
-            pyim-directory (concat dotspacemacs-directory ".cache/pyim/")
-            pyim-dcache-directory (concat dotspacemacs-directory ".cache/pyim/dcache")
-            pyim-personal-file (concat pyim-directory "pyim-personal.txt")
-            pyim-property-file (concat pyim-directory "pyim-words-property.txt")
-            default-input-method "chinese-pyim")
-
-      (evilified-state-evilify pyim-dicts-manager-mode pyim-dicts-manager-mode-map))
-    :config
-    (progn
-      ;; 激活词库
-      (setq pyim-dicts (quote
-        ((:name "pyim-bigdict"
-          :file (concat user-dropbox-directory "/pyim/pyim-bigdict.pyim")
-          :coding utf-8-unix
-          :dict-type pinyin-dict)
-         ; (:name "pyim-greatdict"
-         ;  :file (concat user-dropbox-directory "/pyim/pyim-greatdict.pyim")
-         ;  :coding utf-8-unix
-         ;  :dict-type pinyin-dict)
-         )))
-
-      ;; 为 isearch 开启拼音搜索功能
-      (setq pyim-isearch-enable-pinyin-search t)
-      ;; 强制关闭 isearch 搜索框中文输入（即使在 Chinese-pyim 激活的时候）
-      (setq-default pyim-english-input-switch-functions
-              '(pyim-probe-isearch-mode))
-      ;; 禁用 dabberv 中文补全
-      (setq pyim-company-complete-chinese-enable nil)
-      )))
-
 (defun appleshan-chinese/init-fcitx ()
   (use-package fcitx
     :init
@@ -158,6 +120,63 @@
       :documentation "Toggle pangu spacing mode"
       :evil-leader "tp")
     ))
+
+(defun appleshan-chinese/init-pyim ()
+  (use-package pyim
+    :if (eq 'pinyin chinese-default-input-method)
+    :init
+    (progn
+      (setq pyim-page-tooltip t
+            pyim-directory (expand-file-name "pyim/" spacemacs-cache-directory)
+            pyim-dcache-directory (expand-file-name "dcache/" pyim-directory)
+            ;pyim-directory (concat dotspacemacs-directory ".cache/pyim/")
+            ;pyim-dcache-directory (concat dotspacemacs-directory ".cache/pyim/dcache")
+            ;pyim-personal-file (concat pyim-directory "pyim-personal.txt")
+            ;pyim-property-file (concat pyim-directory "pyim-words-property.txt")
+            default-input-method "pyim")
+      (evilified-state-evilify pyim-dm-mode pyim-dm-mode-map))
+    :config
+    (progn
+      ;; 激活 basedict 拼音词库
+      (use-package pyim-basedict
+        :ensure nil
+        :config (pyim-basedict-enable))
+
+      ;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换.
+      ;; 我自己使用的中英文动态切换规则是：
+      ;; 1. 光标只有在注释里面时，才可以输入中文。
+      ;; 2. 光标前是汉字字符时，才能输入中文。
+      ;; 3. 使用 M-j 快捷键，强制将光标前的拼音字符串转换为中文。
+      ;(setq-default pyim-english-input-switch-functions
+      ;              '(pyim-probe-dynamic-english
+      ;                pyim-probe-isearch-mode
+      ;                pyim-probe-program-mode
+      ;                pyim-probe-org-structure-template))
+
+      ;(setq-default pyim-punctuation-half-width-functions
+      ;              '(pyim-probe-punctuation-line-beginning
+      ;                pyim-probe-punctuation-after-punctuation))
+
+      ;; 使用 pupup-el 来绘制选词框
+      ;(setq pyim-page-tooltip 'pos-tip)  ; 使用 pos-tip 包来绘制选词框（这种选词框比较好看）
+      ;(setq x-gtk-use-system-tooltips t) ; Linux 平台下，emacs 可以使用 GTK 来绘制选词框
+
+      ;; 选词框显示5个候选词
+      (setq pyim-page-length 9)
+
+      ;; 让 Emacs 启动时自动加载 pyim 词库
+      (add-hook 'emacs-startup-hook
+                #'(lambda () (pyim-restart-1 t)))
+
+      ;; 为 isearch 开启拼音搜索功能
+      (pyim-isearch-mode 1)
+      ;; 强制关闭 isearch 搜索框中文输入（即使在 Chinese-pyim 激活的时候）
+      (setq-default pyim-english-input-switch-functions
+              '(pyim-probe-isearch-mode))
+      ;; 禁用 dabberv 中文补全
+      (setq pyim-company-complete-chinese-enable nil)
+      )
+  ))
 
 (defun appleshan-chinese/init-unicad ()
   (use-package unicad

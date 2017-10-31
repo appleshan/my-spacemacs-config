@@ -25,7 +25,7 @@
   (appleshan-org
     :variables org-gtd-dir (concat user-projects-directory "org-gtd/"))
   (appleshan-chinese
-    :packages cal-china-x find-by-pinyin-dired ace-pinyin pangu-spacing
+    :packages cal-china-x pyim find-by-pinyin-dired ace-pinyin pangu-spacing
     :variables chinese-enable-fcitx nil)
   appleshan-programming
   appleshan-python
