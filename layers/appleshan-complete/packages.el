@@ -78,8 +78,9 @@
     (add-to-list 'projectile-globally-ignored-files "GRTAGS")
     (add-to-list 'projectile-globally-ignored-files "GSYMS")
     (add-to-list 'projectile-globally-ignored-files ".DS_Store")
-    ;; always ignore .class files
-    (add-to-list 'projectile-globally-ignored-file-suffixes ".class")))
+    ;; always ignore .class / .pyc files
+    (add-to-list 'projectile-globally-ignored-file-suffixes ".class")
+    (add-to-list 'projectile-globally-ignored-file-suffixes ".pyc")))
 
 (defun appleshan-complete/post-init-yasnippet ()
   (setq yas-snippet-dirs (delq 'yas-installed-snippets-dir yas-snippet-dirs))
