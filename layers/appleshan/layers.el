@@ -13,7 +13,7 @@
   appleshan-core
   appleshan-complete
   (appleshan-appearance
-    :packages all-the-icons 
+    :packages all-the-icons
     ; beacon
     hl-anything popwin visual-regexp visual-regexp-steroids
     ; tabbar
