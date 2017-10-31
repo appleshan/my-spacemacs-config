@@ -871,7 +871,7 @@
 (defun appleshan-org/init-ob-ditaa ()
   (use-package ob-ditaa
     :config
-    ;; (setq org-ditaa-jar-path "/opt/java-lib/ditaa0_9.jar")
+    ;; (setq org-ditaa-jar-path "~/bin/java-lib/ditaa0_9.jar")
     (setq org-ditaa-jar-path
       (directory-files (concat (getenv "JAR_PATH") "/ditaa0_9") t "ditaa[[:ascii:]]+\\.jar$"))
     ))
