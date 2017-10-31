@@ -471,21 +471,23 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq configuration-layer--elpa-archives
         '(
           ;; Emacs-China 开源软件镜像站
-        ; ("melpa-cn"  . "https://elpa.emacs-china.org/melpa/")
-        ; ("gnu-cn"    . "https://elpa.emacs-china.org/gnu/")
-        ; ("org-cn"    . "https://elpa.emacs-china.org/org/")
-        ; ("elpy"      . "https://jorgenschaefer.github.io/packages/")
+          ("melpa-cn"  . "https://elpa.emacs-china.org/melpa/")
+          ("gnu-cn"    . "https://elpa.emacs-china.org/gnu/")
+          ("org-cn"    . "https://elpa.emacs-china.org/org/")
         ; ("user42-cn" . "https://elpa.emacs-china.org/user42/")
 
           ;; 清华大学 TUNA 协会开源软件镜像站
-          ("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-          ("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-          ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
+        ; ("melpa-cn" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+        ; ("gnu-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+        ; ("org-cn"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
 
           ;; source elpa
         ; ("melpa" . "melpa.org/packages/")
         ; ("gnu"   . "elpa.gnu.org/packages/")
         ; ("org"   . "orgmode.org/elpa/")
+
+          ;; Elpy Package Archive
+          ("elpy"      . "https://jorgenschaefer.github.io/packages/")
           ))
 
   ;; Pin some of the packages that go wonky if I use the bleeding edge.
