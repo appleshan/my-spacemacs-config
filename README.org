@@ -24,12 +24,50 @@ Tested on versions:
 
 * :beginner: Installing
 #+BEGIN_SRC sh
-  # clone spacemacs repo
-  git clone -b develop https://github.com/syl20bnr/spacemacs.git ~/.emacs.d/
+#!/bin/bash
 
-  # 然后
-  # clone appleshan layer
-  git clone https://github.com/appleshan/my-spacemacs-config.git ~/.spacemacs.d/
+# sudo pacman -S emacs
+
+cd ~/projects/
+
+# clone spacemacs repo
+git clone -b develop https://github.com/syl20bnr/spacemacs.git spacemacs-develop
+
+# clone appleshan layer
+git clone https://github.com/appleshan/my-spacemacs-config.git spacemacs-private
+
+# all-the-icons
+# Installing Fonts
+M-x all-the-icons-install-fonts
+
+# dired-k
+cd ./spacemacs-private/layers/appleshan-dired/
+mkdir ./local && cd ./local
+git clone https://github.com/appleshan/emacs-dired-k dired-k
+
+# terminal-here
+cd ./spacemacs-private/layers/appleshan-shell/
+mkdir ./local && cd ./local
+git clone https://github.com/appleshan/terminal-here terminal-here
+
+
+# 建立软链接
+# ln -s <源文件> <目标> 创建一个符号链接
+ln -s ~/projects/spacemacs-develop ~/.emacs.d
+ln -s ~/projects/spacemacs-private ~/.spacemacs.d
+
+# 验证软链接建立成功
+la ~/ |grep emacs
+
+
+# ditaa
+mkdir -p ~/bin/java-lib/ditaa0_9
+cd ~/bin/java-lib/ditaa0_9
+wget https://downloads.sourceforge.net/project/ditaa/ditaa/0.9/ditaa0_9.zip
+unzip ditaa0_9.zip
+
+# graphviz
+
 #+END_SRC
 
 现在可以打开 Emacs 24.5+ 开始使用我的配置了。
