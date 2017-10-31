@@ -31,6 +31,7 @@
             "C:/Windows/System32"
            )))
     (setq exec-path (append mypaths (list "." exec-directory)) )
+
     (setenv "PATH" (mapconcat 'identity mypaths ";") )
     (setenv "HOME" "D:/home/appleshan/" )
     (setenv "JAR_PATH" "D:/bin/java-lib" )
@@ -41,32 +42,23 @@
   (let ((mypaths
           '(
             "/home/appleshan/bin"
-            "/home/appleshan/bin/cli"
-            "/home/appleshan/.local/bin"
-            "/home/appleshan/perl5/bin"
-            "/home/appleshan/bin/sift"
             "/usr/local/sbin"
             "/usr/local/bin"
-            "/usr/sbin"
             "/usr/bin"
-            "/sbin"
-            "/bin"
-            "/usr/games"
-            "/usr/local/games"
-            "/opt/oracle/lib"
-            "/opt/jdk/jdk1.8.0_102/bin"
-            "/opt/jdk/apache-maven-3.3.9/bin"
-            "/opt/eclipse-jee-neon/eclipse"
+            "/usr/lib/jvm/default/bin"
+            "/usr/bin/site_perl"
+            "/usr/bin/vendor_perl"
+            "/usr/bin/core_perl"
            )))
     (setq exec-path (append mypaths (list "." exec-directory)))
 
-    (setenv "PATH" (mapconcat 'identity mypaths ":") )
-    (setenv "HOME" "/home/appleshan")
-    (setenv "JAR_PATH" "/opt/java-lib" )
+;    (setenv "PATH" (mapconcat 'identity mypaths ":") )
+
+    (setenv "JAR_PATH" "/home/appleshan/bin/java-lib" )
     )
 
-  (setenv "LD_LIBRARY_PATH" "/opt/oracle/lib")
-  (setenv "NLS_LANG" "SIMPLIFIED CHINESE_CHINA.AL32UTF8")
+  ;(setenv "LD_LIBRARY_PATH" "/opt/oracle/lib")
+  ;(setenv "NLS_LANG" "SIMPLIFIED CHINESE_CHINA.AL32UTF8")
   )
 
 ;; Local Variables:
