@@ -75,6 +75,14 @@ unzip ditaa0_9.zip
 
 # graphviz
 
+# for python
+pip install rope        # a python refactoring library
+pip install jedi        # Python自动补全库
+pip install flake8      # flake8 用来检查语法错误
+pip install importmagic # importmagic 用来自动引入需要的包
+pip install autopep8    # autopep8 用来检查PEP8规范
+pip install yapf        # yapf 用来格式化代码
+
 #+END_SRC
 
 现在可以打开 Emacs 24.5+ 开始使用我的配置了。
