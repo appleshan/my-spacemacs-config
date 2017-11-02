@@ -170,6 +170,7 @@
 
       ;; 为 isearch 开启拼音搜索功能
       (pyim-isearch-mode 1)
+      (spacemacs|hide-lighter pyim-isearch-mode)
       ;; 强制关闭 isearch 搜索框中文输入（即使在 Chinese-pyim 激活的时候）
       (setq-default pyim-english-input-switch-functions
               '(pyim-probe-isearch-mode))
