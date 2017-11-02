@@ -558,8 +558,8 @@ you should place your code here."
   ;(neotree-dir (getenv "HOME"))
 
   ;; restore the desktop
-  (desktop-save-mode t)
-  (desktop-read)
+;  (desktop-save-mode t)
+;  (desktop-read)
   )
 
 (setq custom-file (expand-file-name "local/custom.el" dotspacemacs-directory))
