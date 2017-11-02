@@ -10,7 +10,10 @@
 ;;; License: GPLv3
 
 (configuration-layer/declare-layers '(
-  appleshan-core
+  (appleshan-core
+    :packages calendar mule recentf profiler whitespace ibuffer
+    ; desktop
+    )
   appleshan-complete
   (appleshan-appearance
     :packages all-the-icons
