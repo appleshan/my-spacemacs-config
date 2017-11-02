@@ -36,6 +36,17 @@ git clone -b develop https://github.com/syl20bnr/spacemacs.git spacemacs-develop
 # clone appleshan layer
 git clone https://github.com/appleshan/my-spacemacs-config.git spacemacs-private
 
+# 建立软链接
+# ln -s <源文件> <目标> 创建一个符号链接
+ln -s ~/projects/spacemacs-develop ~/.emacs.d
+ln -s ~/projects/spacemacs-private ~/.spacemacs.d
+
+# 验证软链接建立成功
+la ~/ |grep emacs
+
+################################################################################
+# 按照其他 package
+
 # all-the-icons
 # Installing Fonts
 M-x all-the-icons-install-fonts
@@ -50,15 +61,11 @@ cd ./spacemacs-private/layers/appleshan-shell/
 mkdir ./local && cd ./local
 git clone https://github.com/appleshan/terminal-here terminal-here
 
+# pyim-bigdict.pyim
+wget http://tumashu.github.io/pyim-bigdict/pyim-bigdict.pyim.gz
 
-# 建立软链接
-# ln -s <源文件> <目标> 创建一个符号链接
-ln -s ~/projects/spacemacs-develop ~/.emacs.d
-ln -s ~/projects/spacemacs-private ~/.spacemacs.d
-
-# 验证软链接建立成功
-la ~/ |grep emacs
-
+################################################################################
+# 安装外部程序
 
 # ditaa
 mkdir -p ~/bin/java-lib/ditaa0_9
