@@ -51,6 +51,10 @@ values."
      ;; (spell-checking :variables
      ;;                 spell-checking-enable-by-default t)
      ;; themes-megapack ; http://themegallery.robdor.com/
+     (treemacs :variables
+               treemacs-use-collapsed-directories 3
+               treemacs-use-filewatch-mode t
+               treemacs-use-follow-mode t)
 
      ;; --- Auto Complete layers ---
      helm
