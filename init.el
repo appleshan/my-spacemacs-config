@@ -555,9 +555,6 @@ you should place your code here."
     )
   ;;}}
 
-  ;; neotree open default path
-  ;(neotree-dir (getenv "HOME"))
-
   ;; restore the desktop
 ;  (desktop-save-mode t)
 ;  (desktop-read)

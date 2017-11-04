@@ -37,10 +37,6 @@
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "M-%") 'query-replace-regexp)
 
-
-(global-set-key [f8] 'neotree-project-dir)
-(spacemacs/set-leader-keys "dt" 'neotree-dir)
-
 ; (global-set-key (kbd "M-/") 'company-complete)
 
 (global-set-key (kbd "C-\\") 'appleshan/evil-toggle-input-method)
