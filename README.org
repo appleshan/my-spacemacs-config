@@ -23,7 +23,7 @@ Tested on versions:
 [[./local/img/spacemacs-demo-2.png]]
 
 * :beginner: Installing
-#+BEGIN_SRC sh
+#+BEGIN_SRC bash
 #!/usr/bin/bash
 
 # sudo pacman -S emacs
@@ -77,10 +77,10 @@ unzip ditaa0_9.zip
 
 # for python
 pip install rope        # a python refactoring library
-pip install jedi        # Python自动补全库
+pip install jedi        # Python 自动补全库
 pip install flake8      # flake8 用来检查语法错误
 pip install importmagic # importmagic 用来自动引入需要的包
-pip install autopep8    # autopep8 用来检查PEP8规范
+pip install autopep8    # autopep8 用来检查 PEP8 规范
 pip install yapf        # yapf 用来格式化代码
 
 #+END_SRC
