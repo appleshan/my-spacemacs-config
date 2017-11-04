@@ -29,6 +29,8 @@
       (ob-ditaa :location built-in)
       (ob-plantuml :location built-in)
       ; (ob-ledger :location built-in) ; 必须 init，才能使用
+      org-sticky-header
+      org-super-agenda
       ;; secretaria
       ;; unicode-fonts
       ))
@@ -886,6 +888,20 @@
 
 (defun appleshan-org/init-ob-ledger ()
   (use-package ob-ledger))
+
+(defun appleshan-org/init-org-sticky-header ()
+  (use-package org-sticky-header
+    :defer t
+    :init (require 'org-sticky-header)
+    :config (add-hook 'org-mode-hook 'org-sticky-header-mode)))
+
+(defun appleshan-org/init-org-super-agenda ()
+  (use-package org-super-agenda
+    :config
+    (progn
+      (org-super-agenda-mode)
+      )
+    ))
 
 (defun appleshan-org/init-secretaria ()
   (use-package secretaria
