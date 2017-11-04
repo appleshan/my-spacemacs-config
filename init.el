@@ -474,7 +474,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; Org                    http://elpa.emacs-china.com/org/
   ;; Sunrise Commander ELPA	http://elpa.emacs-china.com/sunrise-commander/
   ;; user42 ELPA            http://elpa.emacs-china.com/user42/
-  (setq configuration-layer--elpa-archives
+  (setq configuration-layer-elpa-archives
         '(
           ;; Emacs-China 开源软件镜像站
           ("melpa-cn"  . "https://elpa.emacs-china.org/melpa/")
