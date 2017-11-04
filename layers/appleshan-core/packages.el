@@ -24,6 +24,7 @@
       (whitespace :location built-in)
       (calendar :location built-in)
       (ibuffer :location built-in)
+      helpful
       ))
 
 ;; List of packages to exclude.
@@ -169,6 +170,9 @@
 
 (defun appleshan-core/post-init-ibuffer ()
   (setq ibuffer-show-empty-filter-groups nil))
+
+(defun appleshan-core/init-helpful ()
+  (use-package helpful))
 
 ;; Local Variables:
 ;; coding: utf-8

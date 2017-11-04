@@ -11,7 +11,7 @@
 
 (configuration-layer/declare-layers '(
   (appleshan-core
-    :packages calendar mule recentf profiler whitespace ibuffer
+    :packages calendar mule recentf profiler whitespace ibuffer helpful
     ; desktop
     )
   appleshan-complete
