@@ -15,7 +15,7 @@ Hacking 始于 2012 年。2015 年爱上 Spacemacs :smile: :sparkling_heart:
 
 * Emacs version
 Tested on versions:
-- GNU Emacs 25.1 (x86_64-pc-linux-gnu, GTK+ Version 3.4.2) of 2017-02-22
+- GNU Emacs 25.1 for Arch Linux (x86_64-pc-linux-gnu, GTK+ Version 3.4.2) of 2017-11-06
 - [[https://github.com/zklhp/emacs-w64/releases][64-bit GNU Emacs for MS Windows with optimization]] (x86_64-pc-windows-10) of 2017-05-02
 
 * Screenshot
@@ -24,17 +24,24 @@ Tested on versions:
 
 * :beginner: Installing
 #+BEGIN_SRC bash
-#!/usr/bin/bash
+#!/usr/bin/env bash
+##########################################################################
+# install emacs config automatically.
+# by Apple Shan (apple.shan@gmail.com)
+##########################################################################
 
 # sudo pacman -S emacs
 
 cd ~/projects/
 
-# clone spacemacs repo
+# clone syl20bnr/spacemacs repo
 git clone -b develop https://github.com/syl20bnr/spacemacs.git spacemacs-develop
 
-# clone appleshan layer
+# clone appleshan/my-spacemacs-config layer
 git clone https://github.com/appleshan/my-spacemacs-config.git spacemacs-private
+
+rm ~/.emacs.d
+rm ~/.spacemacs.d
 
 # 建立软链接
 # ln -s <源文件> <目标> 创建一个符号链接
