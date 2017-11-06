@@ -21,6 +21,7 @@
         evil
         evil-escape
         ;; perspeen
+        treemacs
         ))
 
 ;; List of packages to exclude.
@@ -98,6 +99,11 @@
     (setq perspeen-use-tab t)
     :config
     (perspeen-mode)))
+
+(defun appleshan-navigation/post-init-treemacs ()
+  (with-eval-after-load 'treemacs
+    (setq treemacs-show-hidden-files nil)
+    ))
 
 ;; Local Variables:
 ;; coding: utf-8
