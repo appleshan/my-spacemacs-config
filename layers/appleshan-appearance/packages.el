@@ -14,6 +14,7 @@
       all-the-icons
       beacon
       hl-anything
+      on-screen
       popwin
       visual-regexp
       visual-regexp-steroids
@@ -50,6 +51,11 @@
       :off (hl-highlight-mode -1)
       :documentation "Toggle highlight anything mode."
       :evil-leader "ths")))
+
+(defun appleshan-appearance/init-on-screen ()
+  (use-package on-screen
+    :init (require 'on-screen)
+    :config (on-screen-global-mode +1)))
 
 (defun appleshan-appearance/post-init-popwin ()
   (progn
