@@ -131,9 +131,7 @@
     (progn
       (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
       (spacemacs|diminish highlight-indent-guides-mode))
-    :config
-    (progn
-      (setq highlight-indent-guides-method 'character))
+    ; :config (setq highlight-indent-guides-method 'character) ; 'fill / 'column / 'character
     ))
 
 (defun appleshan-programming/init-highlight-thing ()
