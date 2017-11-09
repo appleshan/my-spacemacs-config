@@ -167,8 +167,6 @@
           magit-refs-show-commit-count 'all
           magit-revision-show-gravatars nil)
 
-    (setq magit-completing-read-function 'magit-ido-completing-read)
-
     ;; http://emacs.stackexchange.com/questions/6021/change-a-branchs-upstream-with-magit/6023#6023
     (magit-define-popup-switch 'magit-push-popup ?u
       "Set upstream" "--set-upstream")
