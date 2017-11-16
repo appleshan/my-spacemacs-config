@@ -156,6 +156,7 @@ values."
                                     helm-pydoc
                                     helm-themes
                                     highlight-indentation
+                                    highlight-symbol
                                     ;; hl-anything
                                     hydra
                                     leuven-theme

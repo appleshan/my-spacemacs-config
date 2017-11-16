@@ -110,8 +110,6 @@
  '(highlight-cl ((t (:foreground "#20ABFC" :underline nil)))) ;`cl' 函数
  '(highlight-cl-and-other ((t (:foreground "#20ABFC" :underline nil)))) ;`cl' 函数， 但是定义在其他包
  '(highlight-cl-macro ((t (:underline nil)))) ;`cl' 宏
- ;; Highlight symbol
- '(highlight-symbol-face ((((class color) (background dark)) (:background "grey" :foreground "white"))))
  ;; hl-line+
  '(hl-line ((t (:background "grey5")))) ;当前行高亮背景色
  ;; hl-sexp

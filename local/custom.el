@@ -54,7 +54,6 @@
  '(highlight-cl ((t (:foreground "#20ABFC" :underline nil))))
  '(highlight-cl-and-other ((t (:foreground "#20ABFC" :underline nil))))
  '(highlight-cl-macro ((t (:underline nil))))
- '(highlight-symbol-face ((((class color) (background dark)) (:background "grey" :foreground "white"))))
  '(hl-line ((t (:background "grey5"))))
  '(hl-sexp-face ((((class color) (background dark)) (:background "gray2"))))
  '(info-elisp-command-ref-item ((t (:background "Black" :foreground "yellow3"))))
