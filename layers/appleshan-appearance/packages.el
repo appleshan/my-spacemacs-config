@@ -18,7 +18,6 @@
       popwin
       visual-regexp
       visual-regexp-steroids
-      tabbar
       ))
 
 ;; List of packages to exclude.
@@ -102,13 +101,6 @@
            ("C-r" . isearch-backward) ; ordinary backward search
            ("C-c m" . vr/mc-mark)  ; for multiple-cursors
            )))
-
-(defun appleshan-appearance/init-tabbar ()
-  (use-package tabbar
-    :init (tabbar-mode 1)
-    :config
-    (tabbar-theme-setup)
-    ))
 
 ;; Local Variables:
 ;; coding: utf-8

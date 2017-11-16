@@ -18,7 +18,6 @@
   (appleshan-appearance
     :packages all-the-icons beacon hl-anything on-screen
     popwin visual-regexp visual-regexp-steroids
-    ; tabbar
     )
   appleshan-navigation
   appleshan-notify
