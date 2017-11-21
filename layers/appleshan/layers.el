@@ -33,7 +33,8 @@
   ; appleshan-java
   ; appleshan-javascript
   ; appleshan-web
-  appleshan-lisp
+  (appleshan-lisp
+    :packages emacs-lisp lispy)
   ; appleshan-database
   ; appleshan-remote
   appleshan-misc
