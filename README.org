@@ -16,7 +16,9 @@ Hacking 始于 2012 年。2015 年爱上 Spacemacs :smile: :sparkling_heart:
 * Emacs version
 Tested on versions:
 - GNU Emacs 25.1 for Arch Linux (x86_64-pc-linux-gnu, GTK+ Version 3.4.2) of 2017-11-06
+  Linux 大法好
 - [[https://github.com/zklhp/emacs-w64/releases][64-bit GNU Emacs for MS Windows with optimization]] (x86_64-pc-windows-10) of 2017-05-02
+  不要在 MS Windows 上折腾 emacs。建议先阅读 [[https://emacs-china.org/t/topic/3980][Windows 上面重度使用 Emacs 一个多月的感受]]
 
 * Screenshot
 [[./local/img/spacemacs-demo-1.png]]
