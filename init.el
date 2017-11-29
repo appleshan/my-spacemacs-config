@@ -140,7 +140,7 @@ values."
                                     evil-mc
                                     evil-tutor
                                     evil-unimpaired
-                                    ; eyebrowse
+                                    ; eyebrowse ;; Easy window config switching
                                     fancy-battery
                                     find-by-pinyin-dired
                                     fish-mode
@@ -172,15 +172,16 @@ values."
                                     org-projectile
                                     org-repo-todo
                                     org-timer
-                                    rainbow-delimiters
+                                    rainbow-delimiters ;; Highlight brackets according to their depth
                                     skewer-mode
                                     smartparens
-                                    smeargle
+                                    smeargle ;; Highlighting regions by last updated time
                                     smex
                                     smooth-scrolling
                                     spinner
                                     vi-tilde-fringe
-                                    volatile-highlights)
+                                    ; volatile-highlights ;; Highlight some operations
+                                    )
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -461,12 +462,12 @@ before packages are loaded. If you are unsure, you should try in setting them in
    )
   ; (defvar stack-trace-on-error t)
 
-  ;; Set to t to debug package loading or nil to disable
-  (setq use-package-verbose nil)
+  (setq use-package-verbose nil)  ;; Set to t to debug package loading or nil to disable
 
   (setq byte-compile-warnings nil)
 
-  ;; @see http://elpa.emacs-china.org/
+  ;; ELPA: refer to https://elpa.emacs-china.org/
+  ;;
   ;; ELPA                   镜像地址
   ;; GNU ELPA               http://elpa.emacs-china.com/gnu/
   ;; MELPA                  http://elpa.emacs-china.com/melpa/
@@ -475,6 +476,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; Org                    http://elpa.emacs-china.com/org/
   ;; Sunrise Commander ELPA	http://elpa.emacs-china.com/sunrise-commander/
   ;; user42 ELPA            http://elpa.emacs-china.com/user42/
+  ;;
   (setq configuration-layer-elpa-archives
         '(
           ;; Emacs-China 开源软件镜像站

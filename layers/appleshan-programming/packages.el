@@ -114,6 +114,7 @@
         "." 'spacemacs/gist-list-mode-transient-state/body))
     ))
 
+;;; Pop up last commit information of current line
 (defun appleshan-programming/post-init-git-messenger ()
   (with-eval-after-load 'git-messenger
     (define-key git-messenger-map (kbd "f") 'appleshan/github-browse-commit)))

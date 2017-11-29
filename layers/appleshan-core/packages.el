@@ -126,6 +126,7 @@
                (5 right)))))
       )))
 
+;; Visualize TAB, (HARD) SPACE, NEWLINE
 (defun appleshan-core/post-init-whitespace ()
   (progn
     ;; ;; http://emacsredux.com/blog/2013/05/31/highlight-lines-that-exceed-a-certain-length-limit/

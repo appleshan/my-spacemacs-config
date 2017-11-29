@@ -56,29 +56,29 @@
     :init (require 'on-screen)
     :config (on-screen-global-mode +1)))
 
+;; Popup Window Manager
 (defun appleshan-appearance/post-init-popwin ()
-  (progn
-    ;; man
-    (push '(Man-mode :stick t :height 20) popwin:special-display-config)
+  ;; man
+  (push '(Man-mode :stick t :height 20) popwin:special-display-config)
 
-    ;; Elisp
-    (push '("*ielm*" :stick t) popwin:special-display-config)
+  ;; Elisp
+  (push '("*ielm*" :stick t) popwin:special-display-config)
 
-    ;; python
-    (push '("*Python*"   :stick t) popwin:special-display-config)
-    (push '("*Python Help*" :stick t :height 20) popwin:special-display-config)
+  ;; python
+  (push '("*Python*"   :stick t) popwin:special-display-config)
+  (push '("*Python Help*" :stick t :height 20) popwin:special-display-config)
 
-    ;; prodigy
-    (push '("*prodigy*" :stick t) popwin:special-display-config)
+  ;; prodigy
+  (push '("*prodigy*" :stick t) popwin:special-display-config)
 
-    ;; org-mode
-    (push '("*Org tags*" :stick t :height 30) popwin:special-display-config)
+  ;; org-mode
+  (push '("*Org tags*" :stick t :height 30) popwin:special-display-config)
 
-    ;; Completions
-    (push '("*Completions*" :stick t :noselect t) popwin:special-display-config)
+  ;; Completions
+  (push '("*Completions*" :stick t :noselect t) popwin:special-display-config)
 
-    (push "*appleshan/run-current-file output*" popwin:special-display-config)
-    (delete "*Async Shell Command*" popwin:special-display-config)))
+  (push "*appleshan/run-current-file output*" popwin:special-display-config)
+  (delete "*Async Shell Command*" popwin:special-display-config))
 
 ;; 可视化正则匹配
 ;; https://github.com/benma/visual-regexp.el

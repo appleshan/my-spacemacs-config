@@ -156,10 +156,6 @@
     ;; Logging
     ;;;;;;;;;;;;;;;;;;;;
 
-    ;; task完成后,自动记录完成时间
-    ;; (setq org-log-done t)
-    ;; @see ~/.emacs.d/layers/org/packages.el:99
-
     ;; 将 log 存入 drawer 中
     (setq org-log-into-drawer t)
 

@@ -11,7 +11,7 @@
 
 ;;; Code:
 
-;; personal information about me: full name and email
+;; Personal information about me: full name and email
 (setq user-full-name "Apple Shan"
       user-mail-address "apple.shan@gmail.com")
 
@@ -43,7 +43,8 @@
 
 ;; show parenthesis match
 (show-paren-mode t)
-(setq show-paren-style 'expression)
+; (setq show-paren-style 'expression)
+(setq show-paren-style 'parentheses) ;括号匹配显示但不是烦人的跳到另一个括号。
 
 (auto-compression-mode t)            ;Transparently Open Compressed Files
 ;(mouse-avoidance-mode "banish")      ;只要一操作鼠标自动闪开
@@ -59,7 +60,6 @@
 (setq message-log-max t)             ;设置 *Messages* 记录全部消息, 而不用截去
 (setq read-quoted-char-radix 16)     ;设置 引用字符 的基数
 (setq void-text-area-pointer nil)    ;禁止显示鼠标指针
-(setq show-paren-style 'parentheses) ;括号匹配显示但不是烦人的跳到另一个括号。
 (setq blink-matching-paren nil)      ;当插入右括号时不显示匹配的左括号
 (setq max-lisp-eval-depth 40000)     ; lisp 最大执行深度
 (setq-default comment-style 'indent) ;设定自动缩进的注释风格
@@ -154,6 +154,14 @@
 
 ;; 搜索时任意字符都可以用空格代替
 (setq search-whitespace-regexp ".*?")
+
+;; Mouse & Smooth Scroll
+;; Scroll one line at a time (less "jumpy" than defaults)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+(setq mouse-wheel-progressive-speed nil)
+(setq scroll-step 1
+      scroll-margin 1
+      scroll-conservatively 100000)
 
 ;; Local Variables:
 ;; coding: utf-8

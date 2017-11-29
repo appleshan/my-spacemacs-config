@@ -9,13 +9,6 @@
 ;;
 ;;; License: GPLv3
 
-;; Scrolling
-(setq scroll-up-aggressively 0.01
-      scroll-down-aggressively 0.01
-      auto-window-vscroll nil
-      hscroll-margin 5
-      hscroll-step 5)
-
 (spacemacs|add-toggle iimage
   :status iimage-mode
   :on (iimage-mode)

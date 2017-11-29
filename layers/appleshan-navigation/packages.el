@@ -100,6 +100,7 @@
     :config
     (perspeen-mode)))
 
+;; A tree layout file explorer
 (defun appleshan-navigation/post-init-treemacs ()
   (with-eval-after-load 'treemacs
     (setq treemacs-show-hidden-files nil)

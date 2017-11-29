@@ -61,6 +61,7 @@
              ))
       )))
 
+;; Interactively insert items from kill-ring
 (defun appleshan-misc/init-browse-kill-ring ()
   (use-package browse-kill-ring
     :defer t
@@ -100,6 +101,7 @@
             (message "kill ring is empty"))))
       )))
 
+;; Discover key bindings and their meaning for the current Emacs major mode
 (defun appleshan-misc/init-discover-my-major ()
   (use-package discover-my-major
     :defer t
