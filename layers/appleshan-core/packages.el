@@ -17,6 +17,7 @@
 
 (setq appleshan-core-packages
     '(
+      (autorevert :location built-in)
       (mule :location built-in)
       (desktop :location built-in)
       (recentf :location built-in)
@@ -29,6 +30,13 @@
 
 ;; List of packages to exclude.
 (setq appleshan-core-excluded-packages '())
+
+;; Automatically reload files was modified by external program
+(defun appleshan-core/init-autorevert ()
+  (use-package autorevert
+    :ensure nil
+    :diminish auto-revert-mode
+    :init (add-hook 'after-init-hook #'global-auto-revert-mode)))
 
 ;; Charset 设置
 (defun appleshan-core/init-mule ()
