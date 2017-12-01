@@ -46,8 +46,7 @@
       (message
         "Size of all marked files: %s"
         (progn
-          ; (re-search-backward "\\(^[ 0-9.,]+[A-Za-z]+\\).*total$")
-          (re-search-backward "\\(^[ 0-9.,]+[A-Za-z]+\\).*总用量$") ; ubuntu linux 中文系统
+          (re-search-backward "\\(^[ 0-9.,]+[A-Za-z]+\\).*total$")
           (match-string 1))))))
 
 (defun dired/open-in-external-app ()
