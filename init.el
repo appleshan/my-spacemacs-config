@@ -62,13 +62,13 @@ values."
                       auto-completion-complete-with-key-sequence nil
                       auto-completion-complete-with-key-sequence-delay 0.1
                       auto-completion-enable-help-tooltip 'manual
-                      ;; Adding yas-snippets to autocompletion
+                      ;; Support yas-snippets in commpany
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-sort-by-usage t
                       auto-completion-private-snippets-directory nil
                       ; auto-completion-return-key-behavior nil
                       auto-completion-tab-key-behavior 'complete
-                      :disabled-for erc org markdown) ; erc org markdown
+                      :disabled-for erc git org markdown) ; erc git org markdown
      ;; auto-complete layer 在 org-mode 中会引发很多问题，所以最好在 org-mode 中禁用补全
 
      ;; --- Programming and markup languages layers ---

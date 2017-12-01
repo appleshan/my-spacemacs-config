@@ -235,15 +235,20 @@
     (add-to-list 'smart-tab-disabled-major-modes 'erc-mode)
     (add-to-list 'smart-tab-disabled-major-modes 'shell-mode)))
 
+;; Highlight symbols
 (defun appleshan-programming/init-symbol-overlay ()
   (use-package symbol-overlay
-    :init (require 'symbol-overlay)
-    :config
-    (global-set-key (kbd "M-i") 'symbol-overlay-put)
-    (global-set-key (kbd "M-n") 'symbol-overlay-switch-forward)
-    (global-set-key (kbd "M-p") 'symbol-overlay-switch-backward)
-    (global-set-key (kbd "<f7>") 'symbol-overlay-mode)
-    (global-set-key (kbd "<f8>") 'symbol-overlay-remove-all)))
+    :diminish symbol-overlay-mode
+    :bind (("M-i" . symbol-overlay-put)
+           ("M-n" . symbol-overlay-jump-next)
+           ("M-p" . symbol-overlay-jump-prev)
+           ;("M-n" . symbol-overlay-switch-next)
+           ;("M-p" . symbol-overlay-switch-prev)
+           ([C-f3] . symbol-overlay-put)
+           ([f3] . symbol-overlay-jump-next)
+           ([S-f3] . symbol-overlay-jump-prev)
+           ([M-f3] . symbol-overlay-remove-all))
+    :init (add-hook 'prog-mode-hook #'symbol-overlay-mode)))
 
 (defun appleshan-programming/init-tldr ()
   (use-package tldr
