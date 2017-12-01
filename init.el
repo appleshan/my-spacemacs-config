@@ -158,7 +158,6 @@ values."
                                     highlight-indentation
                                     highlight-symbol
                                     ;; hl-anything
-                                    hydra
                                     leuven-theme
                                     linum-relative
                                     livid-mode
