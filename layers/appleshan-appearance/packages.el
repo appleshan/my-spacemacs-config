@@ -11,6 +11,7 @@
 
 (setq appleshan-appearance-packages
     '(
+      anzu
       all-the-icons
       beacon
       hl-anything
@@ -22,6 +23,11 @@
 
 ;; List of packages to exclude.
 (setq appleshan-appearance-excluded-packages '())
+
+;; Show number of matches in mode-line while searching
+(defun appleshan-appearance/post-init-anzu ()
+  (setq anzu-replace-to-string-separator
+        (if (char-displayable-p ?→) " → " " -> ")))
 
 (defun appleshan-appearance/init-all-the-icons ()
   (use-package all-the-icons))
