@@ -275,7 +275,7 @@
     (setq wg-prefix-key (kbd "C-c z"))
 
     ;; Change workgroups session file
-    (setq wg-session-file "~/.emacs.d/.emacs_workgroups")
+    (setq wg-session-file "~/.emacs.d/.cache/.emacs_workgroups")
 
     ;; Set your own keyboard shortcuts to reload/save/switch WGs:
     ;; "s" == "Super" or "Win"-key, "S" == Shift, "C" == Control
