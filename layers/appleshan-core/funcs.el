@@ -347,6 +347,14 @@ re-indenting and un-tabification is done."
 (global-set-key (kbd "C-<") 'upcase-word-toggle)
 ;;}}
 
+;; Save a file as utf-8
+(defun save-buffer-as-utf8 (coding-system)
+  "Revert a buffer with `CODING-SYSTEM' and save as UTF-8."
+  (interactive "zCoding system for visited file (default nil):")
+  (revert-buffer-with-coding-system coding-system)
+  (set-buffer-file-coding-system 'utf-8)
+  (save-buffer))
+
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: nil
