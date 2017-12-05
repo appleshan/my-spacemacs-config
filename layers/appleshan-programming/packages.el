@@ -17,6 +17,7 @@
       engine-mode
       flycheck
       flycheck-package
+      avy-flycheck
       gist
       git-messenger
       highlight-escape-sequences
@@ -78,6 +79,11 @@
   (use-package flycheck-package
     :init
     (eval-after-load 'flycheck '(flycheck-package-setup))))
+
+;; Jump to and fix syntax errors via `avy'
+(defun appleshan-programming/init-avy-flycheck ()
+  (use-package avy-flycheck
+    :init (avy-flycheck-setup)))
 
 (defun appleshan-programming/post-init-gist ()
   (use-package gist
