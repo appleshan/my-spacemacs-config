@@ -92,8 +92,9 @@
     :config
     (progn
       (setq recentf-auto-cleanup 600)
-      (setq recentf-max-saved-items 300)
-      (dolist (item '("/\\.git/.*\\'" ; Git contents
+      (setq recentf-max-saved-items 200)
+      (dolist (item '("bookmarks"
+                      "/\\.git/.*\\'" ; Git contents
                       "COMMIT_MSG"
                       "COMMIT_EDITMSG"
                       "github.*txt$"
@@ -109,11 +110,9 @@
                       "/sudo:"
                       "/scp:"
                       (expand-file-name my-org-gtd-directory) ; org-gtd files
-                      "/spacemacs-develop.d/.cache/"
-                      "/spacemacs-develop.d/snippets/"
-                      "/spacemacs-master.d/.cache/"
-                      "/spacemacs-master.d/snippets/"
-                      "/my-spacemacs-config.d/.cache/"
+                      "/spacemacs-develop/.cache/"
+                      "/spacemacs-develop/snippets/"
+                      "/spacemacs-private/.cache/"
                       "/opt/emacs*/.*\\.el\\'"))
         (add-to-list 'recentf-exclude item))
     )))

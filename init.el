@@ -462,9 +462,9 @@ before packages are loaded. If you are unsure, you should try in setting them in
    )
   ; (defvar stack-trace-on-error t)
 
-  (setq use-package-verbose nil)  ;; Set to t to debug package loading or nil to disable
-
   (setq byte-compile-warnings nil)
+  (setq spaceline-buffer-size-p nil)
+  (setq use-package-verbose nil)  ;; Set to t to debug package loading or nil to disable
 
   ;; ELPA: refer to https://elpa.emacs-china.org/
   ;;
