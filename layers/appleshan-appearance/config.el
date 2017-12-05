@@ -89,14 +89,6 @@
              ad-do-it))
 (ad-activate 'linum-on)
 
-;; Change cursor color depending on mode
-; (setq evil-emacs-state-cursor '("red" box))
-; (setq evil-normal-state-cursor '("green" box))
-; (setq evil-visual-state-cursor '("orange" box))
-; (setq evil-insert-state-cursor '("red" bar))
-; (setq evil-replace-state-cursor '("red" bar))
-; (setq evil-operator-state-cursor '("red" hollow))
-
 ;; UI设置
 ;; more useful frame title, that show either a file or a
 ;; buffer name (if the buffer isn't visiting a file)
@@ -139,6 +131,14 @@
 
 ;; Don't use dialog boxes, just ask inside Emacs
 (setq use-dialog-box nil)
+
+;; Don't open a file in a new frame
+(when (boundp 'ns-pop-up-frames)
+  (setq ns-pop-up-frames nil))
+
+;; Don't use GTK+ tooltip
+(when (boundp 'x-gtk-use-system-tooltips)
+  (setq x-gtk-use-system-tooltips nil))
 
 ;;set unicode font for mode-line
 ; (set-fontset-font t '(#x2776 . #x2793) "Lucida Sans Unicode") ;;win numbers
