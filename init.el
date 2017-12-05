@@ -563,6 +563,15 @@ you should place your code here."
     )
   ;;}}
 
+  ;; Change cursor color depending on mode
+  (setq evil-emacs-state-cursor `("red" hbar))     ; _
+  (setq evil-normal-state-cursor `("green" box))   ; █
+  (setq evil-visual-state-cursor `("orange" box))  ; █
+  (setq evil-insert-state-cursor `("red" bar))     ; ⎸
+  (setq evil-replace-state-cursor `("red" bar))
+  (setq evil-operator-state-cursor `("red" hollow))
+  (setq evil-motion-state-cursor `("orange" box))  ; █
+
   ;; restore the desktop
 ;  (desktop-save-mode t)
 ;  (desktop-read)
