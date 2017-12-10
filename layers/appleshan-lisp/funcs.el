@@ -9,6 +9,11 @@
 ;;
 ;;; License: GPLv3
 
+(defun recompile-elpa ()
+  "Recompile packages in elpa directory. Useful if you switch Emacs versions."
+  (interactive)
+  (byte-recompile-directory package-user-dir nil t))
+
 (defun eos/eval-last-sexp-or-region (prefix)
   "Eval region from BEG to END if active, otherwise the last sexp."
   (interactive "P")
