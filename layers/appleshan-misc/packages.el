@@ -132,15 +132,13 @@
            ("s-<" . mc/unmark-previous-like-this)
            ("C-c C-s-." . mc/mark-all-like-this))))
 
+;; Persistent the scratch buffter
 (defun appleshan-misc/init-persistent-scratch ()
   (use-package persistent-scratch
-    :defer t
     :init
-    (progn
       (setq persistent-scratch-autosave-interval 30) ; 30 second
-      (setq persistent-scratch-save-file (expand-file-name ".persistent-scratch" spacemacs-cache-directory)))
-    :config
-    (persistent-scratch-setup-default)))
+      (setq persistent-scratch-save-file (expand-file-name ".persistent-scratch" spacemacs-cache-directory))
+      (add-hook 'after-init-hook #'persistent-scratch-setup-default)))
 
 (defun appleshan-misc/init-tiny ()
   (use-package tiny
