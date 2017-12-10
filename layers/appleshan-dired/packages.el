@@ -56,18 +56,23 @@
 
 ;; @see http://oremacs.com/2015/01/04/dired-nohup/
 (defun appleshan-dired/post-init-dired-x ()
-  (setq dired-guess-shell-alist-user
-        '(("\\.pdf\\'" "evince" "okular")
-          ("\\.\\(?:djvu\\|eps\\)\\'" "evince")
-          ("\\.\\(?:jpg\\|jpeg\\|png\\|gif\\|xpm\\)\\'" "eog")
-          ("\\.\\(?:xcf\\)\\'" "gimp")
-          ("\\.csv\\'" "libreoffice")
-          ("\\.tex\\'" "pdflatex" "latex")
-          ("\\.\\(?:mp4\\|mkv\\|avi\\|flv\\|ogv\\)\\(?:\\.part\\)?\\'" "vlc")
-          ("\\.\\(?:mp3\\|flac\\)\\'" "rhythmbox")
-          ("\\.html?\\'" "chrome")
-          ("\\.cue?\\'" "audacious")))
-  )
+  (with-eval-after-load 'dired-x
+    (setq dired-guess-shell-alist-user
+          '(("\\.pdf\\'" "open")
+            ("\\.docx\\'" "open")
+            ("\\.\\(?:djvu\\|eps\\)\\'" "open")
+            ("\\.\\(?:jpg\\|jpeg\\|png\\|gif\\|xpm\\)\\'" "open")
+            ("\\.\\(?:xcf\\)\\'" "open")
+            ("\\.csv\\'" "open")
+            ("\\.tex\\'" "open")
+            ("\\.\\(?:mp4\\|mkv\\|avi\\|flv\\|rm\\|rmvb\\|ogv\\)\\(?:\\.part\\)?\\'"
+             "open")
+            ("\\.\\(?:mp3\\|flac\\)\\'" "open")
+            ("\\.html?\\'" "open")
+            ("\\.md\\'" "open")))
+
+    (add-hook 'dired-mode-hook 'appleshan//dired-hook)
+    ))
 
 (defun appleshan-dired/init-dired-k ()
   "Git status in dired."
