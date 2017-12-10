@@ -14,7 +14,7 @@
       (dired :location built-in)
       (dired-x :location built-in)
       (dired-k :location local)
-      ;; dired-sort
+      dired-quick-sort
       ))
 
 ;; List of packages to exclude.
@@ -93,12 +93,12 @@
         "K" 'dired-k)
       )))
 
-(defun appleshan-dired/init-dired-sort ()
-  (use-package dired-sort
-    :defer t
-    :init (require 'dired-sort)
-    :config
-    (add-hook 'dired-mode-hook 'appleshan//dired-sort-hook)))
+;; Quick sort dired buffers via hydra
+;; bind key: `S'
+(defun appleshan-dired/init-dired-quick-sort ()
+  (use-package dired-quick-sort
+    :if (or (executable-find "gls") (executable-find "ls"))
+    :init (dired-quick-sort-setup)))
 
 ;; Local Variables:
 ;; coding: utf-8
