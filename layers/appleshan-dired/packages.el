@@ -74,11 +74,13 @@
     (add-hook 'dired-mode-hook 'appleshan//dired-hook)
     ))
 
+;; Highlights dired buffer like k
 (defun appleshan-dired/init-dired-k ()
   "Git status in dired."
   (use-package dired-k
-    :defer t
-    :init (require 'dired-k)
+    :init
+      (setq dired-k-padding 1)
+      (setq dired-k-human-readable t)
     :config
     (progn
       ;; always execute dired-k when dired buffer is opened
