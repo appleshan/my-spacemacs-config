@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name : for ... done
+# name: for ... done
 # key: for
 # --
 for ${1:condition}; do

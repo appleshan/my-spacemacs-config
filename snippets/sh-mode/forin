@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name : for ... in ... done
+# name: for ... in ... done
 # key: forin
 # --
 for ${1:i} in ${2:words}; do
