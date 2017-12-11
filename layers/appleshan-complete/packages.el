@@ -96,7 +96,11 @@
 
   (set-face-background 'secondary-selection "gray")
 
-  (setq-default yas-prompt-functions '(yas-ido-prompt yas-dropdown-prompt)))
+  (use-package dropdown-list :commands dropdown-list)
+  (setq yas-prompt-functions '(yas-dropdown-prompt
+                               yas-x-prompt
+                               yas-maybe-ido-prompt
+                               yas-completing-prompt)))
 
 ;; Local Variables:
 ;; coding: utf-8
