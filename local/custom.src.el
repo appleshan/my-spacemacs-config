@@ -42,14 +42,14 @@
  '(ascii-non-ascii-face ((((class color) (background dark)) (:background "Black" :foreground "Gold")))) ;Non-ascii字符的编码
  ;; col-highlight
  '(col-highlight ((t (:background "Grey5")))) ;当前列的高亮背景色
- ;; Company
- '(company-preview ((t (:background "gold3" :foreground "black")))) ;预览
- '(company-preview-common ((t (:background "gold3" :foreground "grey20")))) ;预览 （公共部分）
- '(company-preview-search ((t (:background "green4" :foreground "green")))) ;预览 （搜索）
- '(company-tooltip ((t (:background "darkred" :foreground "grey")))) ;tooltip
- '(company-tooltip-common ((t (:inherit company-tooltip :foreground "gold")))) ;tooltip (公共部分）
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :foreground "gold")))) ;tooltip （选择公共部分）
- '(company-tooltip-selection ((default (:background "red3" :foreground "black")) (((class color) (min-colors 88)) (:background "orange1")))) ;tooltip (选择）
+ ;; Company 跟主题一样的风格
+ '(company-tooltip ((t (:inherit 'mode-line))))
+ '(company-scrollbar-bg ((t (:inherit 'mode-line-inactive))))
+ '(company-scrollbar-fg ((t (:inherit 'tooltip))))
+ '(company-tooltip-selection ((t (:inherit 'highlight))))
+ '(company-tooltip-common ((t (:inherit 'mode-line))))
+ '(company-tooltip-common-completion ((t (:inherit 'mode-line))))
+ '(company-tooltip-annotation ((t (:inherit 'mode-line))))
  ;; Completion ui
  '(completion-tooltip-face ((t (:inherit tooltip :background "grey5" :foreground "khaki1" :family "文泉驿等宽微米黑"))))
  '(completions-common-part ((t (:foreground "Green3")))) ;补全相同部分
