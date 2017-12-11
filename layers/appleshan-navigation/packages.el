@@ -20,7 +20,6 @@
         dumb-jump
         evil
         evil-escape
-        ;; perspeen
         treemacs
         workgroups2
         ))
@@ -95,14 +94,6 @@
 
 (defun appleshan-navigation/post-init-evil-escape ()
   (setq evil-escape-delay 0.2))
-
-(defun appleshan-navigation/init-perspeen ()
-  (use-package perspeen
-    :ensure t
-    :init
-    (setq perspeen-use-tab t)
-    :config
-    (perspeen-mode)))
 
 ;; A tree layout file explorer
 (defun appleshan-navigation/post-init-treemacs ()
