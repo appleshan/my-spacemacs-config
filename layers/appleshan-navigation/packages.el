@@ -28,9 +28,6 @@
 (setq appleshan-navigation-excluded-packages '())
 
 (defun appleshan-navigation/post-init-dumb-jump ()
-  ;; If your project has multi-line method signatures you should use ag.
-  (setq dumb-jump-force-searcher 'ag)
-  (setq dumb-jump-prefer-searcher 'ag)
   (defun my-dumb-jump ()
     (interactive)
     (evil-set-jump)
