@@ -21,7 +21,7 @@
       (org-crypt :location built-in)
       (org-faces :location built-in)
       (org-list :location built-in)
-      ;; org-bullets
+      org-bullets
       ; org-password-manager
       (org-src :location built-in)
       (ob-core :location built-in)
@@ -606,21 +606,10 @@ _h_tml    ^ ^         _S_HELL         _A_SCII:
     ))
 
 ;; 修改 org 文件中各层级的 headline 前显示的标志
-;; 更好看的标题符号标记:
-;; 🐉 : http://graphemica.com/1F409
-;; 🕊 : http://graphemica.com/1F54A
-;; 🐘 : http://graphemica.com/1F418
-;; 🐍 : http://graphemica.com/1F40D
-;; 🐳 : http://graphemica.com/1F433
-;; 🐙 : http://graphemica.com/1F419
-;; 🐬 : http://graphemica.com/1F42C
-;; 🐠 : http://graphemica.com/1F420
-;; 🐡 : http://graphemica.com/1F421
-;; 🐟 : http://graphemica.com/1F41F
 (defun appleshan-org/post-init-org-bullets ()
   (with-eval-after-load 'org-bullets
-    (setq org-bullets-bullet-list '("🐉" "🐘" "🐳" "🐬" "🐙" "🐠" "🐡" "🐟" "🕊" "🐍"))
-    ;(setq org-bullets-bullet-list '("❀" "❁" "❃" "❊" "❋" "✱" "✼" "✾" "✿"))
+    (setq org-bullets-bullet-list
+          '("✡" "✽" "✲" "✱" "✻" "✼" "✽" "✾" "✿" "❀" "❁" "❂" "❃" "❄" "❅" "❆" "❇"))
     ))
 
 (defun appleshan-org/init-org-password-manager ()
