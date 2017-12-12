@@ -716,11 +716,7 @@ _h_tml    ^ ^         _S_HELL         _A_SCII:
 
 (defun appleshan-org/init-org-super-agenda ()
   (use-package org-super-agenda
-    :config
-    (progn
-      (org-super-agenda-mode)
-      )
-    ))
+    :config (org-super-agenda-mode)))
 
 (defun appleshan-org/init-secretaria ()
   (use-package secretaria
