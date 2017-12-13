@@ -10,5 +10,5 @@
 .cache/
 eclipse.jdt.ls/
 
-/layers/**/local/
-/local/dired-k/
+local/dired-k/
+local/terminal-here/

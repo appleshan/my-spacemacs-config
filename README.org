@@ -66,12 +66,11 @@ la ~/ |grep emacs
 M-x all-the-icons-install-fonts
 
 # dired-k
-cd ./spacemacs-private/local/
+cd ~/.spacemacs.d/local/
 git clone https://github.com/appleshan/emacs-dired-k dired-k
 
 # terminal-here
-cd ./spacemacs-private/layers/appleshan-shell/
-mkdir ./local && cd ./local
+cd ~/.spacemacs.d/local/
 git clone https://github.com/appleshan/terminal-here terminal-here
 
 # pyim-bigdict.pyim

@@ -17,7 +17,7 @@
 
 (setq appleshan-shell-packages
       '(
-        (terminal-here :location local)
+        (terminal-here :location "~/.spacemacs.d/local/terminal-here/")
         ))
 
 ;; List of packages to exclude.
