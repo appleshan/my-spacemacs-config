@@ -66,8 +66,7 @@ la ~/ |grep emacs
 M-x all-the-icons-install-fonts
 
 # dired-k
-cd ./spacemacs-private/layers/appleshan-dired/
-mkdir ./local && cd ./local
+cd ./spacemacs-private/local/
 git clone https://github.com/appleshan/emacs-dired-k dired-k
 
 # terminal-here

@@ -13,7 +13,7 @@
     '(
       (dired :location built-in)
       (dired-x :location built-in)
-      (dired-k :location local)
+      (dired-k :location "~/.spacemacs.d/local/dired-k/")
       dired-quick-sort
       ))
 
