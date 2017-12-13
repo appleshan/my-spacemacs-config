@@ -39,8 +39,13 @@ cd ~/projects/
 # clone syl20bnr/spacemacs repo
 git clone -b develop https://github.com/syl20bnr/spacemacs.git spacemacs-develop
 
-# clone appleshan/my-spacemacs-config layer
-git clone https://github.com/appleshan/my-spacemacs-config.git spacemacs-private
+# clone appleshan/my-spacemacs-config and submodule
+git clone --recursive https://github.com/appleshan/my-spacemacs-config.git spacemacs-private
+
+# git submodule
+# 如果已經抓下來才發現 submodule 是空的，可以用以下指令去抓
+cd spacemacs-private
+git submodule update --init --recursive
 
 rm ~/.emacs.d
 rm ~/.spacemacs.d
