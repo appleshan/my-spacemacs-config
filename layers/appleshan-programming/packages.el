@@ -72,7 +72,17 @@
   (setq-default flycheck-disabled-checkers
                 '(emacs-lisp-checkdoc json-jsonlint json-python-json))
   (setq flycheck-display-errors-delay 0.9)
-  (setq flycheck-idle-change-delay 2.0))
+  (setq flycheck-idle-change-delay 2.0)
+
+  (flycheck-define-checker xml-xmllint
+    "A XML syntax checker and validator using the xmllint utility.
+
+  The xmllint is part of libxml2, see URL
+  `http://www.xmlsoft.org/'."
+    :command ("xmllint" "--noout" source)
+    :error-patterns
+    ((error line-start (file-name) ":" line ": " (message) line-end))
+    :modes (xml-mode nxml-mode)))
 
 (defun appleshan-programming/init-flycheck-package ()
   (use-package flycheck-package
