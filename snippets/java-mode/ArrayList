@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: List
-# key: list
-# group: collection
-# --
-List<${1:Type}> ${2:list} = new ArrayList<$1>();$0

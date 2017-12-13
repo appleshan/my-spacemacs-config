@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: toString
-# key: tos
-# --
-public String toString() {
-    return ReflectionToStringBuilder.toString(this, ToStringStyle.MULTI_LINE_STYLE, true, true);
-}

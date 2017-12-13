@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: interface
-# key: inter
-# --
-public interface ${1:`(file-name-sans-extension (buffer-name))`}$2 {
-    $0
-}
