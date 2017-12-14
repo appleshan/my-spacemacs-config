@@ -18,7 +18,8 @@
 (setq appleshan-notify-packages
       '(
         alert
-        ; sauron
+        sauron
+        (eshell :location built-in)
         ))
 
 ;; List of packages to exclude.
@@ -85,6 +86,34 @@
                         (concat "Finished command in " (buffer-name))
                         (lambda () (switch-to-buffer-other-window (buffer-name)))
                         nil))))
+
+(defun appleshan-notify/post-init-eshell ()
+  (use-package eshell
+    :config
+    ;; Seconds a command must take before showing an alert
+    (setq eos/eshell-time-before-alert 5.0)
+
+    (defun eos/eshell-precommand ()
+      (interactive)
+      (setq-local eos/eshell-command-start-time (current-time)))
+
+    (defun eos/eshell-command-finished ()
+      (interactive)
+      (when (and (boundp 'eos/eshell-command-start-time)
+             (> (float-time (time-subtract (current-time)
+                                            eos/eshell-command-start-time))
+                 eos/eshell-time-before-alert))
+        (sauron-add-event major-mode
+                          (if (zerop eshell-last-command-status)
+                              3
+                            4)
+                          (format "EShell: command [%s] finished, status: %s"
+                                  eshell-last-command-name
+                                  eshell-last-command-status)
+                          (lambda () (switch-to-buffer-other-window (buffer-name)))
+                          nil)))
+    (add-hook 'eshell-pre-command-hook #'eos/eshell-precommand)
+    (add-hook 'eshell-post-command-hook #'eos/eshell-command-finished)))
 
 ;; Local Variables:
 ;; coding: utf-8

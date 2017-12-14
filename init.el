@@ -77,6 +77,7 @@ values."
      ;; java
      plantuml ; uml
      python
+     (shell :packages (company esh-help eshell eshell-prompt-extras eshell-z))
      shell-scripts
      yaml
      ;; markdown
