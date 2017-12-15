@@ -158,7 +158,7 @@ values."
                                     helm-themes
                                     highlight-indentation
                                     highlight-symbol
-                                    ;; hl-anything
+                                    hl-anything
                                     leuven-theme
                                     linum-relative
                                     livid-mode

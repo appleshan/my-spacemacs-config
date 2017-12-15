@@ -14,7 +14,6 @@
       anzu
       all-the-icons
       beacon
-      hl-anything
       on-screen
       paren-face
       popwin
@@ -47,16 +46,6 @@
       (spacemacs/toggle-beacon-on))
     :config
     (spacemacs|hide-lighter beacon-mode)))
-
-(defun appleshan-appearance/post-init-hl-anything ()
-  (progn
-    (hl-highlight-mode -1)
-    (spacemacs|add-toggle toggle-hl-anything
-      :status hl-highlight-mode
-      :on (hl-highlight-mode)
-      :off (hl-highlight-mode -1)
-      :documentation "Toggle highlight anything mode."
-      :evil-leader "ths")))
 
 (defun appleshan-appearance/init-on-screen ()
   (use-package on-screen
