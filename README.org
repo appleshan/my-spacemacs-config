@@ -143,13 +143,17 @@ mklink /D d:\.spacemacs.d d:\projects\my-spacemacs-config.d
 
 注意：mklink 支持 Windows 7 及以上版本
 
-** 字体
-https://github.com/ProgrammingFonts/programming-fonts-collection
-- Linux
+** Fonts
+我最近几乎一直都在使用 Hack 或 Source Code Pro，在 Linux 和任何其他计算机上，对我来说都是相当不错的。
+字体我可能会或可能不会使用（没有特定的顺序）：
+  - Hack
   - Source Code Pro
+  - Input Mono
+  - Inconsolata
+  - DejaVu Sans
   - 文泉驿
-- Windows 10
   - 微软雅黑
+
 ** diff
 - Windows 10
 http://gnuwin32.sourceforge.net/packages/diffutils.htm
