@@ -65,9 +65,9 @@
     (set-next-selection-coding-system 'utf-8-unix)
 
     ;; 文件默认保存为 utf-8
+    (set-default-coding-systems 'utf-8-unix)
     (set-buffer-file-coding-system 'utf-8-unix)
     (set-default buffer-file-coding-system 'utf8-unix)
-    (set-default-coding-systems 'utf-8-unix)
 
     ;; 解决粘贴中文出现乱码的问题
     (set-clipboard-coding-system 'utf-8-unix)

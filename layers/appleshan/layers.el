@@ -15,10 +15,7 @@
     ; desktop
     )
   appleshan-complete
-  (appleshan-appearance
-    :packages anzu all-the-icons beacon hl-anything on-screen
-    popwin visual-regexp visual-regexp-steroids
-    )
+  appleshan-appearance
   appleshan-navigation
   appleshan-notify
   appleshan-shell

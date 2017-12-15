@@ -166,13 +166,14 @@ values."
                                     open-junk-file
                                     orgit
                                     orglue
-                                    org-bullets
+                                    ;; org-bullets
                                     org-download
                                     org-present
                                     org-projectile
                                     org-repo-todo
                                     org-timer
                                     rainbow-delimiters ;; Highlight brackets according to their depth
+                                    rainbow-identifiers
                                     skewer-mode
                                     smartparens
                                     smeargle ;; Highlighting regions by last updated time

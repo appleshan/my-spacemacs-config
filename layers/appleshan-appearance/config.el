@@ -132,6 +132,9 @@
 ;; Don't use dialog boxes, just ask inside Emacs
 (setq use-dialog-box nil)
 
+;; The number is in pixels.
+(setq-default line-spacing 0)
+
 ;; Don't open a file in a new frame
 (when (boundp 'ns-pop-up-frames)
   (setq ns-pop-up-frames nil))
