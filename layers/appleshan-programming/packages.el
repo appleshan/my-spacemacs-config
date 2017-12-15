@@ -25,7 +25,6 @@
       highlight-thing
       magit
       paredit
-      paren-face
       prodigy
       plantuml-mode
       smart-tab
@@ -203,11 +202,6 @@
       (bind-key* "s-[" #'paredit-wrap-square)
       (bind-key* "s-{" #'paredit-wrap-curly)
       )))
-
-(defun appleshan-programming/init-paren-face ()
-  (use-package paren-face
-    :ensure t
-    :init (global-paren-face-mode)))
 
 (defun appleshan-programming/post-init-prodigy ()
   (with-eval-after-load 'prodigy

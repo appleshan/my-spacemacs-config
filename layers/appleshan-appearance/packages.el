@@ -16,6 +16,7 @@
       beacon
       hl-anything
       on-screen
+      paren-face
       popwin
       visual-regexp
       visual-regexp-steroids
@@ -61,6 +62,11 @@
   (use-package on-screen
     :init (require 'on-screen)
     :config (on-screen-global-mode +1)))
+
+(defun appleshan-appearance/init-paren-face ()
+  (use-package paren-face
+    :ensure t
+    :init (global-paren-face-mode)))
 
 ;; Popup Window Manager
 (defun appleshan-appearance/post-init-popwin ()
