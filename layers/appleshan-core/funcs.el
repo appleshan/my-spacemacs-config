@@ -355,6 +355,15 @@ re-indenting and un-tabification is done."
   (set-buffer-file-coding-system 'utf-8)
   (save-buffer))
 
+(defun appleshan/turn-on-hl-line ()
+  (interactive)
+  (when eos/hl-line-enabled
+    (hl-line-mode 1)))
+
+(defun appleshan/turn-off-hl-line ()
+  (interactive)
+  (hl-line-mode -1))
+
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: nil
