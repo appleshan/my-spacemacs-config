@@ -364,6 +364,16 @@ re-indenting and un-tabification is done."
   (interactive)
   (hl-line-mode -1))
 
+(defvar spacemacs--profiler nil)
+;;;###autoload
+(defun spacemacs/toggle-profiler ()
+  (interactive)
+  (if (not spacemacs--profiler)
+      (profiler-start 'cpu+mem)
+    (profiler-report)
+    (profiler-stop))
+  (setq spacemacs--profiler (not spacemacs--profiler)))
+
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: nil
