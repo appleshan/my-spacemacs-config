@@ -453,7 +453,7 @@ _q_uit _RET_: current
 
 ; (global-set-key (kbd "M-/") 'company-complete)
 
-(global-set-key (kbd "C-\\") 'appleshan/evil-toggle-input-method)
+(global-set-key (kbd "C-s-\\") 'appleshan/evil-toggle-input-method)
 
 (global-set-key [(control down)] 'appleshan/hold-line-scroll-up)
 (global-set-key [(control up)] 'appleshan/hold-line-scroll-down)
