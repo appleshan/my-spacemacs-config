@@ -86,6 +86,10 @@
 (global-set-key (kbd "C-<f5>") #'terminal-here-launch)
 (global-set-key (kbd "C-<f6>") #'terminal-here-project-launch)
 
+;; Font size
+(global-set-key (kbd "C-+") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+
 ;; java
 ; (define-key java-mode-map (kbd "M-i") 'java-imports-add-import-dwim)
 
