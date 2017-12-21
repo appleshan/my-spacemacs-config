@@ -16,22 +16,26 @@
     )
   appleshan-complete
   appleshan-appearance
-  appleshan-navigation
-  appleshan-notify
+  (appleshan-navigation
+    :packages dumb-jump evil evil-escape treemacs
+    ; workgroups2
+    )
+  (appleshan-notify
+    :packages alert sauron eshell)
   appleshan-shell
-  appleshan-dired
+  (appleshan-dired
+    :packages dired dired-x dired-k dired-quick-sort dired-efap dired-collapse quick-preview)
   (appleshan-org
     :variables org-gtd-dir (concat user-projects-directory "org-gtd/"))
   (appleshan-chinese
     :packages cal-china-x pyim find-by-pinyin-dired ace-pinyin pangu-spacing
     :variables chinese-enable-fcitx nil)
   appleshan-programming
-  appleshan-python
+  ; appleshan-python
   ; appleshan-java
   ; appleshan-javascript
   ; appleshan-web
-  (appleshan-lisp
-    :packages emacs-lisp lispy)
+  ; appleshan-lisp
   ; appleshan-database
   ; appleshan-remote
   appleshan-misc
