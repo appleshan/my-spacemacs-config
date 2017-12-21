@@ -9,6 +9,10 @@
 ;;
 ;;; License: GPLv3
 
+;; Remove some back-ends from vc-mode, no need to check all these things, 
+;; I use magit for everything anyway:
+(setq vc-handled-backends '(git svn))
+
 (spacemacs|add-toggle iimage
   :status iimage-mode
   :on (iimage-mode)
