@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Emacs 主题设置 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (set-face-attribute 'default nil :height 130)
 ;; make the fringe thinner (default is 8 in pixels)
-(set-fringe-mode '(8 . 8))
+(set-fringe-mode '(16 . 16))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -38,6 +38,7 @@
  '(company-tooltip-common ((t (:inherit 'mode-line))))
  '(company-tooltip-common-completion ((t (:inherit 'mode-line))))
  '(company-tooltip-annotation ((t (:inherit 'mode-line))))
+ '(completion-dynamic-face ((((class color) (background dark)) (:background "DarkOrange" :foreground "black"))))
  '(completion-tooltip-face ((t (:inherit tooltip :background "grey5" :foreground "khaki1" :family "文泉驿等宽微米黑"))))
  '(completions-common-part ((t (:foreground "Green3"))))
  '(completions-first-difference ((t (:foreground "Grey60"))))
@@ -47,9 +48,28 @@
  '(dired-header ((t (:inherit font-lock-type-face :foreground "gold"))))
  '(dired-ignored ((t (:inherit shadow :foreground "grey50"))))
  '(dired-symlink ((t (:inherit font-lock-keyword-face :foreground "OrangeRed3"))))
+ '(diredp-date-time ((t (:foreground "Grey60")))) ;修改时间
+ '(diredp-deletion ((t (:background "Black" :foreground "red")))) ;删除标记
+ '(diredp-deletion-file-name ((t (:foreground "red")))) ;删除文件
+ '(diredp-dir-heading ((t (:background "Black" :foreground "Gold")))) ;目录
+ '(diredp-dir-priv ((t (:background "Black" :foreground "DodgerBlue")))) ;目录掩码
+ '(diredp-display-msg ((t (:foreground "Gold")))) ;路径
+ '(diredp-exec-priv ((t (:background "Black" :foreground "DeepSkyBlue3")))) ;可执行掩码
+ '(diredp-file-name ((t (:foreground "Green3")))) ;文件
+ '(diredp-file-suffix ((t (:foreground "Green4")))) ;文件扩展名
+ '(diredp-flag-mark ((t (:background "Black" :foreground "Cyan")))) ;选中标记
+ '(diredp-flag-mark-line ((t (:background "Black" :foreground "Cyan")))) ;选中文件
+ '(diredp-ignored-file-name ((t (:foreground "grey40")))) ;忽略的文件
+ '(diredp-no-priv ((t (:background "Black" :foreground "Green")))) ;无权限
+ '(diredp-other-priv ((t (:background "Black" :foreground "khaki")))) ;其他权限
+ '(diredp-rare-priv ((t (:background "Black" :foreground "Red")))) ;稀有的权限
+ '(diredp-read-priv ((t (:background "Black" :foreground "IndianRed")))) ;读取权限
+ '(diredp-write-priv ((t (:background "Black" :foreground "Gold3")))) ;写入权限
  '(eldoc-highlight-function-argument ((t (:inherit bold :foreground "Red"))))
  '(fixme-face ((t (:foreground "orange" :box (:line-width 1 :color "orange") :weight bold))))
  '(go-to-char-highlight ((((class color) (background dark)) (:background "Pink" :foreground "Black"))))
+ '(hs-face ((t (:background "DarkRed" :foreground "grey" :box (:line-width 1 :color "grey50")))))
+ '(hs-fringe-face ((t (:background "DarkRed" :foreground "grey" :box (:line-width 2 :color "grey75" :style released-button)))))
  '(highlight ((((class color) (min-colors 88) (background dark)) (:background "DarkRed" :foreground "White"))))
  '(highlight-cl ((t (:foreground "#20ABFC" :underline nil))))
  '(highlight-cl-and-other ((t (:foreground "#20ABFC" :underline nil))))
@@ -81,13 +101,16 @@
  '(message-header-subject ((t (:foreground "gold" :weight bold))))
  '(message-header-to ((t (:foreground "DarkRed" :weight bold))))
  '(minibuffer-prompt ((((background dark)) (:foreground "green"))))
-
  '(region ((((class color) (min-colors 88) (background dark)) (:background "green4" :foreground "black"))))
  '(secondary-selection ((((class color) (min-colors 88) (background dark)) (:background "Black"))))
  '(show-paren-match ((((class color) (background dark)) (:background "green" :foreground "black"))))
  '(show-paren-mismatch ((((class color)) (:background "red" :foreground "white"))))
  '(showtip-face ((((class color)) (:inherit tooltip :background "#730D0D" :foreground "White" :height 1.0 :family "文泉驿等宽微米黑"))))
  '(tooltip ((((class color)) (:inherit variable-pitch :background "DarkRed" :foreground "White" :family "文泉驿等宽微米黑"))))
+ '(woman-addition ((t (:foreground "Gold3"))))
+ '(woman-bold ((((background dark)) (:foreground "Green3" :weight bold))))
+ '(woman-italic ((((background dark)) (:foreground "DarkRed" :underline t))))
+ '(woman-unknown ((((min-colors 88) (background dark)) (:foreground "Cyan3"))))
  '(which-func ((((class color) (min-colors 88) (background dark)) (:foreground "Yellow"))))
  '(whitespace-highlight ((((class color) (background dark)) (:background "yellow2" :foreground "black"))))
  '(yas/field-highlight-face ((t (:background "grey20" :foreground "gold"))))

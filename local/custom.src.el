@@ -3,7 +3,7 @@
 (set-face-attribute 'default nil :height 130)
 ;; make the fringe thinner (default is 8 in pixels)
 ;; make fringe mini size
-(set-fringe-mode '(1 . 1))
+(set-fringe-mode '(16 . 16))
 
 ;; 用户自定义变量
 (custom-set-variables
@@ -50,10 +50,15 @@
  '(company-tooltip-common ((t (:inherit 'mode-line))))
  '(company-tooltip-common-completion ((t (:inherit 'mode-line))))
  '(company-tooltip-annotation ((t (:inherit 'mode-line))))
+
+  ;; Completion dynamic
+ '(completion-dynamic-face ((((class color) (background dark)) (:background "DarkOrange" :foreground "black"))))
  ;; Completion ui
  '(completion-tooltip-face ((t (:inherit tooltip :background "grey5" :foreground "khaki1" :family "文泉驿等宽微米黑"))))
+ ;; Completions
  '(completions-common-part ((t (:foreground "Green3")))) ;补全相同部分
  '(completions-first-difference ((t (:foreground "Grey60")))) ;补全不同部分
+
  '(cursor ((t (:background "red"))))
  '(diff-header ((((class color) (min-colors 88) (background dark)) (:background "grey30" :foreground "gold"))))
  ;; Dired
@@ -87,23 +92,20 @@
  ; '(erc-prompt-face ((t (:background "Black" :foreground "Gold" :weight bold))))
  ;; Highlight fixme
  '(fixme-face ((t (:foreground "orange" :box (:line-width 1 :color "orange") :weight bold))))
- ;; 窗口边缘
- '(fringe ((((class color) (background dark)) (:background "gray3"))))
- ; '(gnus-button ((t (:foreground "khaki3" :weight bold))))
- ; '(gnus-cite-1 ((((class color) (background dark)) (:foreground "Grey50"))))
- ; '(gnus-header-content ((t (:foreground "Green" :slant italic))))
- ; '(gnus-header-from ((((class color) (background dark)) (:foreground "khaki"))))
- ; '(gnus-header-name ((((class color) (background dark)) (:foreground "DodgerBlue"))))
- ; '(gnus-header-subject ((((class color) (background dark)) (:foreground "HotPink"))))
- ; '(gnus-signature ((t (:foreground "Orange" :slant italic))))
- ; '(gnus-summary-high-ancient ((t (:foreground "Grey50" :weight bold))))
- ; '(gnus-summary-high-read ((t (:foreground "Gold2" :weight bold))))
- ; '(gnus-summary-low-ancient ((t (:foreground "Grey10" :slant italic))))
- ; '(gnus-summary-low-read ((t (:foreground "Gold4" :slant italic))))
- ; '(gnus-summary-normal-ancient ((((class color) (background dark)) (:foreground "Grey40"))))
- ; '(gnus-summary-normal-read ((((class color) (background dark)) (:foreground "khaki2"))))
+
  ;; Go-to-char
  '(go-to-char-highlight ((((class color) (background dark)) (:background "Pink" :foreground "Black")))) ;跳转到字符高亮
+
+  ;; hideshow
+ '(hs-face                              ;折叠颜色
+   ((t (:background "DarkRed"
+        :foreground "grey"
+        :box (:line-width 1 :color "grey50")))))
+ '(hs-fringe-face                       ;折叠边缘颜色
+   ((t (:background "DarkRed"
+        :foreground "grey"
+        :box (:line-width 2 :color "grey75" :style released-button)))))
+
  ;; Highlight
  '(highlight ((((class color) (min-colors 88) (background dark)) (:background "DarkRed" :foreground "White"))))
  ;; 高亮 CL 函数
@@ -114,7 +116,13 @@
  '(hl-line ((t (:background "grey5")))) ;当前行高亮背景色
  ;; hl-sexp
  '(hl-sexp-face ((((class color) (background dark)) (:background "gray2")))) ;高亮 sexp
+
  ;; Info
+ '(info-menu-header ((t (:inherit variable-pitch :foreground "khaki3" :weight bold)))) ;菜单标题
+ '(info-title-1 ((t (:inherit info-title-2 :foreground "Gold" :height 1.1)))) ;标题1
+ '(info-title-2 ((t (:inherit info-title-3 :foreground "red" :height 1.1)))) ;标题2
+ '(info-title-3 ((t (:inherit info-title-4 :foreground "DodgerBlue" :height 1.1)))) ;标题3
+ '(info-title-4 ((t (:inherit variable-pitch :foreground "Green" :weight bold)))) ;标题4
  '(info-elisp-command-ref-item ((t (:background "Black" :foreground "yellow3")))) ;elisp命令引用项目
  '(info-elisp-function-ref-item ((t (:background "Black" :foreground "Gold3")))) ;elisp函数引用项目
  '(info-elisp-macro-ref-item ((t (:background "Black" :foreground "Yellow3")))) ;elisp宏引用项目
@@ -125,13 +133,9 @@
  '(info-elisp-variable-ref-item ((t (:background "Black" :foreground "#0048FF")))) ;elisp变量引用项目
  '(info-file ((t (:background "Black" :foreground "Blue")))) ;文件
  '(info-menu ((t (:foreground "DarkRed")))) ;菜单
- '(info-menu-header ((t (:inherit variable-pitch :foreground "khaki3" :weight bold)))) ;菜单标题
  '(info-quoted-name ((t (:foreground "Purple")))) ;引用名字
  '(info-string ((t (:foreground "Grey50")))) ;字符串
- '(info-title-1 ((t (:inherit info-title-2 :foreground "Gold" :height 1.1)))) ;标题1
- '(info-title-2 ((t (:inherit info-title-3 :foreground "red" :height 1.1)))) ;标题2
- '(info-title-3 ((t (:inherit info-title-4 :foreground "DodgerBlue" :height 1.1)))) ;标题3
- '(info-title-4 ((t (:inherit variable-pitch :foreground "Green" :weight bold)))) ;标题4
+
  ;; Isearch
  '(isearch ((((class color) (min-colors 88) (background dark)) (:background "brown" :foreground "white")))) ;搜索关键字
  '(isearch-fail ((((class color) (min-colors 88) (background dark)) (:background "red4" :foreground "white")))) ;搜索失败
@@ -143,6 +147,7 @@
  '(message-header-to ((t (:foreground "DarkRed" :weight bold))))
  ;; Minibuffer
  '(minibuffer-prompt ((((background dark)) (:foreground "green")))) ;提示
+ 
  ;; Org-mode
 
 ;;; Date
@@ -363,6 +368,13 @@
  ;; Tooltip
  '(tooltip ((((class color)) (:inherit variable-pitch :background "DarkRed" :foreground "White" :family "文泉驿等宽微米黑"))))
  ; '(top-mode-mark-face (quote isearch))
+
+ ;; Woman
+ '(woman-addition ((t (:foreground "Gold3")))) ;附加的
+ '(woman-bold ((((background dark)) (:foreground "Green3" :weight bold)))) ;标题
+ '(woman-italic ((((background dark)) (:foreground "DarkRed" :underline t)))) ;参数
+ '(woman-unknown ((((min-colors 88) (background dark)) (:foreground "Cyan3")))) ;未知的
+ 
  ;当前函数
  '(which-func ((((class color) (min-colors 88) (background dark)) (:foreground "Yellow"))))
  ;; Whitespace
