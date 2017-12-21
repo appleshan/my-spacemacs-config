@@ -30,27 +30,27 @@
 
 ;; company-mode
 (defun appleshan-complete/post-init-company ()
-  (progn
-    (setq company-minimum-prefix-length 1
-          company-idle-delay 0.5)
+  (setq company-selection-wrap-around t
+        ;; do or don't automatically start completion after <idle time>
+        company-idle-delay 0.5
+        ;; at least 2 letters need to be there though
+        company-minimum-prefix-length 2
+        ;; show completion numbers for hotkeys
+        company-show-numbers t
+        ;; align annotations to the right
+        company-tooltip-align-annotations t
+        company-search-regexp-function #'company-search-flex-regexp)
 
-    (setq company-selection-wrap-around t)
-    (setq company-show-numbers t)
-
-    ;; company-dabbrev
-    (setq company-dabbrev-char-regexp "[[:word:]_:@.-]+")
-    (setq company-dabbrev-minimum-length 2)
-
-;    (spacemacs|add-company-backends :modes
-;      ; !!! NOTE: 不能为 text-mode 开启 company ，当在 magit 中填写 commit message 的时候，会造成 emacs 崩溃. !!!
-;      ; text-mode
-;      shell-script-mode
-;      sh-mode
-;      nxml-mode
-;      conf-unix-mode
-;      json-mode
-;      graphviz-dot-mode)
-  ))
+  (spacemacs|add-company-backends :modes
+    ; !!! NOTE: 不能为 text-mode 开启 company , 当在 magit 中填写 commit message 的时候，会造成 emacs 崩溃. !!!
+    ; text-mode
+    shell-script-mode
+    sh-mode
+    nxml-mode
+    conf-unix-mode
+    json-mode
+    graphviz-dot-mode)
+  )
 
 (defun appleshan-complete/post-init-helm-ag ()
   (setq helm-ag-base-command "sift --no-color -n")
