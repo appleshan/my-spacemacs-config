@@ -430,21 +430,18 @@ _q_uit _RET_: current
 ;; 逗号后面自动加空格
 (global-set-key (kbd ",") #'(lambda () (interactive) (insert ", ")))
 
-(spacemacs/declare-prefix "o" "org") ;; modify by appleshan
 (spacemacs/set-leader-keys ;; modify by appleshan
-  ;; org-agenda
-  "o#" 'org-agenda-list-stuck-projects
-  "o/" 'org-occur-in-agenda-files
-  "oa" 'org-agenda-list
-  "oe" 'org-store-agenda-views
-  "om" 'org-tags-view
-  "oo" 'org-agenda
-  "os" 'org-search-view
-  "ot" 'org-todo-list
-  ;; other
-  "oO" 'org-clock-out
-  "oc" 'org-capture
-  "ol" 'org-store-link)
+  ;; Go to next org file in org-agenda-files
+  "aoC"  'org-cycle-agenda-files
+
+  ;; save
+  "aoS"  'org-save-all-org-buffers
+
+  ;; toggle
+  "aoTb" 'org-hide-block-toggle-all
+  "aoTi" 'org-toggle-inline-images
+  "aoTl" 'org-toggle-link-display
+  )
 
 ;; Search (and search/replace) using regex by default, since that's usually what I want to do:
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
