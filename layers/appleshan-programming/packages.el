@@ -236,16 +236,8 @@
 (defun appleshan-programming/init-symbol-overlay ()
   (use-package symbol-overlay
     :diminish symbol-overlay-mode
-    :bind (("M-i" . symbol-overlay-put)
-           ("M-n" . symbol-overlay-jump-next)
-           ("M-p" . symbol-overlay-jump-prev)
-           ;("M-n" . symbol-overlay-switch-next)
-           ;("M-p" . symbol-overlay-switch-prev)
-           ([C-f3] . symbol-overlay-put)
-           ([f3] . symbol-overlay-jump-next)
-           ([S-f3] . symbol-overlay-jump-prev)
-           ([M-f3] . symbol-overlay-remove-all))
-    :init (add-hook 'prog-mode-hook #'symbol-overlay-mode)))
+    :init (add-hook 'prog-mode-hook #'symbol-overlay-mode)
+  ))
 
 (defun appleshan-programming/init-tldr ()
   (use-package tldr
