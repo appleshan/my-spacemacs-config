@@ -248,6 +248,21 @@ version 2015-08-21"
             (async-shell-command ξcmd-str "*appleshan/run-current-file output*"))
         (message "No recognized program file suffix for this file.")))))
 
+(defun appleshan/magit-browse ()
+  "Browse to the project's github URL, if available"
+  (interactive)
+  (let ((url (with-temp-buffer
+               (unless (zerop (call-process-shell-command
+                               "git remote -v" nil t))
+                 (error "Failed: 'git remote -v'"))
+               (goto-char (point-min))
+               (when (re-search-forward
+                      "github\\.com[:/]\\(.+?\\)\\.git" nil t)
+                 (format "https://github.com/%s" (match-string 1))))))
+    (unless url
+      (error "Can't find repository URL"))
+    (browse-url url)))
+
 (defun appleshan/github-browse-commit ()
   "Show the GitHub page for the current commit."
   (interactive)

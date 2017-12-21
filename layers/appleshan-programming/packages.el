@@ -167,6 +167,7 @@
       (setq magit-emacsclient-executable (executable-find "emacsclient")))
 
     (add-to-list 'magit-no-confirm 'stage-all-changes)
+    (define-key magit-mode-map (kbd "C-c C-b") 'appleshan/magit-browse)
     (define-key magit-mode-map "@" 'appleshan/magit-branch-pull-request)
     (define-key magit-log-mode-map (kbd "W") 'magit-copy-section-value)
     (define-key magit-status-mode-map (kbd "s-1") 'magit-jump-to-unstaged)
