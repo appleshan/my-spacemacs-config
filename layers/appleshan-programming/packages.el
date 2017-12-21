@@ -27,7 +27,6 @@
       paredit
       prodigy
       plantuml-mode
-      smart-tab
       symbol-overlay
       tldr
       vdiff
@@ -231,18 +230,6 @@
   ;; Enable puml-mode for PlantUML files
   (add-to-list 'auto-mode-alist '("\\.puml\\'" . plantuml-mode))
   (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode)))
-
-(defun appleshan-programming/init-smart-tab ()
-  (use-package smart-tab
-    :ensure t
-    :defer t
-    :diminish ""
-    :init (global-smart-tab-mode 1)
-    :config
-    (setq smart-tab-using-hippie-expand t)
-    (add-to-list 'smart-tab-disabled-major-modes 'mu4e-compose-mode)
-    (add-to-list 'smart-tab-disabled-major-modes 'erc-mode)
-    (add-to-list 'smart-tab-disabled-major-modes 'shell-mode)))
 
 ;; Highlight symbols
 (defun appleshan-programming/init-symbol-overlay ()

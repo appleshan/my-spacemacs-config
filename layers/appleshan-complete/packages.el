@@ -22,6 +22,7 @@
       helm-flx
       projectile
       yasnippet
+      smart-tab
       ))
 
 ;; List of packages to exclude.
@@ -101,6 +102,20 @@
                                yas-x-prompt
                                yas-maybe-ido-prompt
                                yas-completing-prompt)))
+
+;; Used smart-tab to complete everywhere except for ERC, shell and mu4e.
+(defun appleshan-complete/init-smart-tab ()
+  (use-package smart-tab
+    :ensure t
+    :defer t
+    :diminish ""
+    :init
+    (global-smart-tab-mode 1)
+    (setq smart-tab-using-hippie-expand t)
+    :config
+    (add-to-list 'smart-tab-disabled-major-modes 'mu4e-compose-mode)
+    (add-to-list 'smart-tab-disabled-major-modes 'erc-mode)
+    (add-to-list 'smart-tab-disabled-major-modes 'shell-mode)))
 
 ;; Local Variables:
 ;; coding: utf-8
