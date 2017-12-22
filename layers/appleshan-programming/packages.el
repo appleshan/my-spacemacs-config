@@ -13,7 +13,6 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq appleshan-programming-packages
     '(
-      ;; editorconfig
       engine-mode
       flycheck
       flycheck-package
@@ -35,16 +34,6 @@
 
 ;; List of packages to exclude.
 (setq appleshan-programming-excluded-packages '())
-
-(defun appleshan-programming/init-editorconfig ()
-  (use-package editorconfig
-    :init
-    (progn
-      (defun conditional-enable-editorconfig ()
-        (if (and (appleshan/vcs-project-root)
-                 (locate-dominating-file default-directory ".editorconfig"))
-            (editorconfig-apply)))
-      (add-hook 'prog-mode-hook 'conditional-enable-editorconfig))))
 
 (defun appleshan-programming/post-init-engine-mode ()
   (add-to-list 'search-engine-alist
