@@ -265,7 +265,7 @@
 ;; 使用 zeal 查看 docset
 (defun appleshan-programming/post-init-zeal-at-point ()
   (add-hook 'python-mode-hook
-    (lambda () (setq zeal-at-point-docset "python 3"))))
+    (lambda () (setq zeal-at-point-docset "python3"))))
 
 ;; Local Variables:
 ;; coding: utf-8
