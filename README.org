@@ -25,7 +25,7 @@ Tested on versions:
 [[./local/img/spacemacs-demo-2.png]]
 
 * :beginner: Installing
-#+BEGIN_SRC bash
+#+BEGIN_SRC bash :mkdirp yes :tangle ~/.spacemacs.d/bin/install-spacemacs.sh
 #!/usr/bin/env bash
 ##########################################################################
 # install emacs config automatically.
