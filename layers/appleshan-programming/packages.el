@@ -13,6 +13,8 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq appleshan-programming-packages
     '(
+      lsp-mode
+      company-lsp
       engine-mode
       flycheck
       flycheck-package
@@ -34,6 +36,24 @@
 
 ;; List of packages to exclude.
 (setq appleshan-programming-excluded-packages '())
+
+;; Emacs client for the Language Server Protocol
+;; https://github.com/emacs-lsp/lsp-mode
+(defun appleshan-programming/init-lsp-mode ()
+  (use-package lsp-mode
+    :diminish lsp-mode
+    :config
+    (with-eval-after-load 'flycheck
+      (require 'lsp-flycheck))
+    ))
+
+;; `company' backend for `lsp-mode'
+(defun appleshan-programming/init-company-lsp ()
+  (use-package company-lsp
+    :config
+    (with-eval-after-load 'company
+      :init (push '(company-lsp :with company-yasnippet) company-backends))
+    ))
 
 (defun appleshan-programming/post-init-engine-mode ()
   (add-to-list 'search-engine-alist
