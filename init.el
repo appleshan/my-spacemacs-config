@@ -84,7 +84,7 @@ values."
      org
 
      ;; --- Programming tool layers ---
-     (dash :variables helm-dash-docset-newpath "~/.local/share/Zeal/docsets/")
+     (dash :variables helm-dash-docset-newpath "~/.docsets/")
      (docker :packages (dockerfile-mode))
      ;; gtags
      (git :variables git-magit-status-fullscreen t)
