@@ -96,7 +96,8 @@ values."
      (restclient :variables restclient-use-org nil)
      (syntax-checking :variables
                       syntax-checking-enable-by-default t
-                      syntax-checking-enable-tooltips t)
+                      syntax-checking-enable-tooltips t
+                      syntax-checking-use-original-bitmaps t)
      (version-control :variables version-control-diff-side 'left)
 
      ;; --- Vim layers ---
