@@ -31,7 +31,7 @@
     :packages cal-china-x pyim find-by-pinyin-dired ace-pinyin pangu-spacing
     :variables chinese-enable-fcitx nil)
   appleshan-programming
-  ; appleshan-python
+  appleshan-python
   ; appleshan-java
   ; appleshan-javascript
   ; appleshan-web
