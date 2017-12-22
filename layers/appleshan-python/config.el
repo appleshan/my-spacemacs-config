@@ -10,10 +10,10 @@
 ;;; License: GPLv3
 
 ;; fix bug : void-variable python-shell--interpreter
-(setq python-shell-interpreter "ipython")
-(setq python-shell--interpreter "ipython")
+(setq python-shell-interpreter "ipython"
+      python-shell-interpreter-args "-i")
 
-(setq python-shell-interpreter-args "-i")
-(setq python-shell--interpreter-args "-i")
+(setq python-shell--interpreter "ipython"
+      python-shell--interpreter-args "-i")
 
 (add-to-list 'auto-mode-alist '("\\.wsgi\\'" . python-mode))
