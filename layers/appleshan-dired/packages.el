@@ -15,6 +15,7 @@
       (dired-x :location built-in)
       (dired-k :location "~/.spacemacs.d/local/dired-k/")
       dired-quick-sort
+      dired-efap
       ))
 
 ;; List of packages to exclude.
@@ -99,6 +100,12 @@
   (use-package dired-quick-sort
     :if (or (executable-find "gls") (executable-find "ls"))
     :init (dired-quick-sort-setup)))
+
+;; dired renaming like GUI file manager
+(defun appleshan-dired/init-dired-efap ()
+  (use-package dired-efap
+    :config
+    (bind-key "E" #'dired-efap dired-mode-map)))
 
 ;; Local Variables:
 ;; coding: utf-8
