@@ -25,7 +25,7 @@
 ;; 用 Emacs, 需忘记鼠标, 无视菜单.
 (with-current-buffer (get-buffer-create "*scratch*")
   (emacs-lisp-mode)
-  (insert ";; Happy hacking appleshan!\n;; 用 Emacs, 需: 忘记鼠标, 无视菜单.\n\n"))
+  (insert ";; Talk is cheap. Show me the code.\n\n"))
 
 ;; Display visited file's path in the frame title
 ;; @See http://emacsredux.com/blog/2013/04/07/display-visited-files-path-in-the-frame-title/

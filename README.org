@@ -225,4 +225,7 @@ C:/Program Files (x86)/GnuPG/bin/
 C:/Windows/System32
 #+END_EXAMPLE
 
+* Skill
+用 Emacs, 需: 忘记鼠标, 无视菜单.
+
 * Happy Hacking :smile:
