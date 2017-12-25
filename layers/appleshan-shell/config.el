@@ -41,6 +41,9 @@
 (when (spacemacs/system-is-linux)
   (let ((mypaths
           '(
+            "/home/appleshan/.conda/envs/python-v3/bin"
+            "/opt/python/miniconda3/bin"
+            "/home/appleshan/.local/bin"
             "/home/appleshan/bin"
             "/usr/local/sbin"
             "/usr/local/bin"

@@ -31,7 +31,8 @@
     :packages cal-china-x pyim find-by-pinyin-dired ace-pinyin pangu-spacing
     :variables chinese-enable-fcitx nil)
   appleshan-programming
-  appleshan-python
+  (appleshan-python
+    :packages py-autopep8)
   ; appleshan-java
   ; appleshan-javascript
   ; appleshan-web

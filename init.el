@@ -76,7 +76,10 @@ values."
      emacs-lisp
      ;; java
      plantuml ; uml
-     python
+     (python :variables
+             python-enable-yapf-format-on-save nil ; bug
+             python-sort-imports-on-save t)
+     semantic ; python层是依赖semantic层
      (shell :packages (company esh-help eshell eshell-prompt-extras eshell-z))
      shell-scripts
      yaml
@@ -124,12 +127,12 @@ values."
                                     ;; http://emacsredux.com/blog/2015/07/19/ace-jump-mode-is-dead-long-live-avy/
                                     ace-jump-mode
                                     ace-pinyin
-                                    anaconda-mode
+                                    ; anaconda-mode
                                     auto-complete
                                     auto-dictionary
                                     clean-aindent-mode
-                                    company-anaconda
-                                    company-quickhelp
+                                    ; company-anaconda
+                                    ; company-quickhelp
                                     coffee-mode
                                     define-word
                                     evil-args
@@ -142,6 +145,7 @@ values."
                                     evil-mc
                                     evil-tutor
                                     evil-unimpaired
+                                    exec-path-from-shell
                                     ; eyebrowse ;; Easy window config switching
                                     fancy-battery
                                     find-by-pinyin-dired
@@ -499,7 +503,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
         ; ("org"   . "orgmode.org/elpa/")
 
           ;; Elpy Package Archive
-          ("elpy"      . "https://jorgenschaefer.github.io/packages/")
+        ; ("elpy"      . "https://jorgenschaefer.github.io/packages/")
           ))
 
   ;; Pin some of the packages that go wonky if I use the bleeding edge.
@@ -546,11 +550,11 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-  (setq url-proxy-services
-        '(("no_proxy" . "^\\(localhost\\|10.*\\|192.168.*\\|elpa.emacs-china.org\\|mirrors.tuna.tsinghua.edu.cn\\)")
-          ("http" . "127.0.0.1:18080")
-          ("https" . "127.0.0.1:18080")
-          ("socks5" . "127.0.0.1:18080")))
+;  (setq url-proxy-services
+;        '(("no_proxy" . "^\\(localhost\\|10.*\\|192.168.*\\|elpa.emacs-china.org\\|mirrors.tuna.tsinghua.edu.cn\\)")
+;          ("http" . "127.0.0.1:18080")
+;          ("https" . "127.0.0.1:18080")
+;          ("socks5" . "127.0.0.1:18080")))
 
   ;;{{ 解决 org 表格里面中英文对齐的问题
   ;; 可选字体组合及字体大小：
