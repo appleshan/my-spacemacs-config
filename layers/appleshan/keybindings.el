@@ -474,12 +474,6 @@ _q_uit _RET_: current
 
 (spacemacs/set-leader-keys "bl" 'popwin:display-last-buffer)
 
-;; layout
-(spacemacs/set-leader-keys "l" nil)
-(spacemacs/declare-prefix "l" "layout")
-(spacemacs/set-leader-keys "ll" 'appleshan/load-my-layout)
-(spacemacs/set-leader-keys "ls" 'appleshan/save-my-layout)
-
 ;; Enable navigation by visual lines
 ;; Make evil-mode up/down operate in screen lines instead of logical lines
 (define-key evil-motion-state-map "j" 'evil-next-visual-line)

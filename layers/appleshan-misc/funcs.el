@@ -85,14 +85,6 @@
       (message "NO README.org or README.md found!"))
     ))
 
-(defun appleshan/load-my-layout ()
-  (interactive)
-  (persp-load-state-from-file (concat persp-save-dir "appleshan-layout")))
-
-(defun appleshan/save-my-layout ()
-  (interactive)
-  (persp-save-state-to-file (concat persp-save-dir "appleshan-layout")))
-
 (add-hook 'minibuffer-inactive-mode-hook
           '(lambda() (set (make-local-variable 'semantic-mode) nil)))
 
