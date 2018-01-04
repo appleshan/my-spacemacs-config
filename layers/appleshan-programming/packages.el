@@ -13,9 +13,15 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq appleshan-programming-packages
     '(
-      lsp-mode
-      lsp-ui
-      company-lsp
+      (lsp-mode :location (recipe
+                           :fetcher github
+                           :repo "emacs-lsp/lsp-mode"))
+      (lsp-ui :location (recipe
+                         :fetcher github
+                         :repo "emacs-lsp/lsp-ui"))
+      (company-lsp :location (recipe
+                              :fetcher github
+                              :repo "tigersoldier/company-lsp"))
       ;; helm-xref
       engine-mode
       flycheck

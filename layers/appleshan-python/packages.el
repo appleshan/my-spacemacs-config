@@ -24,7 +24,9 @@
 (setq appleshan-python-packages
     '(
       company
-      lsp-python
+      (lsp-python :location (recipe
+                           :fetcher github
+                           :repo "emacs-lsp/lsp-python"))
       py-autopep8
       ))
 
