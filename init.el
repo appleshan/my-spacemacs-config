@@ -137,7 +137,9 @@ values."
                                     company-anaconda
                                     ; company-quickhelp
                                     coffee-mode
+                                    counsel-projectile
                                     define-word
+                                    doc-view
                                     evil-args
                                     evil-ediff
                                     ;; disable it for lispy-mode
@@ -145,20 +147,22 @@ values."
                                     ; evil-escape
                                     evil-exchange
                                     evil-indent-plus
+                                    evil-lisp-state
                                     evil-mc
                                     evil-tutor
                                     evil-unimpaired
                                     exec-path-from-shell
-                                    ; eyebrowse ;; Easy window config switching
                                     fancy-battery
                                     find-by-pinyin-dired
                                     fish-mode
                                     flx-ido
+                                    flyspell-correct-helm
                                     gh-md
                                     google-translate
                                     helm-company
                                     helm-c-yasnippet
                                     helm-css-scss
+                                    helm-flyspell
                                     helm-make
                                     helm-mode-manager
                                     helm-projectile
@@ -167,19 +171,22 @@ values."
                                     highlight-indentation
                                     highlight-symbol
                                     hl-anything
+                                    holy-mode
                                     leuven-theme
                                     linum-relative
                                     livid-mode
                                     lorem-ipsum
+                                    neotree
                                     open-junk-file
                                     orgit
                                     orglue
-                                    ;; org-bullets
+                                    org-bullets
                                     org-download
                                     org-present
                                     org-projectile
                                     org-repo-todo
                                     org-timer
+                                    org-tree-slide
                                     rainbow-delimiters ;; Highlight brackets according to their depth
                                     rainbow-identifiers
                                     skewer-mode
@@ -188,8 +195,11 @@ values."
                                     smex
                                     smooth-scrolling
                                     spinner
+                                    spray
+                                    srefactor
+                                    symon
                                     vi-tilde-fringe
-                                    ; volatile-highlights ;; Highlight some operations
+                                    volatile-highlights ;; Highlight some operations
                                     )
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
