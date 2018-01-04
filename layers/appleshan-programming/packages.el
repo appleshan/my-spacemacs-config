@@ -88,8 +88,10 @@
       (add-hook 'lsp-after-open-hook
         (lambda ()
           (lsp-ui-mode 1)
+          ;; bug: flycheck-display-errors-function 被 lsp-ui-sideline 覆盖
+          ;; 然后重新设置为 flycheck-inline-error-messages
+          (setq-local flycheck-display-errors-function 'flycheck-inline-error-messages)
           )))
-
     ))
 
 ;; `company' backend for `lsp-mode'
@@ -141,7 +143,8 @@
     :ensure t
     :defer t
     :init
-    (add-hook 'flycheck-mode-hook 'flycheck-inline-enable)
+    ;; 这里设置的 flycheck-display-errors-function 会被 lsp-ui 覆盖
+    ;; (add-hook 'flycheck-mode-hook 'flycheck-inline-enable)
     ))
 
 (defun appleshan-programming/init-flycheck-package ()
