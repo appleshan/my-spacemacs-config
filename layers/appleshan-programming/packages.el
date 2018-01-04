@@ -14,6 +14,7 @@
 (setq appleshan-programming-packages
     '(
       lsp-mode
+      lsp-ui
       company-lsp
       engine-mode
       flycheck
@@ -45,6 +46,49 @@
     :config
     (with-eval-after-load 'flycheck
       (require 'lsp-flycheck))
+    ))
+
+(defun appleshan-programming/init-lsp-ui ()
+  (use-package lsp-ui
+    :after lsp-mode
+    :config
+    ;; the define of lsp-ui-peek-mode has bug
+    (define-minor-mode lsp-ui-peek-mode
+      "Mode for lsp-ui-peek."
+      :init-value nil
+      (if lsp-ui-peek-mode
+          (setq lsp-ui-peek--deactivate-keymap-fn (set-transient-map lsp-ui-peek-mode-map t 'lsp-ui-peek--abort))
+        (progn
+          (funcall lsp-ui-peek--deactivate-keymap-fn)
+          (setq lsp-ui-peek--deactivate-keymap-fn nil))
+        ))
+
+    (setq lsp-ui-doc-include-signature nil)  ; don't include type signature in the child frame
+
+    (setq lsp-ui-peek-expand-function (lambda (xs) (mapcar #'car xs)))
+    (advice-add 'lsp-ui-peek--goto-xref :around #'my-advice/xref-set-jump)
+
+    (evil-make-overriding-map lsp-ui-peek-mode-map 'normal)
+    (define-key lsp-ui-peek-mode-map (kbd "h") 'lsp-ui-peek--select-prev-file)
+    (define-key lsp-ui-peek-mode-map (kbd "l") 'lsp-ui-peek--select-next-file)
+    (define-key lsp-ui-peek-mode-map (kbd "j") 'lsp-ui-peek--select-next)
+    (define-key lsp-ui-peek-mode-map (kbd "k") 'lsp-ui-peek--select-prev)
+
+    (setq lsp-ui-sideline-show-flycheck nil)
+    (setq lsp-ui-sideline-show-symbol nil)  ; don't show symbol on the right of info
+    (setq lsp-ui-sideline-ignore-duplicate t)
+    (set-face-attribute 'lsp-ui-sideline-symbol nil :foreground "grey30" :box nil)
+    (set-face-attribute 'lsp-ui-sideline-current-symbol nil :foreground "grey38" :box nil)
+    (when (internal-lisp-face-p 'lsp-ui-sideline-contents)
+      (set-face-attribute 'lsp-ui-sideline-contents nil :foreground "grey35")
+      (set-face-attribute 'lsp-ui-sideline-current-contents nil :foreground "grey43"))
+
+    (with-eval-after-load 'lsp-mode
+      (add-hook 'lsp-after-open-hook
+        (lambda ()
+          (lsp-ui-mode 1)
+          )))
+
     ))
 
 ;; `company' backend for `lsp-mode'

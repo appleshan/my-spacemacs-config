@@ -76,14 +76,17 @@ values."
      emacs-lisp
      ;; java
      plantuml ; uml
-     (python :variables
+     (python :packages
+             company eldoc flycheck helm-pydoc live-py-mode org pip-requirements py-isort ; pylookup
+             python semantic smartparens stickyfunc-enhance yapfify
+             :variables
              python-enable-yapf-format-on-save nil ; bug
              python-sort-imports-on-save t)
      semantic ; python层是依赖semantic层
      (shell :packages (company esh-help eshell eshell-prompt-extras eshell-z))
      shell-scripts
      yaml
-     ;; markdown
+     markdown
      org
 
      ;; --- Programming tool layers ---
@@ -127,11 +130,11 @@ values."
                                     ;; http://emacsredux.com/blog/2015/07/19/ace-jump-mode-is-dead-long-live-avy/
                                     ace-jump-mode
                                     ace-pinyin
-                                    ; anaconda-mode
+                                    anaconda-mode
                                     auto-complete
                                     auto-dictionary
                                     clean-aindent-mode
-                                    ; company-anaconda
+                                    company-anaconda
                                     ; company-quickhelp
                                     coffee-mode
                                     define-word

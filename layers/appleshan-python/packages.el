@@ -23,11 +23,28 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq appleshan-python-packages
     '(
+      company
+      lsp-python
       py-autopep8
       ))
 
 ;; List of packages to exclude.
 (setq appleshan-python-excluded-packages '())
+
+(defun appleshan-python/post-init-company ()
+  (spacemacs|add-company-backends
+    :backends (company-files company-capf)
+    :modes python-mode
+    :variables
+    company-minimum-prefix-length 0
+    company-idle-delay 0.5))
+
+;; Python support for lsp-mode using pyls.
+;; Install: sudo pip install python-language-server
+(defun appleshan-python/init-lsp-python ()
+  (use-package lsp-python
+    :commands lsp-python-enable
+    :init (add-hook 'python-mode-hook #'lsp-python-enable)))
 
 ;; Autopep8
 ;; enable autopep8 formatting on save
