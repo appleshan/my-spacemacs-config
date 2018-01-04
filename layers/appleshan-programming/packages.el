@@ -18,6 +18,7 @@
       company-lsp
       engine-mode
       flycheck
+      flycheck-inline
       flycheck-package
       avy-flycheck
       gist
@@ -134,6 +135,14 @@
     :error-patterns
     ((error line-start (file-name) ":" line ": " (message) line-end))
     :modes (xml-mode nxml-mode)))
+
+(defun appleshan-programming/init-flycheck-inline ()
+  (use-package flycheck-inline
+    :ensure t
+    :defer t
+    :init
+    (add-hook 'flycheck-mode-hook 'flycheck-inline-enable)
+    ))
 
 (defun appleshan-programming/init-flycheck-package ()
   (use-package flycheck-package
