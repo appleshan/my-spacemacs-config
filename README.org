@@ -292,4 +292,19 @@ SPC e l (spacemacs/toggle-flycheck-error-list)
 - Imenu
 helm-imenu
 
+* References & Resources
+
+- [[https://github.com/purcell/emacs.d][Purcell's emacs.d]]
+- [[https://github.com/syl20bnr/spacemacs][Spacemacs]]
+- [[https://github.com/bbatsov/prelude][Prelude]]
+- [[https://github.com/redguardtoo/emacs.d][Bin Chen's emacs.d]]
+- +[[https://github.com/xiaohanyu/oh-my-emacs][Oh-my-emacs]]+
+- [[http://pages.sachachua.com/.emacs.d/Sacha.html][Sacha Chua's Emacs Configuration]]
+- [[https://www.masteringemacs.org/][Mastering Emacs]]
+- [[https://emacswiki.org/][Emacs Wiki]]
+- [[https://github.com/redguardtoo/mastering-emacs-in-one-year-guide][Mastering Emacs in One year]]
+- [[http://planet.emacsen.org/][Planet Emacsen]]
+- [[http://orgmode.org/worg/index.html][Worg, Org-Mode Community]]
+- [[http://endlessparentheses.com/][Endless Parentheses]]
+
 * Happy Hacking :smile:
