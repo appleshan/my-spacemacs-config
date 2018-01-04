@@ -37,6 +37,7 @@
  '(company-tooltip-selection ((t (:inherit 'highlight))))
  '(company-tooltip-common ((t (:inherit 'mode-line))))
  '(company-tooltip-common-completion ((t (:inherit 'mode-line))))
+ '(company-tooltip-common-selection ((((type x)) (:inherit company-tooltip-selection :weight bold)) (t (:inherit company-tooltip-selection))))
  '(company-tooltip-annotation ((t (:inherit 'mode-line))))
  '(completion-dynamic-face ((((class color) (background dark)) (:background "DarkOrange" :foreground "black"))))
  '(completion-tooltip-face ((t (:inherit tooltip :background "grey5" :foreground "khaki1" :family "文泉驿等宽微米黑"))))
