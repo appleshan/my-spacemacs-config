@@ -19,6 +19,7 @@
       popwin
       visual-regexp
       visual-regexp-steroids
+      zoom
       ))
 
 ;; List of packages to exclude.
@@ -102,6 +103,28 @@
            ("C-r" . isearch-backward) ; ordinary backward search
            ("C-c m" . vr/mc-mark)  ; for multiple-cursors
            )))
+
+(defun appleshan-appearance/init-zoom ()
+  (use-package zoom
+    :config
+    (progn
+      ;; Resize the selected window using the golden ratio:
+      ; (setq zoom-size '(0.618 . 0.618))
+
+      ;; Resize the selected window according to the frame width, for example:
+      ;; 90 columns and 75% of the frame height if the frame width is larger than 1024 pixels;
+      ;; half the frame size otherwise.
+      (defun size-callback ()
+        (cond ((> (frame-pixel-width) 1280) '(90 . 0.75))
+              (t                            '(0.5 . 0.5))))
+      (setq zoom-size 'size-callback)
+
+      (setq zoom-ignored-major-modes '(dired-mode org-mode magit-mode))
+      (setq zoom-ignored-buffer-name-regexps '("^*calc"))
+      ;; 少于20行的任何缓冲区。
+      (setq zoom-ignore-predicates '(
+        (lambda () (> (count-lines (point-min) (point-max)) 20))))
+      (zoom-mode t))))
 
 ;; Local Variables:
 ;; coding: utf-8

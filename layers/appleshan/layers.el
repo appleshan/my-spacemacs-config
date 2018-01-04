@@ -15,7 +15,10 @@
     ; desktop
     )
   appleshan-complete
-  appleshan-appearance
+  (appleshan-appearance
+    :packages anzu all-the-icons on-screen paren-face popwin visual-regexp visual-regexp-steroids zoom
+    ; beacon
+    )
   (appleshan-navigation
     :packages dumb-jump evil evil-escape treemacs
     ; workgroups2
