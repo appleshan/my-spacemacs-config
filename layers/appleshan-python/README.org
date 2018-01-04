@@ -1,0 +1,4 @@
+Python settings
+
+* flycheck supported-language: Python
+https://github.com/flycheck/flycheck/blob/master/doc/languages.rst
