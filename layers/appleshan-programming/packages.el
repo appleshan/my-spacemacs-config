@@ -16,6 +16,7 @@
       lsp-mode
       lsp-ui
       company-lsp
+      ;; helm-xref
       engine-mode
       flycheck
       flycheck-inline
@@ -101,6 +102,23 @@
     (with-eval-after-load 'company
       :init (push '(company-lsp :with company-yasnippet) company-backends))
     ))
+
+(defun appleshan-programming/init-helm-xref ()
+  (use-package helm-xref
+    :config
+    ;; This is required to make xref-find-references work in helm-mode.
+    ;; In helm-mode, it gives a prompt and asks the identifier (which has no text property)
+    ;; and then passes it to lsp-mode, which requires the text property at point to locate the references.
+    ;; https://debbugs.gnu.org/cgi/bugreport.cgi?bug=29619
+    (setq xref-prompt-for-identifier
+      '(not xref-find-definitions
+            xref-find-definitions-other-window
+            xref-find-definitions-other-frame
+            xref-find-references
+            spacemacs/jump-to-definition
+            spacemacs/jump-to-reference
+            ))
+    (setq xref-show-xrefs-function 'helm-xref-show-xrefs)))
 
 (defun appleshan-programming/post-init-engine-mode ()
   (add-to-list 'search-engine-alist
