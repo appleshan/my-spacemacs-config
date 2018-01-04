@@ -55,6 +55,9 @@ values."
                treemacs-use-collapsed-directories 3
                treemacs-use-filewatch-mode t
                treemacs-use-follow-mode t)
+     (wakatime :variables
+               wakatime-api-key  "xxxxxxxxxxxx"
+               wakatime-cli-path "/opt/python/miniconda3/bin/wakatime")
 
      ;; --- Auto Complete layers ---
      helm
