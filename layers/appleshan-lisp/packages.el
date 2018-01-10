@@ -15,6 +15,7 @@
     '(
       (emacs-lisp :location built-in)
       lispy
+      elisp-refs
       ))
 
 ;; List of packages to exclude.
@@ -46,6 +47,15 @@
       (define-key lispy-mode-map (kbd "s-1") 'lispy-describe-inline)
       (define-key lispy-mode-map (kbd "s-k") 'lispy-splice)
       (define-key lispy-mode-map (kbd "s-2") 'lispy-arglist-inline))))
+
+(defun appleshan-lisp/init-elisp-refs ()
+  (use-package elisp-refs
+    :config
+    (bind-key "C-c C-r f" #'elisp-refs-function emacs-lisp-mode-map)
+    (bind-key "C-c C-r m" #'elisp-refs-macro emacs-lisp-mode-map)
+    (bind-key "C-c C-r v" #'elisp-refs-variable emacs-lisp-mode-map)
+    (bind-key "C-c C-r p" #'elisp-refs-special emacs-lisp-mode-map)
+    (bind-key "C-c C-r s" #'elisp-refs-symbol emacs-lisp-mode-map)))
 
 ;; Local Variables:
 ;; coding: utf-8
