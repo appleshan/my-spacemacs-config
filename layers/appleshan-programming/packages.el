@@ -34,6 +34,7 @@
       highlight-escape-sequences
       highlight-indent-guides
       highlight-thing
+      indent-tools
       magit
       paredit
       prodigy
@@ -255,6 +256,11 @@
     (progn
       (setq highlight-thing-delay-seconds 1.5)
       (setq highlight-thing-case-sensitive-p t))))
+
+(defun appleshan-programming/init-indent-tools ()
+  (use-package indent-tools
+    :config
+    (global-set-key (kbd "C-c i") 'indent-tools-hydra/body)))
 
 (defun appleshan-programming/post-init-magit ()
   (with-eval-after-load 'magit
