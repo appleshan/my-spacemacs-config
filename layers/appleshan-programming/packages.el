@@ -27,6 +27,7 @@
       flycheck
       flycheck-inline
       flycheck-package
+      flycheck-pycheckers
       avy-flycheck
       gist
       git-messenger
@@ -175,6 +176,12 @@
   (use-package flycheck-package
     :init
     (eval-after-load 'flycheck '(flycheck-package-setup))))
+
+(defun appleshan-programming/init-flycheck-pycheckers ()
+  (use-package flycheck-pycheckers
+    :config
+    (with-eval-after-load 'flycheck
+      (add-hook 'flycheck-mode-hook #'flycheck-pycheckers-setup))))
 
 ;; Jump to and fix syntax errors via `avy'
 (defun appleshan-programming/init-avy-flycheck ()
