@@ -17,8 +17,6 @@
       dockerfile-mode
       flyspell-correct
       multiple-cursors
-      persistent-scratch
-      tiny
       vlf
       ))
 
@@ -131,20 +129,6 @@
            ("s->" . mc/unmark-next-like-this)
            ("s-<" . mc/unmark-previous-like-this)
            ("C-c C-s-." . mc/mark-all-like-this))))
-
-;; Persistent the scratch buffter
-(defun appleshan-misc/init-persistent-scratch ()
-  (use-package persistent-scratch
-    :init
-      (setq persistent-scratch-autosave-interval 30) ; 30 second
-      (setq persistent-scratch-save-file (expand-file-name ".persistent-scratch" spacemacs-cache-directory))
-      (add-hook 'after-init-hook #'persistent-scratch-setup-default)))
-
-(defun appleshan-misc/init-tiny ()
-  (use-package tiny
-    :defer t
-    :init
-    (spacemacs/set-leader-keys "oe" 'tiny-expand)))
 
 (defun appleshan-misc/init-vlf ()
   (use-package vlf
