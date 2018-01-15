@@ -60,6 +60,7 @@ unzip ditaa0_9.zip
 # graphviz
 
 # for python
+pip install python-language-server
 pip install rope        # a python refactoring library
 pip install jedi        # Python 自动补全库
 pip install flake8      # flake8 用来检查语法错误

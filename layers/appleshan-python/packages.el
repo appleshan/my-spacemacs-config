@@ -42,7 +42,8 @@
     company-idle-delay 0.5))
 
 ;; Python support for lsp-mode using pyls.
-;; Install: sudo pip install python-language-server
+;; Install:
+;; sudo pip install python-language-server
 (defun appleshan-python/init-lsp-python ()
   (use-package lsp-python
     :commands lsp-python-enable
