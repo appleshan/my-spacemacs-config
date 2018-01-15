@@ -36,6 +36,7 @@
 (setq-default indicate-empty-lines nil)
 (setq-default indicate-buffer-boundaries nil)
 
+;; {{ 取代 smartparens，因为 smartparens 有一些性能问题
 ;; @See https://emacs-china.org/t/smartparens/2055/3
 (electric-pair-mode t)
 ;; https://www.reddit.com/r/emacs/comments/4xhxfw/how_to_tune_the_behavior_of_eletricpairmode/
@@ -45,6 +46,7 @@
 (show-paren-mode t)
 ; (setq show-paren-style 'expression)
 (setq show-paren-style 'parentheses) ;括号匹配显示但不是烦人的跳到另一个括号。
+;; }}
 
 (auto-compression-mode t)            ;Transparently Open Compressed Files
 ;(mouse-avoidance-mode "banish")      ;只要一操作鼠标自动闪开
