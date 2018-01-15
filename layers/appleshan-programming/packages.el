@@ -42,6 +42,7 @@
       symbol-overlay
       tldr
       vdiff
+      wakatime-mode
       zeal-at-point
       ))
 
@@ -354,6 +355,9 @@
     :commands (vdiff-buffers vdiff-files)
     :config
     (define-key vdiff-mode-map (kbd "C-c") vdiff-mode-prefix-map)))
+
+(defun appleshan-programming/post-init-wakatime-mode ()
+  (spacemacs|diminish wakatime-mode))
 
 ;; 使用 zeal 查看 docset
 (defun appleshan-programming/post-init-zeal-at-point ()

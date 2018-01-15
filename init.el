@@ -55,9 +55,6 @@ values."
                treemacs-use-collapsed-directories 3
                treemacs-use-filewatch-mode t
                treemacs-use-follow-mode t)
-     (wakatime :variables
-               wakatime-api-key  "xxxxxxxxxxxx"
-               wakatime-cli-path "/opt/python/miniconda3/bin/wakatime")
 
      ;; --- Auto Complete layers ---
      helm
@@ -108,6 +105,9 @@ values."
                       syntax-checking-enable-tooltips t
                       syntax-checking-use-original-bitmaps t)
      (version-control :variables version-control-diff-side 'left)
+     (wakatime :variables
+               wakatime-api-key  "xxxxxxxxxxxx"
+               wakatime-cli-path "/opt/python/miniconda3/bin/wakatime")
 
      ;; --- Vim layers ---
      evil-commentary ;; comment
