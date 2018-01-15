@@ -9,16 +9,6 @@
 ;;
 ;;; License: GPLv3
 
-;; Python
-;;
-;; packages:
-; pip install rope        # a python refactoring library
-; pip install jedi        # Python自动补全库
-; pip install flake8      # flake8 用来检查语法错误
-; pip install importmagic # importmagic 用来自动引入需要的包
-; pip install autopep8    # autopep8 用来检查PEP8规范
-; pip install yapf        # yapf 用来格式化代码
-
 ;; List of all packages to install and/or initialize. Built-in packages
 ;; which require an initialization must be listed explicitly in the list.
 (setq appleshan-python-packages
