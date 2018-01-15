@@ -57,7 +57,7 @@
 
 ;    (setenv "PATH" (mapconcat 'identity mypaths ":") )
 
-    (setenv "JAR_PATH" "/home/appleshan/bin/java-lib" )
+    (setenv "JAR_PATH" "/opt/java" )
     )
 
   ;(setenv "LD_LIBRARY_PATH" "/opt/oracle/lib")

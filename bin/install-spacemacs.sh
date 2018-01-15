@@ -52,8 +52,8 @@ wget http://tumashu.github.io/pyim-bigdict/pyim-bigdict.pyim.gz
 # 安装外部程序
 
 # ditaa
-mkdir -p ~/bin/java-lib/ditaa0_9
-cd ~/bin/java-lib/ditaa0_9
+mkdir -p /opt/java/ditaa0_9
+cd /opt/java/ditaa0_9
 wget https://downloads.sourceforge.net/project/ditaa/ditaa/0.9/ditaa0_9.zip
 unzip ditaa0_9.zip
 
