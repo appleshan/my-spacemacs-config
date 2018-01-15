@@ -193,7 +193,7 @@ values."
                                     rainbow-delimiters ;; Highlight brackets according to their depth
                                     rainbow-identifiers
                                     skewer-mode
-                                    smartparens
+                                    smartparens ;; 有一些性能问题
                                     smeargle ;; Highlighting regions by last updated time
                                     smex
                                     smooth-scrolling
