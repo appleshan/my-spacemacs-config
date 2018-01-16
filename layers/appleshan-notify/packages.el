@@ -39,10 +39,10 @@
   (use-package sauron
     :ensure t
     :init
-    (when (eq system-type 'darwin)
-      ;; Remove dbus if on OSX
+    (when (eq system-type 'gnu/linux)
+      ;; Remove mu4e if on linux
       (require 'sauron)
-      (setq sauron-modules (remove 'sauron-dbus sauron-modules)))
+      (setq sauron-modules (remove 'sauron-mu4e sauron-modules)))
 
     (setq sauron-max-line-length 120
           sauron-watch-patterns '("dakrone" "thnetos" "okenezak")
