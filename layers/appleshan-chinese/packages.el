@@ -140,8 +140,7 @@
     :if (eq 'pinyin chinese-default-input-method)
     :init
     (progn
-      (setq pyim-page-tooltip t
-            pyim-directory (expand-file-name "pyim/" spacemacs-cache-directory)
+      (setq pyim-directory (expand-file-name "pyim/" spacemacs-cache-directory)
             pyim-dcache-directory (expand-file-name "dcache/" pyim-directory)
             ;pyim-directory (concat dotspacemacs-directory ".cache/pyim/")
             ;pyim-dcache-directory (concat dotspacemacs-directory ".cache/pyim/dcache")
@@ -171,9 +170,9 @@
       ;              '(pyim-probe-punctuation-line-beginning
       ;                pyim-probe-punctuation-after-punctuation))
 
-      ;; 使用 pupup-el 来绘制选词框
-      ;(setq pyim-page-tooltip 'pos-tip)  ; 使用 pos-tip 包来绘制选词框（这种选词框比较好看）
-      ;(setq x-gtk-use-system-tooltips t) ; Linux 平台下，emacs 可以使用 GTK 来绘制选词框
+      ; 使用 emacs 26 的 child-frame
+      ; @see https://emacs-china.org/t/topic/4451
+      (setq pyim-page-tooltip 'child-frame)
 
       ;; 选词框显示5个候选词
       (setq pyim-page-length 9)
