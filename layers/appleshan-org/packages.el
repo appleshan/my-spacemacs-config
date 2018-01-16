@@ -591,7 +591,7 @@
         (ledger . t)
         (org . t)
         (python . t)
-        (sh . t)
+        ;(sh . t) ; for emacs 26
         (sql . nil)
         (plantuml . t)))
 
