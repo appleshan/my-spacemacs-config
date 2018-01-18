@@ -16,7 +16,10 @@
       find-by-pinyin-dired
       ace-pinyin
       pangu-spacing
-      (pyim :toggle (eq chinese-default-input-method 'pinyin))
+      ;; 如果 Emacs GUI 可以输入中文，这里就可以关闭 pyim
+      ;; (pyim :toggle (eq chinese-default-input-method 'pinyin))
+      ;; (pyim-basedict :location local)
+      ;; (pyim-greatdict :location local)
       (unicad :location local)
       ))
 
