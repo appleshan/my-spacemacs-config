@@ -170,9 +170,11 @@
       ;              '(pyim-probe-punctuation-line-beginning
       ;                pyim-probe-punctuation-after-punctuation))
 
-      ; 使用 emacs 26 的 child-frame
-      ; @see https://emacs-china.org/t/topic/4451
-      (setq pyim-page-tooltip 'child-frame)
+      (if (version< emacs-version "26")
+          (setq pyim-page-tooltip t) ; emacs 25
+        ; 使用 emacs 26 的 child-frame
+        ; @see https://emacs-china.org/t/topic/4451
+        (setq pyim-page-tooltip 'child-frame))
 
       ;; 选词框显示5个候选词
       (setq pyim-page-length 9)
