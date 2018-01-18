@@ -150,11 +150,6 @@
       (evilified-state-evilify pyim-dm-mode pyim-dm-mode-map))
     :config
     (progn
-      ;; 激活 basedict 拼音词库
-      (use-package pyim-basedict
-        :ensure nil
-        :config (pyim-basedict-enable))
-
       ;; 设置 pyim 探针设置，这是 pyim 高级功能设置，可以实现 *无痛* 中英文切换.
       ;; 我自己使用的中英文动态切换规则是：
       ;; 1. 光标只有在注释里面时，才可以输入中文。
@@ -193,6 +188,24 @@
       (setq pyim-company-complete-chinese-enable nil)
       )
   ))
+
+;; 激活 basedict 拼音词库
+(defun appleshan-chinese/init-pyim-basedict ()
+  (use-package pyim-basedict
+    :ensure nil
+    :config
+    (with-eval-after-load 'pyim
+      (pyim-basedict-enable))
+    ))
+
+;; 激活 greatdict 拼音词库
+(defun appleshan-chinese/init-pyim-greatdict ()
+  (use-package pyim-greatdict
+    :ensure nil
+    :config
+    (with-eval-after-load 'pyim
+      (pyim-greatdict-enable))
+    ))
 
 (defun appleshan-chinese/init-unicad ()
   (use-package unicad
