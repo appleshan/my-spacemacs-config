@@ -63,17 +63,6 @@
   (use-package lsp-ui
     :after lsp-mode
     :config
-    ;; the define of lsp-ui-peek-mode has bug
-    (define-minor-mode lsp-ui-peek-mode
-      "Mode for lsp-ui-peek."
-      :init-value nil
-      (if lsp-ui-peek-mode
-          (setq lsp-ui-peek--deactivate-keymap-fn (set-transient-map lsp-ui-peek-mode-map t 'lsp-ui-peek--abort))
-        (progn
-          (funcall lsp-ui-peek--deactivate-keymap-fn)
-          (setq lsp-ui-peek--deactivate-keymap-fn nil))
-        ))
-
     (setq lsp-ui-doc-include-signature nil)  ; don't include type signature in the child frame
 
     (setq lsp-ui-peek-expand-function (lambda (xs) (mapcar #'car xs)))
