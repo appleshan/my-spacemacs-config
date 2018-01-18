@@ -253,7 +253,7 @@ values."
    ;; If non-nil, a form that evaluates to a package directory. For example, to
    ;; use different package directories for different Emacs versions, set this
    ;; to `emacs-version'.
-   dotspacemacs-elpa-subdirectory "26.0.91"
+   dotspacemacs-elpa-subdirectory 'emacs-version
    ;; One of `vim', `emacs' or `hybrid'.
    ;; `hybrid' is like `vim' except that `insert state' is replaced by the
    ;; `hybrid state' with `emacs' key bindings. The value can also be a list
