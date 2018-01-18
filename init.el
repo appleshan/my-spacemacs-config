@@ -43,14 +43,12 @@ values."
      (colors :variables
              colors-colorize-identifiers 'variables
              colors-enable-nyan-cat-progress-bar nil)
-     ;; deft  ;; Quick Note Taking
-     ;; finance
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
-     ;; search-engine
      ;; (spell-checking :variables
-     ;;                 spell-checking-enable-by-default t)
-     ;; themes-megapack ; http://themegallery.robdor.com/
+     ;;                 ispell-program-name "aspell"
+     ;;                 ispell-dictionary "american"
+     ;;                 spell-checking-enable-by-default nil)
      (treemacs :variables
                treemacs-use-collapsed-directories 3
                treemacs-use-filewatch-mode t
@@ -78,7 +76,7 @@ values."
      plantuml ; uml
      (python :packages
              company eldoc flycheck helm-pydoc live-py-mode org pip-requirements py-isort ; pylookup
-             python semantic smartparens stickyfunc-enhance yapfify
+             python semantic stickyfunc-enhance yapfify
              :variables
              python-enable-yapf-format-on-save nil ; bug
              python-sort-imports-on-save t)
@@ -89,22 +87,38 @@ values."
      markdown
      org
 
+     ;; --- Source control ---
+     (git :variables
+          git-magit-status-fullscreen t
+          magit-push-always-verify nil
+          magit-save-repository-buffers 'dontask
+          magit-revert-buffers 'silent
+          magit-refs-show-commit-count 'all
+          magit-revision-show-gravatars nil)
+     github
+     (version-control :variables
+                      version-control-diff-side 'left)
+
      ;; --- Programming tool layers ---
      (dash :variables helm-dash-docset-newpath "~/.docsets/")
      (docker :packages (dockerfile-mode))
      ;; gtags
-     (git :variables git-magit-status-fullscreen t)
-     github
      imenu-list ;; To get the outline for the current file
      ;; ipython-notebook
-     prodigy  ;; 使用 Prodigy 在 Emacs 中管理外部服务
-     ;; pandoc
      (restclient :variables restclient-use-org nil)
      (syntax-checking :variables
                       syntax-checking-enable-by-default t
                       syntax-checking-enable-tooltips t
                       syntax-checking-use-original-bitmaps t)
-     (version-control :variables version-control-diff-side 'left)
+
+     ;; --- Tools ---
+     ;; deft  ;; Quick Note Taking
+     ;; finance
+     prodigy  ;; 使用 Prodigy 在 Emacs 中管理外部服务
+     ;; pandoc
+     ;; search-engine
+     ;spacemacs-layouts
+     ;; themes-megapack ; http://themegallery.robdor.com/
      (wakatime :variables
                wakatime-api-key  "xxxxxxxxxxxx"
                wakatime-cli-path "/opt/python/miniconda3/bin/wakatime")
