@@ -39,6 +39,7 @@
       paredit
       prodigy
       plantuml-mode
+      quickrun
       symbol-overlay
       tldr
       vdiff
@@ -323,6 +324,10 @@
   ;; Enable puml-mode for PlantUML files
   (add-to-list 'auto-mode-alist '("\\.puml\\'" . plantuml-mode))
   (add-to-list 'auto-mode-alist '("\\.plantuml\\'" . plantuml-mode)))
+
+;;; Compiling, Running Code
+(defun appleshan-programming/init-quickrun ()
+  (use-package quickrun))
 
 ;; Highlight symbols
 (defun appleshan-programming/init-symbol-overlay ()

@@ -79,6 +79,10 @@
   ;; Completions
   (push '("*Completions*" :stick t :noselect t) popwin:special-display-config)
 
+  ;; I recommend you set popwin for quickrun.el
+  ;; See also http://www.emacswiki.org/emacs/PopWin
+  (push '("*quickrun*") popwin:special-display-config)
+
   (push "*appleshan/run-current-file output*" popwin:special-display-config)
   (delete "*Async Shell Command*" popwin:special-display-config))
 
