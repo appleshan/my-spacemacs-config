@@ -20,7 +20,7 @@
     ; beacon
     )
   (appleshan-navigation
-    :packages dumb-jump evil evil-escape treemacs
+    :packages dumb-jump evil evil-escape imenu-anywhere treemacs
     ; workgroups2
     )
   (appleshan-notify

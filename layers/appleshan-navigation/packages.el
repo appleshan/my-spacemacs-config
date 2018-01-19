@@ -20,6 +20,7 @@
         dumb-jump
         evil
         evil-escape
+        imenu-anywhere
         treemacs
         workgroups2
         ))
@@ -89,6 +90,11 @@
 
 (defun appleshan-navigation/post-init-evil-escape ()
   (setq evil-escape-delay 0.2))
+
+(defun appleshan-navigation/init-imenu-anywhere ()
+  (use-package imenu-anywhere
+    :ensure t
+    :bind (("C-c o" . helm-imenu-anywhere))))
 
 ;; A tree layout file explorer
 (defun appleshan-navigation/post-init-treemacs ()
