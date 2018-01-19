@@ -204,6 +204,7 @@ values."
                                     org-repo-todo
                                     org-timer
                                     org-tree-slide
+                                    paradox
                                     rainbow-delimiters ;; Highlight brackets according to their depth
                                     rainbow-identifiers
                                     skewer-mode
