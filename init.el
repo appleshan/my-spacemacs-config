@@ -168,7 +168,6 @@ values."
                                     evil-mc
                                     evil-tutor
                                     evil-unimpaired
-                                    exec-path-from-shell
                                     fancy-battery
                                     find-by-pinyin-dired
                                     fish-mode

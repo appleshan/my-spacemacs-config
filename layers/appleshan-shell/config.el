@@ -33,36 +33,15 @@
     (setq exec-path (append mypaths (list "." exec-directory)) )
 
     (setenv "PATH" (mapconcat 'identity mypaths ";") )
-    (setenv "HOME" "D:/home/appleshan/" )
-    (setenv "JAR_PATH" "D:/bin/java-lib" )
-    ))
+    )
+
+  (setenv "HOME" "D:/home/appleshan/")
+  (setenv "JAR_PATH" "D:/bin/java-lib")
+  )
 
 ;; for linux
 (when (spacemacs/system-is-linux)
-  (let ((mypaths
-          '(
-            "/home/appleshan/.conda/envs/python-v3/bin"
-            "/opt/python/miniconda3/bin"
-            "/home/appleshan/.local/bin"
-            "/home/appleshan/bin"
-            "/usr/local/sbin"
-            "/usr/local/bin"
-            "/usr/bin"
-            "/usr/lib/jvm/default/bin"
-            "/usr/bin/site_perl"
-            "/usr/bin/vendor_perl"
-            "/usr/bin/core_perl"
-           )))
-    (setq exec-path (append mypaths (list "." exec-directory)))
-
-;    (setenv "PATH" (mapconcat 'identity mypaths ":") )
-
-    (setenv "JAR_PATH" "/opt/java" )
-    )
-
-  ;(setenv "LD_LIBRARY_PATH" "/opt/oracle/lib")
-  ;(setenv "NLS_LANG" "SIMPLIFIED CHINESE_CHINA.AL32UTF8")
-  )
+  (setenv "JAR_PATH" "/opt/java"))
 
 ;; Local Variables:
 ;; coding: utf-8
