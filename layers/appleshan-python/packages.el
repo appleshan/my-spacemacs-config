@@ -37,7 +37,9 @@
 (defun appleshan-python/init-lsp-python ()
   (use-package lsp-python
     :commands lsp-python-enable
-    :init (add-hook 'python-mode-hook #'lsp-python-enable)))
+    :init (add-hook 'python-mode-hook #'lsp-python-enable)
+    :config (setq python-indent-guess-indent-offset-verbose nil)
+    ))
 
 ;; Autopep8
 ;; enable autopep8 formatting on save
