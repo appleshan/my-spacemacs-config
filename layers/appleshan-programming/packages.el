@@ -75,6 +75,8 @@
     (define-key lsp-ui-peek-mode-map (kbd "j") 'lsp-ui-peek--select-next)
     (define-key lsp-ui-peek-mode-map (kbd "k") 'lsp-ui-peek--select-prev)
 
+    (define-key lsp-ui-mode-map (kbd "C-c l") 'lsp-ui-imenu)
+
     (setq lsp-ui-sideline-show-flycheck nil)
     (setq lsp-ui-sideline-show-symbol nil)  ; don't show symbol on the right of info
     (setq lsp-ui-sideline-ignore-duplicate t)
