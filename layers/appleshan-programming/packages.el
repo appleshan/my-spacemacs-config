@@ -67,7 +67,6 @@
     (setq lsp-ui-doc-include-signature nil)  ; don't include type signature in the child frame
 
     (setq lsp-ui-peek-expand-function (lambda (xs) (mapcar #'car xs)))
-    (advice-add 'lsp-ui-peek--goto-xref :around #'my-advice/xref-set-jump)
 
     (evil-make-overriding-map lsp-ui-peek-mode-map 'normal)
     (define-key lsp-ui-peek-mode-map (kbd "h") 'lsp-ui-peek--select-prev-file)
