@@ -114,8 +114,9 @@ values."
      ;; --- Tools ---
      ;; deft  ;; Quick Note Taking
      ;; finance
-     prodigy  ;; 使用 Prodigy 在 Emacs 中管理外部服务
      ;; pandoc
+     pass
+     prodigy  ;; 使用 Prodigy 在 Emacs 中管理外部服务
      ;; search-engine
      ;spacemacs-layouts
      ;; themes-megapack ; http://themegallery.robdor.com/
