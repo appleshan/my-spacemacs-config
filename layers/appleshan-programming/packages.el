@@ -77,6 +77,8 @@
     (define-key lsp-ui-peek-mode-map (kbd "k") 'lsp-ui-peek--select-prev)
 
     (define-key lsp-ui-mode-map (kbd "C-c l") 'lsp-ui-imenu)
+    (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+    (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
 
     (setq lsp-ui-sideline-show-flycheck nil)
     (setq lsp-ui-sideline-show-symbol nil)  ; don't show symbol on the right of info
