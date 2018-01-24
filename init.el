@@ -10,7 +10,7 @@ values."
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
    ;; or `spacemacs'. (default 'spacemacs)
-   dotspacemacs-distribution 'spacemacs
+   dotspacemacs-distribution 'spacemacs-base
    ;; Lazy installation of layers (i.e. layers are installed only when a file
    ;; with a supported type is opened). Possible values are `all', `unused'
    ;; and `nil'. `unused' will lazy install only unused layers (i.e. layers
@@ -36,6 +36,39 @@ values."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+
+     ;; --- Spacemacs layers ---
+     (spacemacs-completion
+      :packages
+      default-helm-config)
+     (spacemacs-editing
+      :packages
+      aggressive-indent avy editorconfig expand-region hungry-delete link-hint
+      move-text spacemacs-whitespace-cleanup string-inflection undo-tree ws-butler)
+     (spacemacs-editing-visual
+      :packages
+      column-enforce-mode hide-comnt highlight-numbers highlight-parentheses indent-guide)
+     (spacemacs-evil
+      :packages
+      evil-anzu evil-ediff evil-lion evil-nerd-commenter evil-matchit evil-numbers
+      evil-search-highlight-persist evil-surround evil-visual-mark-mode hs-minor-mode)
+     (spacemacs-language
+      :packages
+      define-word)
+     (spacemacs-layouts
+      :packages
+      eyebrowse helm persp-mode spaceline)
+     (spacemacs-modeline
+      :packages
+      anzu spaceline spaceline-all-the-icons)
+     (spacemacs-navigation
+      :packages
+      winum)
+     (spacemacs-org
+      :packages
+      default-org-config org-plus-contrib space-doc toc-org)
+     spacemacs-purpose
+     spacemacs-visual
 
      ;; --- General layers ---
      (better-defaults :variables
