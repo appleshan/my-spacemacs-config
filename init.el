@@ -63,7 +63,7 @@ values."
       anzu spaceline spaceline-all-the-icons)
      (spacemacs-navigation
       :packages
-      winum)
+      restart-emacs winum)
      (spacemacs-org
       :packages
       default-org-config org-plus-contrib space-doc toc-org)
