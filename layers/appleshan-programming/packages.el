@@ -56,6 +56,7 @@
   (use-package lsp-mode
     :diminish lsp-mode
     :config
+    (setq lsp-enable-eldoc nil) ; 禁止eldoc
     (with-eval-after-load 'flycheck
       (require 'lsp-flycheck))
     ))
