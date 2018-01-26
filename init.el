@@ -88,6 +88,7 @@ values."
                treemacs-use-follow-mode t)
 
      ;; --- Auto Complete layers ---
+     ;; <<helm与ivy简单对比>>: http://honmaple.me/articles/2018/01/helm%E4%B8%8Eivy%E7%AE%80%E5%8D%95%E5%AF%B9%E6%AF%94.html
      helm
      (auto-completion :variables
                       auto-completion-complete-with-key-sequence nil
