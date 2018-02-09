@@ -13,6 +13,10 @@
 ;; I use magit for everything anyway:
 (setq vc-handled-backends '(git svn))
 
+;; 更新 modeline 上的 git version 信息
+;; @See https://emacs-china.org/t/topic/5037
+(setq auto-revert-check-vc-info t)
+
 (spacemacs|add-toggle iimage
   :status iimage-mode
   :on (iimage-mode)
