@@ -582,7 +582,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   ;; projects directory
   (defconst user-projects-directory
-    (expand-file-name (concat user-home-directory "projects/"))
+    (expand-file-name (concat user-home-directory "private-projects/"))
     "projects directory.")
   (unless (file-exists-p user-projects-directory)
     (make-directory user-projects-directory))
