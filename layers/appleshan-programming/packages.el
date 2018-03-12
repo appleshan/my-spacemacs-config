@@ -58,8 +58,6 @@
     :config
     (setq lsp-enable-eldoc nil) ; 禁止eldoc
     (spacemacs|diminish lsp-mode " Ⓛ" " L")
-    (with-eval-after-load 'flycheck
-      (require 'lsp-flycheck))
     ))
 
 (defun appleshan-programming/init-lsp-ui ()
