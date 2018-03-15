@@ -611,11 +611,11 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
 
-;  (setq url-proxy-services
-;        '(("no_proxy" . "^\\(localhost\\|10.*\\|192.168.*\\|elpa.emacs-china.org\\|mirrors.tuna.tsinghua.edu.cn\\)")
-;          ("http" . "127.0.0.1:18080")
-;          ("https" . "127.0.0.1:18080")
-;          ("socks5" . "127.0.0.1:18080")))
+  (setq url-proxy-services
+        '(("no_proxy" . "^\\(localhost\\|10.10.*\\|192.168.*\\|elpa.emacs-china.org\\|mirrors.tuna.tsinghua.edu.cn\\)")
+          ("http" . "127.0.0.1:18080")
+          ("https" . "127.0.0.1:18080")
+          ("socks5" . "127.0.0.1:18080")))
 
   ;;{{ 解决 org 表格里面中英文对齐的问题
   ;; 可选字体组合及字体大小：
