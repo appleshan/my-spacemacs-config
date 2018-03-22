@@ -155,6 +155,7 @@
   (global-prettify-symbols-mode +1))
 
 ;; 搜索时任意字符都可以用空格代替
+;; @See https://chriszheng.science/2016/01/03/One-line-makes-isearch-flexible/
 (setq search-whitespace-regexp ".*?")
 
 ;; Mouse & Smooth Scroll
