@@ -27,7 +27,7 @@
     :packages alert sauron eshell)
   appleshan-shell
   (appleshan-dired
-    :packages dired dired-x dired-k dired-quick-sort dired-efap dired-collapse quick-preview)
+    :packages dired dired-x dired-k dired-quick-sort dired-efap quick-preview)
   (appleshan-org
     :variables org-gtd-dir (concat user-projects-directory "org-gtd/"))
   (appleshan-chinese

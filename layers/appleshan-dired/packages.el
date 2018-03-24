@@ -16,7 +16,6 @@
       (dired-k :location "~/.spacemacs.d/local/dired-k/")
       dired-quick-sort
       dired-efap
-      dired-collapse
       ))
 
 ;; List of packages to exclude.
@@ -107,15 +106,6 @@
   (use-package dired-efap
     :config
     (bind-key "E" #'dired-efap dired-mode-map)))
-
-;; Collapsing multiple directories in Dired
-;; Fuco1 has a nice blog post about this,
-;; @see https://fuco1.github.io/2017-07-15-Collapse-unique-nested-paths-in-dired-with-dired-collapse-mode.html
-(defun appleshan-dired/init-dired-collapse ()
-  (use-package dired-collapse
-    :ensure t
-    :init
-    (add-hook 'dired-mode-hook 'dired-collapse-mode)))
 
 ;; Local Variables:
 ;; coding: utf-8
