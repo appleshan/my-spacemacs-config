@@ -151,6 +151,7 @@ values."
      ;; --- Tools ---
      ;; deft  ;; Quick Note Taking
      ;; finance
+     nlinum
      ;; pandoc
      pass
      prodigy  ;; 使用 Prodigy 在 Emacs 中管理外部服务
@@ -462,7 +463,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
