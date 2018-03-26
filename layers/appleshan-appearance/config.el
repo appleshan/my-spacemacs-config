@@ -41,8 +41,6 @@
   (push `(alpha . ,tp) default-frame-alist)
   (set-frame-parameter (selected-frame) 'alpha tp))
 
-(add-hook 'prog-mode-hook 'linum-mode)
-
 ;; http://stackoverflow.com/questions/3875213/turning-on-linum-mode-when-in-python-c-mode
 (setq linum-mode-inhibit-modes-list '(eshell-mode
                                       shell-mode
