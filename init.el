@@ -41,6 +41,7 @@ values."
      (spacemacs-completion
       :packages
       default-helm-config)
+     spacemacs-defaults
      (spacemacs-editing
       :packages
       aggressive-indent avy editorconfig expand-region hungry-delete link-hint
@@ -58,6 +59,7 @@ values."
      (spacemacs-layouts
       :packages
       eyebrowse helm persp-mode spaceline)
+     spacemacs-misc
      (spacemacs-modeline
       :packages
       anzu spaceline spaceline-all-the-icons)
@@ -67,6 +69,7 @@ values."
      (spacemacs-org
       :packages
       default-org-config org-plus-contrib space-doc toc-org)
+     spacemacs-project
      spacemacs-purpose
      spacemacs-visual
 
