@@ -160,7 +160,7 @@ values."
      ;; themes-megapack ; http://themegallery.robdor.com/
      (wakatime :variables
                wakatime-api-key  "xxxxxxxxxxxx"
-               wakatime-cli-path "/opt/python/miniconda3/bin/wakatime")
+               wakatime-cli-path "/usr/bin/wakatime")
 
      ;; --- Vim layers ---
      evil-commentary ;; comment
