@@ -138,7 +138,7 @@ values."
 
      ;; --- Programming tool layers ---
      (dash :variables helm-dash-docset-newpath "~/.docsets/")
-     (docker :packages (dockerfile-mode))
+     (docker :packages (docker dockerfile-mode))
      ;; gtags
      imenu-list ;; To get the outline for the current file
      ;; ipython-notebook
