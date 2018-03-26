@@ -157,6 +157,7 @@ values."
      prodigy  ;; 使用 Prodigy 在 Emacs 中管理外部服务
      ;; search-engine
      ;spacemacs-layouts
+     systemd
      ;; themes-megapack ; http://themegallery.robdor.com/
      (wakatime :variables
                wakatime-api-key  "xxxxxxxxxxxx"
