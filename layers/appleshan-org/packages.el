@@ -168,7 +168,7 @@
     ;; Custom Key Bindings
     (spacemacs/set-leader-keys
       ;; refile task
-      "or"  'org-agenda-refile)
+      "aor"  'org-agenda-refile)
 
     (setq org-agenda-inhibit-startup t)   ;; ~50x speedup
     (setq org-agenda-use-tag-inheritance nil) ;; 3-4x speedup
