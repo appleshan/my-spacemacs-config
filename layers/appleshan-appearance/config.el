@@ -132,9 +132,6 @@
 ; (set-fontset-font t '(#x24b6 . #x24fe) "Lucida Sans Unicode") ;;circled letters
 ; (set-fontset-font t '(#x2295 . #x22a1) "Lucida Sans Unicode") ;;additional characters
 
-(spacemacs|diminish which-key-mode)
-(spacemacs|diminish spacemacs-whitespace-cleanup-mode)
-
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: nil

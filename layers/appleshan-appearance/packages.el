@@ -19,6 +19,8 @@
       popwin
       visual-regexp
       visual-regexp-steroids
+      which-key
+      spacemacs-whitespace-cleanup
       zoom
       ))
 
@@ -107,6 +109,12 @@
            ("C-r" . isearch-backward) ; ordinary backward search
            ("C-c m" . vr/mc-mark)  ; for multiple-cursors
            )))
+
+(defun appleshan-appearance/post-init-which-key ()
+  (spacemacs|diminish which-key-mode))
+
+(defun appleshan-appearance/post-init-spacemacs-whitespace-cleanup ()
+  (spacemacs|diminish spacemacs-whitespace-cleanup-mode))
 
 (defun appleshan-appearance/init-zoom ()
   (use-package zoom
