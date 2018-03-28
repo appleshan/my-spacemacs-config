@@ -17,11 +17,34 @@
 
 (setq appleshan-shell-packages
       '(
+      	exec-path-from-shell
         (terminal-here :location "~/.spacemacs.d/local/terminal-here/")
         ))
 
 ;; List of packages to exclude.
 (setq appleshan-shell-excluded-packages '())
+
+(defun appleshan-shell/pre-init-exec-path-from-shell ()
+  (spacemacs|use-package-add-hook exec-path-from-shell
+    :post-config
+    (progn
+      ;;Copy the following environent variables from shell
+      (dolist (var '(;; my path
+                     "JAVA_HOME"
+                     "ORACLE_HOME"
+                     "LD_LIBRARY_PATH"
+                     "NLS_LANG"
+                     ;; system path
+                     "PATH"
+                     "SSH_AUTH_SOCK"
+                     "SSH_AGENT_PID"
+                     "GPG_AGENT_INFO"
+                     "LANG"
+                     "LC_ALL"
+                     "LC_CTYPE"
+                     ))
+        (add-to-list 'exec-path-from-shell-variables var))
+      )))
 
 (defun appleshan-shell/init-terminal-here ()
   (use-package terminal-here))
