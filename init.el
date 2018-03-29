@@ -107,14 +107,16 @@ values."
      ;; auto-complete layer 在 org-mode 中会引发很多问题，所以最好在 org-mode 中禁用补全
 
      ;; --- Programming and markup languages layers ---
+     lsp
      ;; scheme
      emacs-lisp
      ;; java
      plantuml ; uml
      (python :packages
              company eldoc flycheck helm-pydoc live-py-mode org pip-requirements py-isort ; pylookup
-             python semantic stickyfunc-enhance yapfify
+             python semantic stickyfunc-enhance yapfify lsp-python
              :variables
+             python-backend 'lsp
              python-enable-yapf-format-on-save nil ; bug
              python-sort-imports-on-save t)
      semantic ; python层是依赖semantic层
