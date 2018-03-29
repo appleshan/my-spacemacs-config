@@ -14,9 +14,6 @@
 (setq appleshan-python-packages
     '(
       company
-      (lsp-python :location (recipe
-                           :fetcher github
-                           :repo "emacs-lsp/lsp-python"))
       py-autopep8
       ))
 
@@ -30,16 +27,6 @@
     :variables
     company-minimum-prefix-length 0
     company-idle-delay 0.5))
-
-;; Python support for lsp-mode using pyls.
-;; Install:
-;; sudo pip install python-language-server
-(defun appleshan-python/init-lsp-python ()
-  (use-package lsp-python
-    :commands lsp-python-enable
-    :init (add-hook 'python-mode-hook #'lsp-python-enable)
-    :config (setq python-indent-guess-indent-offset-verbose nil)
-    ))
 
 ;; Autopep8
 ;; enable autopep8 formatting on save
