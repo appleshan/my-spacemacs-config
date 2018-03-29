@@ -66,7 +66,6 @@
   (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
   (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
 
-  (setq lsp-ui-sideline-show-flycheck nil)
   (setq lsp-ui-sideline-show-symbol nil)  ; don't show symbol on the right of info
   (setq lsp-ui-sideline-ignore-duplicate t)
   (set-face-attribute 'lsp-ui-sideline-symbol nil :foreground "grey30" :box nil)
