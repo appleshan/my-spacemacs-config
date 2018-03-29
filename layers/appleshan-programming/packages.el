@@ -13,15 +13,9 @@
 ;; which require an initialization must be listed explicitly in the list.
 (setq appleshan-programming-packages
     '(
-      (lsp-mode :location (recipe
-                           :fetcher github
-                           :repo "emacs-lsp/lsp-mode"))
-      (lsp-ui :location (recipe
-                         :fetcher github
-                         :repo "emacs-lsp/lsp-ui"))
-      (company-lsp :location (recipe
-                              :fetcher github
-                              :repo "tigersoldier/company-lsp"))
+      lsp-mode
+      lsp-ui
+      company-lsp
       ;; helm-xref
       engine-mode
       flycheck
@@ -52,58 +46,58 @@
 
 ;; Emacs client for the Language Server Protocol
 ;; https://github.com/emacs-lsp/lsp-mode
-(defun appleshan-programming/init-lsp-mode ()
-  (use-package lsp-mode
-    :diminish lsp-mode
-    :config
-    (setq lsp-enable-eldoc nil) ; 禁止eldoc
-    (spacemacs|diminish lsp-mode " Ⓛ" " L")
+(defun appleshan-programming/post-init-lsp-mode ()
+  (setq lsp-enable-eldoc nil) ; 禁止eldoc
+  (setq lsp-response-timeout 25)
+  (spacemacs|diminish lsp-mode " Ⓛ" " L")
+
+  (add-hook 'lsp-after-open-hook (lambda ()
+    ;; bug: flycheck-display-errors-function 被 lsp-ui-sideline 覆盖
+    ;; 然后重新设置为 flycheck-inline-error-messages
+    (setq-local flycheck-display-errors-function 'flycheck-inline-error-messages)
     ))
+  )
 
-(defun appleshan-programming/init-lsp-ui ()
-  (use-package lsp-ui
-    :after lsp-mode
-    :config
-    (setq lsp-ui-doc-include-signature nil)  ; don't include type signature in the child frame
+(defun appleshan-programming/post-init-lsp-ui ()
+  (setq lsp-ui-doc-include-signature nil)  ; don't include type signature in the child frame
 
-    (setq lsp-ui-peek-expand-function (lambda (xs) (mapcar #'car xs)))
+  (setq lsp-ui-peek-expand-function (lambda (xs) (mapcar #'car xs)))
 
-    (evil-make-overriding-map lsp-ui-peek-mode-map 'normal)
-    (define-key lsp-ui-peek-mode-map (kbd "h") 'lsp-ui-peek--select-prev-file)
-    (define-key lsp-ui-peek-mode-map (kbd "l") 'lsp-ui-peek--select-next-file)
-    (define-key lsp-ui-peek-mode-map (kbd "j") 'lsp-ui-peek--select-next)
-    (define-key lsp-ui-peek-mode-map (kbd "k") 'lsp-ui-peek--select-prev)
+  (evil-make-overriding-map lsp-ui-peek-mode-map 'normal)
+  (define-key lsp-ui-peek-mode-map (kbd "h") 'lsp-ui-peek--select-prev-file)
+  (define-key lsp-ui-peek-mode-map (kbd "l") 'lsp-ui-peek--select-next-file)
+  (define-key lsp-ui-peek-mode-map (kbd "j") 'lsp-ui-peek--select-next)
+  (define-key lsp-ui-peek-mode-map (kbd "k") 'lsp-ui-peek--select-prev)
 
-    (define-key lsp-ui-mode-map (kbd "C-c l") 'lsp-ui-imenu)
-    (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
-    (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
+  (define-key lsp-ui-mode-map (kbd "C-c l") 'lsp-ui-imenu)
+  (define-key lsp-ui-mode-map [remap xref-find-definitions] #'lsp-ui-peek-find-definitions)
+  (define-key lsp-ui-mode-map [remap xref-find-references] #'lsp-ui-peek-find-references)
 
-    (setq lsp-ui-sideline-show-flycheck nil)
-    (setq lsp-ui-sideline-show-symbol nil)  ; don't show symbol on the right of info
-    (setq lsp-ui-sideline-ignore-duplicate t)
-    (set-face-attribute 'lsp-ui-sideline-symbol nil :foreground "grey30" :box nil)
-    (set-face-attribute 'lsp-ui-sideline-current-symbol nil :foreground "grey38" :box nil)
-    (when (internal-lisp-face-p 'lsp-ui-sideline-contents)
-      (set-face-attribute 'lsp-ui-sideline-contents nil :foreground "grey35")
-      (set-face-attribute 'lsp-ui-sideline-current-contents nil :foreground "grey43"))
+  (setq lsp-ui-sideline-show-flycheck nil)
+  (setq lsp-ui-sideline-show-symbol nil)  ; don't show symbol on the right of info
+  (setq lsp-ui-sideline-ignore-duplicate t)
+  (set-face-attribute 'lsp-ui-sideline-symbol nil :foreground "grey30" :box nil)
+  (set-face-attribute 'lsp-ui-sideline-current-symbol nil :foreground "grey38" :box nil)
+  (when (internal-lisp-face-p 'lsp-ui-sideline-contents)
+    (set-face-attribute 'lsp-ui-sideline-contents nil :foreground "grey35")
+    (set-face-attribute 'lsp-ui-sideline-current-contents nil :foreground "grey43"))
 
-    (with-eval-after-load 'lsp-mode
-      (add-hook 'lsp-after-open-hook
-        (lambda ()
-          (lsp-ui-mode 1)
-          ;; bug: flycheck-display-errors-function 被 lsp-ui-sideline 覆盖
-          ;; 然后重新设置为 flycheck-inline-error-messages
-          (setq-local flycheck-display-errors-function 'flycheck-inline-error-messages)
-          )))
-    ))
+  (spacemacs/set-leader-keys-for-major-mode 'lsp-mode
+      ;; format
+      "=" #'lsp-format-buffer
+      ;; goto
+      "gd" #'lsp-ui-peek-find-definitions
+      "gi" #'lsp-ui-imenu
+      "gr" #'lsp-ui-peek-find-references
+      "gr" #'lsp-ui-peek-find-workspace-symbol
+      ;; refactor
+      "rr" #'lsp-rename))
 
 ;; `company' backend for `lsp-mode'
-(defun appleshan-programming/init-company-lsp ()
-  (use-package company-lsp
-    :config
-    (with-eval-after-load 'company
-      :init (push '(company-lsp :with company-yasnippet) company-backends))
-    ))
+(defun appleshan-programming/post-init-company-lsp ()
+   (with-eval-after-load 'company
+     :init
+     (push '(company-lsp :with company-yasnippet) company-backends)))
 
 (defun appleshan-programming/init-helm-xref ()
   (use-package helm-xref
