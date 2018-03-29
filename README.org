@@ -180,6 +180,7 @@ git config --global core.autocrlf false
 *** Python Language Server
 #+BEGIN_SRC bash
 pip install python-language-server
+pip install pycodestyle
 #+END_SRC
 
 *** Auto-completion: Anaconda dependencies
