@@ -492,6 +492,22 @@ _q_uit _RET_: current
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 
+;; lsp-mode key bindings
+(defun spacemacs/lsp-set-key-bindings (mode)
+  "Setup the key bindings for the given MODE."
+  (spacemacs/set-leader-keys-for-major-mode mode
+    ;; format
+    "=" #'lsp-format-buffer
+    ;; goto
+    "gi" #'lsp-ui-imenu
+    "gd" #'lsp-ui-peek-find-definitions
+    "gr" #'lsp-ui-peek-find-references
+    "gs" #'lsp-ui-peek-find-workspace-symbol
+    ;; refactor
+    "rr" #'lsp-rename))
+;; Setup the key bindings for 'python-mode'
+(spacemacs/lsp-set-key-bindings 'python-mode)
+
 ;; java
 ; (define-key java-mode-map (kbd "M-i") 'java-imports-add-import-dwim)
 

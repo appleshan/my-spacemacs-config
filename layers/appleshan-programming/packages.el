@@ -80,18 +80,7 @@
   (set-face-attribute 'lsp-ui-sideline-current-symbol nil :foreground "grey38" :box nil)
   (when (internal-lisp-face-p 'lsp-ui-sideline-contents)
     (set-face-attribute 'lsp-ui-sideline-contents nil :foreground "grey35")
-    (set-face-attribute 'lsp-ui-sideline-current-contents nil :foreground "grey43"))
-
-  (spacemacs/set-leader-keys-for-major-mode 'lsp-mode
-      ;; format
-      "=" #'lsp-format-buffer
-      ;; goto
-      "gd" #'lsp-ui-peek-find-definitions
-      "gi" #'lsp-ui-imenu
-      "gr" #'lsp-ui-peek-find-references
-      "gr" #'lsp-ui-peek-find-workspace-symbol
-      ;; refactor
-      "rr" #'lsp-rename))
+    (set-face-attribute 'lsp-ui-sideline-current-contents nil :foreground "grey43")))
 
 ;; `company' backend for `lsp-mode'
 (defun appleshan-programming/post-init-company-lsp ()
