@@ -19,7 +19,6 @@
       ;; helm-xref
       engine-mode
       flycheck
-      flycheck-inline
       flycheck-package
       flycheck-pycheckers
       avy-flycheck
@@ -50,12 +49,6 @@
   (setq lsp-enable-eldoc nil) ; 禁止eldoc
   (setq lsp-response-timeout 25)
   (spacemacs|diminish lsp-mode " Ⓛ" " L")
-
-  (add-hook 'lsp-after-open-hook (lambda ()
-    ;; bug: flycheck-display-errors-function 被 lsp-ui-sideline 覆盖
-    ;; 然后重新设置为 flycheck-inline-error-messages
-    (setq-local flycheck-display-errors-function 'flycheck-inline-error-messages)
-    ))
   )
 
 (defun appleshan-programming/post-init-lsp-ui ()
@@ -140,15 +133,6 @@
     :error-patterns
     ((error line-start (file-name) ":" line ": " (message) line-end))
     :modes (xml-mode nxml-mode)))
-
-(defun appleshan-programming/init-flycheck-inline ()
-  (use-package flycheck-inline
-    :ensure t
-    :defer t
-    :init
-    ;; 这里设置的 flycheck-display-errors-function 会被 lsp-ui 覆盖
-    ;; (add-hook 'flycheck-mode-hook 'flycheck-inline-enable)
-    ))
 
 (defun appleshan-programming/init-flycheck-package ()
   (use-package flycheck-package
