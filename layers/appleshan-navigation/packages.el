@@ -20,6 +20,7 @@
         dumb-jump
         evil
         evil-escape
+        ibuffer-sidebar
         imenu-anywhere
         treemacs
         workgroups2
@@ -90,6 +91,16 @@
 
 (defun appleshan-navigation/post-init-evil-escape ()
   (setq evil-escape-delay 0.2))
+
+(defun appleshan-navigation/init-ibuffer-sidebar ()
+  (use-package ibuffer-sidebar
+    :bind (("C-x C-b" . ibuffer-sidebar-toggle-sidebar)
+           :map ibuffer-sidebar-mode-map
+           ("j" . ibuffer-forward-line)
+           ("k" . ibuffer-backward-line))
+    :config
+    (setq ibuffer-sidebar-display-alist '((side . right) (slot . 1)))
+  ))
 
 (defun appleshan-navigation/init-imenu-anywhere ()
   (use-package imenu-anywhere

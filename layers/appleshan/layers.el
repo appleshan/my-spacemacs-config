@@ -21,7 +21,7 @@
     ; beacon
     )
   (appleshan-navigation
-    :packages dumb-jump evil evil-escape imenu-anywhere treemacs
+    :packages dumb-jump evil evil-escape ibuffer-sidebar imenu-anywhere treemacs
     ; workgroups2
     )
   (appleshan-notify
