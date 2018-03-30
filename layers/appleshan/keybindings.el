@@ -9,6 +9,7 @@
 ;;
 ;;; License: GPLv3
 
+
 ;; dired
 ;; @see https://github.com/abo-abo/hydra/wiki/Dired
 (defhydra hydra-dired (:hint nil :color pink)
@@ -64,6 +65,7 @@ T - tag prefix
 
 (define-key dired-mode-map "." 'hydra-dired/body)
 
+
 ;; ibuffer
 ;; @see https://github.com/abo-abo/hydra/wiki/Ibuffer
 (defhydra hydra-ibuffer-main (:color pink :hint nil)
@@ -164,6 +166,7 @@ _t_: toggle    _._: toggle hydra _H_: help       C-o other win no-select
 ;; Automatically open the hydra with Ibuffer.
 (add-hook 'ibuffer-hook #'hydra-ibuffer-main/body)
 
+
 ;; Org mode block templates
 ;; @see https://github.com/abo-abo/hydra/wiki/Org-mode-block-templates
 (defhydra hydra-org-template (:color blue :hint nil)
@@ -232,6 +235,7 @@ prepended to the element after the #+HEADER: tag."
   ("c" org-capture "Capture") ; Don't forget to define the captures you want http://orgmode.org/manual/Capture.html
   ("l" org-capture-goto-last-stored "Last Capture"))
 
+
 ;; symbol-overlay
 (defhydra hydra-symbol-overlay (:hint nil)
   "
@@ -254,6 +258,7 @@ prepended to the element after the #+HEADER: tag."
 
 (spacemacs/set-leader-keys "os" #'hydra-symbol-overlay/body)
 
+
 ;; dumb-jump
 (defhydra hydra-dumb-jump (:color amaranth)
   "Dumb Jump"
@@ -267,6 +272,7 @@ prepended to the element after the #+HEADER: tag."
 
 (global-set-key (kbd "C-j") #'hydra-dumb-jump/body)
 
+
 ;; emacs-lisp
 (defhydra hydra-lisp-eval (:color blue :columns 2 :idle 1.0)
   "Lisp Eval"
@@ -282,6 +288,7 @@ prepended to the element after the #+HEADER: tag."
   (bind-key "C-c C-e" #'hydra-lisp-eval/body emacs-lisp-mode-map)
   (bind-key "C-c C-e" #'hydra-lisp-eval/body lisp-mode-map))
 
+
 ;; quickrun
 (defhydra hydra-quickrun (:color blue)
   "Quickrun"
@@ -292,6 +299,7 @@ prepended to the element after the #+HEADER: tag."
   ("c" quickrun-compile-only "compile")
   ("p" quickrun-replace-region "replace"))
 
+
 ;; wandbox
 (defhydra hydra-wandbox (:color amaranth :hint nil)
   "
@@ -422,14 +430,16 @@ _q_uit _RET_: current
   (">" smerge-diff-base-other)
   ("q" nil :color blue))
 
-
+
 ;; @see https://emacs-china.org/t/better-default-c-e/1573/6
 (define-key evil-insert-state-map (kbd "C-e") 'mwim-end-of-code-or-line)
 (define-key evil-motion-state-map (kbd "C-e") 'mwim-end-of-code-or-line)
 
+
 ;; 逗号后面自动加空格
 (global-set-key (kbd ",") #'(lambda () (interactive) (insert ", ")))
 
+
 (spacemacs/set-leader-keys ;; modify by appleshan
   ;; Go to next org file in org-agenda-files
   "aoC"  'org-cycle-agenda-files
@@ -443,6 +453,7 @@ _q_uit _RET_: current
   "aoTl" 'org-toggle-link-display
   )
 
+
 ;; Search (and search/replace) using regex by default, since that's usually what I want to do:
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
@@ -474,6 +485,7 @@ _q_uit _RET_: current
 
 (spacemacs/set-leader-keys "bl" 'popwin:display-last-buffer)
 
+
 ;; Enable navigation by visual lines
 ;; Make evil-mode up/down operate in screen lines instead of logical lines
 (define-key evil-motion-state-map "j" 'evil-next-visual-line)
@@ -484,14 +496,17 @@ _q_uit _RET_: current
 
 (global-set-key (kbd "C-c n") #'cleanup-buffer)
 
+
 ;; terminal-here
 (global-set-key (kbd "C-<f5>") #'terminal-here-launch)
 (global-set-key (kbd "C-<f6>") #'terminal-here-project-launch)
 
+
 ;; Font size
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 
+
 ;; lsp-mode key bindings
 (defun spacemacs/lsp-set-key-bindings (mode)
   "Setup the key bindings for the given MODE."
