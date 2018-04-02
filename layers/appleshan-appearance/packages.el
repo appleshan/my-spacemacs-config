@@ -22,6 +22,7 @@
       which-key
       spacemacs-whitespace-cleanup
       zoom
+      (fruity-theme :location "~/.spacemacs.d/local/fruity-theme/")
       ))
 
 ;; List of packages to exclude.
@@ -137,6 +138,12 @@
       (setq zoom-ignore-predicates '(
         (lambda () (> (count-lines (point-min) (point-max)) 20))))
       (zoom-mode t))))
+
+;; 添加 spacemacs 的外部 theme
+(defun appleshan-appearance/init-fruity-theme ()
+  (use-package fruity-theme)
+  (add-to-list 'dotspacemacs-themes 'fruity)
+  (spacemacs/load-theme 'fruity))
 
 ;; Local Variables:
 ;; coding: utf-8

@@ -17,7 +17,7 @@
   appleshan-complete
   (appleshan-appearance
     :packages anzu all-the-icons on-screen paren-face popwin visual-regexp visual-regexp-steroids
-    which-key spacemacs-whitespace-cleanup zoom
+    which-key spacemacs-whitespace-cleanup zoom fruity-theme
     ; beacon
     )
   (appleshan-navigation
