@@ -197,7 +197,7 @@ pip install flake8
 *** importmagic
 importmagic 用来自动引入需要的包
 #+BEGIN_SRC bash
-pip install importmagic
+pip install importmagic epc
 #+END_SRC
 
 *** autoflake
