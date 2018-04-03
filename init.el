@@ -223,7 +223,6 @@ values."
                                     helm-flyspell
                                     helm-make
                                     helm-mode-manager
-                                    helm-projectile
                                     helm-pydoc
                                     helm-themes
                                     highlight-indentation
