@@ -113,7 +113,7 @@ values."
      ;; java
      plantuml ; uml
      (python :packages
-             company eldoc flycheck helm-pydoc live-py-mode org pip-requirements py-isort ; pylookup
+             company eldoc flycheck helm-pydoc importmagic live-py-mode org pip-requirements py-isort ; pylookup
              python semantic stickyfunc-enhance yapfify lsp-python
              :variables
              python-backend 'lsp
