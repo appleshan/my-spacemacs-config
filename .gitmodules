@@ -1,6 +1,3 @@
 [submodule "snippets"]
 	path = snippets
 	url = https://github.com/appleshan/emacs-snippets.git
-[submodule "local/fruity-theme"]
-	path = local/fruity-theme
-	url = https://github.com/jojojames/fruity-theme.git

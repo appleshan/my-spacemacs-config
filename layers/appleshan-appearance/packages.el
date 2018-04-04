@@ -22,7 +22,9 @@
       which-key
       spacemacs-whitespace-cleanup
       zoom
-      (fruity-theme :location "~/.spacemacs.d/local/fruity-theme/")
+      (fruity-theme :location (recipe
+                               :fetcher github
+                               :repo "jojojames/fruity-theme"))
       ))
 
 ;; List of packages to exclude.
