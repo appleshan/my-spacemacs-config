@@ -332,7 +332,7 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("Hack"
                                :size 15
                                :weight normal
                                :width normal
@@ -625,16 +625,15 @@ you should place your code here."
 
   ;;{{ 解决 org 表格里面中英文对齐的问题
   ;; 可选字体组合及字体大小：
-  ;; Source Code Pro | WenQuanYi Micro Hei  : [ 12 14 ], [ 14 16 ]
-  ;; Source Code Pro | Microsoft YaHei Mono : [ 12 14 ], [ 14 16 ]
+  ;; Hack | YaHei Consolas Coder  : [ 12 14 ], [ 14 16 ], [ 15 18 ]
+  ;; Hack | Microsoft YaHei Mono : [ 12 14 ], [ 14 16 ], [ 15 18 ]
   (when (configuration-layer/layer-usedp 'appleshan-chinese)
-    (when (and (spacemacs/system-is-linux) window-system)
+    (when (and (spacemacs/system-is-linux) (eq window-system 'x))
       (spacemacs//set-monospaced-font
-       "Source Code Pro" "WenQuanYi Micro Hei" 14 16))
+       "Hack" "YaHei Consolas Coder" 15 18))
     (when (spacemacs/system-is-mswindows)
       (spacemacs//set-monospaced-font
-       "Source Code Pro" "Microsoft YaHei Mono" 14 16))
-    )
+       "Hack" "Microsoft YaHei Mono" 14 16)))
   ;;}}
 
   ;; Change cursor color depending on mode
