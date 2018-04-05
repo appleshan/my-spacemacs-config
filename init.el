@@ -78,7 +78,7 @@ values."
                       better-defaults-move-to-end-of-code-first t)
      (colors :variables
              colors-colorize-identifiers 'variables
-             colors-enable-nyan-cat-progress-bar nil)
+             colors-enable-nyan-cat-progress-bar t)
      (ibuffer :variables
               ibuffer-group-buffers-by 'projects)
      ;; (spell-checking :variables
