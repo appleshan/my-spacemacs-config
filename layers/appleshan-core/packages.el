@@ -18,7 +18,6 @@
 (setq appleshan-core-packages
     '(
       (mule :location built-in)
-      (desktop :location built-in)
       (recentf :location built-in)
       (profiler :location built-in)
       (whitespace :location built-in)
@@ -38,46 +37,6 @@
     (progn
       (appleshan/set-language-coding-systems)
     )))
-
-(defun appleshan-core/pre-init-desktop ()
-  (spacemacs|use-package-add-hook desktop
-    :post-config
-    (progn
-      (setq desktop-auto-save-timeout 600)
-
-      ;; save a bunch of variables to the desktop file
-      ;; for lists specify the len of the maximal saved data also
-      (setq desktop-globals-to-save
-            (append '((comint-input-ring        . 50)
-                      (compile-history          . 30)
-                      desktop-missing-file-warning
-                      (dired-regexp-history     . 20)
-                      (extended-command-history . 30)
-                      (face-name-history        . 20)
-                      (file-name-history        . 100)
-                      (grep-find-history        . 30)
-                      (grep-history             . 30)
-                      (magit-read-rev-history   . 50)
-                      (minibuffer-history       . 50)
-                      (org-clock-history        . 50)
-                      (org-refile-history       . 50)
-                      (org-tags-history         . 50)
-                      (query-replace-history    . 60)
-                      (read-expression-history  . 60)
-                      (regexp-history           . 60)
-                      (regexp-search-ring       . 20)
-                      register-alist
-                      (search-ring              . 20)
-                      (shell-command-history    . 50)
-                      tags-file-name
-                      tags-table-list)))
-
-      (setq desktop-buffers-not-to-save
-              (concat "\\("
-                      "^nn\\.a[0-9]+\\|\\.log\\|(ftp)\\|^tags\\|^TAGS"
-                      "\\|\\.emacs.*\\|\\.diary\\|\\.newsrc-dribble\\|\\.bbdb"
-                      "\\)$"))
-      )))
 
 (defun appleshan-core/post-init-recentf ()
   "Save recently visited files"

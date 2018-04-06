@@ -11,9 +11,7 @@
 
 (configuration-layer/declare-layers '(
   (appleshan-core
-    :packages calendar mule recentf profiler whitespace ibuffer helpful real-auto-save
-    ; desktop
-    )
+    :packages calendar mule recentf profiler whitespace ibuffer helpful real-auto-save)
   appleshan-complete
   (appleshan-appearance
     :packages anzu all-the-icons on-screen paren-face popwin visual-regexp visual-regexp-steroids
