@@ -25,6 +25,7 @@
       (calendar :location built-in)
       (ibuffer :location built-in)
       helpful
+      real-auto-save
       ))
 
 ;; List of packages to exclude.
@@ -173,6 +174,13 @@
 
 (defun appleshan-core/init-helpful ()
   (use-package helpful))
+
+(defun appleshan-core/init-real-auto-save ()
+  (use-package real-auto-save
+    :config
+    (setq real-auto-save-interval 5) ;; in seconds
+    (add-hook 'org-mode-hook 'real-auto-save-mode)
+    (add-hook 'prog-mode-hook 'real-auto-save-mode)))
 
 ;; Local Variables:
 ;; coding: utf-8
