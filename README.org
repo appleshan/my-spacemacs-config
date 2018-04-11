@@ -37,7 +37,7 @@ Tested on versions:
 cd ~/projects/
 
 # clone syl20bnr/spacemacs repo
-git clone -b develop https://github.com/syl20bnr/spacemacs.git spacemacs-develop
+git clone -b develop --depth 1 https://github.com/syl20bnr/spacemacs.git spacemacs-develop
 
 # clone appleshan/my-spacemacs-config and submodule
 git clone --recursive https://github.com/appleshan/my-spacemacs-config.git spacemacs-private
