@@ -427,14 +427,13 @@
 ;; org-crypt 加密
 ;;;;;;;;;;;;;;;;;;;;
 
-;; http://coldnew.github.io/blog/2013/07/13_5b094.html
+;; @see https://coldnew.github.io/4bb1df06/
 ;; 使用`org-crypt’库,可以自动将带”:secret:” tag 的 headline ,在写入时加密存储.
 ;; 该功能对于想要将密码等隐私消息存入org文件带来便利.
 
 (defun appleshan-org/init-org-crypt ()
-  (;progn
-    with-eval-after-load 'org-crypt
-    ; (require 'org-crypt)
+  (progn
+    (require 'org-crypt)
 
     ;; 保存前,自動加密回去
     (org-crypt-use-before-save-magic)
