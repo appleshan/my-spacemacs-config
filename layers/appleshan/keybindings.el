@@ -171,28 +171,26 @@ _t_: toggle    _._: toggle hydra _H_: help       C-o other win no-select
 ;; @see https://github.com/abo-abo/hydra/wiki/Org-mode-block-templates
 (defhydra hydra-org-template (:color blue :hint nil)
   "
-_c_enter   _N_AME      _e_macs-lisp    _i_ndex:
-_v_erse    _l_atex     _S_cheme        _L_aTeX:
-qu_o_te    _h_tml      _p_ython        _H_TML:
-_E_xample  ^ ^         _s_hell         _I_NCLUDE:
+_c_enter   _N_AME      _E_macs-lisp    _i_ndex:
+_v_erse    _l_atex     _s_rc           _L_aTeX:
+_q_uote    _h_tml      _p_ython        _H_TML:
+_e_xample  ^ ^         _s_hell         _I_NCLUDE:
 ^ ^        ^ ^         plant_u_ml      ^ ^:
 "
   ("c" (hot-expand "<c"))
   ("v" (hot-expand "<v"))
-  ("o" (hot-expand "<q"))
-  ("E" (hot-expand "<e"))
+  ("q" (hot-expand "<q"))
+  ("e" (hot-expand "<e"))
   ("N" (hot-expand "<N"))
   ("l" (hot-expand "<l"))
-  ("a" (hot-expand "<a"))
   ("h" (hot-expand "<h"))
-  ("e" (hot-expand "<s" "emacs-lisp"))
-  ("S" (hot-expand "<s" "scheme"))
-  ("p" (hot-expand "<s" "python"))
-  ("s" (hot-expand "<s" "sh"))
-  ("u" (hot-expand "<s" "plantuml :file CHANGE.png"))
+  ("E" (hot-expand "<E" "emacs-lisp"))
+  ("s" (hot-expand "<s" "src"))
+  ("p" (hot-expand "<p" "python"))
+  ("S" (hot-expand "<S" "sh"))
+  ("u" (hot-expand "<u" "plantuml :file CHANGE.png"))
   ("i" (hot-expand "<i"))
   ("L" (hot-expand "<L"))
-  ("A" (hot-expand "<A"))
   ("H" (hot-expand "<H"))
   ("I" (hot-expand "<I"))
   ("<" self-insert-command "ins")
