@@ -81,6 +81,8 @@
     ;; 解决文件目录的中文名乱码
     (setq-default pathname-coding-system 'utf-8-unix)
     (set-file-name-coding-system 'utf-8-unix)
+
+    (define-coding-system-alias 'UTF-8 'utf-8)
     )
 
   (when (spacemacs/system-is-mswindows)
