@@ -161,9 +161,6 @@ values."
      ;spacemacs-layouts
      systemd
      ;; themes-megapack ; http://themegallery.robdor.com/
-     (wakatime :variables
-               wakatime-api-key  "9afc40f6-a0a8-4d8c-8089-cfe1fe6ff9e9"
-               wakatime-cli-path "/usr/bin/wakatime")
 
      ;; --- Vim layers ---
      evil-commentary ;; comment
