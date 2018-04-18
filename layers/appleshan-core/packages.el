@@ -136,6 +136,7 @@
 
 (defun appleshan-core/init-real-auto-save ()
   (use-package real-auto-save
+    :diminish (real-auto-save-mode)
     :config
     (setq real-auto-save-interval 5) ;; in seconds
     (add-hook 'org-mode-hook 'real-auto-save-mode)
