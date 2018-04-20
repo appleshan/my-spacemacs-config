@@ -642,9 +642,6 @@ you should place your code here."
   (setq evil-operator-state-cursor `("red" hollow))
   (setq evil-motion-state-cursor `("orange" box))  ; █
 
-  ;; restore the desktop
-;  (desktop-save-mode t)
-;  (desktop-read)
   )
 
 (setq custom-file (expand-file-name "local/custom.el" dotspacemacs-directory))
