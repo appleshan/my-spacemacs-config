@@ -138,7 +138,7 @@
   (use-package real-auto-save
     :diminish (real-auto-save-mode)
     :config
-    (setq real-auto-save-interval 5) ;; in seconds
+    (setq real-auto-save-interval 10) ;; in seconds
     (add-hook 'org-mode-hook 'real-auto-save-mode)
     (add-hook 'prog-mode-hook 'real-auto-save-mode)))
 
