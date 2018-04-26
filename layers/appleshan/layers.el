@@ -33,7 +33,7 @@
     :variables chinese-enable-fcitx nil)
   appleshan-programming
   (appleshan-python
-    :packages company ; py-autopep8
+    :packages company lsp-python ; py-autopep8
     )
   ; appleshan-java
   ; appleshan-javascript

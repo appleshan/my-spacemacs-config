@@ -14,6 +14,7 @@
 (setq appleshan-python-packages
     '(
       company
+      lsp-python
       py-autopep8
       ))
 
@@ -27,6 +28,11 @@
     :variables
     company-minimum-prefix-length 0
     company-idle-delay 0.5))
+
+(defun appleshan-python/post-init-lsp-python ()
+  ;; Don't warn if guessing the indention fails, just set it to the value
+  ;; of `python-indent-offset'.
+  (setq python-indent-guess-indent-offset-verbose nil))
 
 ;; Autopep8
 ;; enable autopep8 formatting on save
