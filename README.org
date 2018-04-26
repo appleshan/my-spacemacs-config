@@ -179,8 +179,7 @@ git config --global core.autocrlf false
 
 *** Python Language Server
 #+BEGIN_SRC bash
-pip install python-language-server
-pip install pycodestyle
+pip install python-language-server[all]
 #+END_SRC
 
 *** Auto-completion: Anaconda dependencies
@@ -218,7 +217,7 @@ yapf 用来格式化代码
 pip install yapf
 #+END_SRC
 
-** rope
+*** rope
 a python refactoring library
 #+BEGIN_SRC bash
 pip install rope
