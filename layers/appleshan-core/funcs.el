@@ -376,6 +376,8 @@ re-indenting and un-tabification is done."
     (profiler-stop))
   (setq spacemacs--profiler (not spacemacs--profiler)))
 
+(add-hook 'before-save-hook 'time-stamp)
+
 ;; Local Variables:
 ;; coding: utf-8
 ;; no-byte-compile: nil
