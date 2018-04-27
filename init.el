@@ -594,7 +594,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   ;; error in emacs 26
   (setq spacemacs-banner-official-png
     (expand-file-name
-      (concat dotspacemacs-directory "local/banner/001-banner-kban.txt")))
+      (concat dotspacemacs-directory "local/banner/007-banner-emacs.png")))
 
   ;; BUG : https://github.com/syl20bnr/spacemacs/issues/2705
   (setq tramp-ssh-controlmaster-options
