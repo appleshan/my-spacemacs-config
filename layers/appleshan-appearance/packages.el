@@ -132,7 +132,7 @@
       (setq zoom-size 'size-callback)
 
       (setq zoom-ignored-major-modes '(dired-mode org-mode magit-mode))
-      (setq zoom-ignored-buffer-name-regexps '("^*calc"))
+      (setq zoom-ignored-buffer-name-regexps '("^*calc" "*Ediff Control Panel*"))
       ;; 少于20行的任何缓冲区。
       (setq zoom-ignore-predicates '(
         (lambda () (> (count-lines (point-min) (point-max)) 20))))
